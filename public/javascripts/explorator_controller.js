@@ -308,11 +308,13 @@ var SemanticExpression = Class.create({
         var expression = '';
         if (a == undefined) 
             return param;
+			
         //The parameter could be only one element or several.			
         if (Object.isArray(a)) {
             expression += a.map(function(x){
                 var resource = Element.resource(x);
-                if (resource == 'null') {
+				 
+                if (resource == 'null' || x.hasClassName('class')) {
                     var exp = x.readAttribute('exp');
                     if (exp.indexOf(':o,:o') != -1) {
                         return 'SemanticExpression.new' + encodeURIComponent(exp.replace(":o,:o", ':o')) + '.resources(:o)';
@@ -333,6 +335,7 @@ var SemanticExpression = Class.create({
         return expression; //returns a array of resources in ruby
     },
     spo: function(s, p, o, r){
+	 
         this.expression += '.spo(' + this.getResourcesArray(s) + ',' + this.getResourcesArray(p) + ',' + this.getResourcesArray(o) + ',' + parameters.get(r) + ')';
         return this;
     },
