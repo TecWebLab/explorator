@@ -87,6 +87,7 @@ class SparqlAdapter < ActiveRdfAdapter
         
         $activerdflog.debug "GET #{url}"        
         timeout(@timeout) do          
+         # puts url
           open(url, header) do |f|
  
             response = f.read            
