@@ -44,7 +44,7 @@ module RenderHelper
         str = resource.uri.to_s.downcase
         str = str[str.length-4,str.length]
          if  str == '.jpg' || str =='.gif' || str =='.png'
-          '<img width = "200" src ="' + resource.uri + '"/>'
+          '<img class = "image"   src ="' + resource.uri + '"/>'
         else
           truncate(resource.localname)
         end        
