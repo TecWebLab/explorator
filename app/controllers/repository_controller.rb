@@ -91,5 +91,8 @@ rescue Exception => e
 end
  redirect_to :controller => 'message',:action => 'confirmation', :message => "SPARQL Enpoint added successfuly ",:layout => false
  
-  end
+end
+def listenabledrepositories
+ render :partial => 'listenabledrepositories',:layout =>false
+end
 end
