@@ -15,33 +15,33 @@
         </script>
         <script type="text/javascript" src="/javascripts/explorator_controller.js">
         </script>
-		<script type="text/javascript" src="/javascripts/csshover.htc">
-		</script>
-		<script type="text/javascript" src="/javascripts/drop_down.js">
-		</script>
-	<script type="text/javascript" src="/javascripts/explorator_querybuilder.js">
+        <script type="text/javascript" src="/javascripts/csshover.htc">
         </script>
-<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+        <script type="text/javascript" src="/javascripts/drop_down.js">
+        </script>
+        <script type="text/javascript" src="/javascripts/explorator_querybuilder.js">
+        </script>
+        <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
     </head>
     <body id=body>
         <script type="text/javascript" src="/javascripts/wz_tooltip.js">
         </script>
         <%= render :partial => '/layouts/landmarks' %>
         <%= render :partial => '/layouts/loading' %>
-   		<%= render_component :controller => "querybuilder", :action => "index", :layout => false%>
+        <%= render_component :controller => "querybuilder", :action => "index", :layout => false %>
         <%= @content_for_layout %>
-      <!--  <div class = '_WINDOW help_container'>
-            <div class=' winoperations '>
-                <div class ='_remove'>
-                    X
-                </div>
-            </div>
-			gregregr
+        <!--  <div class = '_WINDOW help_container'>
+        <div class=' winoperations '>
+        <div class ='_remove'>
+        X
+        </div>
+        </div>
+        gregregr
         </div> -->
-	
     </body>
 </html>
 <script>
     init_all();
-	$('container').hide();
+    $('container').hide();
+    
 </script>
