@@ -26,10 +26,10 @@ dbdir = Dir.pwd +  File::SEPARATOR + 'db'
 $sesamedir = Dir.new(dbdir + File::SEPARATOR + 'Sesame' + File::SEPARATOR + "repositories")
 $sesamedir.each  do |x| 
   
-  if x.rindex('.') == nil && x!= ('SYSTEM') && x!= ('WORK') 
+  if x.rindex('.') == nil && x!= ('SYSTEM') && x!= ('INTERNAL') 
     
     adapter = ConnectionPool.add_data_source :type => :sparql_sesame_api ,  :caching =>true, :repository => x, :dir => $sesamedir.path
-    adapter.title=x + '_DEFAULT'    
+    adapter.title=x + '_LOCAL'    
   end
 end
 

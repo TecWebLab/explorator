@@ -83,7 +83,7 @@ class SemanticExpression
   end
   def go(uri)
     adapter = ConnectionPool.adapters.select {|adapter| 
-      adapter.title == 'EXPLORATOR_DEFAULT'
+      adapter.title == 'EXPLORATOR_LOCAL'
     }
     uri = RDFS::Resource.new(uri)
     
