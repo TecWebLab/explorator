@@ -11,7 +11,7 @@ hr{
 h1 {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 table td#css {
@@ -21,6 +21,11 @@ table td#css {
 }
 .blue{
 	  color: #4f94cd;
+}
+.tableheader{
+	font-weight:bold;
+	color:white;
+	
 }
 
 /**********************************************************************************/
@@ -219,13 +224,13 @@ div.windowtoolbar div.filter:hover {
     background-color: transparent;
 }
 
-/*an window representing a configuration screen*/ .config {
+/*a window representing a configuration screen*/ .config {
     font-family: Arial, Helvetica, sans-serif;
     float: left;
     z-index: 1000;
     margin-left: 14px;
     width: 50%;
-    height: 100%;
+    height: 90%;
     border: 2px solid #cccccc;
     text-align: center;
     font-size: 14px;
@@ -237,26 +242,26 @@ div.windowtoolbar div.filter:hover {
     background-color: #fefefe;
 }
 
-/*an window representing an error screen*/ .error {
+/*a window representing an error screen*/ .error {
     font-family: Arial, Helvetica, sans-serif;    
     z-index: 10000;     
     border: 2px solid red;     
     font-size: 14px;
     padding: 9px;
-    position: fixed;  
-    width:97%;
+   left:25%;
+    width:50%;
     position: fixed;
     background-color: white;
 }
 
-/*an window representing an error screen*/ .confirmation {
+/*a window representing an error screen*/ .confirmation {
     font-family: Arial, Helvetica, sans-serif;    
     z-index: 10000;     
     border: 2px solid green;     
     font-size: 14px;
     padding: 9px;
-    position: fixed;  
-    width:97%;
+ 	left:25%;
+    width:50%;
     position: fixed;
     background-color: white;
 }
@@ -581,6 +586,8 @@ input[type = submit] {
     border: 1px outset #4f94cd;
 		cursor:pointer;
 }
+
+
 
 /*********************************************************************************
  
