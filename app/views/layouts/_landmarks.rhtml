@@ -59,7 +59,6 @@
         </ul>
     </div>
     <%= render :partial => '/layouts/toolbar' %>
-	  <div class = "toolbar">	 	  	
-            <span class="blue">Enabled repositories:</span>&nbsp;&nbsp; <%= session[:disablerepositories].join(', ')%>
-    </div>&nbsp;
+	<%= render :partial => '/repository/listenabledrepositories'  %>
+	&nbsp;
 </div>
