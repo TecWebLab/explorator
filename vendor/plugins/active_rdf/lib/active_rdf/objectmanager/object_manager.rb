@@ -92,7 +92,9 @@ class ObjectManager
 	def self.localname_to_class(localname)
 		# replace illegal characters inside the uri
 		# and capitalize the classname
-		replace_illegal_chars(localname).capitalize
+		name = replace_illegal_chars(localname).capitalize
+    'Z_' +  name 
+    
 	end
 
 	def self.create_module_name(resource)

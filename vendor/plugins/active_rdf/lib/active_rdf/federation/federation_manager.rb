@@ -51,8 +51,10 @@ class FederationManager
             next
           end
         rescue    
+       
           #outside the Explorator.
       end
+       # puts source.title
         q.limit(source.limit) if source.limit != nil
         source_results = source.query(q)
         source_results.each do |clauses|
