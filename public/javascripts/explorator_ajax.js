@@ -1,36 +1,39 @@
 /**
  * @author samuraraujo
  */
+var loading_text="Loading ..."
 //Execute an AJAX request , updating the container with the response text.
 function ajax_update_callback(id, _uri, callbackfunction){
-	 $(id).innerHTML = 'Loading....'
+    $(id).innerHTML = 'Loading....'
     new Ajax.Request((_uri), {
         method: 'post',
-        onComplete: function(transport){ 
+        onComplete: function(transport){
             Element.replace(id, transport.responseText);
             init_all();
-			eval(callbackfunction);
+            eval(callbackfunction);
         }
     });
 }
+
 function ajax_update(id, _uri){
     $(id).innerHTML = 'Loading....'
     new Ajax.Request((_uri), {
         method: 'post',
-        onComplete: function(transport){ 
+        onComplete: function(transport){
             Element.replace(id, transport.responseText);
             init_all();
         }
     });
 }
+
 //Execute an AJAX request , updating the container with the response text.
-function ajax_insert(element, _uri,callbackfunction){    
+function ajax_insert(element, _uri, callbackfunction){
     new Ajax.Request((_uri), {
         method: 'post',
-        onComplete: function(transport){ 
+        onComplete: function(transport){
             element.insert(transport.responseText);
             init_all();
-			eval(callbackfunction);
+            eval(callbackfunction);
         }
     });
 }
@@ -42,19 +45,24 @@ function ajax_request(uri){
     new Ajax.Request(uri, {
         method: 'get',
         onComplete: function(transport){
-			$('loadwindow').hide();
+			$('loadwindow').innerHTML = loading_text;
+            $('loadwindow').hide();
+
             ui_add_window(transport.responseText);
             
         }
     });
 }
+
 //Execute a ajax request.
-function ajax_request_forfacet(uri,item){
-    $('loadwindow').show();	
+function ajax_request_forfacet(uri, item){
+    $('loadwindow').show();
     new Ajax.Request(uri, {
         method: 'get',
         onComplete: function(transport){
-			$('loadwindow').hide();
+			$('loadwindow').innerHTML = loading_text;
+            $('loadwindow').hide();
+            
             ui_add_window(transport.responseText);
             $('facetgroup').insert(item);
         }

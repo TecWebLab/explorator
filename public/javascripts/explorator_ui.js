@@ -2,6 +2,7 @@
  * This code implements all the user interface behaviour of explorator
  * @author samuraraujo
  */
+
 //Add global ui methods to the elements
 Element.addMethods({
     //Hide an element
@@ -59,7 +60,8 @@ function register_ui_resource_behaviour(){
     $$('.resource').each(function(resource){
         resource.identify();
         resource.ondblclick = function(e){
-            resource.ui_open();
+            resource.ui_open();			
+		$('loadwindow').innerHTML = "Loading: " + getTextValue(resource);
             e.stopPropagation();
         };
         //	   resource.onclick = function(e){        
