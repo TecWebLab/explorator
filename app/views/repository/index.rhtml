@@ -33,10 +33,10 @@
                 <%=repository.title %>
             </td>
             <td align='center'>
-                <input name="<%=repository.title%>" title="Click to enable" onchange="new Ajax.Request('/repository/enable?title='+this.name,{  method: 'get'} );" type="radio" value="enable"<%= 'checked' if repository.enable %>/>
+                <input name="<%=repository.title%>" title="Click to enable" onchange="new Ajax.Request('/repository/enable?title='+this.name,{  method: 'get'} );ajax_update('listenabledrepositories','/repository/listenabledrepositories');" type="radio" value="enable"<%= 'checked' if repository.enable %>/>
             </td>
             <td align='center'>
-                <input name="<%=repository.title%>" title="Click to disable"  onchange="new Ajax.Request('/repository/disable?title='+this.name, {  method: 'get'} );" type="radio" value="disable"<%= 'checked' if !repository.enable %>/>
+                <input name="<%=repository.title%>" title="Click to disable"  onchange="new Ajax.Request('/repository/disable?title='+this.name, {  method: 'get'} );ajax_update('listenabledrepositories','/repository/listenabledrepositories');" type="radio" value="disable"<%= 'checked' if !repository.enable %>/>
             </td>
             <td align=center >
             	
