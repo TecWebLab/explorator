@@ -24,7 +24,7 @@
             </div>
         </li>
     </ul>
-    <div class = " _WINDOW  select <%=css(resource)%> inverse" set = "<%=uri(resourceset)%>" resource="<%=(uri(resource)) %>" exp="('<%=h(uri(resource)) %>',:p,:o)" onmouseover="Tip('<%= h(to_s(resource)) %>',DELAY, 1000);mopenmenu('<%=sddm%>');" onmouseout="UnTip();">
+    <div class = " _WINDOW  select <%=css(resource)%> inverse" set = "<%=uri(resourceset)%>" resource="<%=(uri(resource)) %>" exp="('<%=h(uri(resource)) %>',:p,:o)" title="<%= h(to_s(resource)) %>">
         <div class ="expand _NO_MINIMIZE">
             <div class ='_collapseproperties' style="float:left;">
                 <span class="tool">-<span class="tip">Hide all properties values.</span></span>
@@ -42,7 +42,7 @@
         <%= render_resource(resource) %>
         <%predicates(resource,:o).each do |p| %>
         <div class = " _WINDOW properties">
-            <div class = "_WINDOW draggable select _NO_MINIMIZE <%=css(p)%> predicate  inverse" resource="<%= (uri(p)) %>" exp="('<%=(uri(p)) %>',:p,:o)" onmouseover="Tip('<%= to_s(p) %>',DELAY, 1000);" onmouseout="UnTip();">
+            <div class = "_WINDOW draggable select _NO_MINIMIZE <%=css(p)%> predicate  inverse" resource="<%= (uri(p)) %>" exp="('<%=(uri(p)) %>',:p,:o)" title="<%= h(to_s(p)) %>">
                 <div class ="resourceuioperations _NO_MINIMIZE">
                     <div class ='_hide'>
                        <div>
@@ -60,7 +60,7 @@
                 <div class = "resource select _WINDOW draggable objects" exp="('<%=h(uri(resourceset))%>').intersection(:s,'<%=  uri(p) %>','<%=h(uri(resource)) %>')">
                     <% end %>
                     <% subjects(p,resource).each do |o| %>
-                    <div class = " draggable  <%=css(o)%> select object  " resource="<%=(uri(o)) %>" exp="('<%=h(uri(o)) %>',:p,:o)" onmouseover="Tip('<%= h(to_s(o)) %>',DELAY, 1000);" onmouseout="UnTip();">
+                    <div class = " draggable  <%=css(o)%> select object  " resource="<%=(uri(o)) %>" exp="('<%=h(uri(o)) %>',:p,:o)" title="<%= h(to_s(o)) %>">
                         <%if o.instance_of?(BNode) || o.instance_of?(String) %>
                         <%elsif o.type.include?(RDFS::Class) %>
                         <font class = "instances" classes="('<%=h(uri(o)) %>',:p,:o)" instances="(:s,RDF::type,'<%=h(uri(o)) %>')">
