@@ -20,7 +20,7 @@ module RenderHelper
     
   end
   ##sorts the resources using render_resource label
-  
+   
   #Render a resource view. 
   # The heuristic used is the following:
   #If was defined a resource view than render it, else render the first resource type's view. 
@@ -33,8 +33,7 @@ module RenderHelper
     elsif RDFS::Resource.new(resource.type[0].uri).explorator::view != nil 
       resource.instance_eval(RDFS::Resource.new(resource.type[0].uri).explorator::view)    
       #render a default property: label, name, title, or the resource localname
-    else      
-       
+    else           
       if resource.rdfs::label != nil
         truncate(resource.rdfs::label)
       elsif resource.name != nil
@@ -48,9 +47,7 @@ module RenderHelper
           '<img src ="' + resource.uri + '"/>'
         else
           truncate(resource.localname)
-        end
-        
-        
+        end        
       end
     end    
   end 
