@@ -12,25 +12,23 @@ table td#css {
     font-size: 12px;
     border: 1px solid #efefef;
 }
-
 /**********************************************************************************/
 /*********************************************************************************
  * ****************************** HELP INTERFACE **********************
  * this section contains the css for the help interface.
  */
-
-.help_container{
-	position:fixed;
-	width: 100%;
+.help_container {
+    position: fixed;
+    width: 100%;
     height: 10%;
-	border: 1px solid #999;
-	background-color: #ccc;
-	left:0px;
-	padding: 5px;
-	top:90%;
-	font-size: 12px;
-	z-index:1000;
-	font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid #999;
+    background-color: #ccc;
+    left: 0px;
+    padding: 5px;
+    top: 90%;
+    font-size: 12px;
+    z-index: 1000;
+    font-family: Arial, Helvetica, sans-serif;
 }
 /**********************************************************************************/
 /*********************************************************************************
@@ -50,6 +48,20 @@ table td#css {
     border: 1px groove #cccccc;
     margin-bottom: 0px;
     background-color: #efefef;
+}
+
+.expand div {
+    font-weight: bold;
+    font-size: 12px;
+    color: #888;
+    width: 14px;
+    height: 14px;
+    margin-right: 2px;
+    float: left;
+    text-align: center;
+    z-index: 10;
+    margin-bottom: 0px;
+    background-color: #fff;
 }
 
 div.resource > div.resourceuioperations {
@@ -80,14 +92,13 @@ div.resource:hover > div.resourceuioperations {
     font-weight: normal;
 }
 
- 
 a.all {
     color: #aaa;
     font-size: 11px;
     display: none;
 }
 
-div.resource:hover a.all{
+div.resource:hover a.all {
     display: inline;
     color: black;
     text-decoration: underline;
@@ -159,7 +170,7 @@ div.predicate > div.object {
 
 .property {
     color: green;
-   /* border: 1px solid #8FBC8F;*/
+    /* border: 1px solid #8FBC8F;*/
     font-weight: bold;
 }
 
@@ -168,8 +179,9 @@ div.predicate > div.object {
     font-family: georgia, serif;
     color: #8B4513;
 }
+
 .inverse {
-    text-align: right;	
+    text-align: right;
 }
 /*********************************************************************************
  * ****************************** USER INTERFACE FORMATTING **********************
@@ -181,10 +193,9 @@ div.windowtoolbar div.filter {
     height: 25px;
     border: none;
 }
+
 div.filter {
-    
     height: 26px;
-    
 }
 
 div.windowtoolbar div.filter:hover {
@@ -385,7 +396,7 @@ span.tool:hover span.tip {
     float: left;
     position: absolute;
     top: 0px;
-	left:0px;
+    left: 0px;
     width: 100%;
     background-color: #efefe4;
     left: 0px;
@@ -394,9 +405,8 @@ span.tool:hover span.tip {
     color: #777;
     z-index: 14;
     border-bottom: 1px solid #afafaf;
-	padding-bottom: 0.5em;
-
-	position:fixed;
+    padding-bottom: 0.5em;
+    position: fixed;
 }
 
 .landmark {
@@ -414,8 +424,8 @@ div.searchform {
     margin-top: 8px;
 }
 
-#submit{
-	margin-left: 0.5em;
+#submit {
+    margin-left: 0.5em;
 }
 /************************************************************************************
  * Operation model -css for the operation widgets
@@ -452,13 +462,12 @@ div.operation {
     color: white;
     background-color: #4f94cd;
     width: 20px;
-
 }
 
 div.operation:hover {
     background-color: transparent;
-	color: #4f94cd;
-	border: 1px solid #4f94cd;
+    color: #4f94cd;
+    border: 1px solid #4f94cd;
 }
 
 div.operation:active {
@@ -474,7 +483,7 @@ div._clear {
 .searchform {
     z-index: 150;
     float: left;
-	margin-left:30em;
+    margin-left: 30em;
 }
 
 input {
@@ -499,7 +508,7 @@ div.windowtoolbar div.filter select {
 div.filter input {
     border: 1px solid #dfdfdf;
     padding: 2px;
-	width:80%;
+    width: 80%;
     background-color: #fff;
 }
 
@@ -552,74 +561,70 @@ div.O {
     border-color: red;
     border-width: 2px;
 }
-div#mainmenu {
-background: #eee;
-float: left;
-margin-top:0.75em;
-margin-left: 1em;
-margin-right:15em;
 
+div#mainmenu {
+    background: #eee;
+    float: left;
+    margin-top: 0.75em;
+    margin-left: 1em;
+    margin-right: 15em;
 }
 
 div#mainmenu ul {
-list-style: none;
-margin: 0;
-padding: 0;
-width: 12em;
-
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 12em;
 }
 
 div#mainmenu a, div#mainmenu h2 {
-font: bold 11px/16px arial, helvetica, sans-serif;
-display: block;
-border-width: 1px;
-border-style: solid;
-border-color: #4f94cd;
-margin: 0;
-padding: 2px 3px;
+    font: bold 11px / 16px arial, helvetica, sans-serif;
+    display: block;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #4f94cd;
+    margin: 0;
+    padding: 2px 3px;
 }
 
 div#mainmenu h2 {
-color: #fff;
-background: #4f94cd;
-text-transform: uppercase;
+    color: #fff;
+    background: #4f94cd;
+    text-transform: uppercase;
 }
 
-
 div#mainmenu a {
-color: #777;
-background: #efefef;
-text-decoration: none;
+    color: #777;
+    background: #efefef;
+    text-decoration: none;
 }
 
 div#mainmenu a:hover {
-color: #4f94cd;
-background: #fff;
+    color: #4f94cd;
+    background: #fff;
 }
 
 div#mainmenu li {
-
-position: relative;}
+    position: relative;
+}
 
 div#mainmenu ul ul {
-position: absolute;
-z-index: 500;
+    position: absolute;
+    z-index: 500;
 }
 
 div#mainmenu ul ul ul {
-position: absolute;
-top: 0;
-left: 100%;
+    position: absolute;
+    top: 0;
+    left: 100%;
 }
 
-div#mainmenu ul ul,
-div#mainmenu ul li:hover ul ul,
-div#mainmenu ul ul li:hover ul ul
-{display: none;}
+div#mainmenu ul ul, div#mainmenu ul li:hover ul ul, div#mainmenu ul ul li:hover ul ul {
+    display: none;
+}
 
-div#mainmenu ul li:hover ul,
-div#mainmenu ul ul li:hover ul,
-div#mainmenu ul ul ul li:hover ul
-{display: block;}
+div#mainmenu ul li:hover ul, div#mainmenu ul ul li:hover ul, div#mainmenu ul ul ul li:hover ul {
+    display: block;
+}
 
 
