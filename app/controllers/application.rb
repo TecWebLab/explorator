@@ -12,8 +12,8 @@ class ApplicationController < ActionController::Base
     if session[:application] == nil
       puts 'initializing session'
       session[:disablerepositories]=Array.new
-      session[:disablerepositories] << 'WORK'
-      session[:disablerepositories] << 'EXPLORATOR_DEFAULT'     
+      session[:disablerepositories] << 'INTERNAL'
+      session[:disablerepositories] << 'EXPLORATOR_LOCAL'     
       session[:addrepositories] = Array.new
       session[:application] =  Application.new(session.session_id)
     end

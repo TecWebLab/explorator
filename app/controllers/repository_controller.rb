@@ -13,7 +13,7 @@ class RepositoryController < ApplicationController
     adapters = ConnectionPool.adapters()
     adapters.each do |repository|
       #create a model repository passing the repository's id, title and enableness 
-      if repository.title!= 'WORK' && (repository.title.index('_DEFAULT') || session[:addrepositories].include?(repository))
+      if repository.title!= 'INTERNAL' && (repository.title.index('_LOCAL') || session[:addrepositories].include?(repository))
         @repositories <<  Repository.new(repository.object_id,repository.title, session[:disablerepositories].include?(repository.title),repository.limit)
       end
     end       
