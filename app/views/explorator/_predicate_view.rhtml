@@ -5,14 +5,17 @@
     <% resources_paginated(:p).each do |p|%>
     <div class = " _WINDOW  select <%=css(p)%> " set = "<%=uri(resourceset)%>" resource="<%=(uri(p)) %>" exp="('<%=h(uri(p)) %>',:p,:o)" onmouseover="Tip('<%= h(to_s(p)) %>',DELAY, 1000);" onmouseout="UnTip();">
         <div class ="resourceuioperations _NO_MINIMIZE">            
-            <div class ='_collapseall'>
-                <span class="tool">-<span class="tip">Hide all properties values.</span></span>
-            </div>
-            <div class ='_openall'>
-                <span class="tool">+<span class="tip">Show the resource properties values</span></span>
-            </div>          
+               
             <div class = "_remove">
                 x
+            </div>
+        </div>  
+		 <div class ="expand _NO_MINIMIZE">
+        	 <div class ='_collapseproperties' style="float:left;">
+                <span class="tool">-<span class="tip">Hide all properties values.</span></span>
+            </div>
+            <div class= "_expandproperties" style="float:left;">
+                <span class="tool">+ <span class="tip">Show the resource properties values</span></span>
             </div>
         </div>
         <center><%= render_resource(p) %></center>
