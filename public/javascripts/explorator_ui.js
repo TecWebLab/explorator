@@ -155,25 +155,27 @@ function register_ui_window_behaviour(){
         };
     });
    
-    $$('._openall').each(function(item){
+    $$('._expandproperties').each(function(item){
         item.onclick = function(e){
-            item.up('._WINDOW').select('.properties').each(function(x){
-            
-                x.ui_show();
-                
+            item.up('._WINDOW').select('.properties').each(function(x){            
+                x.ui_show();                
             });
+			item.up('._WINDOW').select('._collapseproperties').invoke('show');
+			item.up('._WINDOW').select('._expandproperties').invoke('hide');
 				e.stopPropagation();
         };
     });
-      $$('._collapseall').each(function(item){
+      $$('._collapseproperties').each(function(item){
         item.onclick = function(e){
-            item.up('._WINDOW').select('.properties').each(function(x){
-            
+            item.up('._WINDOW').select('.properties').each(function(x){            
                 x.ui_hide();
                 
             });
+			item.up('._WINDOW').select('._expandproperties').invoke('show');
+				item.up('._WINDOW').select('._collapseproperties').invoke('hide');
 				e.stopPropagation();
         };
+		item.hide();
     });
     
     
@@ -217,7 +219,9 @@ function register_ui_selection_behaviour(){
     $$('.select').each(function(item){
         item.onclick = function(e){
 			  item.select('.properties').each(function(x){            
-                x.ui_hide();                
+                x.ui_hide();       
+				item.select('._collapseproperties').invoke('hide');
+				item.select('._expandproperties').invoke('show');
             });
             //When only click event happens
             if (!e.ctrlKey) {
