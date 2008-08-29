@@ -1,0 +1,7 @@
+<% 
+Application.sets.each do |xset| 
+#This typecast is necessary because ActiveRDF create every resource as RDFS::Resource
+@resourceset = Application.get(xset.uri)
+%> 
+<%= render :partial => 'window' %>
+<%end%> 

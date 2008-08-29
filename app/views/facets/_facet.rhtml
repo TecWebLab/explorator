@@ -1,0 +1,45 @@
+<div class="_WINDOW facetgroupwindow _draggable " id = "facetgroup" >
+<%= render :partial => 'windowheader' %>
+<div class="_WINDOW window   set"  id = "facets" set ="<%=uri(resourceset)%>" exp= "(<%=h(resourceset.explorator::expression)%>)">
+<%= render :partial => 'windowheader' %> 
+<%= render :partial => 'windowfacet' %> 
+<div class ='windowheader _NO_MINIMIZE'>Select :
+ <select class = "_facetlist" > <option value=""></option>
+ 	<% @groups.each do |group| %>	
+           <option value="<%=group.rdfs::label%>"><%=group.rdfs::label%></option>
+		   	<% end %>
+        </select>
+		</div>
+<%if @facets != nil%>
+<% @facets.each do |facet, values| 
+ 
+%>
+<div class=" _WINDOW " id ="<%=term(facet)%>" >
+    <div class = "resource term draggable _NO_MINIMIZE" resource="<%=(uri((term(facet)))) %>"  exp="(:s,'<%=uri((term(facet))) %>',:o)"    onmouseover="Tip('<%= to_s((term(facet))) %>',DELAY, 1000);" onmouseout="UnTip();">
+    <div class ="resourceuioperations ">            
+            <div class ='_hide'>
+                <span class="tool">-<span class="tip">Hide all properties values.</span></span>
+            </div>
+            <div class ='_show'>
+                <span class="tool">+<span class="tip">Show the resource properties values</span></span>
+            </div>
+            
+            <div class = "_remove">
+                x
+            </div>
+        </div> <%= render_resource(term(facet)) %>
+    </div>
+    <div class = "values">
+        <% values.each do |value|
+        value.each_key do |key| %>
+        <div class = "draggable value resource _select" resource="<%=(uri((key))) %>"  exp="(<%=h(@exp[facet][key])%>)"   >
+        	<input type="checkbox" class="_checkboxfacet" name  ="<%=term(facet)%>"    exp="(<%=h(@exp[facet][key])%>)"  />
+            <%= render_resource (key) %> <span class='cardinality'>(<%= value[key] %>)</span>      	
+	    </div>
+        <% end end %>
+    </div>
+</div>
+<% end %>
+<% end %>
+</div>
+</div>
