@@ -1,3 +1,4 @@
+require "date"
 #SemanticExpression is a DSL designed for the Explorator.
 #This class implements the operation meta-model defined in the specification
 #The following operation were implemented.
@@ -9,13 +10,13 @@
 #Author: Samur Araujo
 #Date: 25 jun 2008.
 require 'active_rdf'
-
 class SemanticExpression
   #:result - It is a array of RDFS::Resource.
-  attr_accessor  :result
+  attr_accessor  :result  
   #constructor.
-  def initialize(s=nil,p=nil,o=nil,r=:s)    
+  def initialize(s=nil,p=nil,o=nil,*r)    
     # initialize the variable query with the ActiveRDF Query
+    @query= Query.new.distinct([:s,:p,:o])
     @result = Array.new   
     if s != nil || p != nil || o != nil
       union(s,p,o,r)
@@ -38,7 +39,7 @@ class SemanticExpression
     if s == nil
       Array.new 
     elsif s.instance_of? SemanticExpression
-      s.result
+      s.result.collect {|s,p,o| s}.compact.uniq
     else
       Array.new << s 
     end
@@ -49,7 +50,7 @@ class SemanticExpression
   # the parameter r is the variable in the triple that should be gathered.
   #the same method as query, but it is able to treat arrays.
   #This methos
-  def spo(s,p,o,r=:s)     
+  def spo(s,p,o,*r)     
     result = Array.new 
     s = resource_or_self(s)
     p = resource_or_self(p)
@@ -66,56 +67,43 @@ class SemanticExpression
   end
   #adds keyword query to the expression
   def keyword(k)   
-    @result = @result | Query.new.distinct(:s).keyword_where(:s,k).execute | Query.new.distinct(:p).keyword_where(:p,k).execute | Query.new.distinct(:o).keyword_where(:o,k).execute
+    r = [:s,:p,:o]
+    @result = @result | Query.new.distinct(r).keyword_where(:s,k).execute | Query.new.distinct(r).keyword_where(:p,k).execute | Query.new.distinct(r).keyword_where(:o,k).execute
     self
   end  
   #Wrapper for the class ActiveRDF Query. This method executes a query and returns a set of resources.
   #With parameter must be a single resource.
-  def query(s,p,o,r=:s) 
-    #checks whether the s is a literal.   
-    if isLiteral(s)      
-      Array.new << to_resource(s,:s)
+  def query(s,p,o,*r)   
+    if r == nil
+      r = [:s,:p,:o]
+    end          
+    q = Query.new.distinct(:s,:p,:o).where(:s,:p,:o).filter(get_filter(s,:s)).filter(get_filter(p,:p)).filter(get_filter(o,:o))
+    q.execute       
+  end   
+  def get_filter(value,symbol)
+    if value == symbol
+      nil
     else
-      #These ifs are necessaries because SPARQL does not return a resource defined in the query.
-      #For example, if you want to know whether john is married with mary, you must used the SPARQL's clause ASK
-      #I use ASK here because I could not have the query like that in sparql: select s? where SOMERESOURCE p? ?o    
-      #So, when I return the :s, :p or :o for a defined variable, I must use ASK and after return the specific resource.
-      if s != nil && s != :s && r.to_sym ==:s ||  p != nil && p != :p && r.to_sym ==:p ||  o != nil && o != :o  && r.to_sym ==:o
-        @flag = false
-        # This loop is necessary because the ActiveRDF api returns an array of boolean representing the 
-        # query response. ActiveRDF api does not return only false or true, but a boolean array.
-        Query.new.ask.where(to_resource(s,:s),to_resource(p,:p), to_resource(o,:o)).execute.each do |x|
-          if x == "true" || x == true
-            @flag = true
-          end
-        end        
-        if @flag
-          Array.new << to_resource(eval(r.to_s),r.to_sym)
-        else
-          Array.new       
-        end
-      else     
-        #Execute the query normally.
-        q = Query.new.distinct(r.to_sym).where(to_resource(s,:s),to_resource(p,:p), to_resource(o,:o))
-        q.execute
-      end 
+      str = '?' + symbol.to_s + ' = ' + value.to_s
+
+      str
     end
-  end 
+  end
+  
   #Union method,
   #s - represents the s in the (s,p,o) triple or the set id or a SemanticExpression instance.
   #p - p in the triple
   #o - o in the triple
   #r - the position on the triple that should be returned.
-  def union(s,p=nil,o=nil,r=:s)    
+  def union(s,p=nil,o=nil,*r)    
     if s.instance_of? SemanticExpression 
       @result = @result | s.result
       #Union, Intersection and Difference are operation over sets.
-    elsif s.instance_of? Array 
-      
+    elsif s.instance_of? Array       
       @result = @result | s 
     elsif Application.is_set?(s)
       #returns all set's resources
-      @result = @result | Application.get(s).resources
+      @result = @result | Application.get(s).elements
       #Union method, passed as parameter a triple expression
     else
       @result = @result | query(s,p,o,r)
@@ -127,7 +115,7 @@ class SemanticExpression
   #p - p in the triple
   #o - o in the triple
   #r - the position on the triple that should be returned.
-  def intersection(s,p=nil,o=nil,r=:s)
+  def intersection(s,p=nil,o=nil,*r)
     if s.instance_of? SemanticExpression 
       @result = @result & s.result      
       #Intersection, Intersection and Difference are operation over sets.
@@ -136,7 +124,7 @@ class SemanticExpression
       #Intersection, Intersection and Difference are operation over sets.      
     elsif Application.is_set?(s)
       #returns all set's resources
-      @result = @result & Application.get(s).resources
+      @result = @result & Application.get(s).elements
       #Intersection method, passed as parameter a triple expression
     else
       @result = @result & query(s,p,o,r)
@@ -148,7 +136,7 @@ class SemanticExpression
   #p - p in the triple
   #o - o in the triple
   #r - the position on the triple that should be returned.
-  def difference(s,p=nil,o=nil,r=:s)
+  def difference(s,p=nil,o=nil,*r)
     if s.instance_of? SemanticExpression 
       @result = @result - s.result   
     elsif s.instance_of? Array 
@@ -156,7 +144,7 @@ class SemanticExpression
       #Difference, Intersection and Difference are operation over sets.
     elsif Application.is_set?(s)
       #returns all set's resources
-      @result = @result - Application.get(s).resources
+      @result = @result - Application.get(s).elements
       #Difference method, passed as parameter a triple expression
     else
       @result = @result - query(s,p,o,r)
