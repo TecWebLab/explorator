@@ -16,15 +16,13 @@ Element.addMethods({
             duration: 0.3
         });
     }, //maximize a window
-   
-    
     //remove an element
     ui_remove: function(item){
         //removes the element from the model and replace the interface with a new one.	
         item.ctr_remove();
         new Effect.Fade(item, {
             duration: 0.2,
-         
+        
         });
     }, //close an element
     ui_close: function(item){
@@ -63,21 +61,21 @@ function register_ui_resource_behaviour(){
             resource.ui_open();
             e.stopPropagation();
         };
-		/* resource.onclick = function(e){          
-            if (e.altKey){
-				var uri = resource.getAttribute('resource');
-				window.open(uri.substring(1,uri.length-2),'_blank');
-			}
-        };*/        
-    });    
-     $$('.all').each(function(resource){
+        /* resource.onclick = function(e){          
+         if (e.altKey){
+         var uri = resource.getAttribute('resource');
+         window.open(uri.substring(1,uri.length-2),'_blank');
+         }
+         };*/
+    });
+    $$('.all').each(function(resource){
         resource.identify();
         resource.onclick = function(e){
             resource.ui_open();
             e.stopPropagation();
         };
-		       
-    });    
+        
+    });
     //calcuates the facets
     $$('._facet').each(function(item){
         item.onclick = function(){
@@ -98,7 +96,21 @@ function register_ui_resource_behaviour(){
             ajax_request('/viewer/index?setid=' + x.up('._WINDOW').id);
         };
     });
-	 
+      $$('._object_view').each(function(item){
+        item.onclick = function(){
+            item.up('._WINDOW').crt_refresh('object_view');
+        };
+    });
+     $$('._predicate_view').each(function(item){
+        item.onclick = function(){
+            item.up('._WINDOW').crt_refresh('predicate_view');
+        };
+    });
+	 $$('._subject_view').each(function(item){
+        item.onclick = function(){
+            item.up('._WINDOW').crt_refresh('subject_view');
+        };
+    });
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////	
@@ -112,9 +124,10 @@ function register_ui_window_behaviour(){
     });
     $$('._refresh').each(function(item){
         item.onclick = function(){
-            item.up('._WINDOW').crt_refresh();
+            item.up('._WINDOW').crt_refresh('subject_view');
         };
     });
+  
     //Adds a id to all _WINDOW elements.
     //This is necessary for the ajax_update method know which element should be updated.
     $$('._WINDOW').each(function(item){
@@ -122,12 +135,13 @@ function register_ui_window_behaviour(){
     });
     //Add window show behaviour to the elements with  _MINIMIZE annotation 
     $$('._show').each(function(item){
-        item.onclick = function(){
+        item.onclick = function(e){
             item.up('._WINDOW').childElements().each(function(x){
                 if (!x.hasClassName('_NO_MINIMIZE')) {
                     x.ui_show();
                 }
             });
+		e.stopPropagation();
         };
     });
     //Add window hide behaviour to the elements with _MINIMIZE annotation
@@ -140,15 +154,28 @@ function register_ui_window_behaviour(){
             });
         };
     });
+   
+    $$('._openall').each(function(item){
+        item.onclick = function(e){
+            item.up('._WINDOW').select('.properties').each(function(x){
+            
+                x.ui_show();
+                
+            });
+				e.stopPropagation();
+        };
+    });
+    
+    
     //Add window maximize behaviour to the _WINDOW
     $$('._maximize').each(function(item){
-        item.onclick = function(){            
-            item.up('._WINDOW').addClassName('windowmaximized');  
-			        };
+        item.onclick = function(){
+            item.up('._WINDOW').addClassName('windowmaximized');
+        };
     });
-     $$('._minimize').each(function(item){	 	   
-        item.onclick = function(){		 	 
-            item.up('._WINDOW').removeClassName('windowmaximized');  
+    $$('._minimize').each(function(item){
+        item.onclick = function(){
+            item.up('._WINDOW').removeClassName('windowmaximized');
         };
     });
     //Add window close behaviour to the elements with _WINDOW annotation	
@@ -162,11 +189,11 @@ function register_ui_window_behaviour(){
             item.up('._WINDOW').ui_close();
         };
     });
-	
-//    $$('._editable').each(function(item){
-//       new Ajax.InPlaceEditor(item.identify(), '/crud/edit');     
-//    });
-	
+    
+    //    $$('._editable').each(function(item){
+    //       new Ajax.InPlaceEditor(item.identify(), '/crud/edit');     
+    //    });
+    
     //Add the drag and drop behaviour. This allows the object to be repositioned on the screen.
     $$('._draggable').each(function(item){
         new Draggable(item, {});
@@ -179,6 +206,9 @@ function register_ui_window_behaviour(){
 function register_ui_selection_behaviour(){
     $$('._select').each(function(item){
         item.onclick = function(e){
+			  item.select('.properties').each(function(x){            
+                x.ui_hide();                
+            });
             //When only click event happens
             if (!e.ctrlKey) {
                 //remove the selection from all elements on the interface
@@ -207,7 +237,7 @@ function register_ui_selection_behaviour(){
             e.stopPropagation();
         };
     });
-     $$('._checkboxfacet').each(function(item){
+    $$('._checkboxfacet').each(function(item){
         item.onclick = function(){
             item.crt_dofacet();
         };

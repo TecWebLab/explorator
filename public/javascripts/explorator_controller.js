@@ -28,9 +28,9 @@ Element.addMethods({
 		//Removing a entire set
           ajax_remove('/explorator/execute?exp=remove(\'' + item.id + '\')');
         }        
-    },crt_refresh: function(item){
+    },crt_refresh: function(item,view){
 		//reload the set .         		   	  
-           ajax_update(item.id,executeuri  + 'refresh(\'' + item.id +'\')');                   
+           ajax_update(item.id,executeuri  + 'refresh(\'' + item.id +'\',:'+view+')');                   
     },
 	//open a new window where his content will be defined by the item.exp attribute.
     ctr_open: function(item){ 	

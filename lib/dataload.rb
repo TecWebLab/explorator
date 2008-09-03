@@ -20,8 +20,6 @@ dir = File.dirname(File.expand_path(__FILE__))
 #ConnectionPool.add_data_source :type => :sesame, :name=>:teste
 #
 
-adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8087/openrdf-sesame/repositories/OMDB", :results => :sparql_xml, :caching =>true
-adapter.title='OMDB_SPARQL'
 
 adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8087/openrdf-sesame/repositories/NOKIA", :results => :sparql_xml, :caching =>true
 adapter.title='NOKIA_SPARQL'
@@ -32,8 +30,8 @@ adapter.title='MONDIAL_SPARQL'
 adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8087/openrdf-sesame/repositories/CIA", :results => :sparql_xml, :caching =>true
 adapter.title='CIA_SPARQL'
 
-adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8087/openrdf-sesame/repositories/METAMODEL", :results => :sparql_xml, :caching =>true
-adapter.title='METAMODEL_SPARQL'
+#adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8087/openrdf-sesame/repositories/METAMODEL", :results => :sparql_xml, :caching =>true
+#adapter.title='METAMODEL_SPARQL'
 
 adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8087/openrdf-sesame/repositories/FACETO", :results => :sparql_xml, :caching =>true
 adapter.title='FACETO'
@@ -136,7 +134,6 @@ Namespace.register(:moviedmdb,"http://data.linkedmdb.org/resource/movie/")
 Namespace.register(:omdb,"http://triplify.org/vocabulary/omdb#")
 Namespace.register(:movie,"http://triplify.org/vocabulary/movie#")
 Namespace.register(:mondial,"http://www.semwebtech.org/mondial/10/meta#")
-
 
 RDFS::Resource.find_all_predicates
 

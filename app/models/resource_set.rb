@@ -20,7 +20,7 @@ class EXPLORATOR::Set < RDFS::Resource
   #'http://www.tecweb.inf.puc-rio.br/explorator/id/' + @rsid
   def initialize(uri)
     super(uri)          
-    @resources = Array.new   
+    @elements = Array.new   
     if self.explorator::expression != nil            
       #enable only the repositories necessary to perform the expression eval.
       #setup_repositories()
@@ -45,7 +45,10 @@ class EXPLORATOR::Set < RDFS::Resource
   end 
   #Returns an array of resources.
   def resources    
-    return @resources
+    return @elements.collect{|s,p,o| s}.compact.uniq  
+  end
+  def elements
+    return @elements
   end
   #setup repositories
   def setup_repositories
@@ -80,7 +83,7 @@ class EXPLORATOR::Set < RDFS::Resource
     #whether the expression is not a SemanticExpresion instance.
     raise ExploratorError.new('The expression must be a SemanticExpression instance') if !x.instance_of? SemanticExpression
     #return a sorted array of RDFS::Resources 
-    @resources = x.result
+    @elements = x.result
     #try to sort the array as a array of numbers
 #    begin
 #      #@resources.sort!{|a,b|a.to_f<=>b.to_f}
@@ -91,7 +94,7 @@ class EXPLORATOR::Set < RDFS::Resource
 #    end    
     
      #@resources=sorting_resource(@resources)
-    @resources
+    @elements
   end
   def sorting_resource(resources)
     sorted = Hash.new    

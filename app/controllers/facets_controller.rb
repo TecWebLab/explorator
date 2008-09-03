@@ -41,8 +41,7 @@ class FacetsController < ApplicationController
       end       
     end
     facetgroup.faceto::facet = facets  
-  end
-  
+  end  
   #the parameter id is the ResourceSet identification in the SetsPool.
   def facet (id)  
     #gets a ResourceSet instance in the pool.
@@ -54,7 +53,7 @@ class FacetsController < ApplicationController
     #  @facetgroup=FACETO::FacetGroup.find_by_rdfs::label('Group1').first
     @groups=FACETO::FacetGroup.find_by_faceto::type(RDFS::Resource.new('http://www.semanticnavigation.org/2008/faceto#userdefined'))
     @facetgroup=FACETO::FacetGroup.find_by_rdfs::label(params[:name]).first  
-    
+   
     #Calculates all the facets for a set of resources.
     entropy_by_set(@resourceset.resources)
     #render the _facet.rhtml view
@@ -74,7 +73,8 @@ class FacetsController < ApplicationController
   #The algorithm only calculates facets that are defined as resource properties.
   #Others kind of facets, described in the specification, are not taken into account here.
   # Calculates the entropy for each facet.
-  def entropy_by_set(_resources)    
+  def entropy_by_set(_resources) 
+    puts 'FACETANDO...'
     #store the valid facets
     @facets = Hash.new
     @exp=Hash.new
@@ -85,6 +85,7 @@ class FacetsController < ApplicationController
     if @facetgroup == nil
       return
     end    
+  
     @facetgroup.all_faceto::facet.each do |facet|              
       #handles the facets that have an hierarchy of values.
       facetroot = facet.instance_eval("faceto::level1")
