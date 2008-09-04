@@ -13,7 +13,7 @@ class ExploratorController < ApplicationController
   # attr_accessor :resourceset
   #default rails method. returns the view index.rhtml.
   def index    
-puts    SemanticExpression.new.union('<http://sw.nokia.com/id/ad845e2a-ab23-4bab-973e-30b25064339d/2660>',:p,:o).union('<http://sw.nokia.com/id/edbf3c81-a7e4-491a-856e-5728a57192a5/2865>',:p,:o).union('<http://sw.nokia.com/id/affdb666-c69d-4d41-8855-d0f6a1ddf0d1/2865i>',:p,:o).union('<http://sw.nokia.com/id/f005e247-a3c2-4a0e-b93a-eaec18476939/3105>',:p,:o).union('<http://sw.nokia.com/id/5e7a6e20-d776-4016-ac0d-f393746333e8/3108>',:p,:o).intersection(SemanticExpression.new.union(SemanticExpression.new(:s,'<http://sw.nokia.com/DP-1/screen_height>', '128').intersection(:s,'<http://sw.nokia.com/DP-1/screen_width>', '128'))).result.size
+
   end  
   #  prints the filter screen
   def filter    

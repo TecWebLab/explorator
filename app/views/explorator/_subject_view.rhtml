@@ -1,15 +1,15 @@
 <div class="_WINDOW window _draggable _select set" id = "<%=uri(resourceset)%>" exp = "('<%=h(uri(resourceset))%>')">
     <%= render :partial => 'windowheader' %>
     <%= render :partial => 'windowtoolbar' %>
-    <% resources_paginated(:s).each do |resource|%>
+    <% resources_paginated(:s).each do |resource| %>
     <div class = " _WINDOW  _select <%=css(resource)%> " set = "<%=uri(resourceset)%>" resource="<%=(uri(resource)) %>" exp="('<%=h(uri(resource)) %>',:p,:o)" onmouseover="Tip('<%= h(to_s(resource)) %>',DELAY, 1000);" onmouseout="UnTip();">
-        <div class ="resourceuioperations _NO_MINIMIZE">            
+        <div class ="resourceuioperations _NO_MINIMIZE">
             <div class ='_hide'>
                 <span class="tool">-<span class="tip">Hide all properties values.</span></span>
             </div>
             <div class ='_show'>
                 <span class="tool">+<span class="tip">Show the resource properties values</span></span>
-            </div>          
+            </div>
             <div class = "_remove">
                 x
             </div>
@@ -23,15 +23,15 @@
         <a class ="all" exp="(:s,'<%=h(uri(resource)) %>',:o,:o)">(Has values)</a>
         <%else %>
         <a class ="all" exp="(:s,:p,'<%=h(uri(resource)) %>')">(Object of)</a>
-        <%end %>	  
+        <%end %>
         <%
-		pred = predicates(resource,:s)
-		if resources_paginated(:s).size() == 1 
-			limit = pred.size()
-			else
-			limit =1
-		end
-		pred[0..limit].each do |p|%>
+        pred = predicates(resource,:s)
+        if resources_paginated(:s).size() == 1
+        limit = pred.size()
+        else
+        limit =1
+        end
+        pred[0..limit].each do |p| %>
         <div class = " _WINDOW properties">
             <div class = "_WINDOW draggable _select _NO_MINIMIZE <%=css(p)%> predicate" resource="<%= (uri(p)) %>" exp="('<%=(uri(p)) %>',:p,:o)" onmouseover="Tip('<%= to_s(p) %>',DELAY, 1000);" onmouseout="UnTip();">
                 <div class ="resourceuioperations _NO_MINIMIZE">
@@ -45,11 +45,10 @@
                         x
                     </div>
                 </div>
-                <%= render_resource(p) %>=<!-- BEGIN OBJECT -->
-                <%if  objects(resource,p).size != 1 %>
+                <%= render_resource(p) %>=<!-- BEGIN OBJECT --><%if  objects(resource,p).size != 1 %>
                 <div class = "resource _select _WINDOW draggable objects" exp="('<%=h(uri(resource)) %>','<%=  uri(p) %>',:o,:o)">
                     <% end %>
-                    <% objects(resource,p).each do |o|  %>
+                    <% objects(resource,p).each do |o| %>
                     <div class = " draggable  <%=css(o)%> _select object  " resource="<%=(uri(o)) %>" exp="('<%=h(uri(o)) %>',:p,:o)" onmouseover="Tip('<%= h(to_s(o)) %>',DELAY, 1000);" onmouseout="UnTip();">
                         <%= render_resource(o) %>
                     </div>
@@ -60,9 +59,10 @@
                 <!-- END OBJECT -->
             </div>
         </div>
-        <% end   %>
+        <% end %>
     </div>
-    <% end %>  <div>
+    <% end %>
+    <div>
         <%if resourceset.offset.to_i>0 %>
         <div class='pagination '>
             <a onclick="javascript:ajax_update(Element.extend(this).up('._WINDOW').id,'explorator/reload?view=subject_view&offset=<%=resourceset.offset.to_i - resourceset.pagination.to_i%>&uri=<%=resourceset%>');">&lt;&lt;</a>
@@ -75,3 +75,8 @@
         <%end %>
     </div>
 </div>
+<script>
+    $('<%=uri(resourceset)%>').select('.properties').each(function(n){
+        n.hide();
+    })
+</script>

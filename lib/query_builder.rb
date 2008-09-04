@@ -76,15 +76,14 @@ class SemanticExpression
     if r == nil
       r = [:s,:p,:o]
     end          
-    q = Query.new.distinct(:s,:p,:o).where(:s,:p,:o).filter(get_filter(s,:s)).filter(get_filter(p,:p)).filter(get_filter(o,:o))
+    q = Query.new.distinct(:s,:p,:o).where(:s,:p,:o).filter(to_filter(s,:s)).filter(to_filter(p,:p)).filter(to_filter(o,:o))
     q.execute       
   end   
-  def get_filter(value,symbol)
+  def to_filter(value,symbol)
     if value == symbol
       nil
     else
-      str = '?' + symbol.to_s + ' = ' + value.to_s
-      
+      str = '?' + symbol.to_s + ' = ' + value.to_s      
       str
     end
   end
