@@ -65,9 +65,8 @@ class SemanticExpression
     self
   end
   #adds keyword query to the expression
-  def keyword(k)   
-    r = [:s,:p,:o]
-    @result = @result | Query.new.distinct(r).keyword_where(:s,k).execute | Query.new.distinct(r).keyword_where(:p,k).execute | Query.new.distinct(r).keyword_where(:o,k).execute
+  def keyword(k)        
+    @result = @result | Query.new.distinct(:s,:p,:o).where(:s,:p,:o).keyword_where(:s,k).execute | Query.new.distinct(:s,:p,:o).where(:s,:p,:o).keyword_where(:p,k).execute | Query.new.distinct(:s,:p,:o).where(:s,:p,:o).keyword_where(:o,k).execute
     self
   end  
   #Wrapper for the class ActiveRDF Query. This method executes a query and returns a set of resources.
