@@ -16,7 +16,6 @@ class SemanticExpression
   #constructor.
   def initialize(s=nil,p=nil,o=nil,*r)    
     # initialize the variable query with the ActiveRDF Query
-    @query= Query.new.distinct([:s,:p,:o])
     @result = Array.new   
     if s != nil || p != nil || o != nil
       union(s,p,o,r)
@@ -85,7 +84,7 @@ class SemanticExpression
       nil
     else
       str = '?' + symbol.to_s + ' = ' + value.to_s
-
+      
       str
     end
   end
@@ -102,7 +101,7 @@ class SemanticExpression
     elsif s.instance_of? Array       
       @result = @result | s 
     elsif Application.is_set?(s)
-      #returns all set's resources
+      #returns all set of resources
       @result = @result | Application.get(s).elements
       #Union method, passed as parameter a triple expression
     else
@@ -116,19 +115,23 @@ class SemanticExpression
   #o - o in the triple
   #r - the position on the triple that should be returned.
   def intersection(s,p=nil,o=nil,*r)
+    tmp = @result
     if s.instance_of? SemanticExpression 
-      @result = @result & s.result      
+      tmp =  s.result      
       #Intersection, Intersection and Difference are operation over sets.
     elsif s.instance_of? Array 
-      @result = @result & s      
+      tmp =  s      
       #Intersection, Intersection and Difference are operation over sets.      
     elsif Application.is_set?(s)
-      #returns all set's resources
-      @result = @result & Application.get(s).elements
+      #returns all set of resources
+      tmp =  Application.get(s).elements
       #Intersection method, passed as parameter a triple expression
     else
-      @result = @result & query(s,p,o,r)
+      tmp =  query(s,p,o,r)
     end
+    #@result = @result & tmp - The intersection is between the subjects and it is not between triples.
+    a = tmp.collect{|s,p,o| s}
+    @result = @result.collect { |s,p,o| [s,p,o] if a.include?(s) } 
     self
   end
   #Difference method
@@ -137,18 +140,23 @@ class SemanticExpression
   #o - o in the triple
   #r - the position on the triple that should be returned.
   def difference(s,p=nil,o=nil,*r)
+    tmp = Array.new
     if s.instance_of? SemanticExpression 
-      @result = @result - s.result   
+      tmp =  s.result   
     elsif s.instance_of? Array 
-      @result = @result - s 
+      tmp =  s 
       #Difference, Intersection and Difference are operation over sets.
     elsif Application.is_set?(s)
-      #returns all set's resources
-      @result = @result - Application.get(s).elements
+      #returns all set of resources
+      tmp = Application.get(s).elements
       #Difference method, passed as parameter a triple expression
-    else
-      @result = @result - query(s,p,o,r)
+    else   
+      tmp =  query(s,p,o,r)
     end
+       #@result = @result & tmp - The difference is between the subjects and it is not between triples.
+     a = tmp.collect{|s,p,o| s}
+     @result = @result.collect { |s,p,o| [s,p,o] if !a.include?(s) } 
+ 
     self
   end   
   #this method applies a filter to the result of the expression.

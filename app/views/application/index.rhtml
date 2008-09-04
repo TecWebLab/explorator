@@ -6,7 +6,7 @@
         &nbsp;
     </div>
     <br>
-    <h1>List of Applications</h1>
+    <h1>List of Sessions</h1>
     <table width="100%" border="1">
         <%@applications.each do |app| %>
         <tr>
@@ -22,7 +22,7 @@
         </tr><%end %>           
     </table>
 	    <br>
-    <h1>Save the current application as:</h1>
+    <h1>Save the current session as:</h1>
 
 	  <form id ="formnewapp" method = "post" action = '/application/create'>       
         Application name: <input type ='text' name ="name" />	 

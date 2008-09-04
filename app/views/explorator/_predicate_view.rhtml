@@ -14,7 +14,7 @@
                 x
             </div>
         </div>
-        <%= render_resource(p) %>
+        <center><%= render_resource(p) %></center>
         <%if p.instance_of?(BNode) %>
         <%elsif p.type.include?(RDFS::Class) %>
         <a class ="all" exp="(:s,RDF::type,'<%=h(uri(p)) %>')">(Instances)</a>

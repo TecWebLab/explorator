@@ -252,8 +252,7 @@ class FacetsController < ApplicationController
     predicates = Array.new    
     resources.each do |s|      
       predicates= predicates | Query.new.distinct(:p).where(s,:p,:o).execute
-    end
-    
+    end    
     #create a object FacetGroup for this instance of resources
     @facetgroup=FACETO::FacetGroup.new('<http://www.semanticnavigation.org/2008/faceto#' << cid << '>')
     @facetgroup.faceto::type=RDFS::Resource.new('http://www.semanticnavigation.org/2008/faceto#infered')
@@ -277,17 +276,17 @@ class FacetsController < ApplicationController
   end  
   #create the expression for each facet value.
   #the expression is different for each facet value.
-  def exp(facet, resource, value,type,words,constraint=nil,header=true,operation='intersection')      
-    
+  def exp(facet, resource, value,type,words,constraint=nil,header=true,operation='intersection')          
     #it will store the expression
     exp = ''   
     #get the value for a specific property when the value was computed.     
     if type=='computed' && constraint != nil              
       exp= '(' + constraint.gsub('resource', "RDFS::Resource.new('"+value.to_s+"')")   + ',:p, :o)'
     elsif type=='constraint'    
-      exp = "(:s,:p, :o)."      
+      exp = @resourceset.expression + "."      
       #must be a filter expression
       exp = exp + constraint
+      return  @exp[facet][value] =   exp
     else       
       properties = Array.new
       #gets all properties used to calculated the facet value
