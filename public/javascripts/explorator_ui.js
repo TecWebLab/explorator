@@ -165,6 +165,16 @@ function register_ui_window_behaviour(){
 				e.stopPropagation();
         };
     });
+      $$('._collapseall').each(function(item){
+        item.onclick = function(e){
+            item.up('._WINDOW').select('.properties').each(function(x){
+            
+                x.ui_hide();
+                
+            });
+				e.stopPropagation();
+        };
+    });
     
     
     //Add window maximize behaviour to the _WINDOW

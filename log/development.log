@@ -30814,3 +30814,77 @@ Rendered explorator/_windowheader (0.00000)
 Rendered explorator/_windowtoolbar (0.00000)
 Rendered explorator/_subject_view (0.37400)
 Completed in 2.34000 (0 reqs/sec) | Rendering: 0.37400 (15%) | DB: 0.00000 (0%) | 200 OK [http://139.82.71.43/explorator/create?exp=SemanticExpression.new.keyword(%273220%27)]
+
+
+Processing ExploratorController#index (for 139.82.71.43 at 2008-09-05 12:52:24) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%0ASGFzaHsABjoKQHVzZWR7AA%3D%3D--bd6f16f5b56198b7acfa2be1d34d374e1eceaa1d
+  Parameters: {"action"=>"index", "controller"=>"explorator"}
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (0.00000)
+Rendered explorator/_windowtoolbar (0.00000)
+Rendered explorator/_subject_view (0.95700)
+Rendered explorator/_windowheader (0.01600)
+Rendered explorator/_windowtoolbar (0.00000)
+Rendered explorator/_subject_view (0.47100)
+Rendered explorator/_windowheader (0.01600)
+Rendered explorator/_windowtoolbar (0.00000)
+Rendered explorator/_subject_view (0.51800)
+Rendered explorator/_windowheader (0.01500)
+Rendered explorator/_windowtoolbar (0.00000)
+Rendered explorator/_subject_view (0.06200)
+Rendered explorator/_windowheader (0.00000)
+Rendered explorator/_windowtoolbar (0.00000)
+Rendered explorator/_subject_view (0.84700)
+Rendered /layouts/_toolbar (0.01600)
+Rendered /layouts/_landmarks (0.01600)
+Rendered /layouts/_loading (0.00000)
+Completed in 4.69300 (0 reqs/sec) | Rendering: 4.69300 (100%) | DB: 0.00000 (0%) | 200 OK [http://139.82.71.43/explorator]
+
+
+Processing ExploratorController#execute (for 139.82.71.43 at 2008-09-05 12:52:34) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%0ASGFzaHsABjoKQHVzZWR7AA%3D%3D--bd6f16f5b56198b7acfa2be1d34d374e1eceaa1d
+  Parameters: {"action"=>"execute", "controller"=>"explorator", "exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/41dc076c-31e2-4bc9-beeb-64cbcf6f53c3>')"}
+Completed in 0.59600 (1 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://139.82.71.43/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/41dc076c-31e2-4bc9-beeb-64cbcf6f53c3%3E%27)]
+
+
+Processing ExploratorController#execute (for 139.82.71.43 at 2008-09-05 12:52:35) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%0ASGFzaHsABjoKQHVzZWR7AA%3D%3D--bd6f16f5b56198b7acfa2be1d34d374e1eceaa1d
+  Parameters: {"action"=>"execute", "controller"=>"explorator", "exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/65050f2f-be47-41a2-bbb7-bc90f28591e6>')"}
+Completed in 1.25500 (0 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://139.82.71.43/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/65050f2f-be47-41a2-bbb7-bc90f28591e6%3E%27)]
+
+
+Processing ExploratorController#execute (for 139.82.71.43 at 2008-09-05 12:52:36) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%0ASGFzaHsABjoKQHVzZWR7AA%3D%3D--bd6f16f5b56198b7acfa2be1d34d374e1eceaa1d
+  Parameters: {"action"=>"execute", "controller"=>"explorator", "exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/bb01482d-c822-4c87-a51e-5c607e33a833>')"}
+Completed in 0.87900 (1 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://139.82.71.43/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/bb01482d-c822-4c87-a51e-5c607e33a833%3E%27)]
+
+
+Processing ExploratorController#execute (for 139.82.71.43 at 2008-09-05 12:52:37) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%0ASGFzaHsABjoKQHVzZWR7AA%3D%3D--bd6f16f5b56198b7acfa2be1d34d374e1eceaa1d
+  Parameters: {"action"=>"execute", "controller"=>"explorator", "exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/d95e5c3c-cdaa-49dc-96e1-2887a5c8f802>')"}
+Completed in 0.67500 (1 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://139.82.71.43/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/d95e5c3c-cdaa-49dc-96e1-2887a5c8f802%3E%27)]
+
+
+Processing ExploratorController#create (for 139.82.71.43 at 2008-09-05 12:52:38) [POST]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%0ASGFzaHsABjoKQHVzZWR7AA%3D%3D--bd6f16f5b56198b7acfa2be1d34d374e1eceaa1d
+  Parameters: {"action"=>"create", "controller"=>"explorator", "exp"=>"SemanticExpression.new.union(:s,:p,'<http://sw.nokia.com/id/5a35a338-91d4-4c82-b2c7-69a1112d3aea/2626>')"}
+Rendered explorator/_windowheader (0.00000)
+Rendered explorator/_windowtoolbar (0.00000)
+Rendered explorator/_subject_view (0.01500)
+Completed in 0.42300 (2 reqs/sec) | Rendering: 0.01500 (3%) | DB: 0.00000 (0%) | 200 OK [http://139.82.71.43/explorator/create?exp=SemanticExpression.new.union(%3As%2C%3Ap%2C%27%3Chttp%3A%2F%2Fsw.nokia.com%2Fid%2F5a35a338-91d4-4c82-b2c7-69a1112d3aea%2F2626%3E%27)]
+
+
+Processing ExploratorController#create (for 139.82.71.43 at 2008-09-05 12:52:39) [POST]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%0ASGFzaHsABjoKQHVzZWR7AA%3D%3D--bd6f16f5b56198b7acfa2be1d34d374e1eceaa1d
+  Parameters: {"action"=>"create", "controller"=>"explorator", "exp"=>"SemanticExpression.new.union('<http://sw.nokia.com/id/0bcbd5c0-1ee5-4877-8f30-b7b9fd6aaca6/2610>',:p,:o)"}
+Rendered explorator/_windowheader (0.00000)
+Rendered explorator/_windowtoolbar (0.00000)
+Rendered explorator/_subject_view (0.59600)
+Completed in 1.17700 (0 reqs/sec) | Rendering: 0.59600 (50%) | DB: 0.00000 (0%) | 200 OK [http://139.82.71.43/explorator/create?exp=SemanticExpression.new.union(%27%3Chttp%3A%2F%2Fsw.nokia.com%2Fid%2F0bcbd5c0-1ee5-4877-8f30-b7b9fd6aaca6%2F2610%3E%27%2C%3Ap%2C%3Ao)]
+
+
+Processing ExploratorController#execute (for 139.82.71.43 at 2008-09-05 12:52:40) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%0ASGFzaHsABjoKQHVzZWR7AA%3D%3D--bd6f16f5b56198b7acfa2be1d34d374e1eceaa1d
+  Parameters: {"action"=>"execute", "controller"=>"explorator", "exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/a1da906d-daf8-42d0-b5bf-dc6ec8bb9ce5>')"}
+Completed in 0.62800 (1 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://139.82.71.43/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/a1da906d-daf8-42d0-b5bf-dc6ec8bb9ce5%3E%27)]
