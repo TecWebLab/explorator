@@ -30888,3 +30888,132 @@ Processing ExploratorController#execute (for 139.82.71.43 at 2008-09-05 12:52:40
   Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%0ASGFzaHsABjoKQHVzZWR7AA%3D%3D--bd6f16f5b56198b7acfa2be1d34d374e1eceaa1d
   Parameters: {"action"=>"execute", "controller"=>"explorator", "exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/a1da906d-daf8-42d0-b5bf-dc6ec8bb9ce5>')"}
 Completed in 0.62800 (1 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://139.82.71.43/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/a1da906d-daf8-42d0-b5bf-dc6ec8bb9ce5%3E%27)]
+
+
+Processing ExploratorController#index (for 139.82.71.43 at 2008-09-05 12:57:10) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%0ASGFzaHsABjoKQHVzZWR7AA%3D%3D--bd6f16f5b56198b7acfa2be1d34d374e1eceaa1d
+  Parameters: {"action"=>"index", "controller"=>"explorator"}
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered /layouts/_toolbar (0.01600)
+Rendered /layouts/_landmarks (0.01600)
+Rendered /layouts/_loading (0.00000)
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.01600 (100%) | DB: 0.00000 (0%) | 200 OK [http://139.82.71.43/explorator]
+
+
+Processing RepositoryController#index (for 139.82.71.43 at 2008-09-05 12:57:13) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%0ASGFzaHsABjoKQHVzZWR7AA%3D%3D--bd6f16f5b56198b7acfa2be1d34d374e1eceaa1d
+  Parameters: {"action"=>"index", "controller"=>"repository"}
+Rendering repository/index
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://139.82.71.43/repository/index]
+
+
+Processing RepositoryController#disable (for 139.82.71.43 at 2008-09-05 12:57:15) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%0ASGFzaHsABjoKQHVzZWR7AA%3D%3D--bd6f16f5b56198b7acfa2be1d34d374e1eceaa1d
+  Parameters: {"title"=>"CIA_SPARQL", "action"=>"disable", "controller"=>"repository"}
+Completed in 0.17200 (5 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://139.82.71.43/repository/disable?title=CIA_SPARQL]
+
+
+Processing RepositoryController#disable (for 139.82.71.43 at 2008-09-05 12:57:16) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%0ASGFzaHsABjoKQHVzZWR7AA%3D%3D--bd6f16f5b56198b7acfa2be1d34d374e1eceaa1d
+  Parameters: {"title"=>"MONDIAL_SPARQL", "action"=>"disable", "controller"=>"repository"}
+Completed in 0.17200 (5 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://139.82.71.43/repository/disable?title=MONDIAL_SPARQL]
+
+
+Processing ExploratorController#execute (for 139.82.71.43 at 2008-09-05 12:57:17) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%0ASGFzaHsABjoKQHVzZWR7AA%3D%3D--bd6f16f5b56198b7acfa2be1d34d374e1eceaa1d
+  Parameters: {"action"=>"execute", "controller"=>"explorator", "exp"=>"remove('repositorywindow')"}
+
+
+ActiveRdfError (C:/ruby/lib/ruby/gems/1.8/gems/activerdf_sparql-1.3.6/lib/activerdf_sparql/sparql.rb:104:in `execute_sparql_query': could not query SPARQL endpoint, server said: 500 Internal Server Error):
+    /app/controllers/explorator_controller.rb:64:in `execute'
+    C:/ruby/lib/ruby/gems/1.8/gems/activerdf_sparql-1.3.6/lib/activerdf_sparql/sparql.rb:70:in `query'
+    C:/ruby/lib/ruby/gems/1.8/gems/activerdf-1.6.10/lib/active_rdf/federation/federation_manager.rb:51:in `query'
+    C:/ruby/lib/ruby/gems/1.8/gems/activerdf-1.6.10/lib/active_rdf/federation/federation_manager.rb:50:in `each'
+    C:/ruby/lib/ruby/gems/1.8/gems/activerdf-1.6.10/lib/active_rdf/federation/federation_manager.rb:50:in `query'
+    C:/ruby/lib/ruby/gems/1.8/gems/activerdf-1.6.10/lib/active_rdf/queryengine/query.rb:188:in `execute'
+    C:/ruby/lib/ruby/gems/1.8/gems/activerdf-1.6.10/lib/active_rdf/objectmanager/resource.rb:464:in `cache'
+    C:/ruby/lib/ruby/gems/1.8/gems/activerdf-1.6.10/lib/active_rdf/objectmanager/resource.rb:481:in `get_predicate'
+    C:/ruby/lib/ruby/gems/1.8/gems/activerdf-1.6.10/lib/active_rdf/objectmanager/resource.rb:291:in `method_missing'
+    /app/models/resource_set.rb:24:in `initialize'
+    /app/models/explorator_application.rb:112:in `new'
+    /app/models/explorator_application.rb:112:in `remove'
+    /app/controllers/explorator_controller.rb:84:in `remove'
+    (eval):1:in `execute'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-2.0.2/lib/action_controller/base.rb:1158:in `eval'
+    /app/controllers/explorator_controller.rb:64:in `execute'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-2.0.2/lib/action_controller/base.rb:1158:in `send'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-2.0.2/lib/action_controller/base.rb:1158:in `perform_action_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-2.0.2/lib/action_controller/filters.rb:697:in `call_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-2.0.2/lib/action_controller/filters.rb:689:in `perform_action_without_benchmark'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-2.0.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-2.0.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-2.0.2/lib/action_controller/rescue.rb:199:in `perform_action_without_caching'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-2.0.2/lib/action_controller/caching.rb:678:in `perform_action'
+    C:/ruby/lib/ruby/gems/1.8/gems/activerecord-2.0.2/lib/active_record/connection_adapters/abstract/query_cache.rb:33:in `cache'
+    C:/ruby/lib/ruby/gems/1.8/gems/activerecord-2.0.2/lib/active_record/query_cache.rb:8:in `cache'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-2.0.2/lib/action_controller/caching.rb:677:in `perform_action'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-2.0.2/lib/action_controller/base.rb:524:in `send'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-2.0.2/lib/action_controller/base.rb:524:in `process_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-2.0.2/lib/action_controller/filters.rb:685:in `process_without_session_management_support'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-2.0.2/lib/action_controller/session_management.rb:123:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-2.0.2/lib/action_controller/base.rb:388:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-2.0.2/lib/action_controller/dispatcher.rb:171:in `handle_request'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-2.0.2/lib/action_controller/dispatcher.rb:115:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-2.0.2/lib/action_controller/dispatcher.rb:126:in `dispatch_cgi'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-2.0.2/lib/action_controller/dispatcher.rb:9:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-2.0.2/lib/webrick_server.rb:112:in `handle_dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-2.0.2/lib/webrick_server.rb:78:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-2.0.2/lib/webrick_server.rb:62:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-2.0.2/lib/commands/servers/webrick.rb:66
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-2.0.2/lib/active_support/dependencies.rb:496:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-2.0.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-2.0.2/lib/active_support/dependencies.rb:496:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-2.0.2/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    ./script/server:3
+    -e:2:in `load'
+    -e:2
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-2.0.2/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing ExploratorController#create (for 139.82.71.43 at 2008-09-05 12:57:18) [POST]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%0ASGFzaHsABjoKQHVzZWR7AA%3D%3D--bd6f16f5b56198b7acfa2be1d34d374e1eceaa1d
+  Parameters: {"action"=>"create", "controller"=>"explorator", "exp"=>"SemanticExpression.new.union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:rdfs,:Class))"}
+Rendered explorator/_windowheader (0.00000)
+Rendered explorator/_windowtoolbar (0.00000)
+Rendered explorator/_subject_view (2.03400)
+Completed in 2.69100 (0 reqs/sec) | Rendering: 2.03400 (75%) | DB: 0.00000 (0%) | 200 OK [http://139.82.71.43/explorator/create?exp=SemanticExpression.new.union(%3As%2CNamespace.lookup(%3Ardf%2C%3Atype)%2CNamespace.lookup(%3Ardfs%2C%3AClass))]
+
+
+Processing ExploratorController#create (for 139.82.71.43 at 2008-09-05 12:57:24) [POST]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%0ASGFzaHsABjoKQHVzZWR7AA%3D%3D--bd6f16f5b56198b7acfa2be1d34d374e1eceaa1d
+  Parameters: {"action"=>"create", "controller"=>"explorator", "exp"=>"SemanticExpression.new.union(:s,RDF::type,'<http://sw.nokia.com/FN-1/Type/Terminal>')"}
+Rendered explorator/_windowheader (0.01600)
+Rendered explorator/_windowtoolbar (0.00000)
+Rendered explorator/_subject_view (4.74100)
+Completed in 5.60200 (0 reqs/sec) | Rendering: 4.74100 (84%) | DB: 0.00000 (0%) | 200 OK [http://139.82.71.43/explorator/create?exp=SemanticExpression.new.union(%3As%2CRDF%3A%3Atype%2C%27%3Chttp%3A%2F%2Fsw.nokia.com%2FFN-1%2FType%2FTerminal%3E%27)]
+
+
+Processing ExploratorController#create (for 139.82.71.43 at 2008-09-05 12:57:31) [POST]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%0ASGFzaHsABjoKQHVzZWR7AA%3D%3D--bd6f16f5b56198b7acfa2be1d34d374e1eceaa1d
+  Parameters: {"action"=>"create", "controller"=>"explorator", "exp"=>"SemanticExpression.new.union('<http://sw.nokia.com/id/0bcbd5c0-1ee5-4877-8f30-b7b9fd6aaca6/2610>',:p,:o)"}
+Rendered explorator/_windowheader (0.00000)
+Rendered explorator/_windowtoolbar (0.00000)
+Rendered explorator/_subject_view (4.02100)
+Completed in 4.67800 (0 reqs/sec) | Rendering: 4.02100 (85%) | DB: 0.00000 (0%) | 200 OK [http://139.82.71.43/explorator/create?exp=SemanticExpression.new.union(%27%3Chttp%3A%2F%2Fsw.nokia.com%2Fid%2F0bcbd5c0-1ee5-4877-8f30-b7b9fd6aaca6%2F2610%3E%27%2C%3Ap%2C%3Ao)]
