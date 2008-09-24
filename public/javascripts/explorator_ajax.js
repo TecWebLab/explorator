@@ -7,6 +7,7 @@ function ajax_update(id, _uri){
     new Ajax.Request((_uri), {
         method: 'post',
         onComplete: function(transport){
+			 
             Element.replace(id, transport.responseText);
             init_all();
         }

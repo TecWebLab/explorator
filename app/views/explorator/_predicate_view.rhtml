@@ -1,8 +1,8 @@
-<div class="_WINDOW window _draggable _select set" id = "<%=uri(resourceset)%>" exp = "('<%=h(uri(resourceset))%>')">
+<div class="_WINDOW window _draggable select set" id = "<%=uri(resourceset)%>" exp = "('<%=h(uri(resourceset))%>')">
     <%= render :partial => 'windowheader' %>
     <%= render :partial => 'windowtoolbar' %>
     <% resources_paginated(:p).each do |p|%>
-    <div class = " _WINDOW  _select <%=css(p)%> " set = "<%=uri(resourceset)%>" resource="<%=(uri(p)) %>" exp="('<%=h(uri(p)) %>',:p,:o)" onmouseover="Tip('<%= h(to_s(p)) %>',DELAY, 1000);" onmouseout="UnTip();">
+    <div class = " _WINDOW  select <%=css(p)%> " set = "<%=uri(resourceset)%>" resource="<%=(uri(p)) %>" exp="('<%=h(uri(p)) %>',:p,:o)" onmouseover="Tip('<%= h(to_s(p)) %>',DELAY, 1000);" onmouseout="UnTip();">
         <div class ="resourceuioperations _NO_MINIMIZE">            
             <div class ='_collapseall'>
                 <span class="tool">-<span class="tip">Hide all properties values.</span></span>
@@ -26,7 +26,7 @@
         <%end %>	  
         <%subjects(p).each do |resource|%>
         <div class = " _WINDOW properties">
-            <div class = "_WINDOW draggable _select _NO_MINIMIZE <%=css(resource)%> predicate" resource="<%= (uri(resource)) %>" exp="('<%=(uri(resource)) %>',:p,:o)" onmouseover="Tip('<%= to_s(resource) %>',DELAY, 1000);" onmouseout="UnTip();">
+            <div class = "_WINDOW draggable select _NO_MINIMIZE <%=css(resource)%> predicate" resource="<%= (uri(resource)) %>" exp="('<%=(uri(resource)) %>',:p,:o)" onmouseover="Tip('<%= to_s(resource) %>',DELAY, 1000);" onmouseout="UnTip();">
                 <div class ="resourceuioperations _NO_MINIMIZE">
                     <div class ='_hide'>
                         <span class="tool">-<span class="tip">Hide all properties values.</span></span>
@@ -40,10 +40,10 @@
                 </div>
                 <%= render_resource(resource) %><!-- BEGIN OBJECT -->
                 <%if  objects(resource,p).size != 1 %>
-                <div class = "resource _select _WINDOW draggable objects" exp="('<%=h(uri(resource)) %>','<%=  uri(p) %>',:o,:o)">
+                <div class = "resource select _WINDOW draggable objects" exp="('<%=h(uri(resource)) %>','<%=  uri(p) %>',:o,:o)">
                     <% end %>
                     <% objects(resource,p).each do |o|  %>
-                    <div class = " draggable  <%=css(o)%> _select object  " resource="<%=(uri(o)) %>" exp="('<%=h(uri(o)) %>',:p,:o)" onmouseover="Tip('<%= h(to_s(o)) %>',DELAY, 1000);" onmouseout="UnTip();">
+                    <div class = " draggable  <%=css(o)%> select object  " resource="<%=(uri(o)) %>" exp="('<%=h(uri(o)) %>',:p,:o)" onmouseover="Tip('<%= h(to_s(o)) %>',DELAY, 1000);" onmouseout="UnTip();">
                         <%= render_resource(o) %>
                     </div>
                     <% end %>

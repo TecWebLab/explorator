@@ -17,6 +17,7 @@ class SemanticExpression
   def initialize(s=nil,p=nil,o=nil,*r)    
     # initialize the variable query with the ActiveRDF Query
     @result = Array.new   
+    
     if s != nil || p != nil || o != nil
       union(s,p,o,r)
     end
@@ -183,6 +184,7 @@ class SemanticExpression
     end
     return false
   end
+  
   #The to_resource method is necessary because the ActiveRDF Query only accept a RDFS::Resource, a Literal(String) or a Ruby Symbol as parameter.
   #Convert a string to RDFS:Resource or symbol. The String should be in the format: "SOME TEXT"
   def to_resource(term,symbol)   

@@ -20,20 +20,22 @@ dir = File.dirname(File.expand_path(__FILE__))
 #ConnectionPool.add_data_source :type => :sesame, :name=>:teste
 #
 
+#adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8181/org.semanticdesktop.services.rdfrepository/repositories/main", :results => :sparql_xml, :caching =>true
+#adapter.title='NEPOMUK_SPARQL'
 
-adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8087/openrdf-sesame/repositories/NOKIA", :results => :sparql_xml, :caching =>true
+adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8080/openrdf-sesame/repositories/NOKIA", :results => :sparql_xml, :caching =>true
 adapter.title='NOKIA_SPARQL'
 
-adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8087/openrdf-sesame/repositories/MONDIAL", :results => :sparql_xml, :caching =>true
+adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8080/openrdf-sesame/repositories/MONDIAL", :results => :sparql_xml, :caching =>true
 adapter.title='MONDIAL_SPARQL'
 
-adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8087/openrdf-sesame/repositories/CIA", :results => :sparql_xml, :caching =>true
+adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8080/openrdf-sesame/repositories/CIA", :results => :sparql_xml, :caching =>true
 adapter.title='CIA_SPARQL'
 
 #adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8087/openrdf-sesame/repositories/METAMODEL", :results => :sparql_xml, :caching =>true
 #adapter.title='METAMODEL_SPARQL'
 
-adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8087/openrdf-sesame/repositories/FACETO", :results => :sparql_xml, :caching =>true
+adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8080/openrdf-sesame/repositories/FACETO", :results => :sparql_xml, :caching =>true
 adapter.title='FACETO'
 #adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://data.linkedmdb.org/sparql", :results => :sparql_xml, :caching =>true
 #adapter.title='IMDB_SPARQL'

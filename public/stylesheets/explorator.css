@@ -496,11 +496,11 @@ div input
  * All CSS that starts with '_' represent a user interface property.
  * These properties could have behaviour, and they are defined in the explorator_ui.js
  ***************************************************************************************/
-div._SELECTED {
+div.SELECTED {
     border: 2px dashed #4f3df3;
 }
 
-div._FACETED {
+div.FACETED {
     background-color: #32cd32;
 }
 

@@ -35,7 +35,7 @@ Element.addMethods({
 	//open a new window where his content will be defined by the item.exp attribute.
     ctr_open: function(item){ 	
  		parameters.set('O', item);
-        ajax_create(new SemanticExpression('O'));
+        ajax_create(new SemanticExpression('O') + '&view=' + item.readAttribute('view'));
     },
 	//Create or replace the facet window with a new content.
 	 crt_facet: function(item,name){
@@ -86,8 +86,10 @@ Element.addMethods({
     },
     exp: function(item){
         return encodeURIComponent(item.readAttribute('exp'));
+    },
+     resource: function(item){
+        return encodeURIComponent(item.readAttribute('resource'));
     }
-   
 });
 
 //Helper functions defined in explorator_helper.js	
@@ -105,14 +107,14 @@ function cmd_set(){
     $$('._setparameter').each(function(item){
         item.onclick = function(){
 			removeCSS(Element.exp(item));
-			$$('._SELECTED').invoke('addClassName', Element.exp(item));
+			$$('.SELECTED').invoke('addClassName', Element.exp(item));
 			item.addClassName(Element.exp(item));
-            parameters.set(item.id, $$('._SELECTED'));
+            parameters.set(item.id, $$('.SELECTED'));
         };
     });
     $$('._union').each(function(item){
         item.onclick = function(){
-			parameters.set('A', $$('._SELECTED'));
+			parameters.set('A', $$('.SELECTED'));
             ajax_create(new SemanticExpression('A'));
 			clear();
         };
@@ -157,7 +159,7 @@ function validation_spo(){
 function clear(){
 	//Remove all CSS added to which resource selected.
 	['A','B','S','P','O'].each (function(item){removeCSS(item);} );
-	removeCSS('_SELECTED');
+	removeCSS('SELECTED');
 	parameters = new Hash();
 	
 }
@@ -192,7 +194,7 @@ function cmd_semantic(){
     //This observer is applied over the form id_form_facet
 		$$('._form_facet').each( function(item){
 		item.onsubmit = function(){		 		 
-		parameters.set('A', $$('._SELECTED'));
+		parameters.set('A', $$('.SELECTED'));
         ajax_request("/facets/create?name="+$F(this['facetname'])+"&exp="+ new SemanticExpression('A'));
 		clear();
         return false;

@@ -26,7 +26,7 @@ class ExploratorController < ApplicationController
   #Request sample:
   #/explorator/create?exp=SemanticExpression.new.union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:rdfs,:Class))
   def create    
-       puts params[:exp]
+    puts params[:exp]
     #creates a new set. 
     #the expression must be passed by the uri
     set = EXPLORATOR::Set.new('http://www.tecweb.inf.puc-rio.br/resourceset/id/' + UUID.random_create.to_s)       
@@ -34,8 +34,10 @@ class ExploratorController < ApplicationController
 
     #the object @resourceset is a global object that will be used by render
     @resourceset = set     
+    view = params['view']
+    view = 'subject_view' if  params['view'] == nil || params['view'] == 'null'
     #render the _window.rhtml view
-    render :partial => 'subject_view',:layout=>false;
+    render :partial => view,:layout=>false;
   end
   # The  update method updates a specfic ResourceSet instance identified by the parameter id.
   # The new value will be defined by the expression passed by the parameter exp.
@@ -44,7 +46,7 @@ class ExploratorController < ApplicationController
   def update     
        puts params[:exp]
     #reevaluate the expression and return the set
-    resource =   Application.get(params[:uri])
+    resource = Application.get(params[:uri])
   
     resource.expression = params[:exp] 
     

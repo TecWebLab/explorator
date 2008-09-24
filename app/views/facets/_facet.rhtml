@@ -32,7 +32,7 @@
     <div class = "values">
         <% values.each do |value|
         value.each_key do |key| %>
-        <div class = "draggable value resource _select" resource="<%=(uri((key))) %>"  exp="(<%=h(@exp[facet][key])%>)"   >
+        <div class = "draggable value resource select" resource="<%=(uri((key))) %>"  exp="(<%=h(@exp[facet][key])%>)"   >
         	<input type="checkbox" class="_checkboxfacet" name  ="<%=term(facet)%>"    exp="(<%=h(@exp[facet][key])%>)"  />
             <%= render_resource (key) %> <span class='cardinality'>(<%= value[key] %>)</span>    <a  class ="all" exp="(<%=h(@exp[facet][key])%>)"> All</a>   	
 	    </div>

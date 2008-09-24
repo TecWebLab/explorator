@@ -9,6 +9,8 @@ function init_all(){
 	 $('loadwindow').hide();
 	register_ui_behaviour();
 	register_controllers();
+	 querybuilderselection();
+     curlbracket();
 }
 // The functions below remove all css rules registered for a rdf resource and replace for the new's one.
 String.prototype.trim = function(){

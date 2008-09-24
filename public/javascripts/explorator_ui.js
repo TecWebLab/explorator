@@ -214,7 +214,7 @@ function register_ui_window_behaviour(){
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////SELECTION BEHAVIOURS//////////////////////////////////////////////////////
 function register_ui_selection_behaviour(){
-    $$('._select').each(function(item){
+    $$('.select').each(function(item){
         item.onclick = function(e){
 			  item.select('.properties').each(function(x){            
                 x.ui_hide();                
@@ -222,27 +222,27 @@ function register_ui_selection_behaviour(){
             //When only click event happens
             if (!e.ctrlKey) {
                 //remove the selection from all elements on the interface
-                $$('._SELECTED').invoke('removeClassName', '_SELECTED');
+                $$('.SELECTED').invoke('removeClassName', 'SELECTED');
                 //add selection to this element
-                item.addClassName('_SELECTED');
+                item.addClassName('SELECTED');
             }
             //When a shift + click event happens
             else {
                 //If it was selected before, deselect. 
-                if (item.hasClassName('_SELECTED')) {
-                    item.removeClassName('_SELECTED');
+                if (item.hasClassName('SELECTED')) {
+                    item.removeClassName('SELECTED');
                 }
                 //If it was not selected before, select.
                 else {
-                    item.addClassName('_SELECTED');
+                    item.addClassName('SELECTED');
                 }
                 //If the window is selected, then does not select this element
-                if (item.up('._WINDOW._SELECTED')) {
-                    item.removeClassName('_SELECTED');
+                if (item.up('._WINDOW.SELECTED')) {
+                    item.removeClassName('SELECTED');
                 }
             }
             //Deselect all element selected inside another one.
-            item.select('._SELECTED').invoke('removeClassName', '_SELECTED');
+            item.select('.SELECTED').invoke('removeClassName', 'SELECTED');
             //stop the event propagation.
             e.stopPropagation();
         };
@@ -262,7 +262,7 @@ function ui_create_window(){
     var div = document.createElement('div');
     Element.extend(div);
     div.id = id;
-    div.setAttribute("class", "_WINDOW _select");
+    div.setAttribute("class", "_WINDOW select");
     document.body.appendChild(div);
     return id;
 }
