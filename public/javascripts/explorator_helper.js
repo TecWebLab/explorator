@@ -41,11 +41,21 @@ function setDynamicCssRules(){
         }
     });
 }
-function facetsetmove(){
-	
-	if ($('facetgroup')!=null){
-
+function facetsetmove(){ 
+	if ($('facetgroup')!=null){ 
 		$('body').insert($$('div#facetgroup > div:nth-child(3)')[0]);
 		$('facetgroup').remove();
 	}
+}
+function filterResources(input){
+	Element.extend(input);
+    var filterText = input.value; 
+	
+    input.up('._WINDOW').select('.resource').each(function(item){
+		 
+ 	 if (item.textContent.toLowerCase().indexOf(filterText) >= 0) 
+            item.show();
+        else 
+            item.hide();
+    });
 }

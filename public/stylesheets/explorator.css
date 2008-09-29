@@ -180,6 +180,11 @@ div.windowtoolbar div.filter {
     height: 25px;
     border: none;
 }
+div.filter {
+    
+    height: 26px;
+    
+}
 
 div.windowtoolbar div.filter:hover {
     background-color: transparent;
@@ -479,9 +484,10 @@ div.windowtoolbar div.filter select {
 }
 
 div.filter input {
-    border: 1px solid #fff;
+    border: 1px solid #dfdfdf;
     padding: 2px;
-    background-color: #dfdfdf;
+	width:80%;
+    background-color: #fff;
 }
 
 div input

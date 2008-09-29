@@ -6,9 +6,19 @@ function ajax_update(id, _uri){
     $(id).innerHTML = 'Loading....'
     new Ajax.Request((_uri), {
         method: 'post',
-        onComplete: function(transport){
-			 
+        onComplete: function(transport){ 
             Element.replace(id, transport.responseText);
+            init_all();
+        }
+    });
+}
+//Execute an AJAX request , updating the container with the response text.
+function ajax_insert(element, _uri){
+    
+    new Ajax.Request((_uri), {
+        method: 'post',
+        onComplete: function(transport){ 
+            element.insert(transport.responseText);
             init_all();
         }
     });

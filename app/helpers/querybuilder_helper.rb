@@ -1,10 +1,11 @@
 module QuerybuilderHelper
-  def resource 
-    puts 'xxxxxxxs'
-    puts @resource
-    @resource
-  end
-  def setresource(r)    
-    @resource=r   
-  end
+ def resource 
+    
+   @resource
+ end
+ def resource=(r)
+   
+   @resource=r
+   
+ end
 end

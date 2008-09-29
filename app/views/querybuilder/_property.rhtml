@@ -1,11 +1,10 @@
-<div class = " _WINDOW    <%=css(resource)%> querybuilderresource " set = "<%=uri(resourceset)%>" resource="<%=(uri(resource)) %>" exp="('<%=h(uri(resource)) %>',:p,:o)" onmouseover="Tip('<%= h(to_s(resource)) %>',DELAY, 1000);" onmouseout="UnTip();">
+<div class = " _WINDOW  edge  <%=css(resource)%> querybuilderresource " set = "<%=uri(resourceset)%>" resource="<%=(uri(resource)) %>" exp="('<%=h(uri(resource)) %>',:p,:o)" onmouseover="Tip('<%= h(to_s(resource)) %>',DELAY, 1000);" onmouseout="UnTip();">
     <div class ="resourceuioperations _NO_MINIMIZE"> 
-        <div class = "_remove">
+        <div class = "removerelation">
             x
         </div>
     </div>
-	<table><tr><td><%= render_resource(resource) %></td></tr><tr><td><img src = "/images/arrow2.gif"/></td></tr></table>
-    
+	<table><tr><td><%= render_resource(resource) %></td></tr><tr><td><img src = "/images/arrow2.gif"/></td></tr></table> 
     <%if resource.instance_of?(BNode) %>
     <%elsif resource.type.include?(RDFS::Class) %>
     <a class ="all" exp="(:s,RDF::type,'<%=h(uri(resource)) %>')">(Instances)</a>

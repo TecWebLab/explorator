@@ -1,6 +1,7 @@
 <div class="_WINDOW window _draggable select set" id = "<%=uri(resourceset)%>" exp = "('<%=h(uri(resourceset))%>')">
     <%= render :partial => 'windowheader' %>
     <%= render :partial => 'windowtoolbar' %>
+		    <%= render :partial => 'windowfilter' %>
     <% resources_paginated(:p).each do |p|%>
     <div class = " _WINDOW  select <%=css(p)%> " set = "<%=uri(resourceset)%>" resource="<%=(uri(p)) %>" exp="('<%=h(uri(p)) %>',:p,:o)" onmouseover="Tip('<%= h(to_s(p)) %>',DELAY, 1000);" onmouseout="UnTip();">
         <div class ="resourceuioperations _NO_MINIMIZE">            

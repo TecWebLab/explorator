@@ -1,16 +1,18 @@
 class QuerybuilderController < ApplicationController  
-  def index 
-     puts '$$$$$$$$$$$ eeee'
+  
+  def index   
     @resource =  Namespace.lookup(:rdfs,:Resource)
     render :action => 'index' 
   end
-  def resource     
-  puts '$$$$$$$$$$$ resource'
+  def resource  
      @resource = RDFS::Resource.new(params[:uri])
-     render :partial => 'resource' 
+     render :partial => 'rdfresource' 
  end
-  def relation     
-    puts '$$$$$$$$$$$ rej'
+  def property  
+     @resource = RDFS::Resource.new(params[:uri])
+     render :partial => 'property' 
+ end
+  def relation          
      @resource = RDFS::Resource.new(params[:uri]) 
      render :partial => 'relation' 
   end
