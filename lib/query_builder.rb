@@ -16,8 +16,7 @@ class SemanticExpression
   #constructor.
   def initialize(s=nil,p=nil,o=nil,*r)    
     # initialize the variable query with the ActiveRDF Query
-    @result = Array.new   
-    
+    @result = Array.new    
     if s != nil || p != nil || o != nil
       union(s,p,o,r)
     end
@@ -203,6 +202,5 @@ class SemanticExpression
     else
       term 
     end   
-  end  
-  
+  end    
 end

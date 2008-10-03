@@ -1,8 +1,8 @@
-class QuerybuilderController < ApplicationController  
-  
+class QuerybuilderController < ApplicationController 
   def index   
+    puts 'QUERY BUILDER'
     @resource =  Namespace.lookup(:rdfs,:Resource)
-    render :action => 'index' 
+    render :action => 'index', :layout => false
   end
   def resource  
      @resource = RDFS::Resource.new(params[:uri])

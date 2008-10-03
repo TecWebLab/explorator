@@ -151,4 +151,6 @@
 	<pathentry path="GEM_LIB/activerecord-2.0.2/lib" type="var"/>
 	<pathentry path="GEM_LIB/actionpack-2.0.2/lib" type="var"/>
 	<pathentry path="GEM_LIB/activerecord-2.0.2/lib" type="var"/>
+	<pathentry path="GEM_LIB/actionpack-2.0.2/lib" type="var"/>
+	<pathentry path="GEM_LIB/activerecord-2.0.2/lib" type="var"/>
 </loadpath>

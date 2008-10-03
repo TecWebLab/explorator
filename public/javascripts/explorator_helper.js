@@ -49,13 +49,11 @@ function facetsetmove(){
 }
 function filterResources(input){
 	Element.extend(input);
-    var filterText = input.value; 
-	
-    input.up('._WINDOW').select('.resource').each(function(item){
-		 
- 	 if (item.textContent.toLowerCase().indexOf(filterText) >= 0) 
+    var filterText = input.value; 	
+    input.up('._WINDOW').select('.resource').each(function(item){		 
+ 	if (item.textContent.toLowerCase().indexOf(filterText)>= 0) 
             item.show();
-        else 
+    else 
             item.hide();
     });
-}
+} 

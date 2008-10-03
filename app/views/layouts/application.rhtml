@@ -24,6 +24,7 @@
         </script>
         <%= render :partial => '/layouts/landmarks' %>
         <%= render :partial => '/layouts/loading' %>
+   		<%= render_component :controller => "querybuilder", :action => "index", :layout => false%>
         <%= @content_for_layout %>
       <!--  <div class = '_WINDOW help_container'>
             <div class=' winoperations '>
@@ -37,4 +38,5 @@
 </html>
 <script>
     init_all();
+	
 </script>

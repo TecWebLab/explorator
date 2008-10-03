@@ -19,20 +19,21 @@ Element.addMethods({
     //remove an element
     ui_remove: function(item){
         //removes the element from the model and replace the interface with a new one.	
-        item.ctr_remove();
-        new Effect.Fade(item, {
-            duration: 0.2,
+                new Effect.Fade(item, {
+            duration: 0.2, 
+			afterFinish: function(){
+                //definitely removes the element from the set.
+                item.remove();
+                
+            }
         
         });
+		item.ctr_remove();
     }, //close an element
     ui_close: function(item){
         new Effect.Fade(item, {
             duration: 0.2,
-            afterFinish: function(){
-                //definitely removes the element from the set.
-                item.remove();
-                
-            },
+           
         });
     }, //open an element
     ui_open: function(item){

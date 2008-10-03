@@ -34,13 +34,20 @@ div .remove {
 -->
 </style>
 <br>
-<br>
-<table width='100%' class="container" id ="container">
+<br>  
+<table width='100%' class="container _WINDOW" id ="container">
+	<tr><td> <div class=' winoperations _NO_MINIMIZE '>       
+        <div class ='_close'>
+            X
+        </div>
+        &nbsp;
+    </div></td>
+		</tr>
     <tr>
         <td>
             <table width="100" cellspace="2">
                 <tr>
-                    <td  > 
+                    <td> 
 					    <%= render :partial => 'rdfresource' %>
                     </td>
                     <td width="1%" valign="top" height="100%" class="curlbracket">
@@ -66,6 +73,11 @@ div .remove {
                     </td>
                 </tr>
             </table>
+        </td>
+    </tr>
+	<tr>
+        <td>
+        	<input type= "button" value ="search" onclick=" ajax_create(querybuilder())">
         </td>
     </tr>
 </table> 
