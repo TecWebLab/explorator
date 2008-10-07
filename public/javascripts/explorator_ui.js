@@ -259,10 +259,10 @@ function register_ui_selection_behaviour(){
 //////////////////////////////////WINDOW HELPER FUNCTION//////////////////////////
 //Create a empty div window and add to the body.
 function ui_create_window(){
-    var id = new UUID();
+ 
     var div = document.createElement('div');
     Element.extend(div);
-    div.id = id;
+    id = div.identify();
     div.setAttribute("class", "_WINDOW select");
     document.body.appendChild(div);
     return id;
@@ -274,5 +274,5 @@ function ui_add_window(result){
     range.selectNode(document.body);
     var documentFragment = range.createContextualFragment(result);
     document.body.appendChild(documentFragment);
-    init_all();
+     init_all();
 }

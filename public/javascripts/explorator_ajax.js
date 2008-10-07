@@ -2,6 +2,17 @@
  * @author samuraraujo
  */
 //Execute an AJAX request , updating the container with the response text.
+function ajax_update_callback(id, _uri, callbackfunction){
+	 $(id).innerHTML = 'Loading....'
+    new Ajax.Request((_uri), {
+        method: 'post',
+        onComplete: function(transport){ 
+            Element.replace(id, transport.responseText);
+            init_all();
+			eval(callbackfunction);
+        }
+    });
+}
 function ajax_update(id, _uri){
     $(id).innerHTML = 'Loading....'
     new Ajax.Request((_uri), {
@@ -13,13 +24,13 @@ function ajax_update(id, _uri){
     });
 }
 //Execute an AJAX request , updating the container with the response text.
-function ajax_insert(element, _uri){
-    
+function ajax_insert(element, _uri,callbackfunction){    
     new Ajax.Request((_uri), {
         method: 'post',
         onComplete: function(transport){ 
             element.insert(transport.responseText);
             init_all();
+			eval(callbackfunction);
         }
     });
 }
