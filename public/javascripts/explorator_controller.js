@@ -22,7 +22,7 @@ Element.addMethods({
         if (item.hasClassName('resource')){		 
 		   parameters.set('SET', item.up('._WINDOW'));
    		   parameters.set('REMOVE', item);
-           ajax_update(item.up('._WINDOW'),updateuri  + new SemanticExpression('SET').difference('REMOVE') + '&uri=' + item.up('._WINDOW').id);
+           ajax_update(item.up('._WINDOW'),createuri  + new SemanticExpression('SET').difference('REMOVE') + '&uri=' + item.up('._WINDOW').id);
         }
         else {
 		//Removing a entire set
