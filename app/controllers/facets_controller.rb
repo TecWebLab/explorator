@@ -62,7 +62,9 @@ class FacetsController < ApplicationController
   #Infer the facets for the specific set
   def infer   (id)      
     #gets a ResourceSet instance in the pool.
-    @resourceset= Application.get(id)     
+    @resourceset= Application.get(id)  
+    @groups=FACETO::FacetGroup.find_by_faceto::type(RDFS::Resource.new('http://www.semanticnavigation.org/2008/faceto#userdefined'))
+   
     inference(@resourceset.resources,UUID.random_create.to_s)
     #Calculates all the facets for a set of resources
     entropy_by_set(@resourceset.resources)    
@@ -253,8 +255,10 @@ class FacetsController < ApplicationController
     resources.each do |s|      
       predicates= predicates | Query.new.distinct(:p).where(s,:p,:o).execute
     end    
+     
     #create a object FacetGroup for this instance of resources
     @facetgroup=FACETO::FacetGroup.new('<http://www.semanticnavigation.org/2008/faceto#' << cid << '>')
+    @facetgroup.rdfs::label=cid
     @facetgroup.faceto::type=RDFS::Resource.new('http://www.semanticnavigation.org/2008/faceto#infered')
     @facetgroup.save
     #it will hold all the facets
@@ -264,7 +268,7 @@ class FacetsController < ApplicationController
     predicates.each do |predicate|       
       id =UUID.random_create.to_s
       facet = FACETO::Facet.new('<http://www.semanticnavigation.org/2008/faceto#' << id << '>')
-      facet.save
+      facet.save     
       facet.faceto::derivedTerm = predicate      
       facet.faceto::use = predicate    
       facet.save     
