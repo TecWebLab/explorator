@@ -13,7 +13,7 @@ class ExploratorController < ApplicationController
   # attr_accessor :resourceset
   #default rails method. returns the view index.rhtml.
   def index    
-
+   
   end  
   #  prints the filter screen
   def filter    
