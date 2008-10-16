@@ -254,25 +254,22 @@ function register_ui_selection_behaviour(){
         };
     });
 }
-
 ///////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////WINDOW HELPER FUNCTION//////////////////////////
 //Create a empty div window and add to the body.
-function ui_create_window(){
- 
+function ui_create_window(){ 
     var div = document.createElement('div');
     Element.extend(div);
     id = div.identify();
     div.setAttribute("class", "_WINDOW select");
-    document.body.appendChild(div);
+    document.body.insertBefore(div, $$('.set').first());
     return id;
-}
-
+} 
 //Adds a html fragment on the html body.
 function ui_add_window(result){
     var range = document.createRange();
     range.selectNode(document.body);
     var documentFragment = range.createContextualFragment(result);
-    document.body.appendChild(documentFragment);
-     init_all();
+    document.body.insertBefore(documentFragment, $$('.set').first());
+    init_all();
 }

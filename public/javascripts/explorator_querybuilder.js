@@ -3,7 +3,7 @@ function querybuilderselection(){
     $$('.querybuildertool').each(function(item){
         item.onclick = function(e){
             $('container').show();
-
+            
         };
     });
     $$('.removerelation').each(function(item){
@@ -17,7 +17,7 @@ function querybuilderselection(){
             e.stopPropagation();
         };
         curlbracket();
-
+        
     });
     $$('.querybuilderresource').each(function(item){
         item.onclick = function(e){
@@ -25,7 +25,8 @@ function querybuilderselection(){
                 alert('Select only one resource.');
                 return;
             }
-            else if ($$('.SELECTED').size() == 0) {
+            else 
+                if ($$('.SELECTED').size() == 0) {
                     return;
                 }
             var selected = $$('.SELECTED').first();
@@ -36,36 +37,34 @@ function querybuilderselection(){
                 return;
             }
             if (selected.hasClassName('property') && item.hasClassName('class')) {
-                //                if (selected.hasClassName('datatypeproperty')) {
-                //                    object = "<div id = 'id3'  class=' _WINDOW literal resource select'><input type = 'text' onKeyUp='setLiteralValue(this)'; /> </div>"
-                //                }
-                ajax_insert(item.up("table").select(".relation").first(), '/querybuilder/relation?uri=' + Element.resource($$('.SELECTED').first()),'refreshSet(true)');
-                 $$('.SELECTED').invoke('removeClassName', 'SELECTED');
- 
+                var literal = false;
+                if (selected.hasClassName('datatypeproperty')) {
+                    literal = true;
+                }
+                ajax_insert(item.up("table").select(".relation").first(), '/querybuilder/relation?literal=' + literal + '&uri=' + Element.resource($$('.SELECTED').first()), 'refreshSet(true)');
+                $$('.SELECTED').invoke('removeClassName', 'SELECTED');
+                
                 ////////////////////////////////////////////////////////// 
             }
             else 
                 if (item.hasClassName('class') && $$('.SELECTED').first().hasClassName('class')) {
-                    ajax_update_callback(item, '/querybuilder/resource?uri=' + Element.resource($$('.SELECTED').first()),'refreshSet(true)');
+                    ajax_update_callback(item, '/querybuilder/resource?uri=' + Element.resource($$('.SELECTED').first()), 'refreshSet(true)');
                     $$('.SELECTED').invoke('removeClassName', 'SELECTED');
-				     
+                    
                 }
                 else 
                     if (item.hasClassName('property') && $$('.SELECTED').first().hasClassName('property')) {
-						ajax_update_callback(item, '/querybuilder/property?uri=' + Element.resource($$('.SELECTED').first()),'refreshSet(true)');
-                        $$('.SELECTED').invoke('removeClassName', 'SELECTED');
-						  
-   
+                        ajax_update_callback(item, '/querybuilder/property?uri=' + Element.resource($$('.SELECTED').first()), 'refreshSet(true)');
+                        $$('.SELECTED').invoke('removeClassName', 'SELECTED'); 
                     }
-            curlbracket();            
+            curlbracket();
             init_all();
         };
     });
 }
 
 function refreshSet(){
-    var  q = querybuilder(true);
-	 
+    var q = querybuilder(true);
     ajax_create(q);
 }
 
@@ -80,7 +79,6 @@ function curlbracket(){
         }
     });
 }
-
 function setLiteral(input){
     Element.extend(input);
 }
@@ -89,20 +87,26 @@ function setLiteral(input){
 function querybuilder(preview){
     var i = 0;
     var q = "SemanticExpression.new(Query.new.distinct(:s,:p,:o).where(:s,:p,:o).where(:s,RDF::type,:o).";
- 
+    
     var root = Element.resource($('container').down('.node'));
-    q = q + "where(:s,RDF::type,RDFS::Resource.new('" + root + "'))";
+    q = q + "where(:s,RDF::type,RDFS::Resource.new('" + root + "')).";
     $('container').down('.relation').immediateDescendants().each(function(item){
         var o = "o" + i;
-        q = q + ".where(:s,RDFS::Resource.new('" + Element.resource(item.down('.edge')) + "'),:" + o + ").";
-        q = q + "where(:" + o + ",RDF::type,RDFS::Resource.new('" + Element.resource(item.down('.node')) + "'))";
+        q = q + "where(:s,RDFS::Resource.new('" + Element.resource(item.down('.edge')) + "'),:" + o + ").";
+        if ('%3Chttp%3A%2F%2Fwww.w3.org%2F2002%2F07%2Fowl%23DatatypeProperty%3E' == Element.resource(item.down('.node'))) {
+            if (item.down('input').value != '') {
+                q = q + "filter_operator(:" + o + ",'=',"+item.down('input').value+").";
+            }
+        }else {
+            q = q + "where(:" + o + ",RDF::type,RDFS::Resource.new('" + Element.resource(item.down('.node')) + "')).";
+        }
         q = q + tree(item.down('.relation'), o);
         i++;
     });
-	if (preview){
-	q = q + ".filter_operator(:p,'=',RDF::type).limit(30)"
-	}
-    return q + ".execute)";
+    if (preview) {
+        q = q + "filter_operator(:p,'=',RDF::type).limit(100).";
+    }
+    return q + "execute)";
 }
 
 function tree(relation, obj){
@@ -112,8 +116,15 @@ function tree(relation, obj){
         return q;
     relation.immediateDescendants().each(function(item){
         var o = obj + i;
-        q = q + ".where(:" + obj + ",RDFS::Resource.new('" + Element.resource(item.down('.edge')) + "'),:" + o + ").";
-        q = q + "where(:" + o + ",RDF::type,RDFS::Resource.new('" + Element.resource(item.down('.node')) + "'))";
+        q = q + "where(:" + obj + ",RDFS::Resource.new('" + Element.resource(item.down('.edge')) + "'),:" + o + ").";
+		 if ('%3Chttp%3A%2F%2Fwww.w3.org%2F2002%2F07%2Fowl%23DatatypeProperty%3E' == Element.resource(item.down('.node'))) {
+            if (item.down('input').value != '') {
+                q = q + "filter_operator(:" + o + ",'=',"+item.down('input').value+").";
+            }
+        }
+        else {
+            q = q + "where(:" + o + ",RDF::type,RDFS::Resource.new('" + Element.resource(item.down('.node')) + "')).";
+        }        
         q = q + tree(item.down('.relation'), o);
         i++;
     });
