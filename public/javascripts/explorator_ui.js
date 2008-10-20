@@ -32,7 +32,7 @@ Element.addMethods({
     }, //close an element
     ui_close: function(item){
         new Effect.Fade(item, {
-            duration: 0.2,
+            duration: 0.2
            
         });
     }, //open an element
