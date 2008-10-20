@@ -17,8 +17,16 @@ module ExploratorHelper
     @resourceset.elements.collect{|s,p,o| eval(type.to_s)}.compact.uniq   
   end
   def resources_paginated(type=:s)      
-    groupBy(type)[@resourceset.offset.to_i,@resourceset.pagination.to_i]    
-  end    
+    resources=  groupBy(type) 
+    @size =  resources.size()
+    if((@filter!=nil)&&(@filter!=""))
+      resources =   resources.select {|x|  render_resource(x).downcase.index(@filter.downcase) != nil}
+      @size = resources.size()
+      return resources
+    end
+    resources = resources[@resourceset.offset.to_i,@resourceset.pagination.to_i]
+  resources
+  end
   def subjects(predicate, resource=nil)
     @resourceset.elements.collect{|s,p,o| s if  (resource == o || resource == nil) && predicate == p}.compact.uniq    
   end
@@ -26,7 +34,7 @@ module ExploratorHelper
     @resourceset.elements.collect{|s,p,o| p if resource == eval(type.to_s)}.compact.uniq    
   end
   def objects(resource,predicate)
-     @resourceset.elements.collect{|s,p,o| o if  resource == s && predicate == p}.compact.uniq
+    @resourceset.elements.collect{|s,p,o| o if  resource == s && predicate == p}.compact.uniq
   end  
   #Return a resource set expression. 
   def get_expression       
