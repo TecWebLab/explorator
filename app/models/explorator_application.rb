@@ -15,7 +15,7 @@ class EXPLORATOR::Application < RDFS::Resource
   end                                 
 end
 class Application  
-   
+   attr_accessor :uri
   def initialize(id)   
     super()
     @uri = 'http://www.tecweb.inf.puc-rio.br/application/id/'+  id + '/'
