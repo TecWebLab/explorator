@@ -9,7 +9,7 @@ require 'query_builder'
 #module where the query class is defined.
 require 'query_factory'
 class FacetsController < ApplicationController
-  session :disabled => true
+  #session :disabled => true
   #The execute method  evaluate a ruby expression. 
   #this method is used to invoke another method of Explorator.
   #Basically, the UI call this method passing as the expression a 
