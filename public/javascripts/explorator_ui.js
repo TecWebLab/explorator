@@ -125,7 +125,7 @@ function register_ui_window_behaviour(){
     });
     $$('._refresh').each(function(item){
         item.onclick = function(){
-            item.up('._WINDOW').crt_refresh('subject_view');
+            item.up('._WINDOW').crt_refresh('subject_view','');
         };
     });
   
