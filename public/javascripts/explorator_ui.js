@@ -37,6 +37,7 @@ Element.addMethods({
         });
     }, //open an element
     ui_open: function(item){
+		
         item.ctr_open();
     }
 });
@@ -271,5 +272,8 @@ function ui_add_window(result){
     range.selectNode(document.body);
     var documentFragment = range.createContextualFragment(result);
     document.body.insertBefore(documentFragment, $$('.set').first());
+	$$('.set').first().hide();
+	$$('.set').first().appear({ duration: 1.8 });
+          
     init_all();
 }
