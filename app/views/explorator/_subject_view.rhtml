@@ -1,8 +1,9 @@
 <div class="_WINDOW window _draggable select set" id = "<%=uri(resourceset)%>" exp = "('<%=h(uri(resourceset))%>')">
-    <%= render :partial => 'windowheader' %>
+<% resources =  resources_paginated(:s) %>
+	<%= render :partial => 'windowheader' %>
     <%= render :partial => 'windowtoolbar' %>
 	    <%= render :partial => 'windowfilter' %>
-    <% resources_paginated(:s).each do |resource| %>
+    <% resources.each do |resource| %>
     <div class = " _WINDOW  select <%=css(resource)%> " set = "<%=uri(resourceset)%>" resource="<%=uri(resource) %>" exp="('<%=h(uri(resource)) %>',:p,:o)" onmouseover="Tip('<%= h(to_s(resource)) %>',DELAY, 1000);" onmouseout="UnTip();">
         <div class ="resourceuioperations _NO_MINIMIZE">
             <div class ='_collapseall'>
@@ -64,6 +65,7 @@
     </div>
     <% end %>
     <div>
+    	<% if ((@filter==nil)||(@filter==""))%>
         <%if resourceset.offset.to_i>0 %>
         <div class='pagination '>
             <a onclick="javascript:ajax_update(Element.extend(this).up('._WINDOW').id,'explorator/reload?view=subject_view&offset=<%=resourceset.offset.to_i - resourceset.pagination.to_i%>&uri=<%=resourceset%>');">&lt;&lt;</a>
@@ -74,6 +76,8 @@
             <a onclick="javascript:ajax_update(Element.extend(this).up('._WINDOW').id,'explorator/reload?view=subject_view&offset=<%=resourceset.offset.to_i + resourceset.pagination.to_i%>&uri=<%=resourceset%>');">>></a>
         </div>
         <%end %>
+		<%end%>
+		
     </div>
 </div>
 <script>
