@@ -41,7 +41,7 @@ class EXPLORATOR::Set < RDFS::Resource
     $contextindex = 65 if $contextindex > 90
     #add this set to the pool.
     self.expression=exp
-    Application.add(self);
+    Thread.current[:application].add(self);
   end 
   #Returns an array of resources.
   def resources    
