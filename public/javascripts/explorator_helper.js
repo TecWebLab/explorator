@@ -47,13 +47,37 @@ function facetsetmove(){
 		$('facetgroup').remove();
 	}
 }
+
 function filterResources(input){
 	Element.extend(input);
-    var filterText = input.value; 	
-    input.up('._WINDOW').select('.resource').each(function(item){		 
- 	if (item.textContent.toLowerCase().indexOf(filterText)>= 0) 
-            item.show();
-    else 
-            item.hide();
-    });
-} 
+    var filterText = input.value;
+	
+		if (filterText != null) {
+			input.up('._WINDOW').crt_refresh('subject_view', filterText);
+		} 
+}
+
+function checkEnter(e,input){ 
+	var characterCode 
+
+	if(e && e.which){
+		characterCode = e.which
+	}
+	else{
+		e = event
+		characterCode = e.keyCode 
+	}
+
+	if(characterCode == 13){ 
+		filterResources(input)
+		return false
+	}
+	else{
+		return true
+	}
+
+}
+
+
+
+
