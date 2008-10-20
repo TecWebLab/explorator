@@ -13,9 +13,14 @@ class ExploratorController < ApplicationController
   # attr_accessor :resourceset
   #default rails method. returns the view index.rhtml.
   def index    
-   
-  end  
-  #  prints the filter screen
+
+end
+ 
+def resourcefilter
+   @resourceset =  Application.get(params[:uri])  
+   render  :partial => 'subject_view',:layout=>false;
+end
+#  prints the filter screen
   def filter    
     @setid=params[:uri]
     render :partial => 'filter',:layout=>false;
@@ -44,7 +49,7 @@ class ExploratorController < ApplicationController
   # The exp value must be a valid SemanticExpression class instance and the ResourceSet instance
   # must has been defined before.
   def update     
-       puts params[:exp]
+    puts params[:exp]
     #reevaluate the expression and return the set
     resource = Application.get(params[:uri])
   
@@ -88,8 +93,10 @@ class ExploratorController < ApplicationController
   end
   #The refresh method return a determined ResourceSet from the SetsPool
   #This method is called by the Execute method, being passed as a parameter by the interface.
-  def refresh(uri,view=:subject_view)   
-    @resourceset= Application.get(uri).setWithOffset(0)    
+  def refresh(uri,view=:subject_view,filter=nil)   
+    @resourceset= Application.get(uri).setWithOffset(0)
+
+    @filter=filter
     #render the _window.rhtml view
     render :partial => view.to_s , :layout=>false
   end
