@@ -382,7 +382,7 @@ span.tool:hover span.tip {
 .landmarks {
     font-family: Arial, Helvetica, sans-serif;
     float: left;
-    position: fixed;
+    position: absolute;
     top: 0px;
     width: 100%;
     background-color: #efefe4;
@@ -392,6 +392,7 @@ span.tool:hover span.tip {
     color: #777;
     z-index: 14;
     border-bottom: 1px solid #afafaf;
+	padding-bottom: 0.5em;
 }
 
 .landmark {
@@ -407,6 +408,10 @@ div.landmark:hover a {
 div.searchform {
     margin-left: 6px;
     margin-top: 8px;
+}
+
+#submit{
+	margin-left: 0.5em;
 }
 /************************************************************************************
  * Operation model -css for the operation widgets
@@ -443,10 +448,13 @@ div.operation {
     color: white;
     background-color: #4f94cd;
     width: 20px;
+
 }
 
 div.operation:hover {
     background-color: transparent;
+	color: #4f94cd;
+	border: 1px solid #4f94cd;
 }
 
 div.operation:active {
@@ -497,7 +505,6 @@ div input
     color: #ffffff;
     border: 1px outset #4f94cd;
 }
-
 /*********************************************************************************
  
  * All CSS that starts with '_' represent a user interface property.
@@ -540,3 +547,69 @@ div.O {
     border-color: red;
     border-width: 2px;
 }
+div#mainmenu {
+background: #eee;
+float: left;
+margin-top:0.75em;
+margin-left:15em;
+}
+
+div#mainmenu ul {
+list-style: none;
+margin: 0;
+padding: 0;
+width: 12em;
+
+}
+
+div#mainmenu a, div#mainmenu h2 {
+font: bold 11px/16px arial, helvetica, sans-serif;
+display: block;
+border-width: 1px;
+border-style: solid;
+border-color: #4f94cd;
+margin: 0;
+padding: 2px 3px;
+}
+
+div#mainmenu h2 {
+color: #fff;
+background: #4f94cd;
+text-transform: uppercase;
+}
+
+div#mainmenu a {
+color: #777;
+background: #efefef;
+text-decoration: none;
+}
+
+div#mainmenu a:hover {
+color: #4f94cd;
+background: #fff;
+}
+
+div#mainmenu li {position: relative;}
+
+div#mainmenu ul ul {
+position: absolute;
+z-index: 500;
+}
+
+div#mainmenu ul ul ul {
+position: absolute;
+top: 0;
+left: 100%;
+}
+
+div#mainmenu ul ul,
+div#mainmenu ul li:hover ul ul,
+div#mainmenu ul ul li:hover ul ul
+{display: none;}
+
+div#mainmenu ul li:hover ul,
+div#mainmenu ul ul li:hover ul,
+div#mainmenu ul ul ul li:hover ul
+{display: block;}
+
+
