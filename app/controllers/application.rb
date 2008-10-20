@@ -3,15 +3,24 @@
 class ExploratorError < Exception
 end
 class ApplicationController < ActionController::Base
-  helper :all # include all helpers, all the time
-  
+  helper :all # include all helpers, all the time  
+  before_filter :session_init
   #global attribute use for all explorator controllers
   @resourceset
+ def session_init
+    #puts  session[:application].instance
+    if session[:application] == nil
+      puts 'initializing session'
+      session[:application] =  Application.new(session.session_id)
+  end
+     Thread.current[:application]=session[:application]
+ end
+
   #This was set to false for enable ajaxs request over post HTTP method.
-  self.allow_forgery_protection = false
-  
+  self.allow_forgery_protection = false  
   def index    
-    @applications = EXPLORATOR::Application.find_all    
+    puts "aqui"
+    @applications = EXPLORATOR::Application.find_by_explorator::uuid(session[:useruri])
   end
   def create
      Application.create(params[:name])  
