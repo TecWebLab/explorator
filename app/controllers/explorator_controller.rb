@@ -1,3 +1,5 @@
+require "date"
+require "set"
 #This controller handles all users request that performs a changing in the domain model.
 #Author: Samur Araujo
 #Date: 25 jun 2008.
@@ -13,14 +15,14 @@ class ExploratorController < ApplicationController
   # attr_accessor :resourceset
   #default rails method. returns the view index.rhtml.
   def index    
-
+    
 end
  
 def resourcefilter
    @resourceset =  Application.get(params[:uri])  
    render  :partial => 'subject_view',:layout=>false;
-end
-#  prints the filter screen
+end 
+  #  prints the filter screen
   def filter    
     @setid=params[:uri]
     render :partial => 'filter',:layout=>false;
@@ -49,14 +51,14 @@ end
   # The exp value must be a valid SemanticExpression class instance and the ResourceSet instance
   # must has been defined before.
   def update     
-    puts params[:exp]
+       puts params[:exp]
     #reevaluate the expression and return the set
-    resource = Application.get(params[:uri])
+    resource = session[:application].get(params[:uri])
   
     resource.expression = params[:exp] 
     
     #the object @resourceset is a global object that will be used by render   
-    @resourceset =  Application.get(params[:uri]) 
+    @resourceset =  session[:application].get(params[:uri]) 
     
     #render the _window.rhtml view
     render :partial => 'subject_view', :layout=>false
@@ -76,7 +78,7 @@ end
   #The UI pass 2 parameters, the ResourceSet id and an offset value.
   def reload  
     #return a specific set of resource considering an offset.
-    @resourceset= Application.get(params[:uri]).setWithOffset( params[:offset])    
+    @resourceset= session[:application].get(params[:uri]).setWithOffset( params[:offset])    
     #render the _window.rhtml view
     render :partial => params[:view]  , :layout=>false
   end
@@ -88,26 +90,25 @@ end
   #This method is called by the execute method, being passing as parameter by the user interface.
   def remove(uri)        
     #for remove only one resource in the context 
-    Application.remove(uri)    
+    session[:application].remove(uri)    
     render :text => '', :layout=>false
   end
   #The refresh method return a determined ResourceSet from the SetsPool
   #This method is called by the Execute method, being passed as a parameter by the interface.
-  def refresh(uri,view=:subject_view,filter=nil)   
-    @resourceset= Application.get(uri).setWithOffset(0)
-
-    @filter=filter
+  def refresh(uri,view=:subject_view)   
+    @resourceset= session[:application].get(uri).setWithOffset(0)    
+     @filter=filter
     #render the _window.rhtml view
     render :partial => view.to_s , :layout=>false
   end
   
   def addfilter     
-    @resourceset= Application.get(params[:uri])
+    @resourceset= session[:application].get(params[:uri])
     @resourceset.addFilter("filter('select{|i| i.to_i" + params[:op] +  params[:value]+ "}')")
     render :partial => "subject_view" , :layout=>false
   end
   def sum
-    @resourceset= Application.get(params[:uri])
+    @resourceset= session[:application].get(params[:uri])
     @resourceset.sum()  
       render :partial => "subject_view" , :layout=>false
   end
