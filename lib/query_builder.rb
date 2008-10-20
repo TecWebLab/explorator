@@ -26,8 +26,8 @@ class SemanticExpression
   def resource_or_set_to_array(s)
     if s == nil
       Array.new 
-    elsif Application.is_set?(s)
-      Application.get(s).resources
+    elsif Thread.current[:application].is_set?(s)
+      Thread.current[:application].get(s).resources
     else
       Array.new << s 
     end
@@ -98,9 +98,9 @@ class SemanticExpression
       #Union, Intersection and Difference are operation over sets.
     elsif s.instance_of? Array       
       @result = @result | s 
-    elsif Application.is_set?(s)
+    elsif Thread.current[:application].is_set?(s)
       #returns all set of resources
-      @result = @result | Application.get(s).elements
+      @result = @result | Thread.current[:application].get(s).elements
       #Union method, passed as parameter a triple expression
     else
       @result = @result | query(s,p,o,r)
@@ -120,9 +120,9 @@ class SemanticExpression
     elsif s.instance_of? Array 
       tmp =  s      
       #Intersection, Intersection and Difference are operation over sets.      
-    elsif Application.is_set?(s)
+    elsif Thread.current[:application].is_set?(s)
       #returns all set of resources
-      tmp =  Application.get(s).elements
+      tmp =  Thread.current[:application].get(s).elements
       #Intersection method, passed as parameter a triple expression
     else
       tmp =  query(s,p,o,r)
@@ -144,9 +144,9 @@ class SemanticExpression
     elsif s.instance_of? Array 
       tmp =  s 
       #Difference, Intersection and Difference are operation over sets.
-    elsif Application.is_set?(s)
+    elsif Thread.current[:application].is_set?(s)
       #returns all set of resources
-      tmp = Application.get(s).elements
+      tmp = Thread.current[:application].get(s).elements
       #Difference method, passed as parameter a triple expression
     else   
       tmp =  query(s,p,o,r)

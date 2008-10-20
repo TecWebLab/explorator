@@ -8,4 +8,3 @@ require 'explorator_application.rb'
 adapter = ConnectionPool.add(:type => :rdflite, :location => 'db/explorator.db', :reasoning => false,:keyword => true)
 adapter.title='Explorator'
 
-Application.clear
