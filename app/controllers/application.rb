@@ -19,19 +19,19 @@ class ApplicationController < ActionController::Base
   #This was set to false for enable ajaxs request over post HTTP method.
   self.allow_forgery_protection = false  
   def index    
-    puts "aqui"
-    @applications = EXPLORATOR::Application.find_by_explorator::uuid(session[:useruri])
+    @applications = EXPLORATOR::Application.find_by_explorator::uuid(session[:application].uri)
+    render :action => 'index', :layout =>false
   end
   def create
-     Application.create(params[:name])  
+     session[:application].create(params[:name])  
       redirect_to :controller => "explorator"
   end
   def restore 
-      Application.load(params[:uri])  
+      session[:application].load(params[:uri])  
       redirect_to :controller => "explorator"
      # render :template => 'explorator/index'
   end
   def delete
-    Application.delete(params[:uri])  
+    session[:application].delete(params[:uri])  
   end
 end

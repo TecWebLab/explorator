@@ -4,5 +4,6 @@
 class CssController < ApplicationController
   #Default rails method for a controller.
   def index    
+    render :action => 'index', :layout =>false
   end
 end
