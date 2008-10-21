@@ -45,9 +45,7 @@ Element.addMethods({
 			ajax_update('facets', facetsuri+'facet' + Element.exp(item) + '&name='+name);
 		}else{			
        		ajax_request_forfacet(facetsuri+'facet' + Element.exp(item)+ '&name='+name,item);		
-
-		}
-       
+		}       
     },//Create or replace the facet window with a new content.
 	 crt_infer: function(item){
 	 	facetoriginalexpression=null;
@@ -175,7 +173,11 @@ function cmd_semantic(){
         item.onclick = function(){
 			if (validation_spo()) return;
    		    parameters.set(item.id, Element.exp(item));
-            ajax_create(new SemanticExpression().spo(new SemanticExpression(':s'), new SemanticExpression(':p'), new SemanticExpression(':o'), parameters.get(':r')));
+			var view = 'subject_view';
+			if (parameters.get(':s') != undefined && parameters.get(':p') != undefined && parameters.get(':o') == undefined   ){
+				view = 'object_view';
+			} 
+            ajax_create(new SemanticExpression().spo(new SemanticExpression(':s'), new SemanticExpression(':p'), new SemanticExpression(':o'), parameters.get(':r')) + "&view=" + view);
 			clear();
         };
     });

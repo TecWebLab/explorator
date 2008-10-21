@@ -23,10 +23,8 @@ Element.addMethods({
             duration: 0.2, 
 			afterFinish: function(){
                 //definitely removes the element from the set.
-                item.remove();
-                
-            }
-        
+                item.remove();                
+            }        
         });
 		item.ctr_remove();
     }, //close an element
@@ -100,17 +98,17 @@ function register_ui_resource_behaviour(){
     });
       $$('._object_view').each(function(item){
         item.onclick = function(){
-            item.up('._WINDOW').crt_refresh('object_view');
+            item.up('._WINDOW').crt_refresh('object_view','');
         };
     });
      $$('._predicate_view').each(function(item){
         item.onclick = function(){
-            item.up('._WINDOW').crt_refresh('predicate_view');
+            item.up('._WINDOW').crt_refresh('predicate_view','');
         };
     });
 	 $$('._subject_view').each(function(item){
         item.onclick = function(){
-            item.up('._WINDOW').crt_refresh('subject_view');
+            item.up('._WINDOW').crt_refresh('subject_view','');
         };
     });
 }
@@ -272,8 +270,9 @@ function ui_add_window(result){
     range.selectNode(document.body);
     var documentFragment = range.createContextualFragment(result);
     document.body.insertBefore(documentFragment, $$('.set').first());
+	 init_all();
 	$$('.set').first().hide();
 	$$('.set').first().appear({ duration: 1.8 });
           
-    init_all();
+   
 }
