@@ -16,7 +16,7 @@
             </div>
         </div>
        
-        <%if resource.instance_of?(BNode) %>
+        <%if resource.instance_of?(BNode) || resource.instance_of?(String) %>
         <%elsif resource.type.include?(RDFS::Class) %>
         <a class ="all" exp="(:s,RDF::type,'<%=h(uri(resource)) %>')">(Instances)</a>
         <%elsif resource.type.include?(RDF::Property) %>
