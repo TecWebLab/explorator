@@ -45,7 +45,7 @@ class FacetsController < ApplicationController
   #the parameter id is the ResourceSet identification in the SetsPool.
   def facet (id)  
     #gets a ResourceSet instance in the pool.
-    @resourceset= Application.get(id)        
+    @resourceset= session[:application].get(id)        
     #Gets a facet defined by the user in the repository.
     # FACETO::FacetGroup belong to the ActiveRDF model and the vocabulary FACETO::FacetGroup was defined by the Explorator.
     
@@ -62,7 +62,7 @@ class FacetsController < ApplicationController
   #Infer the facets for the specific set
   def infer   (id)      
     #gets a ResourceSet instance in the pool.
-    @resourceset= Application.get(id)  
+    @resourceset= session[:application].get(id)  
     @groups=FACETO::FacetGroup.find_by_faceto::type(RDFS::Resource.new('http://www.semanticnavigation.org/2008/faceto#userdefined'))
     
     inference(@resourceset.resources,UUID.random_create.to_s)

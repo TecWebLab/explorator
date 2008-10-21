@@ -10,7 +10,7 @@ class ViewerController < ApplicationController
    
     view = params[:value]    
     #Gets the first resource in the set and sets the new view for it.
-    resource = Application.get(params[:setid]).resources[0]  
+    resource = session[:application].get(params[:setid]).resources[0]  
     #it will add a triple in the repository where the subject will be the resource uri, the predicate
     #will be  explorator:view and the object will be the view script.   
     resource.explorator::view=view     
@@ -22,6 +22,6 @@ class ViewerController < ApplicationController
   def index
     @setid = params[:setid]
     #returns the resource view. Notes that it was passed a set as parameter and not a resource itself.
-    @view = Application.get(params[:setid]).resources[0].explorator::view
+    @view = session[:application].get(params[:setid]).resources[0].explorator::view
    end
 end

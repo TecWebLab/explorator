@@ -95,7 +95,7 @@ end
   end
   #The refresh method return a determined ResourceSet from the SetsPool
   #This method is called by the Execute method, being passed as a parameter by the interface.
-  def refresh(uri,view=:subject_view)   
+  def refresh(uri,view=:subject_view, filter='')   
     @resourceset= session[:application].get(uri).setWithOffset(0)    
      @filter=filter
     #render the _window.rhtml view
