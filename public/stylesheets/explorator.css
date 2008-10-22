@@ -12,6 +12,7 @@ table td#css {
     font-size: 12px;
     border: 1px solid #efefef;
 }
+
 /**********************************************************************************/
 /*********************************************************************************
  * ****************************** HELP INTERFACE **********************
@@ -384,6 +385,7 @@ span.tool:hover span.tip {
     float: left;
     position: absolute;
     top: 0px;
+	left:0px;
     width: 100%;
     background-color: #efefe4;
     left: 0px;
@@ -393,6 +395,8 @@ span.tool:hover span.tip {
     z-index: 14;
     border-bottom: 1px solid #afafaf;
 	padding-bottom: 0.5em;
+
+	position:fixed;
 }
 
 .landmark {
@@ -470,6 +474,7 @@ div._clear {
 .searchform {
     z-index: 150;
     float: left;
+	margin-left:30em;
 }
 
 input {
@@ -551,7 +556,9 @@ div#mainmenu {
 background: #eee;
 float: left;
 margin-top:0.75em;
-margin-left:15em;
+margin-left: 1em;
+margin-right:15em;
+
 }
 
 div#mainmenu ul {
@@ -578,6 +585,7 @@ background: #4f94cd;
 text-transform: uppercase;
 }
 
+
 div#mainmenu a {
 color: #777;
 background: #efefef;
@@ -589,7 +597,9 @@ color: #4f94cd;
 background: #fff;
 }
 
-div#mainmenu li {position: relative;}
+div#mainmenu li {
+
+position: relative;}
 
 div#mainmenu ul ul {
 position: absolute;
