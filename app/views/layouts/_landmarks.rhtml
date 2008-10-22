@@ -1,15 +1,11 @@
 <div class = "landmarks">
   </script>
 
-  <div class= "searchform">
-      <form id = "id_form_keyword">
-          <input id='seachbykeyword' type=="text" value ="" size='30' name= "value"/><input id="submit" type="submit" value="&nbsp; search &nbsp;">
-      </form>
-  </div>
-
   <div id="mainmenu">
   <ul>
-      <li><h2>MENU</h2>
+      <li><h2>MENU &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+	  <img class="arrow" src="/images/arrow_video_down_white.jpg"
+					width="13" height="13"></h2>  		
 		<ul>
         <div  >
             <a onclick ="ajax_request('/css/')">CSS</a>
@@ -36,6 +32,12 @@
 		</ul>
       </li>
   </ul>
+  </div>
+  
+  <div class= "searchform">
+      <form id = "id_form_keyword">
+          <input id='seachbykeyword' type=="text" value ="" size='30' name= "value"/><input id="submit" type="submit" value="&nbsp; search &nbsp;">
+      </form>
   </div>
 
   <%= render :partial => '/layouts/toolbar' %>
