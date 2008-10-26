@@ -63,16 +63,15 @@ class EXPLORATOR::Set < RDFS::Resource
     self.explorator::repository=r
   end
   #defines a new expression and reevaluates the expression.
-  def expression=(exp)      
+  def expression=(exp)  
+    puts '## Evaluating Expression ##'
     puts exp
    # begin           
       #for avoid loop evaluation.
-     current_expression = self.explorator::expression
+      current_expression = self.explorator::expression
       exp.gsub!("'" + self.to_s + "'",current_expression) if  current_expression != nil
-      #evaluates the expression
-      
-      x = eval(exp)
-     
+      #evaluates the expression      
+      x = eval(exp)     
 #      updates the expression
       self.explorator::expression = exp 
       #  set_repositories()

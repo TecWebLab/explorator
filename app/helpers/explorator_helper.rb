@@ -21,7 +21,7 @@ module ExploratorHelper
     @size =  resources.size()
     if((@filter!=nil)&&(@filter!=""))
       resources =   resources.select {|x| 
-      puts x
+      
       render_resource(x).to_s().downcase.index(@filter.downcase) != nil}
       @size = resources.size()
       return resources

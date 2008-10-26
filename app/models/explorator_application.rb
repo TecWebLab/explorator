@@ -16,13 +16,14 @@ class EXPLORATOR::Application < RDFS::Resource
 end
 class Application  
    attr_accessor :uri
+
   def initialize(id)   
     super()
     @uri = 'http://www.tecweb.inf.puc-rio.br/application/id/'+  id + '/'
   end
-  def instance()   
-   
-    if @instance == nil      
+  def instance()    
+    if @instance == nil     
+      @cache = Hash.new
       @instance=EXPLORATOR::Application.new(@uri + 'default')
       @instance.explorator::uuid=@uri
       @instance.rdfs::label='Default'
@@ -35,6 +36,10 @@ class Application
   #create a new entry in the pool
   def add(resourceset)    
     raise ExploratorError.new('Must be a ResourceSet instance') if !resourceset.instance_of? EXPLORATOR::Set
+    puts '## Adding to cache ##'
+    puts resourceset.uri
+    @cache['<' + resourceset.uri + '>'] = resourceset
+    
     if instance.explorator::set == nil
       instance.explorator::set = [resourceset]
     else
@@ -43,7 +48,10 @@ class Application
   end    
   #get a resource set
   def get(uri)        
-    EXPLORATOR::Set.new(uri) 
+    #EXPLORATOR::Set.new(uri) 
+    puts '## Retrieving from the cache ##'
+    puts uri
+    @cache[uri]
   end    
   ##verifies whether the set was added in the pool
   def is_set?(uri)    
@@ -84,6 +92,7 @@ class Application
         end
       end
     end
+    @cache = Hash.new
     #remove the resources from the application
     instance.explorator::set = []
     instance.save      
@@ -115,6 +124,7 @@ class Application
   end    
   #remove a specific resource set from the pool
   def remove(uri)      
+    @cache[uri]=nil
     resource = EXPLORATOR::Set.new(uri)     
     #before remove store the set expression.     
     exp = resource.explorator::expression
