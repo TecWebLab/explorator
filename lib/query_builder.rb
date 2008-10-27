@@ -50,6 +50,7 @@ class SemanticExpression
   #the same method as query, but it is able to treat arrays.
   #This methos
   def spo(s,p,o,*r)     
+    
     result = Array.new 
     s = resource_or_self(s)
     p = resource_or_self(p)
@@ -71,11 +72,16 @@ class SemanticExpression
   end  
   #Wrapper for the class ActiveRDF Query. This method executes a query and returns a set of resources.
   #With parameter must be a single resource.
-  def query(s,p,o,*r)   
-    if r == nil
-      r = [:s,:p,:o]
-    end          
-    q = Query.new.distinct(:s,:p,:o).where(:s,:p,:o).filter(to_filter(s,:s)).filter(to_filter(p,:p)).filter(to_filter(o,:o))
+  def query(s,p,o,*r)       
+    q = Query.new    
+    if r.to_s == :p.to_s
+      q.distinct(:p,:x,:y).where(:s,:p,:o).where(:p,:x,:y) 
+    elsif r.to_s == :o.to_s
+      q.distinct(:o,:x,:y).where(:s,:p,:o).where(:o,:x,:y)        
+    else
+      q.distinct(:s,:p,:o).where(:s,:p,:o)
+    end
+    q.filter(to_filter(s,:s)).filter(to_filter(p,:p)).filter(to_filter(o,:o))   
     q.execute       
   end   
   def to_filter(value,symbol)
@@ -100,7 +106,9 @@ class SemanticExpression
       @result = @result | s 
     elsif Thread.current[:application].is_set?(s)
       #returns all set of resources
+      puts '################## SET'
       @result = @result | Thread.current[:application].get(s).elements
+            puts '################## END SET'
       #Union method, passed as parameter a triple expression
     else
       @result = @result | query(s,p,o,r)
