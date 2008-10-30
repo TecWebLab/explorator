@@ -18,7 +18,7 @@ class FacetsController < ApplicationController
     eval(params[:exp])
   end  
   def create
-    properties= eval(params[:exp]).result    
+    properties= eval(params[:exp]).result.collect{|s,p,o| s}.compact.uniq    
     facetgroup=FACETO::FacetGroup.new('<http://www.semanticnavigation.org/2008/faceto#' << params[:name] << '>')
     facetgroup.rdfs::label=params[:name]
     facetgroup.faceto::type=RDFS::Resource.new('http://www.semanticnavigation.org/2008/faceto#userdefined')
@@ -27,6 +27,7 @@ class FacetsController < ApplicationController
     facets = Array.new
     properties.each do |predicate|
       if predicate.instance_of? RDF::Property        
+        puts predicate
         #create a object FACETO:Facet for each resource property and add it to the facets array.
         #This code only creates facets that represents properties. Facets that represents expressions are not considerated here.
         id =UUID.random_create.to_s
@@ -41,6 +42,8 @@ class FacetsController < ApplicationController
       end       
     end
     facetgroup.faceto::facet = facets  
+    facetgroup.save
+    render  :action=> 'create',:layout=>false;
   end  
   #the parameter id is the ResourceSet identification in the SetsPool.
   def facet (id)  
