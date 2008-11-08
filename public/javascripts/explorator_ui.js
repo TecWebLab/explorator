@@ -19,7 +19,7 @@ Element.addMethods({
     //remove an element
     ui_remove: function(item){
         //removes the element from the model and replace the interface with a new one.	
-                new Effect.Fade(item, {
+                new Effect.Shrink(item, {
             duration: 0.2, 
 			afterFinish: function(){
                 //definitely removes the element from the set.
@@ -29,7 +29,7 @@ Element.addMethods({
 		item.ctr_remove();
     }, //close an element
     ui_close: function(item){
-        new Effect.Fade(item, {
+        new Effect.Shrink(item, {
             duration: 0.2
            
         });
@@ -276,7 +276,7 @@ function ui_add_window(result){
     document.body.insertBefore(documentFragment, $$('.set').first());
 	 init_all();
 	$$('.set').first().hide();
-	$$('.set').first().appear({ duration: 1.8 });
-          
-   
+	 
+	Effect.Grow($$('.set').first(),{direction: 'top-left'});
+ 
 }
