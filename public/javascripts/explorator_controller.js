@@ -100,43 +100,63 @@ function register_controllers(){
     cmd_semantic();    
 }
 /////////////////////////////// SET OPERATIONS //////////////////////////////////////////
+function setParameter(item){
+	removeCSS(Element.exp(item));
+			$$('.SELECTED').invoke('addClassName', Element.exp(item));
+			item.addClassName(Element.exp(item));
+            parameters.set(item.id, $$('.SELECTED'));
+}
 //These are the operations applyed over sets
 function cmd_set(){
     $$('._setparameter').each(function(item){
         item.onclick = function(){
-			removeCSS(Element.exp(item));
-			$$('.SELECTED').invoke('addClassName', Element.exp(item));
-			item.addClassName(Element.exp(item));
-            parameters.set(item.id, $$('.SELECTED'));
+		 setParameter(item);
         };
     });
     $$('._union').each(function(item){
         item.onclick = function(){
-			parameters.set('A', $$('.SELECTED'));
-            ajax_create(new SemanticExpression('A'));
-			clear();
+			setParameter(item);
+			parameters.set('operation','union' );           
         };
     });
     $$('._intersection').each(function(item){
         item.onclick = function(){
-			if (validation_set()) return;
-			ajax_create(new SemanticExpression('A').intersection('B'));
-			clear();
+			setParameter(item);
+			parameters.set('operation','intersection' );		 
         };
     });
     $$('._difference').each(function(item){
         item.onclick = function(){
-			if (validation_set()) return;
-            ajax_create(new SemanticExpression('A').difference('B'));
-			clear();
+			setParameter(item);
+			parameters.set('operation','difference' );			
+        };
+    });
+	$$('._equal').each(function(item){
+        item.onclick = function(){
+		  parameters.set('B', $$('.SELECTED'));
+		  if(parameters.get('operation') == 'union'){		    
+		  ajax_create(new SemanticExpression('A').union('B'));}
+		  else 	if(parameters.get('operation') == 'intersection')			
+		  ajax_create(new SemanticExpression('A').intersection('B'));
+		  else 	if(parameters.get('operation') == 'difference')			
+          ajax_create(new SemanticExpression('A').difference('B'));         
+		  else{//spo
+		  	if (validation_spo()) return;
+   		    parameters.set(item.id, Element.exp(item));
+			var view = 'subject_view';
+			if (parameters.get(':s') != undefined && parameters.get(':p') != undefined && parameters.get(':o') == undefined   ){
+				view = 'object_view';
+			} 
+            ajax_create(new SemanticExpression().spo(new SemanticExpression(':s'), new SemanticExpression(':p'), new SemanticExpression(':o'), parameters.get(':r')) + "&view=" + view);
+		}		   
+          clear();
         };
     });
 	  $$('._sum').each(function(item){
         item.onclick = function(){           
             item.up('._WINDOW').sum();
         };
-    });
-	 
+    });	 
 }
 //Validates a set (union, intersection or difference) command. A and B must be defined for this operation be success executed.
 function validation_set(){
@@ -168,19 +188,7 @@ function removeCSS(item) {
 //These are the operations applyed over triples or semantics annotations
 function cmd_semantic(){
     
-    //Add window show behaviour to the elements with _MAXIMIZE annotation     
-    $$('._spo').each(function(item){
-        item.onclick = function(){
-			if (validation_spo()) return;
-   		    parameters.set(item.id, Element.exp(item));
-			var view = 'subject_view';
-			if (parameters.get(':s') != undefined && parameters.get(':p') != undefined && parameters.get(':o') == undefined   ){
-				view = 'object_view';
-			} 
-            ajax_create(new SemanticExpression().spo(new SemanticExpression(':s'), new SemanticExpression(':p'), new SemanticExpression(':o'), parameters.get(':r')) + "&view=" + view);
-			clear();
-        };
-    });
+    
 	 $$('._clear').each(function(item){
         item.onclick = function(){
    		    clear();

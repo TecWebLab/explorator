@@ -162,7 +162,7 @@ function register_ui_window_behaviour(){
             });
 			item.up('._WINDOW').select('._collapseproperties').invoke('show');
 			item.up('._WINDOW').select('._expandproperties').invoke('hide');
-				e.stopPropagation();
+			e.stopPropagation();
         };
     });
       $$('._collapseproperties').each(function(item){
@@ -175,7 +175,7 @@ function register_ui_window_behaviour(){
 				item.up('._WINDOW').select('._collapseproperties').invoke('hide');
 				e.stopPropagation();
         };
-		item.hide();
+		 
     });
     
     
