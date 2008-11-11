@@ -34,7 +34,7 @@ class EXPLORATOR::Set < RDFS::Resource
     self.explorator::offset = 0
     
     #naming the set  
-    self.explorator::name=$contextindex.chr 
+    self.explorator::name='SET ' + $contextindex.chr 
     #The set is named automacally, so a counter should be incremented here.
     $contextindex +=1
     #Reset the counter when the name reach the 'Z' letter (90 in ASCII). 
