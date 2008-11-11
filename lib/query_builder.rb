@@ -39,6 +39,8 @@ class SemanticExpression
       Array.new 
     elsif s.instance_of? SemanticExpression
       s.result.collect {|s,p,o| s}.compact.uniq
+    elsif s.instance_of? Array
+      s
     else
       Array.new << s 
     end
@@ -49,8 +51,7 @@ class SemanticExpression
   # the parameter r is the variable in the triple that should be gathered.
   #the same method as query, but it is able to treat arrays.
   #This methos
-  def spo(s,p,o,*r)     
-    
+  def spo(s,p,o,*r)      
     result = Array.new 
     s = resource_or_self(s)
     p = resource_or_self(p)
@@ -75,30 +76,31 @@ class SemanticExpression
   def query(s,p,o,*r)       
     q = Query.new    
     if r.to_s == :p.to_s
-      q.distinct(:p,:x,:y).where(:s,:p,:o).where(:p,:x,:y) 
+      q.distinct(:p,:x,:y).where(:s,:p,:o).where(:p,:x,:y).optional(:p,RDFS::label,:label).sort('?p')
     elsif r.to_s == :o.to_s
-      q.distinct(:o,:x,:y).where(:s,:p,:o).where(:o,:x,:y)        
+      q.distinct(:o,:x,:y).where(:s,:p,:o).where(:o,:x,:y).optional(:o,RDFS::label,:label).sort('?o')        
     else
-      q.distinct(:s,:p,:o).where(:s,:p,:o)
-    end
+      q.distinct(:s,:p,:o).where(:s,:p,:o).optional(:s,RDFS::label,:label).sort('?s')
+    end   
     q.filter(to_filter(s,:s)).filter(to_filter(p,:p)).filter(to_filter(o,:o))   
+    q.sort('?label')
     q.execute       
   end   
   def to_filter(value,symbol)
+    puts isLiteral(symbol)
     if value == symbol
       nil
     else
       str = '?' + symbol.to_s + ' = ' + value.to_s      
       str
     end
-  end
-  
+  end  
   #Union method,
   #s - represents the s in the (s,p,o) triple or the set id or a SemanticExpression instance.
   #p - p in the triple
   #o - o in the triple
   #r - the position on the triple that should be returned.
-  def union(s,p=nil,o=nil,*r)    
+  def union(s,p=nil,o=nil, r=nil)   
     if s.instance_of? SemanticExpression 
       @result = @result | s.result
       #Union, Intersection and Difference are operation over sets.
@@ -107,8 +109,12 @@ class SemanticExpression
     elsif Thread.current[:application].is_set?(s)
       #returns all set of resources
       puts '################## SET'
-      @result = @result | Thread.current[:application].get(s).elements
-            puts '################## END SET'
+      if r != nil   && r!= :s
+        @result = @result | SemanticExpression.new.spo(Thread.current[:application].get(s).elements.collect{|s,p,o| eval(r.to_s)}.uniq,:p,:o).result
+      else
+        @result = @result | Thread.current[:application].get(s).elements
+      end
+      puts '################## END SET'
       #Union method, passed as parameter a triple expression
     else
       @result = @result | query(s,p,o,r)
@@ -120,7 +126,7 @@ class SemanticExpression
   #p - p in the triple
   #o - o in the triple
   #r - the position on the triple that should be returned.
-  def intersection(s,p=nil,o=nil,*r)
+  def intersection(s,p=nil,o=nil,r=nil)   
     tmp = @result
     if s.instance_of? SemanticExpression 
       tmp =  s.result      
@@ -130,7 +136,11 @@ class SemanticExpression
       #Intersection, Intersection and Difference are operation over sets.      
     elsif Thread.current[:application].is_set?(s)
       #returns all set of resources
-      tmp =  Thread.current[:application].get(s).elements
+      if r != nil   && r!= :s
+        tmp = SemanticExpression.new.spo(Thread.current[:application].get(s).elements.collect{|s,p,o| eval(r.to_s)}.uniq,:p,:o).result
+      else
+        tmp =  Thread.current[:application].get(s).elements
+      end
       #Intersection method, passed as parameter a triple expression
     else
       tmp =  query(s,p,o,r)
@@ -145,7 +155,7 @@ class SemanticExpression
   #p - p in the triple
   #o - o in the triple
   #r - the position on the triple that should be returned.
-  def difference(s,p=nil,o=nil,*r)
+  def difference(s,p=nil,o=nil,r=nil)   
     tmp = Array.new
     if s.instance_of? SemanticExpression 
       tmp =  s.result   
@@ -154,15 +164,19 @@ class SemanticExpression
       #Difference, Intersection and Difference are operation over sets.
     elsif Thread.current[:application].is_set?(s)
       #returns all set of resources
-      tmp = Thread.current[:application].get(s).elements
+       if r != nil   && r!= :s
+        tmp = SemanticExpression.new.spo(Thread.current[:application].get(s).elements.collect{|s,p,o| eval(r.to_s)}.uniq,:p,:o).result
+      else 
+        tmp =  Thread.current[:application].get(s).elements
+      end
       #Difference method, passed as parameter a triple expression
     else   
       tmp =  query(s,p,o,r)
     end
-       #@result = @result & tmp - The difference is between the subjects and it is not between triples.
-     a = tmp.collect{|s,p,o| s}
-     @result = @result.collect { |s,p,o| [s,p,o] if !a.include?(s) } 
- 
+    #@result = @result & tmp - The difference is between the subjects and it is not between triples.
+    a = tmp.collect{|s,p,o| s}
+    @result = @result.collect { |s,p,o| [s,p,o] if !a.include?(s) } 
+    
     self
   end   
   #this method applies a filter to the result of the expression.
@@ -175,7 +189,7 @@ class SemanticExpression
       return self
     end
     if !@result.instance_of? Array
-      @result = (Array.new <<       @result.to_s) 
+      @result = (Array.new << @result.to_s) 
     end
     self    
   end
