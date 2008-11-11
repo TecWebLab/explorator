@@ -1,20 +1,12 @@
-<div class = "toolbars">	 
+<div class = "toolbars">
     <div class = "toolbar">
-        <div class ='_union operation'>
-            <span class="tool">&cup;<span class="tip">Create new set.</span></span>
+        <div class ='_union operation' id = 'A' exp = "A"  >
+            <span class="tool">&cup;<span class="tip"><b>Union</b> between A and B</span></span>
         </div>
-    </div>	
-    <div class = "toolbar  ">
-        <div class ='_setparameter' id = 'A' exp = "A">
-            <span class="tool">A<span class="tip">Set A</span></span>
-        </div>
-        <div class ='_setparameter' id = 'B' exp = "B">
-            <span class="tool">B<span class="tip">Set B</span></span>
-        </div>
-        <div class ='_intersection space operation'>
+        <div class ='_intersection   operation' id = 'A' exp = "A" >
             <span class="tool">&cap;<span class="tip"><b>Intersection</b> between A and B</span></span>
         </div>
-        <div class ='_difference operation'>
+        <div class ='_difference operation' id = 'A' exp = "A" >
             <span class="tool">-<span class="tip"><b>Difference</b> between A and B</span></span>
         </div>
     </div>
@@ -28,20 +20,22 @@
         <div class ='_setparameter' id = ':o' exp = "O">
             <span class="tool">O<span class="tip">This element will be used in the expression (S,P,O)</span></span>
         </div>
-        <div class ='_spo operation space' id = ':r' exp=":s">
-            <span class="tool">=<span class="tip">It will return the S in the expression (S,P,O)</span></span>
-        </div>
-		<!--
+        <!--
         <div class ='_spo operation' id = ':r' exp=":p">
-            <span class="tool">P<span class="tip">It will return the P in the expression (S,P,O)</span></span>
+        <span class="tool">P<span class="tip">It will return the P in the expression (S,P,O)</span></span>
         </div>
         <div class ='_spo operation' id = ':r' exp=":o">
-            <span class="tool">O<span class="tip">It will return the O in  the expression (S,P,O)</span></span>
+        <span class="tool">O<span class="tip">It will return the O in  the expression (S,P,O)</span></span>
         </div> -->
     </div>
     <div class = "toolbar">
+        <div class ='_equal operation ' id = ':r' exp=":s">
+            <span class="tool">=<span class="tip">Execute the expression.</span></span>
+        </div>
+    </div>
+    <div class = "toolbar">
         <div class ='_clear operation'>
-            <span class="tool">CLEAR<span class="tip">Clear all parameter selected.</span></span>
+            <span class="tool">CLEAR<span class="tip">Clear all parameters selected.</span></span>
         </div>
     </div>&nbsp;
 </div>
