@@ -1,8 +1,9 @@
-<div class="_WINDOW window _draggable select set" id = "<%=uri(resourceset)%>" exp = "('<%=h(uri(resourceset))%>')">
+<div class="_WINDOW window _draggable select set" id = "<%=uri(resourceset)%>" exp = "('<%=h(uri(resourceset))%>',nil,nil,:p)">
+	<% resources =  resources_paginated(:p) %>
     <%= render :partial => 'windowheader' %>
     <%= render :partial => 'windowtoolbar' %>
-		    <%= render :partial => 'windowfilter' %>
-    <% resources_paginated(:p).each do |p|%>
+	<%= render :partial => 'windowfilter' %>
+    <% resources.each do |p|%>
     <div class = " _WINDOW  select <%=css(p)%> " set = "<%=uri(resourceset)%>" resource="<%=(uri(p)) %>" exp="('<%=h(uri(p)) %>',:p,:o)" onmouseover="Tip('<%= h(to_s(p)) %>',DELAY, 1000);" onmouseout="UnTip();">
         <div class ="resourceuioperations _NO_MINIMIZE">            
                
@@ -71,9 +72,16 @@
         </div>
         <%end %>
     </div>
-</div>
+</div><%if @size > 1%>
 <script>
     $('<%=uri(resourceset)%>').select('.properties').each(function(n){
         n.hide();
     })
+	$('<%=uri(resourceset)%>').select('._collapseproperties').invoke('hide');
+
 </script>
+<%else%>
+<script>
+	$('<%=uri(resourceset)%>').select('._expandproperties').invoke('hide');
+</script>
+<%end%>
