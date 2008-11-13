@@ -1,6 +1,9 @@
-
 <div class ='windowheader _NO_MINIMIZE'>
-   
+    <div class="windowtitle">
+        <font style='font-size:11px;font-weight:normal'>
+            (<%= @size %> resources)
+        </font>
+    </div>
     <div class=' winoperations '>
         <div class ='_hide'>
             -
@@ -8,18 +11,15 @@
         <div class ='_show'>
             +
         </div>
-	 
-		<div class ='_subject_view'>
-    <span class="tool">S<span class="tip">Group by subject</span></span>
-    </div>
-    <div class ='_predicate_view'>
-        <span class="tool">P<span class="tip">Group by predicate</span></span>
-    </div>
-    <div class ='_object_view'>
-        <span class="tool">O<span class="tip">Group by objects</span></span>
-    </div>
-        
-  
+        <div class ='_subject_view'>
+            <span class="tool">S<span class="tip">Group by subject</span></span>
+        </div>
+        <div class ='_predicate_view'>
+            <span class="tool">P<span class="tip">Group by predicate</span></span>
+        </div>
+        <div class ='_object_view'>
+            <span class="tool">O<span class="tip">Group by objects</span></span>
+        </div>
         <div class ='_remove'>
             X
         </div>
@@ -27,8 +27,13 @@
     </div>
     &nbsp;
 </div>
-<div class ='windowheader _NO_MINIMIZE'>
+<div class ='windowheader _NO_MINIMIZE' id='resname'>
  <div class="windowtitle">
-    	<%=resourceset.explorator::name %> (<%= @size %>)
+ 	<%editid = UUID.random_create.to_s%>
+    	<div id="<%=editid%>"><%= resourceset.explorator::name %></div>
+		<script type="text/javascript">
+ 			new Ajax.InPlaceEditor('<%=editid%>', '/demoajaxreturn.html',{okControl:"false",cancelControl:"false",submitOnBlur:"true"});
+		</script>
+
     </div> &nbsp;
 </div>
