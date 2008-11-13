@@ -223,7 +223,7 @@ div.windowtoolbar div.filter:hover {
     font-family: Arial, Helvetica, sans-serif;
     float: left;
     margin-left: 14px;
-    width: 200px;
+    width: 215px;
     border: 2px solid #cccccc;
     text-align: center;
     font-size: 14px;
@@ -276,11 +276,18 @@ div.windowtoolbar div._view {
 }
 
 .windowtitle {
-    float: left;
+	z-index:9;
+	position:absolute;    
+}
+#resname{
+	 height: 25px;
 }
 
 .winoperations {
-    float: right;
+	background:inherit;
+	z-index:10;
+	position:absolute;
+   	right:12px;
 }
 /*The button on the window header.*/
 .winoperations div {
