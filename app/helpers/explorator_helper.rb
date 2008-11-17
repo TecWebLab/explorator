@@ -13,10 +13,7 @@ module ExploratorHelper
   end 
   #return an interval of resources from the offset to the pagination attribute.
   #This method is used when the user is paginating a set of resources
-  def groupBy (type=:s)   
-    puts '********************'
-    puts @resourceset
-        puts '********************'
+  def groupBy (type=:s)     
     @resourceset.elements.collect{|s,p,o| eval(type.to_s)}.compact.uniq   
   end
   def resources_paginated(type=:s)      
@@ -51,7 +48,7 @@ module ExploratorHelper
     return resource.uri if (resource.instance_of? RDFS::Resource) 
   end
   #Resource URI
-  def uri (resource)            
+  def uri (resource)  
     return resource.to_s.gsub("'","\\\\'")  if  (resource.instance_of? RDFS::Literal)    
     return resource.gsub("'","\\\\'")  if  (resource.instance_of? String)   
     
