@@ -5,12 +5,7 @@
         </font>
     </div>
     <div class=' winoperations '>
-        <div class ='_hide'>
-            -
-        </div>
-        <div class ='_show'>
-            +
-        </div>
+       
         <div class ='_subject_view'>
             <span class="tool">S<span class="tip">Group by subject</span></span>
         </div>
@@ -19,6 +14,12 @@
         </div>
         <div class ='_object_view'>
             <span class="tool">O<span class="tip">Group by objects</span></span>
+        </div>
+		 <div class ='_hide'>
+            -
+        </div>
+        <div class ='_show'>
+            +
         </div>
         <div class ='_remove'>
             X
@@ -32,7 +33,7 @@
  	<%editid = UUID.random_create.to_s%>
     	<div id="<%=editid%>"><%= resourceset.explorator::name %></div>
 		<script type="text/javascript">
- 			new Ajax.InPlaceEditor('<%=editid%>', '/demoajaxreturn.html',{okControl:"false",cancelControl:"false",submitOnBlur:"true"});
+ 			new Ajax.InPlaceEditor('<%=editid%>', '/explorator/editSetName?uri=<%=uri(resourceset)%>',{okControl:"false",cancelControl:"false",submitOnBlur:"true"});
 		</script>
 
     </div> &nbsp;
