@@ -12,8 +12,7 @@ class Repository < ActiveRecord::Base
     @id=id
   @title=title
     @enable=enable
-  end
-  
+  end  
   class << self
       def disable_all      
       #gets all adapters.
@@ -21,8 +20,7 @@ class Repository < ActiveRecord::Base
       #finds the adapter identified by the id parameter.
       adapters.each do |repository|                   
           FederationManager.enable(repository,false)
-      end       
-
+      end      
     end
     def disable_by_title(title)      
       #gets all adapters.
@@ -34,7 +32,6 @@ class Repository < ActiveRecord::Base
           FederationManager.enable(repository,false)
         end
       end       
-
     end
     
     def enable_by_title(title)
@@ -48,7 +45,6 @@ class Repository < ActiveRecord::Base
           FederationManager.enable(repository,true)
         end
       end       
-
     end
   end
 end
