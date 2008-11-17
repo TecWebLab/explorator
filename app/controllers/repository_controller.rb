@@ -9,13 +9,12 @@ class RepositoryController < ApplicationController
   def index
     #variable that will store the list of adapters.
     @repositories = Array.new
-    #Gets all adapters
-    
+    #Gets all adapters    
     adapters = ConnectionPool.adapters()
     adapters.each do |repository|
       #create a model repository passing the repository's id, title and enableness 
       if repository.title!= 'Explorator'
-        @repositories <<  Repository.new(repository.object_id,repository.title, repository.enabled?)
+        @repositories <<  Repository.new(repository.object_id,repository.title, !session[:disablerepositories].include?(repository.title))
       end
     end       
     render :layout => false
@@ -23,7 +22,9 @@ class RepositoryController < ApplicationController
   #The disable method disable a adapter.
   #disable a specific adapter in the ConnectionPool.
   def disable
-    Repository.disable_by_title(params[:title])
+    session[:disablerepositories] << (params[:title]) 
+    session[:disablerepositories].uniq!
+   # Repository.disable_by_title(params[:title])
     #render nothing.
     render :text => '',:layout => false
     
@@ -31,7 +32,8 @@ class RepositoryController < ApplicationController
   #The enable method enable a adapter.
   #enable a specific adapter in the ConnectionPool.
   def enable
-    Repository.enable_by_title(params[:title])
+     session[:disablerepositories].delete(params[:title])
+   # Repository.enable_by_title(params[:title])
     #render nothing.
     render :text => '',:layout => false
   end

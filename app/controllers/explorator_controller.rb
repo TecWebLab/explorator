@@ -21,6 +21,12 @@ def resourcefilter
    @resourceset =  Application.get(params[:uri])  
    render  :partial => 'subject_view',:layout=>false;
 end 
+#change the set name
+def editSetName
+    set = session[:application].get(params[:uri])
+    set.explorator::name=params[:value]
+    render :text => params[:value], :layout=>false
+end
   #  prints the filter screen
   def filter    
     @setid=params[:uri]
