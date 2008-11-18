@@ -642,55 +642,73 @@ div#mainmenu ul li:hover ul, div#mainmenu ul ul li:hover ul, div#mainmenu ul ul 
  ************************************************************/
 
 /* menu como um todo */
- #sddm
-{	margin: 0;
-	padding: 0;
-	z-index: 30}
+.subjmenu
+{	 
+	padding:0;
+	margin:0;
+	z-index: 10000000;
+	visibility:hidden}
 
 /* coluna do menu */
-#sddm li
+.subjmenu li
 {	margin: 0;
+	margin-top:-22px;
+	margin-right:-11px;
+	height: 0.8em;
 	padding: 0;
+	padding-left:5px;
 	list-style: none;
-	float: left;
-	font: bold 11px arial}
+	float: right;
+	font: bold 11px arial;
+	z-index: 10000000;
+	width: 15px;
+	height:18px;
+	border: 1px solid #ccc;
+	background-color:#ccc;
+	}
 
 /* titulo da coluna */
-#sddm li a
-{	display: block;
-	margin: 0 1px 0 0;
-	padding: 4px 10px;
-	background: #5970B2;
-	color: #FFF;
-	text-align: center;
-	text-decoration: none}
+.subjmenu li a
+{	width:7px;
+	border:none;
+	text-decoration:none;
+	outline-style:none;
+	z-index: 10000000;
+	}
 
-#sddm li a:hover
-{	background: #49A3FF}
 
 /* conteudo da coluna como um todo */
-#sddm div
+.subjmenu div
 {	position: absolute;
 	visibility: hidden;
-	margin: 0;
+	margin-top: 0px;
+	margin-left:-70px;
 	padding: 0;
 	background: #EAEBD8;
-	border: 1px solid #5970B2}
+	border: 1px solid #ccc;
+	border-bottom:0;
+	z-index: 10000000;}
 	
  /* elemento da coluna */
-	#sddm div a
+	.subjmenu div a
 	{	position: relative;
 		display: block;
 		margin: 0;
 		padding: 5px 10px;
 		width: auto;
 		white-space: nowrap;
-		text-align: left;
+		
 		text-decoration: none;
 		background: #EAEBD8;
 		color: #2875DE;
-		font: 11px arial}
+		font: 11px arial;
+		border-bottom: 1px solid #ccc}
 
-	#sddm div a:hover
+	.subjmenu div a:hover
 	{	background: #49A3FF;
 		color: #FFF}
+		
+	.arrow {
+		margin-left: -7px;
+		margin-top:2px;
+	}
