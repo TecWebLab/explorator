@@ -8,7 +8,7 @@ class EXPLORATOR::Application < RDFS::Resource
     super(uri)                                                   
   end
   def is_current?()
-    if self.to_s == Application.instance.to_s         
+    if self.to_s ==  Thread.current[:application].instance.to_s         
       return true
     end
     false
