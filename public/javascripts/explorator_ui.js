@@ -224,7 +224,7 @@ function register_ui_selection_behaviour(){
 				item.select('._expandproperties').invoke('show');
             });
             //When only click event happens
-            if (!(e.ctrlKey || (e.modifiers && Event.META_MASK))) {
+            if (!(e.ctrlKey || e.metaKey)) {
                 //remove the selection from all elements on the interface
                 $$('.SELECTED').invoke('removeClassName', 'SELECTED');
                 //add selection to this element
