@@ -1,5 +1,9 @@
 <div class="_WINDOW window _draggable select set" id = "<%=uri(resourceset)%>" exp = "('<%=h(uri(resourceset))%>',nil,nil,:p)">
-	<% resources =  resources_paginated(:p) %>
+	 
+	<% resources =  resources_paginated(:p) 
+	 @style_p = ' style = "background-color:white;" '
+
+%>
     <%= render :partial => 'windowheader' %>
     <%= render :partial => 'windowtoolbar' %>
 	<%= render :partial => 'windowfilter' %>

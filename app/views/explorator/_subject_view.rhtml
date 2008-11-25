@@ -1,12 +1,14 @@
 <div class="_WINDOW window _draggable select set" id = "<%=uri(resourceset)%>" exp = "('<%=h(uri(resourceset))%>')"   >
-    <% resources =  resources_paginated(:s) %>
+
+    <% 
+@style_s = ' style = "background-color:white;" '
+resources =  resources_paginated(:s) %>
     <%= render :partial => 'windowheader' %>
     <%= render :partial => 'windowtoolbar' %>
     <%= render :partial => 'windowfilter' %>
     <% resources.each do |resource| %>
     <%sddm = UUID.random_create.to_s%>
-	<div class = " _WINDOW  select <%=css(resource)%>  " set = "<%=uri(resourceset)%>" resource="<%=uri(resource) %>" exp="('<%=h(uri(resource)) %>',:p,:o)" onmouseover="Tip('<%= h(to_s(resource)) %>',DELAY, 1000);mopenmenu('<%=sddm%>');" onmouseout="UnTip();mclosetimemenu();" >
-        
+	<div class = " _WINDOW  select <%=css(resource)%>  " set = "<%=uri(resourceset)%>" resource="<%=uri(resource) %>" exp="('<%=h(uri(resource)) %>',:p,:o)" onmouseover="Tip('<%= h(to_s(resource)) %>',DELAY, 1000);mopenmenu('<%=sddm%>');" onmouseout="UnTip();mclosetimemenu();" >        
         <div class ="expand _NO_MINIMIZE">
         	 <div class ='_collapseproperties' style="float:left;">
                 <span class="tool">-<span class="tip">Hide all properties values.</span></span>
@@ -15,8 +17,7 @@
                 <span class="tool">+ <span class="tip">Show the resource properties values</span></span>
             </div>
         </div>
-        <%= render_resource(resource) %>
-		
+        <%= render_resource(resource) %>		
         <%
         pred = predicates(resource,:s)
         if resources_paginated(:s).size() == 1
@@ -49,8 +50,7 @@
                 </div>
                 <% end %>
                 <!-- END OBJECT -->
-            </div>
-			
+            </div>			
         </div>
         <% end %>
 		<div class = " properties"> <a class ="all" exp="('<%=h(uri(resource)) %>',:p,:o)">More ...</a></div>
