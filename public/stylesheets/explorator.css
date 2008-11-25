@@ -652,8 +652,7 @@ div#mainmenu ul li:hover ul, div#mainmenu ul ul li:hover ul, div#mainmenu ul ul 
 /* coluna do menu */
 .subjmenu li
 {	margin: 0;
-	margin-top:-22px;
-	margin-right:-11px;
+	margin-right:-21px;
 	height: 0.8em;
 	padding: 0;
 	padding-left:5px;
@@ -682,22 +681,22 @@ div#mainmenu ul li:hover ul, div#mainmenu ul ul li:hover ul, div#mainmenu ul ul 
 {	position: absolute;
 	visibility: hidden;
 	margin-top: 0px;
-	margin-left:-70px;
+	width:100px;
 	padding: 0;
+	margin-left:-86px;
 	background: #EAEBD8;
 	border: 1px solid #ccc;
 	border-bottom:0;
 	z-index: 10000000;}
 	
  /* elemento da coluna */
-	.subjmenu div a
-	{	position: relative;
+.subjmenu div a	{
+		position: relative;
 		display: block;
 		margin: 0;
 		padding: 5px 10px;
 		width: auto;
 		white-space: nowrap;
-		
 		text-decoration: none;
 		background: #EAEBD8;
 		color: #2875DE;
