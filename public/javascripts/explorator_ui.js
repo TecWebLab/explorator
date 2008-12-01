@@ -19,23 +19,23 @@ Element.addMethods({
     //remove an element
     ui_remove: function(item){
         //removes the element from the model and replace the interface with a new one.	
-                new Effect.Shrink(item, {
-            duration: 0.2, 
-			afterFinish: function(){
+        new Effect.Shrink(item, {
+            duration: 0.2,
+            afterFinish: function(){
                 //definitely removes the element from the set.
-                item.remove();                
-            }        
+                item.remove();
+            }
         });
-		item.ctr_remove();
+        item.ctr_remove();
     }, //close an element
     ui_close: function(item){
         new Effect.Shrink(item, {
             duration: 0.2
-           
+        
         });
     }, //open an element
     ui_open: function(item){
-		
+    
         item.ctr_open();
     }
 });
@@ -76,6 +76,24 @@ function register_ui_resource_behaviour(){
         };
         
     });
+    $$('.instances').each(function(item){
+        item.identify();
+        item.onclick = function(e){ 
+		 
+            if (item.hasClassName('bluebackground')) {
+                item.innerHTML = 'i'
+                item.removeClassName('bluebackground');
+				item.up('.resource').setAttribute('exp',item.readAttribute('instances'));
+            }
+            //If it was not selected before, select.            
+            else {
+                item.innerHTML = 'c'
+                item.addClassName('bluebackground');
+				item.up('.resource').setAttribute('exp',item.readAttribute('classes'));
+            }
+            e.stopPropagation();
+        };        
+    });
     //calcuates the facets
     $$('._facet').each(function(item){
         item.onclick = function(){
@@ -96,19 +114,19 @@ function register_ui_resource_behaviour(){
             ajax_request('/viewer/index?setid=' + x.up('._WINDOW').id);
         };
     });
-      $$('._object_view').each(function(item){
+    $$('._object_view').each(function(item){
         item.onclick = function(){
-            item.up('._WINDOW').crt_refresh('object_view','');
+            item.up('._WINDOW').crt_refresh('object_view', '');
         };
     });
-     $$('._predicate_view').each(function(item){
+    $$('._predicate_view').each(function(item){
         item.onclick = function(){
-            item.up('._WINDOW').crt_refresh('predicate_view','');
+            item.up('._WINDOW').crt_refresh('predicate_view', '');
         };
     });
-	 $$('._subject_view').each(function(item){
+    $$('._subject_view').each(function(item){
         item.onclick = function(){
-            item.up('._WINDOW').crt_refresh('subject_view','');
+            item.up('._WINDOW').crt_refresh('subject_view', '');
         };
     });
 }
@@ -124,10 +142,10 @@ function register_ui_window_behaviour(){
     });
     $$('._refresh').each(function(item){
         item.onclick = function(){
-            item.up('._WINDOW').crt_refresh('subject_view','');
+            item.up('._WINDOW').crt_refresh('subject_view', '');
         };
     });
-  
+    
     //Adds a id to all _WINDOW elements.
     //This is necessary for the ajax_update method know which element should be updated.
     $$('._WINDOW').each(function(item){
@@ -141,7 +159,7 @@ function register_ui_window_behaviour(){
                     x.ui_show();
                 }
             });
-		e.stopPropagation();
+            e.stopPropagation();
         };
     });
     //Add window hide behaviour to the elements with _MINIMIZE annotation
@@ -154,28 +172,28 @@ function register_ui_window_behaviour(){
             });
         };
     });
-   
+    
     $$('._expandproperties').each(function(item){
         item.onclick = function(e){
-            item.up('._WINDOW').select('.properties').each(function(x){            
-                x.ui_show();                
+            item.up('._WINDOW').select('.properties').each(function(x){
+                x.ui_show();
             });
-			item.up('._WINDOW').select('._collapseproperties').invoke('show');
-			item.up('._WINDOW').select('._expandproperties').invoke('hide');
-			e.stopPropagation();
+            item.up('._WINDOW').select('._collapseproperties').invoke('show');
+            item.up('._WINDOW').select('._expandproperties').invoke('hide');
+            e.stopPropagation();
         };
     });
-      $$('._collapseproperties').each(function(item){
+    $$('._collapseproperties').each(function(item){
         item.onclick = function(e){
-            item.up('._WINDOW').select('.properties').each(function(x){            
+            item.up('._WINDOW').select('.properties').each(function(x){
                 x.ui_hide();
                 
             });
-			item.up('._WINDOW').select('._expandproperties').invoke('show');
-				item.up('._WINDOW').select('._collapseproperties').invoke('hide');
-				e.stopPropagation();
+            item.up('._WINDOW').select('._expandproperties').invoke('show');
+            item.up('._WINDOW').select('._collapseproperties').invoke('hide');
+            e.stopPropagation();
         };
-		 
+        
     });
     
     
@@ -218,10 +236,10 @@ function register_ui_window_behaviour(){
 function register_ui_selection_behaviour(){
     $$('.select').each(function(item){
         item.onclick = function(e){
-			  item.select('.properties').each(function(x){            
-                x.ui_hide();       
-				item.select('._collapseproperties').invoke('hide');
-				item.select('._expandproperties').invoke('show');
+            item.select('.properties').each(function(x){
+                x.ui_hide();
+                item.select('._collapseproperties').invoke('hide');
+                item.select('._expandproperties').invoke('show');
             });
             //When only click event happens
             if (!(e.ctrlKey || e.metaKey)) {
@@ -257,26 +275,30 @@ function register_ui_selection_behaviour(){
         };
     });
 }
+
 ///////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////WINDOW HELPER FUNCTION//////////////////////////
 //Create a empty div window and add to the body.
-function ui_create_window(){ 
+function ui_create_window(){
     var div = document.createElement('div');
     Element.extend(div);
     id = div.identify();
     div.setAttribute("class", "_WINDOW select");
     document.body.insertBefore(div, $$('.set').first());
     return id;
-} 
+}
+
 //Adds a html fragment on the html body.
 function ui_add_window(result){
     var range = document.createRange();
     range.selectNode(document.body);
     var documentFragment = range.createContextualFragment(result);
     document.body.insertBefore(documentFragment, $$('.set').first());
-	 init_all();
-	$$('.set').first().hide();
-	 
-	Effect.Grow($$('.set').first(),{direction: 'top-left'});
- 
+    init_all();
+    $$('.set').first().hide();
+    
+    Effect.Grow($$('.set').first(), {
+        direction: 'top-left'
+    });
+    
 }
