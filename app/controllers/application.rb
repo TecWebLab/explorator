@@ -12,6 +12,8 @@ class ApplicationController < ActionController::Base
     if session[:application] == nil
       puts 'initializing session'
       session[:disablerepositories]=Array.new
+      session[:disablerepositories] << 'Explorator'
+      session[:disablerepositories] << 'NOKIA_SPARQL'      
       session[:application] =  Application.new(session.session_id)
     end
     Thread.current[:disablerepositories]=session[:disablerepositories]    

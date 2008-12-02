@@ -14,14 +14,15 @@ class RepositoryController < ApplicationController
     adapters.each do |repository|
       #create a model repository passing the repository's id, title and enableness 
       if repository.title!= 'Explorator'
-        @repositories <<  Repository.new(repository.object_id,repository.title, !session[:disablerepositories].include?(repository.title))
+        @repositories <<  Repository.new(repository.object_id,repository.title, session[:disablerepositories].include?(repository.title))
       end
     end       
     render :layout => false
   end
+  
   #The disable method disable a adapter.
   #disable a specific adapter in the ConnectionPool.
-  def disable
+  def enable
     session[:disablerepositories] << (params[:title]) 
     session[:disablerepositories].uniq!
    # Repository.disable_by_title(params[:title])
@@ -31,7 +32,7 @@ class RepositoryController < ApplicationController
   end
   #The enable method enable a adapter.
   #enable a specific adapter in the ConnectionPool.
-  def enable
+  def disable
      session[:disablerepositories].delete(params[:title])
    # Repository.enable_by_title(params[:title])
     #render nothing.
@@ -39,12 +40,11 @@ class RepositoryController < ApplicationController
   end
   def add
     adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => params[:uri], :results => :sparql_xml, :caching =>true
-    adapter.title=params[:title]
-    
-    RDFS::Resource.find_all_predicates
-    
+    adapter.title=params[:title]    
+    RDFS::Resource.find_all_predicates    
     # construct the necessary Ruby Modules and Classes to use the Namespace
     ObjectManager.construct_classes
+    enable(params[:title])
     
     render :text => 'SparqlEndpoint Added!',:layout => false
   end
