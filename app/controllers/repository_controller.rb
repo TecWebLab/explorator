@@ -44,7 +44,7 @@ class RepositoryController < ApplicationController
     RDFS::Resource.find_all_predicates    
     # construct the necessary Ruby Modules and Classes to use the Namespace
     ObjectManager.construct_classes
-    enable(params[:title])
+   # enable(params[:title])
     
     render :text => 'SparqlEndpoint Added!',:layout => false
   end
