@@ -26,8 +26,7 @@ resources =  resources_paginated(:s) %>
                 <%end %>
             </div>
         </li>
-    </ul>
-	
+    </ul>	
 	<div class = " _WINDOW  select <%=css(resource)%>  " set = "<%=uri(resourceset)%>" resource="<%=uri(resource) %>" exp="(:s,RDF::type,'<%=h(uri(resource)) %>')" onmouseover="Tip('<%= h(to_s(resource)) %>',DELAY, 1000);mopenmenu('<%=sddm%>');" onmouseout="UnTip();mclosetimemenu();" >        
        
 	    <div class ="expand _NO_MINIMIZE">
