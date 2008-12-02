@@ -687,3 +687,10 @@ div#mainmenu ul li:hover ul, div#mainmenu ul ul li:hover ul, div#mainmenu ul ul 
 	background-color: blue;
 	color:white;
 }
+._show div{
+	margin-top:2px;
+	width:8px;
+    height: 7px;
+	border:1px solid #333;
+	border-top:2px  solid #333;
+}
