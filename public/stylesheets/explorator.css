@@ -694,3 +694,11 @@ div#mainmenu ul li:hover ul, div#mainmenu ul ul li:hover ul, div#mainmenu ul ul 
 	border:1px solid #333;
 	border-top:2px  solid #333;
 }
+
+._hide div{
+	margin-top:2px;
+	width:10px;
+    height: 7px;
+	border:0px solid #333;
+	border-top:2px  solid #333;
+}
