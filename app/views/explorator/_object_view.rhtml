@@ -45,11 +45,13 @@
             <div class = "_WINDOW draggable select _NO_MINIMIZE <%=css(p)%> predicate  inverse" resource="<%= (uri(p)) %>" exp="('<%=(uri(p)) %>',:p,:o)" onmouseover="Tip('<%= to_s(p) %>',DELAY, 1000);" onmouseout="UnTip();">
                 <div class ="resourceuioperations _NO_MINIMIZE">
                     <div class ='_hide'>
-                        <span class="tool">-<span class="tip">Hide all properties values.</span></span>
-                    </div>
-                    <div class ='_show'>
-                        <span class="tool">+<span class="tip">Show the resource properties values</span></span>
-                    </div>
+                       <div>
+                        <span class="tool"> &nbsp;<span class="tip">Minimize the window.</span></span></div>
+        </div>
+        <div class ='_show'>
+           <div>
+                        <span class="tool"> &nbsp;<span class="tip">Maximize the window.</span></span></div>
+        </div>
                     <div class = "_close">
                         x
                     </div>

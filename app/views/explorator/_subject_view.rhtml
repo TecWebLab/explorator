@@ -27,7 +27,7 @@ resources =  resources_paginated(:s) %>
             </div>
         </li>
     </ul>	
-	<div class = " _WINDOW  select <%=css(resource)%>  " set = "<%=uri(resourceset)%>" resource="<%=uri(resource) %>" exp="(:s,RDF::type,'<%=h(uri(resource)) %>')" onmouseover="Tip('<%= h(to_s(resource)) %>',DELAY, 1000);mopenmenu('<%=sddm%>');" onmouseout="UnTip();mclosetimemenu();" >        
+	<div class = " _WINDOW  select <%=css(resource)%>  " set = "<%=uri(resourceset)%>" resource="<%=uri(resource) %>" exp="('<%=h(uri(resource)) %>',:p,:o)" onmouseover="Tip('<%= h(to_s(resource)) %>',DELAY, 1000);mopenmenu('<%=sddm%>');" onmouseout="UnTip();mclosetimemenu();" >        
        
 	    <div class ="expand _NO_MINIMIZE">
         	 <div class ='_collapseproperties' style="float:left;">
@@ -39,7 +39,7 @@ resources =  resources_paginated(:s) %>
         </div>
 		 <%if resource.instance_of?(BNode)  || resource.instance_of?(String)%>
          <%elsif resource.type.include?(RDFS::Class) %>
-		<font class = "instances" classes="('<%=h(uri(resource)) %>',:p,:o)" instances="(:s,RDF::type,'<%=h(uri(resource)) %>')">i</font>
+		<font class = "instances " classes="('<%=h(uri(resource)) %>',:p,:o)" instances="(:s,RDF::type,'<%=h(uri(resource)) %>')">i</font>
 		<%end%>
        <%= render_resource(resource) %>		
         <%
@@ -54,7 +54,8 @@ resources =  resources_paginated(:s) %>
             <div class = "_WINDOW draggable select _NO_MINIMIZE <%=css(p)%> predicate" resource="<%= (uri(p)) %>" exp="('<%=(uri(p)) %>',:p,:o)" onmouseover="Tip('<%= to_s(p) %>',DELAY, 1000);" onmouseout="UnTip();">
                 <div class ="resourceuioperations _NO_MINIMIZE">                   
                     <div class ='_hide'>
-                        <span class="tool">-<span class="tip">Hide all properties values.</span></span>
+                      <div>
+                        <span class="tool"> &nbsp;<span class="tip">Minimize the window.</span></span></div>
                     </div>
                     <div class ='_show'><div>
                         <span class="tool"> &nbsp;<span class="tip">Show the resource properties values</span></span></div>

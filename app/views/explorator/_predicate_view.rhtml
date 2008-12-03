@@ -8,7 +8,25 @@
     <%= render :partial => 'windowtoolbar' %>
 	<%= render :partial => 'windowfilter' %>
     <% resources.each do |p|%>
-    <div class = " _WINDOW  select <%=css(p)%> " set = "<%=uri(resourceset)%>" resource="<%=(uri(p)) %>" exp="('<%=h(uri(p)) %>',:p,:o)" onmouseover="Tip('<%= h(to_s(p)) %>',DELAY, 1000);" onmouseout="UnTip();">
+	  <%sddm = UUID.random_create.to_s %>
+    <ul class="subjmenu" id="<%=sddm%>">
+        <li>
+            <%m1 = UUID.random_create.to_s %>
+            <a href="#" onmouseover="mcancelclosetimemenu(),mopen('<%=m1%>')" onmouseout="mclosetimemenu(),mclosetime()"><img class="arrow" border=0 src="/images/arrow_video_down_white_2.png" width="13" height="13"></a>
+            <div id="<%=m1%>" onmouseover="mcancelclosetime(),mcancelclosetimemenu()" onmouseout="mclosetime(),mclosetimemenu()">
+        <%if p.instance_of?(BNode) %>
+        <%elsif p.type.include?(RDFS::Class) %>
+        <a class ="all" exp="(:s,RDF::type,'<%=h(uri(p)) %>')">(Instances)</a>
+        <%elsif p.type.include?(RDF::Property) %>
+        <a class ="all" exp="(:s,'<%=h(uri(p)) %>',:o)">(Used by)</a>
+        <a class ="all" exp="(:s,'<%=h(uri(p)) %>',:o,:o)">(Has values)</a>
+        <%else %>
+        <a class ="all" exp="(:s,:p,'<%=h(uri(p)) %>')">(Object of)</a>
+        <%end %>	  
+            </div>
+        </li>
+    </ul>
+    <div class = " _WINDOW  select <%=css(p)%> " set = "<%=uri(resourceset)%>" resource="<%=(uri(p)) %>" exp="('<%=h(uri(p)) %>',:p,:o)" onmouseover="Tip('<%= h(to_s(p)) %>',DELAY, 1000);mopenmenu('<%=sddm%>');" onmouseout="UnTip();">
         <div class ="resourceuioperations _NO_MINIMIZE">            
                
             <div class = "_remove">
@@ -24,25 +42,20 @@
             </div>
         </div>
         <center><%= render_resource(p) %></center>
-        <%if p.instance_of?(BNode) %>
-        <%elsif p.type.include?(RDFS::Class) %>
-        <a class ="all" exp="(:s,RDF::type,'<%=h(uri(p)) %>')">(Instances)</a>
-        <%elsif p.type.include?(RDF::Property) %>
-        <a class ="all" exp="(:s,'<%=h(uri(p)) %>',:o)">(Used by)</a>
-        <a class ="all" exp="(:s,'<%=h(uri(p)) %>',:o,:o)">(Has values)</a>
-        <%else %>
-        <a class ="all" exp="(:s,:p,'<%=h(uri(p)) %>')">(Object of)</a>
-        <%end %>	  
+		
+        
         <%subjects(p).each do |resource|%>
         <div class = " _WINDOW properties">
             <div class = "_WINDOW draggable select _NO_MINIMIZE <%=css(resource)%> predicate" resource="<%= (uri(resource)) %>" exp="('<%=(uri(resource)) %>',:p,:o)" onmouseover="Tip('<%= to_s(resource) %>',DELAY, 1000);" onmouseout="UnTip();">
                 <div class ="resourceuioperations _NO_MINIMIZE">
-                    <div class ='_hide'>
-                        <span class="tool">-<span class="tip">Hide all properties values.</span></span>
-                    </div>
-                    <div class ='_show'>
-                        <span class="tool">+<span class="tip">Show the resource properties values</span></span>
-                    </div>
+                 <div class ='_hide'>
+                       <div>
+                        <span class="tool"> &nbsp;<span class="tip">Minimize the window.</span></span></div>
+        </div>
+        <div class ='_show'>
+           <div>
+                        <span class="tool"> &nbsp;<span class="tip">Maximize the window.</span></span></div>
+        </div>
                     <div class = "_close">
                         x
                     </div>
