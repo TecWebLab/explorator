@@ -17,12 +17,14 @@
 <div class=" _WINDOW " id ="<%=term(facet)%>" >
     <div class = "resource term draggable _NO_MINIMIZE" resource="<%=(uri((term(facet)))) %>"  exp="(:s,'<%=uri((term(facet))) %>',:o)"    onmouseover="Tip('<%= to_s((term(facet))) %>',DELAY, 1000);" onmouseout="UnTip();">
     <div class ="resourceuioperations ">            
-            <div class ='_hide'>
-                <span class="tool">-<span class="tip">Hide all properties values.</span></span>
-            </div>
-            <div class ='_show'>
-                <span class="tool">+<span class="tip">Show the resource properties values</span></span>
-            </div>
+           <div class ='_hide'>
+                       <div>
+                        <span class="tool"> &nbsp;<span class="tip">Minimize the window.</span></span></div>
+        </div>
+        <div class ='_show'>
+           <div>
+                        <span class="tool"> &nbsp;<span class="tip">Maximize the window.</span></span></div>
+        </div>
             
             <div class = "_remove">
                 x
