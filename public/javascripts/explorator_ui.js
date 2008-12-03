@@ -78,8 +78,7 @@ function register_ui_resource_behaviour(){
     });
     $$('.instances').each(function(item){
         item.identify();
-        item.onclick = function(e){ 
-		 
+        item.onclick = function(e){ 		 
             if (item.hasClassName('bluebackground')) {
                 item.innerHTML = 'i'
                 item.removeClassName('bluebackground');
@@ -93,6 +92,7 @@ function register_ui_resource_behaviour(){
             }
             e.stopPropagation();
         };        
+		item.up('.resource').setAttribute('exp',item.readAttribute('instances'));
     });
     //calcuates the facets
     $$('._facet').each(function(item){
