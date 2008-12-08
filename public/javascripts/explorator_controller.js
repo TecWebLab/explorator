@@ -147,7 +147,7 @@ function cmd_set(){
 			if (parameters.get(':s') != undefined && parameters.get(':p') != undefined && parameters.get(':o') == undefined   ){
 				view = 'object_view';
 			} 
-            ajax_create(new SemanticExpression().spo(new SemanticExpression(':s'), new SemanticExpression(':p'), new SemanticExpression(':o'), parameters.get(':r')) + "&view=" + view);
+            ajax_create(new SemanticExpression().spo(':s', ':p', ':o', ':r') + "&view=" + view);
 		}		   
           clear();
         };
@@ -186,9 +186,7 @@ function removeCSS(item) {
 }
 /////////////////////////////// SEMANTIC OPERATIONS //////////////////////////////////////////
 //These are the operations applyed over triples or semantics annotations
-function cmd_semantic(){
-    
-    
+function cmd_semantic(){    
 	 $$('._clear').each(function(item){
         item.onclick = function(){
    		    clear();
@@ -280,8 +278,35 @@ var SemanticExpression = Class.create({
         }
         return this;
     },
-    spo: function(s, p, o, r){
-        this.expression += '.spo(' + s + ',' + p + ',' + o + ',' + r + ')';
+	getResourcesArray: function (param){
+		var a = parameters.get(param);
+		var expression = '';
+		if (a == undefined) 
+            return param;
+        //The parameter could be only one element or several.			
+        if (Object.isArray(a)) {			
+            expression += a.map(function(x){
+				var resource = Element.resource(x);
+				if (resource == 'null'){ 
+				var exp = x.readAttribute('exp');
+				if (exp.indexOf (':o,:o')!= -1)
+				{
+					return 'SemanticExpression.new' + encodeURIComponent(exp.replace(":o,:o",':o')) +'.resources(:o)' ;					
+				}else if (exp.indexOf (':o,:p') != -1)
+				{
+					return 'SemanticExpression.new' + encodeURIComponent(exp.replace(":o,:p",':o')) +'.resources(:p)' ;					
+				}else{
+					return 'SemanticExpression.new' + encodeURIComponent(exp) +'.resources(:s)' ;					
+				}
+				}else{
+				    return "['" + resource + "']" ;
+				}
+            }).join('|');			
+       	}       
+		return  expression ; //returns a array of resources in ruby
+	},
+    spo: function(s, p, o, r){		
+        this.expression += '.spo(' + this.getResourcesArray(s) + ',' + this.getResourcesArray(p) + ',' + this.getResourcesArray(o) + ',' + parameters.get(r) + ')';
         return this;
     },
     keyword: function(k){

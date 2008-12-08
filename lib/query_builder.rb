@@ -14,7 +14,7 @@ class SemanticExpression
   #:result - It is a array of RDFS::Resource.
   attr_accessor  :result  
   #constructor.
-  def initialize(s=nil,p=nil,o=nil,*r)    
+  def initialize(s=nil,p=nil,o=nil,r=nil)    
     # initialize the variable query with the ActiveRDF Query
     @result = Array.new    
     if s != nil || p != nil || o != nil
@@ -34,11 +34,11 @@ class SemanticExpression
   end
   #
   #returns a array of resource. Sometimes the parameter s could be a SemanticExpression instance.
-  def resource_or_self(s)
+  def resource_or_self(s,r)
     if s == nil
       Array.new 
     elsif s.instance_of? SemanticExpression
-      s.result.collect {|s,p,o| s}.compact.uniq
+      s.result.collect {|s,p,o| eval(r.to_s)}.compact.uniq
     elsif s.instance_of? Array
       s
     else
@@ -51,11 +51,11 @@ class SemanticExpression
   # the parameter r is the variable in the triple that should be gathered.
   #the same method as query, but it is able to treat arrays.
   #This methos
-  def spo(s,p,o,*r)      
+  def spo(s,p,o,r=nil)      
     result = Array.new 
-    s = resource_or_self(s)
-    p = resource_or_self(p)
-    o = resource_or_self(o)
+    s = resource_or_self(s,r)
+    p = resource_or_self(p,r)
+    o = resource_or_self(o,r)
     s.each do |x|
       p.each do |y|
         o.each do |z|
@@ -73,7 +73,7 @@ class SemanticExpression
   end  
   #Wrapper for the class ActiveRDF Query. This method executes a query and returns a set of resources.
   #With parameter must be a single resource.
-  def query(s,p,o,*r)       
+  def query(s,p,o,r=nil)       
     q = Query.new    
     if r.to_s == :p.to_s
       q.distinct(:p,:x,:y).where(:s,:p,:o).where(:p,:x,:y).optional(:p,RDFS::label,:label).sort(' ?p ')
@@ -140,11 +140,11 @@ class SemanticExpression
       if r != nil   && r!= :s
         tmp = SemanticExpression.new.spo(Thread.current[:application].get(s).elements.collect{|s,p,o| eval(r.to_s)}.uniq,:p,:o).result
       else
-        tmp =  Thread.current[:application].get(s).elements
+        tmp =Thread.current[:application].get(s).elements
       end
       #Intersection method, passed as parameter a triple expression
     else
-      tmp =  query(s,p,o,r)
+      tmp = query(s,p,o,r)
     end
     #@result = @result & tmp - The intersection is between the subjects and it is not between triples.
     a = tmp.collect{|s,p,o| s}
@@ -205,6 +205,9 @@ class SemanticExpression
       return true
     end
     return false
+  end
+  def resources(r)
+    self.result.collect {|s,p,o| eval(r.to_s)}
   end
   
   #The to_resource method is necessary because the ActiveRDF Query only accept a RDFS::Resource, a Literal(String) or a Ruby Symbol as parameter.

@@ -21,13 +21,13 @@ module ExploratorHelper
     @size =  resources.size()
     if((@filter!=nil)&&(@filter!=""))
       resources =   resources.select {|x| 
-      
-      render_resource(x).to_s().downcase.index(@filter.downcase) != nil}
+        
+        render_resource(x).to_s().downcase.index(@filter.downcase) != nil}
       @size = resources.size()
       return resources
     end
     resources = resources[@resourceset.offset.to_i,@resourceset.pagination.to_i]
-  resources
+    resources
   end
   def subjects(predicate, resource=nil)
     @resourceset.elements.collect{|s,p,o| s if  (resource == o || resource == nil) && predicate == p}.compact.uniq    
@@ -66,9 +66,11 @@ module ExploratorHelper
     end         
     classes = Array.new      
     resource.type.each do |type|
-      classes <<   type.localname.downcase
+      
+        classes <<   type.localname.downcase
+     
     end    
-    classes.uniq.join(' ') << ' '
+    classes.uniq.join(' ') << ' '    
   end
   #verifies whether the resource is from type class.
   def is_class(resource)

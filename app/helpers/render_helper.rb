@@ -18,9 +18,7 @@ module RenderHelper
   #Render a resource view. 
   # The heuristic used is the following:
   #If was defined a resource view than render it, else render the first resource type's view. 
-  def render_resource (resource)   
-  
-     
+  def render_resource (resource)       
     return truncate(resource) if !(resource.instance_of? RDFS::Resource)     
     #if a view was defined by the user.        
     if  resource.explorator::view != nil && !is_class(resource)  
