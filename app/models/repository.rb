@@ -6,12 +6,13 @@ class Repository < ActiveRecord::Base
   #name - the repository name
   #id - the repository id 
   #enable - a boolean value that indicates whether the repository is enable or disable.
-  attr_accessor :title, :id, :enable
+  attr_accessor :title, :id, :enable,:limit
   #the class constructor.
-  def initialize(id,title,  enable)   
+  def initialize(id,title,  enable,limit)   
     @id=id
   @title=title
     @enable=enable
+        @limit=limit
   end  
   class << self
       def disable_all      

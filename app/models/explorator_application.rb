@@ -51,7 +51,7 @@ class Application
     #EXPLORATOR::Set.new(uri) 
     puts '## Retrieving from the cache ##'
     puts uri
-    @cache[RDFS::Resource.new (uri)]
+    @cache[RDFS::Resource.new(uri)]
   end    
   ##verifies whether the set was added in the pool
   def is_set?(uri)    
