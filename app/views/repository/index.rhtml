@@ -1,5 +1,5 @@
-<div class ="_WINDOW config  " id ="repositorywindow" >
-  <div class=' winoperations _NO_MINIMIZE '>       
+<div class ="_WINDOW config  " id ="repositorywindow">
+    <div class=' winoperations _NO_MINIMIZE '>
         <div class ='_close'>
             X
         </div>
@@ -7,13 +7,16 @@
     </div>
     <br>
     <h1>Add Sparql Endpoint</h1>
-	 <table width="100%" border="1">
+    <table width="100%" border="1">
         <tr>
             <td>
-			Repository Title
+                Repository Title
             </td>
             <td>
-               Sparql URL
+                Sparql URL
+            </td>
+            <td>
+                Query Limit
             </td>
         </tr>
         <tr>
@@ -23,35 +26,60 @@
             <td>
                 <input id = "sparqluri" name = "sparqlendpoint" value = "" size ="40"/>
             </td>
-        </tr>
-		 <tr>
-            <td colspan="2" align="right">
-                <input name = "title" type="button" value = "Add" onclick="new Ajax.Request('/repository/add?title='+$F($('sparqltitle'))+ '&uri=' +$F($('sparqluri')) ,{  method: 'get',  onComplete: function( transport){ alert( transport.responseText); $('repositorywindow').remove();}} );"/>
+            <td>
+                <input id = "limit" name = "limit" value = "" size ="6"/>
             </td>
-			           
-        </tr> 
-    </table>
-	 <h1>All Repositories</h1>
+        </tr>
+        <tr>
+            <td colspan="3" align="right">
+                <input name = "title" type="button" value = "Add" onclick="new Ajax.Request('/repository/add?title='+$F($('sparqltitle'))+ '&uri=' +$F($('sparqluri'))+ '&limit=' +$F($('limit')) ,{  method: 'get',  onComplete: function( transport){ alert( transport.responseText); $('repositorywindow').remove();}} );"/>
+            </td>
+        </tr>
+    </table><h1>All Repositories</h1>
     <table width="100%" border="1">
+        <tr>
+            <td>
+                Repository
+            </td>
+            <td width="10%">
+                Enable
+            </td>
+            <td width="10%">
+                Disable
+            </td>
+            <td>
+                Query 	Limit
+            </td>
+        </tr>
         <%@repositories.each do |repository| %>
         <tr>
             <td>
                 <%=repository.title %>
             </td>
+            <td align='center'>
+                <input name="<%=repository.title%>" onchange="new Ajax.Request('/repository/enable?title='+this.name,{  method: 'get'} );" type="radio" value="enable"<%= 'checked' if repository.enable %>/>
+            </td>
+            <td align='center'>
+                <input name="<%=repository.title%>" onchange="new Ajax.Request('/repository/disable?title='+this.name, {  method: 'get'} );" type="radio" value="disable"<%= 'checked' if !repository.enable %>/>
+            </td>
             <td>
-                <input name="<%=repository.title%>" onchange="new Ajax.Request('/repository/enable?title='+this.name,{  method: 'get'} );" type="radio" value="enable"<%= 'checked' if repository.enable %>/> Enable<input name="<%=repository.title%>" onchange="new Ajax.Request('/repository/disable?title='+this.name, {  method: 'get'} );" type="radio" value="disable"<%= 'checked' if !repository.enable %>/> Disable
+                <input id = "limit"  onchange="new Ajax.Request('/repository/limit?title='+this.name + '&limit='+this.value,{  method: 'get'} );"  name = "<%=repository.title%>" value = "<%=repository.limit%>" size ="6"/>
             </td>
         </tr><%end %>
-		 <tr>
+        <tr>
             <td>
-               &nbsp;
+                &nbsp;
+            </td>
+            <td  >
+                <input type = "button" onclick="$$('input[value=enable]').each(function(s) { s.click();});" value = "Enable All">
             </td>
             <td>
-			 <input type = "button" onclick="$$('input[value=enable]').each(function(s) { s.click();});" value = "Enable All">                 <input type = "button" onclick="$$('input[value=disable]').each(function(s) { s.click();});" value = "Disable All"> 
+                <input type = "button" onclick="$$('input[value=disable]').each(function(s) { s.click();});" value = "Disable All">
+            </td>
+            <td>
             </td>
         </tr>
     </table>
-	<br>
-    <input type="button" class = "_close" name="OK" value="OK">
-	<input type="button" class = "_close" name="Close" value="Close">
+    <br>
+    <input type="button" class = "_close" name="OK" value="Save"><input type="button" class = "_close" name="Close" value="Close">
 </div>
