@@ -56,8 +56,7 @@ module ExploratorHelper
   end
   #this will be added in the class attribute of the html element.
   #return a string of all resource types separated by space.
-  def css(resource)    
-    
+  def css(resource)        
     if resource.instance_of? String
       return ' resource string'
     end  
@@ -65,10 +64,9 @@ module ExploratorHelper
       return ' resource '
     end         
     classes = Array.new      
-    resource.type.each do |type|
-      
-        classes <<   type.localname.downcase
-     
+   
+    resource.type.each do |type|      
+        classes <<   type.localname.downcase     
     end    
     classes.uniq.join(' ') << ' '    
   end

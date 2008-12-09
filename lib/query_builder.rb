@@ -92,7 +92,13 @@ class SemanticExpression
     if value == symbol
       nil
     else
-      str = '?' + symbol.to_s + ' = ' + value.to_s      
+      str =''
+
+      if !isLiteral(value)
+        str = '?' + symbol.to_s + ' = ' + value.to_s      
+      else
+        str = "str(?"+symbol.to_s+")='"+value.to_s+"'"
+      end
       str
     end
   end  
@@ -165,7 +171,7 @@ class SemanticExpression
       #Difference, Intersection and Difference are operation over sets.
     elsif Thread.current[:application].is_set?(s)
       #returns all set of resources
-       if r != nil   && r!= :s
+      if r != nil   && r!= :s
         tmp = SemanticExpression.new.spo(Thread.current[:application].get(s).elements.collect{|s,p,o| eval(r.to_s)}.uniq,:p,:o).result
       else 
         tmp =  Thread.current[:application].get(s).elements
