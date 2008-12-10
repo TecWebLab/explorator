@@ -195,7 +195,7 @@ function cmd_semantic(){
     //Add a listener for the keyword search. 
     //This observer is applied over the form id_form_keyword
     $('id_form_keyword').onsubmit = function(){
-        ajax_create(new SemanticExpression().keyword($F('seachbykeyword')));
+        ajax_create(new SemanticExpression().search($F('seachbykeyword')));
         return false;
     };
 	  //Add a listener for the facet create form. 
@@ -313,7 +313,10 @@ var SemanticExpression = Class.create({
         this.expression += '.keyword(\'' + k + '\')';
         return this;
     },
-	 
+	  search: function(k){
+        this.expression += '.search(\'' + encodeURIComponent(k) + '\')';
+        return this;
+    },
 
     toString: function(){
         return this.expression;
