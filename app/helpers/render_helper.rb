@@ -5,13 +5,19 @@
 module RenderHelper
   #gets the name of the resource
   def   truncate(text)
-    #    max = 21    
+    if text.instance_of? Array
+      text[0]
+    else 
+        #    max = 21    
     #    if text.to_s.size > max
     #      text.to_s[0, max]  << '...'
     #    else
     #      text.to_s[0, max]  
     #    end    
-    text
+    
+      text
+    end
+  
   end
   ##sorts the resources using render_resource label
   
