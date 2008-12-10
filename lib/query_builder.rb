@@ -67,6 +67,20 @@ class SemanticExpression
     self
   end
   #adds keyword query to the expression
+  def search (word)
+    begin       
+      x = URI.parse(word)  
+      x.schema
+      k = RDFS::Resource.new(word)
+      spo(k,:p,:o)
+     # spo(:s,k,:o)
+     # spo(:s,:p,k)    
+    rescue 
+     #not URI
+      @result = @result | Query.new.distinct(:s,:p,:o).where(:s,:p,:o).keyword_where(:o,word).execute    
+    end  
+    self
+  end
   def keyword(k)        
     @result = @result | Query.new.distinct(:s,:p,:o).where(:s,:p,:o).keyword_where(:s,k).execute | Query.new.distinct(:s,:p,:o).where(:s,:p,:o).keyword_where(:p,k).execute | Query.new.distinct(:s,:p,:o).where(:s,:p,:o).keyword_where(:o,k).execute
     self
@@ -76,24 +90,27 @@ class SemanticExpression
   def query(s,p,o,r=nil)       
     q = Query.new    
     if r.to_s == :p.to_s
-      q.distinct(:p,:x,:y).where(:s,:p,:o).where(:p,:x,:y).optional(:p,RDFS::label,:label).sort(' ?p ')
+      #  q.distinct(:p,:x,:y).where(:s,:p,:o).where(:p,:x,:y).optional(:p,RDFS::label,:label).sort(' ?p ')
+      q.distinct(:p,:x,:y).where(:s,:p,:o).where(:p,:x,:y)
     elsif r.to_s == :o.to_s
-      q.distinct(:o,:x,:y).where(:s,:p,:o).where(:o,:x,:y).optional(:o,RDFS::label,:label).sort(' ?o ')        
+      # q.distinct(:o,:x,:y).where(:s,:p,:o).where(:o,:x,:y).optional(:o,RDFS::label,:label).sort(' ?o ')        
+      q.distinct(:o,:x,:y).where(:s,:p,:o).where(:o,:x,:y)
     else
-      q.distinct(:s,:p,:o).where(:s,:p,:o).optional(:s,RDFS::label,:label).sort(' ?s ')
+      #  q.distinct(:s,:p,:o).where(:s,:p,:o).optional(:s,RDFS::label,:label).sort(' ?s ')
+      q.distinct(:s,:p,:o).where(:s,:p,:o)
     end   
     q.filter(to_filter(s,:s)).filter(to_filter(p,:p)).filter(to_filter(o,:o))   
-    q.sort(' ?label ')
+    #    q.sort(' ?label ')
     q.execute       
     
   end   
   def to_filter(value,symbol)
-    puts isLiteral(symbol)
+    
     if value == symbol
       nil
     else
       str =''
-
+      
       if !isLiteral(value)
         str = '?' + symbol.to_s + ' = ' + value.to_s      
       else
