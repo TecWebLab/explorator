@@ -739,10 +739,8 @@ div#mainmenu ul li:hover ul, div#mainmenu ul ul li:hover ul, div#mainmenu ul ul 
 }
 
 .tecweb {
-    float: left;
-    bottom: 4px;
-    right: 4px;
-    position: fixed;
+  margin-top:4px;
+	margin-left:9px;
 }
 .logo{
 	margin-top:8px;
