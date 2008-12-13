@@ -194,9 +194,11 @@ function cmd_semantic(){
     });
     //Add a listener for the keyword search. 
     //This observer is applied over the form id_form_keyword
-    $('id_form_keyword').onsubmit = function(){
-        ajax_create(new SemanticExpression().search($F('seachbykeyword')));
-        return false;
+    $('go').onclick = function(){
+		ajax_create(new SemanticExpression().go($F('seachbykeyword')));       
+    };
+   $('search').onclick = function(){
+		ajax_create(new SemanticExpression().search($F('seachbykeyword')));      
     };
 	  //Add a listener for the facet create form. 
     //This observer is applied over the form id_form_facet
@@ -317,7 +319,10 @@ var SemanticExpression = Class.create({
         this.expression += '.search(\'' + encodeURIComponent(k) + '\')';
         return this;
     },
-
+ 	go: function(k){
+        this.expression += '.go(\'' + encodeURIComponent(k) + '\')';
+        return this;
+    },
     toString: function(){
         return this.expression;
     }

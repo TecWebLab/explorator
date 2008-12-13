@@ -1,6 +1,9 @@
 /***********************************************************
  * HTML CSS
  */
+body {
+	 background-color: #efefef;
+}
 h1 {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
@@ -207,14 +210,14 @@ div.windowtoolbar div.filter:hover {
     float: left;
     z-index: 1000;
     margin-left: 14px;
-    width: 33%;
+    width: 50%;
     height: 100%;
     border: 2px solid #cccccc;
     text-align: center;
     font-size: 14px;
     padding: 9px;
     position: fixed;
-    left: 33%;
+    left: 25%;
     top: 0px;
     position: fixed;
     background-color: #fefefe;
@@ -399,6 +402,7 @@ span.tool:hover span.tip {
 /*
  *   Landmaks layout definition
  */
+
 .landmarks {
     font-family: Arial, Helvetica, sans-serif;
     float: left;
@@ -406,7 +410,7 @@ span.tool:hover span.tip {
     top: 0px;
     left: 0px;
     width: 100%;
-    background-color: #efefe4;
+    background-color: #fff;
     left: 0px;
     font-weight: bold;
     font-size: 12px;
@@ -520,8 +524,13 @@ div.filter input {
     background-color: #fff;
 }
 
-div input
-[ type = "button" ], input [ type = "submit" ] {
+input[type =button]{
+    padding: 2px;
+    background-color: #4f94cd;
+    color: #ffffff;
+    border: 1px outset #4f94cd;
+}
+input[type =submit] {
     padding: 2px;
     background-color: #4f94cd;
     color: #ffffff;
@@ -745,5 +754,5 @@ div#mainmenu ul li:hover ul, div#mainmenu ul ul li:hover ul, div#mainmenu ul ul 
 .logo{
 	margin-top:8px;
 	margin-left:9px;
-	margin-right:85px;
+	margin-right:55px;
 }
