@@ -23,6 +23,10 @@ dir = File.dirname(File.expand_path(__FILE__))
 #adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8181/org.semanticdesktop.services.rdfrepository/repositories/main", :results => :sparql_xml, :caching =>true
 #adapter.title='NEPOMUK_SPARQL'
 
+
+adapter =ConnectionPool.add_data_source :type => :sparql_sesame_api ,  :caching =>true
+adapter.title='EXPLORATOR_DEFAULT'
+
 adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8080/openrdf-sesame/repositories/NOKIA", :results => :sparql_xml, :caching =>true
 adapter.title='NOKIA_DEFAULT'
 

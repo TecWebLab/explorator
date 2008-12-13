@@ -10,6 +10,7 @@ require "date"
 #Author: Samur Araujo
 #Date: 25 jun 2008.
 require 'active_rdf'
+require 'rjb'
 class SemanticExpression
   #:result - It is a array of RDFS::Resource.
   attr_accessor  :result  
@@ -68,17 +69,23 @@ class SemanticExpression
   end
   #adds keyword query to the expression
   def search (word)
-    begin       
-      x = URI.parse(word)  
-      x.schema
+    if  word.index('http://')     
       k = RDFS::Resource.new(word)
       spo(k,:p,:o)
      # spo(:s,k,:o)
      # spo(:s,:p,k)    
-    rescue 
+  else
      #not URI
       @result = @result | Query.new.distinct(:s,:p,:o).where(:s,:p,:o).keyword_where(:o,word).execute    
     end  
+    self
+  end
+  def go(uri)
+    adapter = ConnectionPool.adapters.select {|adapter| 
+       adapter.title == 'EXPLORATOR_DEFAULT'
+    }
+    adapter.first().bridge.loaduri(uri, false);   
+    @result = @result | Query.new.distinct(:s,:p,:o).where(:s,:p,:o,RDFS::Resource.new(uri)).execute
     self
   end
   def keyword(k)        
