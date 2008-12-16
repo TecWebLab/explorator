@@ -13,9 +13,9 @@ module RenderHelper
     #      text.to_s[0, max]  << '...'
     #    else
     #      text.to_s[0, max]  
-    #    end    
+    #    end        
     
-      text
+  text
     end
   
   end
@@ -41,7 +41,14 @@ module RenderHelper
         truncate(resource.name )
       elsif resource.title != nil
         truncate(resource.title)     
-      else truncate(resource.localname)
+      else
+          if  resource.uri.to_s.downcase.index('.jpg') != nil
+      '<img src ="' + resource.uri + '"/>'
+    else
+truncate(resource.localname)
+    end
+      
+        
       end
     end    
   end 
