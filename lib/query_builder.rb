@@ -85,6 +85,7 @@ class SemanticExpression
        adapter.title == 'EXPLORATOR_DEFAULT'
     }
     adapter.first().bridge.loaduri(uri, false);   
+    adapter.first().reset_cache()
     @result = @result | Query.new.distinct(:s,:p,:o).where(:s,:p,:o,RDFS::Resource.new(uri)).execute
     self
   end
