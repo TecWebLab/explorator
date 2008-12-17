@@ -12,6 +12,7 @@ Element.addMethods({
     },
     //Show an element
     ui_show: function(item){
+    
         new Effect.BlindDown(item, {
             duration: 0.3
         });
@@ -58,7 +59,12 @@ function register_ui_resource_behaviour(){
     $$('.resource').each(function(resource){
         resource.identify();
         resource.ondblclick = function(e){
-            resource.ui_open();
+            if ((e.ctrlKey || e.metaKey)) {
+                resource.ui_open();
+            }
+            else {
+                ajax_create(new SemanticExpression().go(resource.readAttribute('resource')));
+            }
             e.stopPropagation();
         };
         /* resource.onclick = function(e){          
@@ -78,21 +84,21 @@ function register_ui_resource_behaviour(){
     });
     $$('.instances').each(function(item){
         item.identify();
-        item.onclick = function(e){ 		 
+        item.onclick = function(e){
             if (item.hasClassName('bluebackground')) {
                 item.innerHTML = 'i'
                 item.removeClassName('bluebackground');
-				item.up('.resource').setAttribute('exp',item.readAttribute('instances'));
+                item.up('.resource').setAttribute('exp', item.readAttribute('instances'));
             }
             //If it was not selected before, select.            
             else {
                 item.innerHTML = 'c'
                 item.addClassName('bluebackground');
-				item.up('.resource').setAttribute('exp',item.readAttribute('classes'));
+                item.up('.resource').setAttribute('exp', item.readAttribute('classes'));
             }
             e.stopPropagation();
-        };        
-		item.up('.resource').setAttribute('exp',item.readAttribute('instances'));
+        };
+        item.up('.resource').setAttribute('exp', item.readAttribute('instances'));
     });
     //calcuates the facets
     $$('._facet').each(function(item){
@@ -166,7 +172,7 @@ function register_ui_window_behaviour(){
     $$('._hide').each(function(item){
         item.onclick = function colapse(){
             item.up('._WINDOW').childElements().each(function(x){
-                if (!x.hasClassName('_NO_MINIMIZE')) {
+                if (!x.hasClassName('_NO_MINIMIZE') && x.visible()) {
                     x.ui_hide();
                 }
             });
@@ -187,7 +193,6 @@ function register_ui_window_behaviour(){
         item.onclick = function(e){
             item.up('._WINDOW').select('.properties').each(function(x){
                 x.ui_hide();
-                
             });
             item.up('._WINDOW').select('._expandproperties').invoke('show');
             item.up('._WINDOW').select('._collapseproperties').invoke('hide');
@@ -234,13 +239,15 @@ function register_ui_window_behaviour(){
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////SELECTION BEHAVIOURS//////////////////////////////////////////////////////
 function register_ui_selection_behaviour(){
-    $$('.select').each(function(item){
+    $$('.select').each(function(item){    
         item.onclick = function(e){
-            item.select('.properties').each(function(x){
-                x.ui_hide();
-                item.select('._collapseproperties').invoke('hide');
-                item.select('._expandproperties').invoke('show');
+             item.select('.properties').each(function(x){
+                if (!x.hasClassName('_NO_MINIMIZE') && x.visible()) {
+                    x.ui_hide();
+                }
             });
+            item.select('._collapseproperties').invoke('hide');
+            item.select('._expandproperties').invoke('show');
             //When only click event happens
             if (!(e.ctrlKey || e.metaKey)) {
                 //remove the selection from all elements on the interface
