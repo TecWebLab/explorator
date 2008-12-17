@@ -8,16 +8,16 @@ module RenderHelper
     if text.instance_of? Array
       text[0]
     else 
-        #    max = 21    
-    #    if text.to_s.size > max
-    #      text.to_s[0, max]  << '...'
-    #    else
-    #      text.to_s[0, max]  
-    #    end        
-    
-  text
+      #    max = 21    
+      #    if text.to_s.size > max
+      #      text.to_s[0, max]  << '...'
+      #    else
+      #      text.to_s[0, max]  
+      #    end        
+      
+      text
     end
-  
+    
   end
   ##sorts the resources using render_resource label
   
@@ -34,7 +34,7 @@ module RenderHelper
       resource.instance_eval(RDFS::Resource.new(resource.type[0].uri).explorator::view)    
       #render a default property: label, name, title, or the resource localname
     else
-     
+      
       if resource.label != nil
         truncate(resource.label)
       elsif resource.name != nil
@@ -42,12 +42,14 @@ module RenderHelper
       elsif resource.title != nil
         truncate(resource.title)     
       else
-          if  resource.uri.to_s.downcase.index('.jpg') != nil
-      '<img src ="' + resource.uri + '"/>'
-    else
-truncate(resource.localname)
-    end
-      
+        str = resource.uri.to_s.downcase
+        str = str[str.length-4,str.length]
+         if  str == '.jpg' || str =='.gif' || str =='.png'
+          '<img src ="' + resource.uri + '"/>'
+        else
+          truncate(resource.localname)
+        end
+        
         
       end
     end    
