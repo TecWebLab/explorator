@@ -84,7 +84,9 @@ class SemanticExpression
     adapter = ConnectionPool.adapters.select {|adapter| 
        adapter.title == 'EXPLORATOR_DEFAULT'
     }
-    adapter.first().bridge.loaduri(uri, false);   
+    uri = RDFS::Resource.new(uri)
+    puts uri.uri
+    adapter.first().bridge.loaduri(uri.uri, false);   
     adapter.first().reset_cache()
     @result = @result | Query.new.distinct(:s,:p,:o).where(:s,:p,:o,RDFS::Resource.new(uri)).execute
     self
