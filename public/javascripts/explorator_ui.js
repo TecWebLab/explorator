@@ -248,8 +248,8 @@ function register_ui_selection_behaviour(){
                 }
             });
 			var uri = item.readAttribute('resource');
-
-			$('seachbykeyword').value=			uri.replace('<','').replace('>','')
+			if (uri!=null)
+			$('seachbykeyword').value=uri.replace('<','').replace('>','')
   		
         
             item.select('._collapseproperties').invoke('hide');
