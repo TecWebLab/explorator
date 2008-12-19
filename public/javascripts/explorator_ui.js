@@ -58,15 +58,15 @@ function register_ui_resource_behaviour(){
     //Add window show behaviour to the elements with  _MINIMIZE annotation 
     $$('.resource').each(function(resource){
         resource.identify();
-        resource.ondblclick = function(e){
-            if ((e.ctrlKey || e.metaKey)) {
-                resource.ui_open();
-            }
-            else {
-                ajax_create(new SemanticExpression().go(resource.readAttribute('resource')));
-            }
+        resource.ondblclick = function(e){        
+            resource.ui_open();
             e.stopPropagation();
         };
+//	   resource.onclick = function(e){        
+//		   $('seachbykeyword').value=resource.readAttribute('resource');
+//  			e.stopPropagation();
+//        };
+    
         /* resource.onclick = function(e){          
          if (e.altKey){
          var uri = resource.getAttribute('resource');
@@ -74,6 +74,7 @@ function register_ui_resource_behaviour(){
          }
          };*/
     });
+	
     $$('.all').each(function(resource){
         resource.identify();
         resource.onclick = function(e){
@@ -239,13 +240,18 @@ function register_ui_window_behaviour(){
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////SELECTION BEHAVIOURS//////////////////////////////////////////////////////
 function register_ui_selection_behaviour(){
-    $$('.select').each(function(item){    
+    $$('.select').each(function(item){
         item.onclick = function(e){
-             item.select('.properties').each(function(x){
+            item.select('.properties').each(function(x){
                 if (!x.hasClassName('_NO_MINIMIZE') && x.visible()) {
                     x.ui_hide();
                 }
             });
+			var uri = item.readAttribute('resource');
+
+			$('seachbykeyword').value=			uri.replace('<','').replace('>','')
+  		
+        
             item.select('._collapseproperties').invoke('hide');
             item.select('._expandproperties').invoke('show');
             //When only click event happens
