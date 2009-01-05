@@ -2,7 +2,7 @@
     <% @style_o = ' style = "background-color:white;" '
     resources =  resources_paginated(:o) %>
     <%= render :partial => 'windowheader' %>
-    <%= render :partial => 'windowtoolbar' %>
+  
     <%= render :partial => 'windowfilter' %>
     <% resources.each do |resource| %>
     <%sddm = UUID.random_create.to_s %>
