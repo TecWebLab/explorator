@@ -33,8 +33,7 @@ module RenderHelper
     elsif RDFS::Resource.new(resource.type[0].uri).explorator::view != nil 
       resource.instance_eval(RDFS::Resource.new(resource.type[0].uri).explorator::view)    
       #render a default property: label, name, title, or the resource localname
-    else
-      
+    else      
       if resource.label != nil
         truncate(resource.label)
       elsif resource.name != nil
