@@ -58,14 +58,14 @@ function register_ui_resource_behaviour(){
     //Add window show behaviour to the elements with  _MINIMIZE annotation 
     $$('.resource').each(function(resource){
         resource.identify();
-        resource.ondblclick = function(e){        
+        resource.ondblclick = function(e){
             resource.ui_open();
             e.stopPropagation();
         };
-//	   resource.onclick = function(e){        
-//		   $('seachbykeyword').value=resource.readAttribute('resource');
-//  			e.stopPropagation();
-//        };
+        //	   resource.onclick = function(e){        
+        //		   $('seachbykeyword').value=resource.readAttribute('resource');
+        //  			e.stopPropagation();
+        //        };
     
         /* resource.onclick = function(e){          
          if (e.altKey){
@@ -74,7 +74,7 @@ function register_ui_resource_behaviour(){
          }
          };*/
     });
-	
+    
     $$('.all').each(function(resource){
         resource.identify();
         resource.onclick = function(e){
@@ -104,16 +104,33 @@ function register_ui_resource_behaviour(){
     //calcuates the facets
     $$('._facet').each(function(item){
         item.onclick = function(){
-            $$('._FACETED').invoke('removeClassName', '_FACETED');
-            item.addClassName('_FACETED');
-            item.up('._WINDOW').crt_facet('default');
+            if ($$('.SELECTED').size() != 1) {
+                alert("Select JUST 1 set to apply the facets.");
+            }
+            else {
+                if ($$('.SELECTED').first().hasClassName('resource')) {
+                    alert('You can only facet a SET not a RESOURCE.')
+                    return;
+                }
+                
+                $$('.SELECTED').first().crt_facet('default');
+            }
+            
         };
     }); //calcuates the facets
     $$('._infer').each(function(item){
         item.onclick = function(){
-            $$('._FACETED').invoke('removeClassName', '_FACETED');
-            item.addClassName('_FACETED');
-            item.up('._WINDOW').crt_infer();
+        
+            if ($$('.SELECTED').size() != 1) {
+                alert("Select JUST 1 set to apply the facets.");
+            }
+            else {
+                if ($$('.SELECTED').first().hasClassName('resource')) {
+                    alert('You can only facet a SET not a RESOURCE.')
+                    return;
+                }
+                $$('.SELECTED').first().crt_infer();
+            }
         };
     });
     $$('._view').each(function(x){
@@ -247,11 +264,11 @@ function register_ui_selection_behaviour(){
                     x.ui_hide();
                 }
             });
-			var uri = item.readAttribute('resource');
-			if (uri!=null)
-			$('seachbykeyword').value=uri.replace('<','').replace('>','')
-  		
-        
+            var uri = item.readAttribute('resource');
+            if (uri != null) 
+                $('seachbykeyword').value = uri.replace('<', '').replace('>', '')
+            
+            
             item.select('._collapseproperties').invoke('hide');
             item.select('._expandproperties').invoke('show');
             //When only click event happens
