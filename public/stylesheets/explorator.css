@@ -2,8 +2,9 @@
  * HTML CSS
  */
 body {
-	 background-color: #efefef;
+    background-color: #efefef;
 }
+
 h1 {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
@@ -15,12 +16,12 @@ table td#css {
     font-size: 12px;
     border: 1px solid #efefef;
 }
+
 /**********************************************************************************/
 /*********************************************************************************
  * ****************************** HELP INTERFACE **********************
  * this section contains the css for the help interface.
- */
-.help_container {
+ */ .help_container {
     position: fixed;
     width: 100%;
     height: 10%;
@@ -33,12 +34,12 @@ table td#css {
     z-index: 1000;
     font-family: Arial, Helvetica, sans-serif;
 }
+
 /**********************************************************************************/
 /*********************************************************************************
  * ****************************** CSS BEHAVIOUR  **********************
  * This section defines some css rules that does some interface elements appear on mouse over (hover).
- */
-.resourceuioperations div {
+ */ .resourceuioperations div {
     font-weight: bold;
     font-size: 12px;
     color: #333333;
@@ -51,9 +52,7 @@ table td#css {
     border: 1px groove #cccccc;
     margin-bottom: 0px;
     background-color: #efefef;
-}
-
-.expand div {
+} .expand div {
     font-weight: bold;
     font-size: 12px;
     color: #888;
@@ -77,12 +76,12 @@ div.resource:hover > div.resourceuioperations {
     position: relative;
     float: right;
 }
+
 /*****************************************************************************
  * ******************************* RDF RELATED FORMATTING ********************
  *
  */
-/* Format a resource*/
-.resource {
+/* Format a resource*/ .resource {
     overflow: hidden;
     margin-bottom: 2px;
     padding: 1px;
@@ -105,27 +104,19 @@ div.resource:hover a.all {
     display: inline;
     color: black;
     text-decoration: underline;
-}
-
-.properties {
+} .properties {
     margin: 10px;
-}
-
-.objects {
+} .objects {
     border: 2px solid #999;
     margin: 10px;
     padding: 5px;
     background-color: transparent;
-}
-
-.predicate {
+} .predicate {
     float: none;
     border: 1px dashed #8FBC8F;
     font-size: 14px;
     text-align: left;
-}
-
-.object {
+} .object {
     text-align: left;
     float: none;
     font-size: 14px;
@@ -134,15 +125,13 @@ div.resource:hover a.all {
 div.predicate > div.object {
     margin: 10px;
 }
+
 /**
  * Facets
- */
-.facetgroupwindow div.window {
+ */ .facetgroupwindow div.window {
     margin: 5px;
     top: 0px;
-}
-
-.facetgroupwindow {
+} .facetgroupwindow {
     background-color: #efefef;
     font-family: Arial, Helvetica, sans-serif;
     float: left;
@@ -151,41 +140,30 @@ div.predicate > div.object {
     border: 2px solid #cccccc;
     top: 40px;
     position: relative;
-}
-
-.term {
+} .term {
     background-color: #dcdcdc;
     border: 2px ridge #708090;
     font-weight: bold;
-}
-
-.cardinality {
+} .cardinality {
     font-size: 12px;
     font-weight: bold;
-}
-
-.class {
+} .class {
     /*border: 1px solid #9AC0CD;*/
     color: blue;
     font-style: normal;;
     font-weight: bold;
-}
-
-.property {
+} .property {
     color: green;
     /* border: 1px solid #8FBC8F;*/
     font-weight: bold;
-}
-
-.string {
+} .string {
     font-size: 90%;
     font-family: georgia, serif;
     color: #8B4513;
-}
-
-.inverse {
+} .inverse {
     text-align: right;
 }
+
 /*********************************************************************************
  * ****************************** USER INTERFACE FORMATTING **********************
  * Formatting properties.
@@ -204,8 +182,8 @@ div.filter {
 div.windowtoolbar div.filter:hover {
     background-color: transparent;
 }
-/*an window representing a configuration screen*/
-.config {
+
+/*an window representing a configuration screen*/ .config {
     font-family: Arial, Helvetica, sans-serif;
     float: left;
     z-index: 1000;
@@ -222,8 +200,8 @@ div.windowtoolbar div.filter:hover {
     position: fixed;
     background-color: #fefefe;
 }
-/*format the window ui component*/
-.window {
+
+/*format the window ui component*/ .window {
     font-family: Arial, Helvetica, sans-serif;
     float: left;
     margin-left: 14px;
@@ -240,15 +218,15 @@ div.windowtoolbar div.filter:hover {
 div.windowmaximized {
     width: 350px;
 }
-/* CSS for the window toolbar */
-.windowtoolbar {
+
+/* CSS for the window toolbar */ .windowtoolbar {
     padding: 8px;
     background-color: #efefef;
     border: 1px ridge #cccccc;
     margin-bottom: 3px;
 }
-/*css for each operation widgets*/
-.windowtoolbar div {
+
+/*css for each operation widgets*/ .windowtoolbar div {
     font-weight: bold;
     font-size: 12px;
     color: #333333;
@@ -260,42 +238,34 @@ div.windowmaximized {
     z-index: 1;
     border: 2px solid #fff;
     margin-bottom: 0px;
-}
-
-.windowtoolbar div:hover {
+} .windowtoolbar div:hover {
     background-color: white;
 }
 
 div.windowtoolbar div._view {
     width: 40px;
 }
+
 /****************************************/
-/* CSS for the window header */
-.windowheader {
+/* CSS for the window header */ .windowheader {
     font-weight: bold;
     padding: 4px 4px 4px 4px;
     border: 1px solid #cccccc;
     background-color: #efefef;
     margin-bottom: 3px;
-}
-
-.windowtitle {
+} .windowtitle {
     z-index: 9;
     position: absolute;
-}
-
-#resname {
+} #resname {
     height: 25px;
-}
-
-.winoperations {
+} .winoperations {
     background: inherit;
     z-index: 10;
     position: absolute;
     right: 12px;
 }
-/*The button on the window header.*/
-.winoperations div {
+
+/*The button on the window header.*/ .winoperations div {
     font-weight: bold;
     font-size: 12px;
     color: #333333;
@@ -307,8 +277,8 @@ div.windowtoolbar div._view {
     border: 1px solid #cccccc;
     margin-bottom: 0px;
 }
-/****** pagination css.*/
-.pagination {
+
+/****** pagination css.*/ .pagination {
     font-weight: bold;
     font-size: 12px;
     color: #333333;
@@ -320,6 +290,7 @@ div.windowtoolbar div._view {
     width: 40px;
     border: 1px solid #cccccc;
 }
+
 /********************
  * Loading Window
  */
@@ -336,9 +307,7 @@ div#loadwindow {
     top: 50%;
     left: 50%;
     border: 2px solid #cccccc;
-}
-
-.filterwindow {
+} .filterwindow {
     float: left;
     margin-left: 14px;
     width: 288px;
@@ -350,12 +319,14 @@ div#loadwindow {
     position: relative;
     background-color: #fefefe;
 }
+
 /*****************************************************************************
  ******************************** TOOL TIP FORMATTING ***********************
  */
 span.tool span.exp {
     display: none; /* so is this */
 }
+
 /* tooltip will display on :hover event */
 span.tool:hover span.exp {
     display: block;
@@ -373,6 +344,7 @@ span.tool:hover span.exp {
     color: #000;
     text-align: left;
 }
+
 /*The css below are used in the tool tip feature*/
 span.tool {
     position: relative; /* this is key */
@@ -381,6 +353,7 @@ span.tool {
 span.tool span.tip {
     display: none; /* so is this */
 }
+
 /* tooltip will display on :hover event */
 span.tool:hover span.tip {
     display: block;
@@ -399,29 +372,26 @@ span.tool:hover span.tip {
     color: #000;
     text-align: left;
 }
+
 /*
  *   Landmaks layout definition
- */
-
-.landmarks {
+ */ .landmarks {
     font-family: Arial, Helvetica, sans-serif;
     float: left;
-    position: absolute;
-    top: 0px;
+    
+    top: 33px;
     left: 0px;
     width: 100%;
     background-color: #fff;
-    left: 0px;
     font-weight: bold;
     font-size: 12px;
     color: #777;
-    z-index: 14;
+    z-index: 19;
     border-bottom: 1px solid #afafaf;
-    padding-bottom: 0.5em;
-    position: fixed;
-}
 
-.landmark {
+    padding-bottom: 0.3em;
+    position: fixed;
+} .landmark {
     float: left;
     margin-left: 6px;
     padding: 12px;
@@ -431,30 +401,34 @@ div.landmark:hover a {
     color: #4f94cd;
 }
 
-div.searchform {
-    margin-left: 6px;
-    margin-top: 8px;
-}
-
-#submit {
+#searchform {
+	border: 1px solid #afafaf;
+    float: left;
+ padding-top:4px;
+ padding-left:4px;
+ height:29px;
+	left:0px;
+	top:0px;
+	position:fixed;
+    background:white;
+	width:100%;
+	z-index:21;
+	 
+} #submit {
     margin-left: 0.5em;
 }
+
 /************************************************************************************
  * Operation model -css for the operation widgets
- */
-.toolbars {
+ */ .toolbars {
     float: right;
-}
-
-.toolbar {
+} .toolbar {
     float: left;
     margin-left: 12px;
     margin-top: 6px;
     border: 1px solid #4f94cd;
     padding: 3px;
-}
-
-.toolbar div {
+} .toolbar div {
     float: left;
     padding: 4px;
     width: 15px;
@@ -489,15 +463,10 @@ div.operation:active {
 div._clear {
     width: 48px;
 }
+
 /*************************************************8
  * CSS for forms' elements and search form.
- */
-.searchform {
-    z-index: 150;
-    float: left;
-    margin-left: 30em;
-}
-
+ */  
 input {
     padding: 3px;
     border: 1px solid #4f94cd;
@@ -524,18 +493,20 @@ div.filter input {
     background-color: #fff;
 }
 
-input[type =button]{
+input[type = button] {
     padding: 2px;
     background-color: #4f94cd;
     color: #ffffff;
     border: 1px outset #4f94cd;
 }
-input[type =submit] {
+
+input[type = submit] {
     padding: 2px;
     background-color: #4f94cd;
     color: #ffffff;
     border: 1px outset #4f94cd;
 }
+
 /*********************************************************************************
  
  * All CSS that starts with '_' represent a user interface property.
@@ -578,6 +549,7 @@ div.O {
     border-color: red;
     border-width: 2px;
 }
+
 /************************************************************
  * Main Menu CSS
  ************************************************************/
@@ -585,7 +557,9 @@ div#mainmenu {
     background: #eee;
     float: left;
     margin-top: 0.75em;
-    
+		z-index:16;
+ 
+     
 }
 
 div#mainmenu ul {
@@ -593,6 +567,7 @@ div#mainmenu ul {
     margin: 0;
     padding: 0;
     width: 12em;
+	z-index:16;
 }
 
 div#mainmenu a, div#mainmenu h2 {
@@ -602,6 +577,7 @@ div#mainmenu a, div#mainmenu h2 {
     border-style: solid;
     border-color: #4f94cd;
     margin: 0;
+		z-index:16;
     padding: 2px 3px;
 }
 
@@ -609,12 +585,14 @@ div#mainmenu h2 {
     color: #fff;
     background: #4f94cd;
     text-transform: uppercase;
+		z-index:16;
 }
 
 div#mainmenu a {
     color: #777;
     background: #efefef;
     text-decoration: none;
+		z-index:16;
 }
 
 div#mainmenu a:hover {
@@ -624,6 +602,7 @@ div#mainmenu a:hover {
 
 div#mainmenu li {
     position: relative;
+		z-index:16;
 }
 
 div#mainmenu ul ul {
@@ -635,6 +614,7 @@ div#mainmenu ul ul ul {
     position: absolute;
     top: 0;
     left: 100%;
+		z-index:16;
 }
 
 div#mainmenu ul ul, div#mainmenu ul li:hover ul ul, div#mainmenu ul ul li:hover ul ul {
@@ -644,18 +624,18 @@ div#mainmenu ul ul, div#mainmenu ul li:hover ul ul, div#mainmenu ul ul li:hover 
 div#mainmenu ul li:hover ul, div#mainmenu ul ul li:hover ul, div#mainmenu ul ul ul li:hover ul {
     display: block;
 }
+
 /************************************************************
  * Subject View Menu CSS
  ************************************************************/
-/* menu como um todo */
-.subjmenu {
+/* menu como um todo */ .subjmenu {
     padding: 0;
     margin: 0;
     z-index: 10000000;
     visibility: hidden
 }
-/* coluna do menu */
-.subjmenu li {
+
+/* coluna do menu */ .subjmenu li {
     margin: 0;
     margin-right: -21px;
     height: 0.8em;
@@ -670,16 +650,16 @@ div#mainmenu ul li:hover ul, div#mainmenu ul ul li:hover ul, div#mainmenu ul ul 
     border: 1px solid #ccc;
     background-color: #ccc;
 }
-/* titulo da coluna */
-.subjmenu li a {
+
+/* titulo da coluna */ .subjmenu li a {
     width: 7px;
     border: none;
     text-decoration: none;
     outline-style: none;
     z-index: 10000000;
 }
-/* conteudo da coluna como um todo */
-.subjmenu div {
+
+/* conteudo da coluna como um todo */ .subjmenu div {
     position: absolute;
     visibility: hidden;
     margin-top: 0px;
@@ -691,8 +671,8 @@ div#mainmenu ul li:hover ul, div#mainmenu ul ul li:hover ul, div#mainmenu ul ul 
     border-bottom: 0;
     z-index: 10000000;
 }
-/* elemento da coluna */
-.subjmenu div a {
+
+/* elemento da coluna */ .subjmenu div a {
     position: relative;
     display: block;
     margin: 0;
@@ -704,55 +684,42 @@ div#mainmenu ul li:hover ul, div#mainmenu ul ul li:hover ul, div#mainmenu ul ul 
     color: #2875DE;
     font: 11px arial;
     border-bottom: 1px solid #ccc
-}
-
-.subjmenu div a:hover {
+} .subjmenu div a:hover {
     background: #49A3FF;
     color: #FFF
-}
-
-.arrow {
+} .arrow {
     margin-left: -7px;
     margin-top: 2px;
 }
+
 /* ----------------------------------- */
-/* menu como um todo */
-.instances {
+/* menu como um todo */ .instances {
     padding: 0px 3px 0px 3px;
     font-size: 11px;
     width: 30px;
     height: 10px;
     border: 1px solid #afafaf;
     text-align: center;
-}
-
-.bluebackground {
+} .bluebackground {
     background-color: blue;
     color: white;
-}
-
-._show div {
+} ._show div {
     margin-top: 2px;
     width: 8px;
     height: 7px;
     border: 1px solid #333;
     border-top: 2px solid #333;
-}
-
-._hide div {
+} ._hide div {
     margin-top: 2px;
     width: 10px;
     height: 7px;
     border: 0px solid #333;
     border-top: 2px solid #333;
-}
-
-.tecweb {
-  margin-top:4px;
-	margin-left:9px;
-}
-.logo{
-	margin-top:8px;
-	margin-left:9px;
-	margin-right:55px;
+} .tecweb {
+    margin-top: 4px;
+    margin-left: 9px;
+} .logo {
+    margin-top: 8px;
+    margin-left: 9px;
+    margin-right: 55px;
 }
