@@ -36,8 +36,8 @@ adapter.title='MONDIAL_DEFAULT'
 adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8080/openrdf-sesame/repositories/CIA", :results => :sparql_xml, :caching =>true
 adapter.title='CIA_DEFAULT'
 
-#adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8087/openrdf-sesame/repositories/METAMODEL", :results => :sparql_xml, :caching =>true
-#adapter.title='METAMODEL_SPARQL'
+adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8080/openrdf-sesame/repositories/METAMODEL", :results => :sparql_xml, :caching =>true
+adapter.title='METAMODEL_SPARQL'
 
 adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8080/openrdf-sesame/repositories/FACETO", :results => :sparql_xml, :caching =>true
 adapter.title='FACETO_DEFAULT'
@@ -145,3 +145,4 @@ RDFS::Resource.find_all_predicates
 
 # construct the necessary Ruby Modules and Classes to use the Namespace
 ObjectManager.construct_classes
+ 
