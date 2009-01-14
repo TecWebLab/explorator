@@ -92,12 +92,14 @@ div.resource:hover > div.resourceuioperations {
     text-align: left;
     color: black;
     font-weight: normal;
+	cursor:pointer;
 }
 
 a.all {
     color: #aaa;
     font-size: 11px;
     display: none;
+	cursor:pointer;
 }
 
 div.resource:hover a.all {
@@ -276,6 +278,7 @@ div.windowtoolbar div._view {
     text-align: center;
     border: 1px solid #cccccc;
     margin-bottom: 0px;
+	cursor:pointer;
 }
 
 /****** pagination css.*/ .pagination {
@@ -378,8 +381,7 @@ span.tool:hover span.tip {
  */ .landmarks {
     font-family: Arial, Helvetica, sans-serif;
     float: left;
-    
-    top: 33px;
+    top: 38px;
     left: 0px;
     width: 100%;
     background-color: #fff;
@@ -388,7 +390,6 @@ span.tool:hover span.tip {
     color: #777;
     z-index: 19;
     border-bottom: 1px solid #afafaf;
-
     padding-bottom: 0.3em;
     position: fixed;
 } .landmark {
@@ -399,29 +400,41 @@ span.tool:hover span.tip {
 
 div.landmark:hover a {
     color: #4f94cd;
-}
-
-#searchform {
-	border: 1px solid #afafaf;
-    float: left;
- padding-top:4px;
- padding-left:4px;
- height:29px;
-	left:0px;
-	top:0px;
+} 
+.header {
 	position:fixed;
-    background:white;
+	height:40px;
 	width:100%;
-	z-index:21;
-	 
-} #submit {
+	top:0px;
+	left:0px;
+    background: white;
+	padding:4px;
+	z-index:17;
+} 
+.header div {
+    float: left;
+} 
+/*
+ #searchform {
+ border: 1px solid #afafaf;
+ float: left;
+ padding-top: 4px;
+ padding-left: 4px;
+ height: 29px;
+ left: 0px;
+ top: 0px;
+ position: fixed;
+ background: white;
+ width: 100%;
+ z-index: 21;
+ } */ #submit {
     margin-left: 0.5em;
 }
 
 /************************************************************************************
  * Operation model -css for the operation widgets
  */ .toolbars {
-    float: right;
+    float: left;
 } .toolbar {
     float: left;
     margin-left: 12px;
@@ -437,6 +450,7 @@ div.landmark:hover a {
     text-align: center;
     background-color: white;
     margin-left: 1px;
+	cursor:pointer;
 }
 
 div.space {
@@ -466,7 +480,7 @@ div._clear {
 
 /*************************************************8
  * CSS for forms' elements and search form.
- */  
+ */
 input {
     padding: 3px;
     border: 1px solid #4f94cd;
@@ -498,6 +512,7 @@ input[type = button] {
     background-color: #4f94cd;
     color: #ffffff;
     border: 1px outset #4f94cd;
+		cursor:pointer;
 }
 
 input[type = submit] {
@@ -505,6 +520,7 @@ input[type = submit] {
     background-color: #4f94cd;
     color: #ffffff;
     border: 1px outset #4f94cd;
+		cursor:pointer;
 }
 
 /*********************************************************************************
@@ -557,9 +573,8 @@ div#mainmenu {
     background: #eee;
     float: left;
     margin-top: 0.75em;
-		z-index:16;
- 
-     
+    z-index: 16;
+	margin-left:10px;
 }
 
 div#mainmenu ul {
@@ -567,7 +582,8 @@ div#mainmenu ul {
     margin: 0;
     padding: 0;
     width: 12em;
-	z-index:16;
+    z-index: 16;
+	cursor:pointer;
 }
 
 div#mainmenu a, div#mainmenu h2 {
@@ -577,7 +593,7 @@ div#mainmenu a, div#mainmenu h2 {
     border-style: solid;
     border-color: #4f94cd;
     margin: 0;
-		z-index:16;
+    z-index: 16;
     padding: 2px 3px;
 }
 
@@ -585,14 +601,14 @@ div#mainmenu h2 {
     color: #fff;
     background: #4f94cd;
     text-transform: uppercase;
-		z-index:16;
+    z-index: 16;
 }
 
 div#mainmenu a {
     color: #777;
     background: #efefef;
     text-decoration: none;
-		z-index:16;
+    z-index: 16;
 }
 
 div#mainmenu a:hover {
@@ -602,7 +618,7 @@ div#mainmenu a:hover {
 
 div#mainmenu li {
     position: relative;
-		z-index:16;
+    z-index: 16;
 }
 
 div#mainmenu ul ul {
@@ -614,7 +630,7 @@ div#mainmenu ul ul ul {
     position: absolute;
     top: 0;
     left: 100%;
-		z-index:16;
+    z-index: 16;
 }
 
 div#mainmenu ul ul, div#mainmenu ul li:hover ul ul, div#mainmenu ul ul li:hover ul ul {
@@ -716,10 +732,15 @@ div#mainmenu ul li:hover ul, div#mainmenu ul ul li:hover ul, div#mainmenu ul ul 
     border: 0px solid #333;
     border-top: 2px solid #333;
 } .tecweb {
-    margin-top: 4px;
+	width:124px;
+	height:20px;
     margin-left: 9px;
 } .logo {
-    margin-top: 8px;
+	width:110px;
+	height:15px;
     margin-left: 9px;
     margin-right: 55px;
+} 
+#seachbykeyword{
+	width:100%;
 }
