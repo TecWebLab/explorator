@@ -39,10 +39,7 @@ end
   #Request sample:
   #/explorator/create?exp=SemanticExpression.new.union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:rdfs,:Class))
   def create    
-        puts "########### 1"
-    a = RDF::Resource.new('<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>')
-puts     a.partOf
-    puts "########### 2"
+     
     puts params[:exp]
     #creates a new set. 
     #the expression must be passed by the uri
