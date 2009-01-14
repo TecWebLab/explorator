@@ -110,11 +110,11 @@ class EXPLORATOR::Set < RDFS::Resource
     end
     self
   end
-  def addFilter(filter)
-    self.expression=self.explorator::expression + '.'+ filter
-  end
-  def sum
-    self.expression=self.explorator::expression + '.'+  "filter('inject( 0 ) { |sum,x| sum+x.to_i } ')"
-    
-  end
+#  def addFilter(filter)
+#    self.expression=self.explorator::expression + '.'+ filter
+#  end
+#  def sum
+#    self.expression=self.explorator::expression + '.'+  "filter('inject( 0 ) { |sum,x| sum+x.to_i } ')"
+#    
+#  end
 end
