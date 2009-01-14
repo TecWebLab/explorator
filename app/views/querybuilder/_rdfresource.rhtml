@@ -6,13 +6,4 @@
         </div>
     </div> 
     <%= render_resource(resource) %>
-    <%if resource.instance_of?(BNode) %>
-    <%elsif resource.type.include?(RDFS::Class) %>
-    <a class ="all" exp="(:s,RDF::type,'<%=h(uri(resource)) %>')">(Instances)</a>
-    <%elsif resource.type.include?(RDF::Property) %>
-    <a class ="all" exp="(:s,'<%=h(uri(resource)) %>',:o)">(Used by)</a>
-    <a class ="all" exp="(:s,'<%=h(uri(resource)) %>',:o,:o)">(Has values)</a>
-    <%else %>
-    <a class ="all" exp="(:s,:p,'<%=h(uri(resource)) %>')">(Object of)</a>
-    <%end %>	
-</div>
+   
