@@ -53,6 +53,7 @@ class SemanticExpression
   #the same method as query, but it is able to treat arrays.
   #This methos
   def spo(s,p,o,r=nil)      
+  
     result = Array.new 
     s = resource_or_self(s,r)
     p = resource_or_self(p,r)
@@ -97,7 +98,8 @@ class SemanticExpression
   end  
   #Wrapper for the class ActiveRDF Query. This method executes a query and returns a set of resources.
   #With parameter must be a single resource.
-  def query(s,p,o,r=nil)       
+  def query(s,p,o,r=nil)   
+    
     q = Query.new    
     if r.to_s == :p.to_s
       #  q.distinct(:p,:x,:y).where(:s,:p,:o).where(:p,:x,:y).optional(:p,RDFS::label,:label).sort(' ?p ')
@@ -135,6 +137,7 @@ class SemanticExpression
   #o - o in the triple
   #r - the position on the triple that should be returned.
   def union(s,p=nil,o=nil, r=nil)   
+      puts 'SPO'
     if s.instance_of? SemanticExpression 
       @result = @result | s.result
       #Union, Intersection and Difference are operation over sets.
