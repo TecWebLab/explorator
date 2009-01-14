@@ -39,6 +39,10 @@ end
   #Request sample:
   #/explorator/create?exp=SemanticExpression.new.union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:rdfs,:Class))
   def create    
+        puts "########### 1"
+    a = RDF::Resource.new('<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>')
+puts     a.partOf
+    puts "########### 2"
     puts params[:exp]
     #creates a new set. 
     #the expression must be passed by the uri
@@ -88,10 +92,7 @@ end
     #render the _window.rhtml view
     render :partial => params[:view]  , :layout=>false
   end
-  #This method execute a ruby code over all array elements.
-  def map
-    
-  end
+  
   #The remove method removes a determined ResourceSet from the SetsPool or a specific resource from a ResourceSet
   #This method is called by the execute method, being passing as parameter by the user interface.
   def remove(uri)        
@@ -108,15 +109,11 @@ end
     render :partial => view.to_s , :layout=>false
   end
   
-  def addfilter     
-    @resourceset= session[:application].get(params[:uri])
-    @resourceset.addFilter("filter('select{|i| i.to_i" + params[:op] +  params[:value]+ "}')")
-    render :partial => "subject_view" , :layout=>false
-  end
-  def sum
-    @resourceset= session[:application].get(params[:uri])
-    @resourceset.sum()  
-      render :partial => "subject_view" , :layout=>false
-  end
+#  def addfilter     
+#    @resourceset= session[:application].get(params[:uri])
+#    @resourceset.addFilter("filter('select{|i| i.to_i" + params[:op] +  params[:value]+ "}')")
+#    render :partial => "subject_view" , :layout=>false
+#  end
+   
   
 end

@@ -32,6 +32,7 @@ class RepositoryController < ApplicationController
   #The disable method disable a adapter.
   #disable a specific adapter in the ConnectionPool.
   def enable
+     RDFS::Resource.reset_cache() 
     session[:disablerepositories] << (params[:title]) 
     session[:disablerepositories].uniq!
    # Repository.disable_by_title(params[:title])
@@ -41,6 +42,7 @@ class RepositoryController < ApplicationController
   #The enable method enable a adapter.
   #enable a specific adapter in the ConnectionPool.
   def disable
+     RDFS::Resource.reset_cache() 
      session[:disablerepositories].delete(params[:title])
    # Repository.enable_by_title(params[:title])
     #render nothing.
