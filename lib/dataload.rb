@@ -24,23 +24,44 @@ dir = File.dirname(File.expand_path(__FILE__))
 #adapter.title='NEPOMUK_SPARQL'
 
 
-adapter =ConnectionPool.add_data_source :type => :sparql_sesame_api ,  :caching =>true
+adapter =ConnectionPool.add_data_source :type => :sparql_sesame_api ,  :caching =>true, :repository => 'EXPLORATOR'
 adapter.title='EXPLORATOR_DEFAULT'
+adapter =ConnectionPool.add_data_source :type => :sparql_sesame_api ,  :caching =>true, :repository => 'PRESIDENT'
+adapter.title='PRESIDENT_PARALLAX_DEFAULT'
 
-adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8080/openrdf-sesame/repositories/NOKIA", :results => :sparql_xml, :caching =>true
+adapter =ConnectionPool.add_data_source :type => :sparql_sesame_api ,  :caching =>true, :repository => 'NOKIA'
 adapter.title='NOKIA_DEFAULT'
 
-adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8080/openrdf-sesame/repositories/MONDIAL", :results => :sparql_xml, :caching =>true
+adapter =ConnectionPool.add_data_source :type => :sparql_sesame_api ,  :caching =>true, :repository => 'MONDIAL'
 adapter.title='MONDIAL_DEFAULT'
 
-adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8080/openrdf-sesame/repositories/CIA", :results => :sparql_xml, :caching =>true
+adapter =ConnectionPool.add_data_source :type => :sparql_sesame_api ,  :caching =>true, :repository => 'CIA'
 adapter.title='CIA_DEFAULT'
 
-adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8080/openrdf-sesame/repositories/METAMODEL", :results => :sparql_xml, :caching =>true
+adapter =ConnectionPool.add_data_source :type => :sparql_sesame_api ,  :caching =>true, :repository => 'METAMODEL'
 adapter.title='METAMODEL_SPARQL'
 
-adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8080/openrdf-sesame/repositories/FACETO", :results => :sparql_xml, :caching =>true
+adapter =ConnectionPool.add_data_source :type => :sparql_sesame_api ,  :caching =>true, :repository => 'FACETO'
 adapter.title='FACETO_DEFAULT'
+
+
+#adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8080/openrdf-sesame/repositories/PRESIDENT", :results => :sparql_xml, :caching =>true
+#adapter.title='PRESIDENT_PARALLAX_DEFAULT'
+#
+#adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8080/openrdf-sesame/repositories/NOKIA", :results => :sparql_xml, :caching =>true
+#adapter.title='NOKIA_DEFAULT'
+#
+#adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8080/openrdf-sesame/repositories/MONDIAL", :results => :sparql_xml, :caching =>true
+#adapter.title='MONDIAL_DEFAULT'
+#
+#adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8080/openrdf-sesame/repositories/CIA", :results => :sparql_xml, :caching =>true
+#adapter.title='CIA_DEFAULT'
+#
+#adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8080/openrdf-sesame/repositories/METAMODEL", :results => :sparql_xml, :caching =>true
+#adapter.title='METAMODEL_SPARQL'
+#
+#adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8080/openrdf-sesame/repositories/FACETO", :results => :sparql_xml, :caching =>true
+#adapter.title='FACETO_DEFAULT'
 #adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://data.linkedmdb.org/sparql", :results => :sparql_xml, :caching =>true
 #adapter.title='IMDB_SPARQL'
 
