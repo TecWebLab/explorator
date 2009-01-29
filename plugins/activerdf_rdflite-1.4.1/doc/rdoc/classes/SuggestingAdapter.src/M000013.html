@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (SuggestingAdapter)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>    <span class="ruby-comment cmt"># File lib/activerdf_rdflite/suggesting.rb, line 18</span>
+18:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">params</span>
+19:                 <span class="ruby-identifier">_old_initialize</span>(<span class="ruby-identifier">params</span>)
+20:                 <span class="ruby-ivar">@db</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-value str">'drop view if exists occurrence'</span>)
+21:                 <span class="ruby-ivar">@db</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-value str">'create view occurrence as select p, count(distinct s) as count from triple group by p'</span>)
+22: 
+23:                 <span class="ruby-ivar">@db</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-value str">'drop view if exists cooccurrence'</span>)
+24:                 <span class="ruby-ivar">@db</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-value str">'create view cooccurrence as select t0.p as p1,t1.p as p2, count(distinct t0.s) as count from triple as t0 join triple as t1 on t0.s=t1.s and t0.p!=t1.p group by t0.p, t1.p'</span>)
+25:         <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

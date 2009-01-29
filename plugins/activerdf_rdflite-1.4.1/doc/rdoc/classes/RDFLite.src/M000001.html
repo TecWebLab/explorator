@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (RDFLite)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre>    <span class="ruby-comment cmt"># File lib/activerdf_rdflite/rdflite.rb, line 34</span>
+34:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">params</span> = {})
+35:                 <span class="ruby-identifier">$activerdflog</span>.<span class="ruby-identifier">info</span> <span class="ruby-node">&quot;initialised rdflite with params #{params.to_s}&quot;</span>
+36: 
+37:                 <span class="ruby-ivar">@reads</span> = <span class="ruby-keyword kw">true</span>
+38:                 <span class="ruby-ivar">@writes</span> = <span class="ruby-keyword kw">true</span>
+39: 
+40:                 <span class="ruby-comment cmt"># if no file-location given, we use in-memory store</span>
+41:                 <span class="ruby-identifier">file</span> = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:location</span>] <span class="ruby-operator">||</span> <span class="ruby-value str">':memory:'</span>
+42:                 <span class="ruby-ivar">@db</span> = <span class="ruby-constant">SQLite3</span><span class="ruby-operator">::</span><span class="ruby-constant">Database</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">file</span>) 
+43: 
+44:                 <span class="ruby-comment cmt"># disable keyword search by default, enable only if ferret is found</span>
+45:                 <span class="ruby-ivar">@keyword_search</span> = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:keyword</span>].<span class="ruby-identifier">nil?</span> <span class="ruby-value">? </span><span class="ruby-keyword kw">false</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:keyword</span>]
+46:                 <span class="ruby-ivar">@keyword_search</span> <span class="ruby-operator">&amp;=</span> <span class="ruby-ivar">@@have_ferret</span>
+47: 
+48:                 <span class="ruby-ivar">@reasoning</span> = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:reasoning</span>] <span class="ruby-operator">||</span> <span class="ruby-keyword kw">false</span>
+49: 
+50:                 <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">keyword_search?</span>
+51:                         <span class="ruby-comment cmt"># we initialise the ferret index, either as a file or in memory</span>
+52:                         <span class="ruby-identifier">infos</span> = <span class="ruby-constant">Ferret</span><span class="ruby-operator">::</span><span class="ruby-constant">Index</span><span class="ruby-operator">::</span><span class="ruby-constant">FieldInfos</span>.<span class="ruby-identifier">new</span>
+53: 
+54:                         <span class="ruby-comment cmt"># we setup the fields not to store object's contents</span>
+55:                         <span class="ruby-identifier">infos</span>.<span class="ruby-identifier">add_field</span>(<span class="ruby-identifier">:subject</span>, <span class="ruby-identifier">:store</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:yes</span>, <span class="ruby-identifier">:index</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:no</span>, <span class="ruby-identifier">:term_vector</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:no</span>)
+56:                         <span class="ruby-identifier">infos</span>.<span class="ruby-identifier">add_field</span>(<span class="ruby-identifier">:object</span>, <span class="ruby-identifier">:store</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:no</span>) <span class="ruby-comment cmt">#, :index =&gt; :omit_norms)</span>
+57: 
+58:                         <span class="ruby-ivar">@ferret</span> = <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:location</span>]
+59:                                                                         <span class="ruby-constant">Ferret</span><span class="ruby-operator">::</span><span class="ruby-constant">I</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">:path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:location</span>] <span class="ruby-operator">+</span> <span class="ruby-value str">'.ferret'</span>, <span class="ruby-identifier">:field_infos</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">infos</span>)
+60:                                                                 <span class="ruby-keyword kw">else</span>
+61:                                                                         <span class="ruby-constant">Ferret</span><span class="ruby-operator">::</span><span class="ruby-constant">I</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">:field_infos</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">infos</span>)
+62:                                                                 <span class="ruby-keyword kw">end</span>
+63:                 <span class="ruby-keyword kw">end</span>
+64: 
+65:                 <span class="ruby-comment cmt"># turn off filesystem synchronisation for speed</span>
+66:                 <span class="ruby-ivar">@db</span>.<span class="ruby-identifier">synchronous</span> = <span class="ruby-value str">'off'</span>
+67: 
+68:                 <span class="ruby-comment cmt"># create triples table. ignores duplicated triples</span>
+69:                 <span class="ruby-ivar">@db</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-value str">'create table if not exists triple(s,p,o,c, unique(s,p,o,c) on conflict ignore)'</span>)
+70: 
+71:                 <span class="ruby-identifier">create_indices</span>(<span class="ruby-identifier">params</span>)
+72:                 <span class="ruby-ivar">@db</span>
+73:         <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>
