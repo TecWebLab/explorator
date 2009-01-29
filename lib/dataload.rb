@@ -12,9 +12,9 @@ def createdir(dir)
 end
 #$activerdflog.level = Logger::DEBUG
 #Keep track of all repositories registered in the pool
- 
-dir = File.dirname(File.expand_path(__FILE__))
 
+#dir = File.dirname(File.expand_path(__FILE__))
+dbdir = Dir.pwd +  File::SEPARATOR + 'db'
 
 #ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8087/openrdf-sesame/repositories/TESTE", :results => :sparql_xml
 #ConnectionPool.add_data_source :type => :sesame, :name=>:teste
@@ -23,27 +23,15 @@ dir = File.dirname(File.expand_path(__FILE__))
 #adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8181/org.semanticdesktop.services.rdfrepository/repositories/main", :results => :sparql_xml, :caching =>true
 #adapter.title='NEPOMUK_SPARQL'
 
-
-adapter =ConnectionPool.add_data_source :type => :sparql_sesame_api ,  :caching =>true, :repository => 'EXPLORATOR'
-adapter.title='EXPLORATOR_DEFAULT'
-adapter =ConnectionPool.add_data_source :type => :sparql_sesame_api ,  :caching =>true, :repository => 'PRESIDENT'
-adapter.title='PRESIDENT_PARALLAX_DEFAULT'
-
-adapter =ConnectionPool.add_data_source :type => :sparql_sesame_api ,  :caching =>true, :repository => 'NOKIA'
-adapter.title='NOKIA_DEFAULT'
-
-adapter =ConnectionPool.add_data_source :type => :sparql_sesame_api ,  :caching =>true, :repository => 'MONDIAL'
-adapter.title='MONDIAL_DEFAULT'
-
-adapter =ConnectionPool.add_data_source :type => :sparql_sesame_api ,  :caching =>true, :repository => 'CIA'
-adapter.title='CIA_DEFAULT'
-
-adapter =ConnectionPool.add_data_source :type => :sparql_sesame_api ,  :caching =>true, :repository => 'METAMODEL'
-adapter.title='METAMODEL_SPARQL'
-
-adapter =ConnectionPool.add_data_source :type => :sparql_sesame_api ,  :caching =>true, :repository => 'FACETO'
-adapter.title='FACETO_DEFAULT'
-
+sesamedir = Dir.new(dbdir + File::SEPARATOR + 'Sesame' + File::SEPARATOR + "repositories")
+sesamedir.each  do |x| 
+  
+  if x.rindex('.') == nil && x!= ('SYSTEM') 
+    
+    adapter =ConnectionPool.add_data_source :type => :sparql_sesame_api ,  :caching =>true, :repository => x, :dir => sesamedir.path
+    adapter.title=x + '_DEFAULT'    
+  end
+end
 
 #adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8080/openrdf-sesame/repositories/PRESIDENT", :results => :sparql_xml, :caching =>true
 #adapter.title='PRESIDENT_PARALLAX_DEFAULT'
@@ -152,7 +140,7 @@ Namespace.register(:wn, 'http://www.w3.org/2006/03/wn/wn20/schema/')
 Namespace.register(:explorator, 'http://www.tecweb.inf.puc-rio.br/ontologies/2008/explorator/01/core#')
 
 Namespace.register(:imdb2, 'http://wwwis.win.tue.nl/~ppartout/Blu-IS/Ontologies/IMDB/')
- 
+
 Namespace.register(:oddlinker, "http://data.linkedmdb.org/resource/oddlinker/")
 Namespace.register(:map, "file:/C:/d2r-server-0.4/mapping.n3#")
 Namespace.register(:db, "http://data.linkedmdb.org/resource/")
@@ -166,4 +154,3 @@ RDFS::Resource.find_all_predicates
 
 # construct the necessary Ruby Modules and Classes to use the Namespace
 ObjectManager.construct_classes
- 
