@@ -48,6 +48,7 @@ end
 
     #the object @resourceset is a global object that will be used by render
     @resourceset = set     
+   
     view = params['view']
     view = 'subject_view' if  params['view'] == nil || params['view'] == 'null'
     #render the _window.rhtml view

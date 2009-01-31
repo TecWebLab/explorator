@@ -14,10 +14,12 @@ module ExploratorHelper
   #return an interval of resources from the offset to the pagination attribute.
   #This method is used when the user is paginating a set of resources
   def groupBy (type=:s)     
+    
     @resourceset.elements.collect{|s,p,o| eval(type.to_s)}.compact.uniq   
   end
   def resources_paginated(type=:s)      
     resources=  groupBy(type) 
+    
     @size =  resources.size()
     if((@filter!=nil)&&(@filter!=""))
       resources =   resources.select {|x| 
@@ -26,7 +28,11 @@ module ExploratorHelper
       @size = resources.size()
       return resources
     end
+    puts '#############%%%%%%%%%%%%%%%%%%%%%'
+        puts  @resourceset.rdfs::label
+            puts '#############%%%%%%%%%%%%%%%%%%%%%'
     resources = resources[@resourceset.offset.to_i,@resourceset.pagination.to_i]
+ 
     resources
   end
   def subjects(predicate, resource=nil)
@@ -64,9 +70,9 @@ module ExploratorHelper
       return ' resource '
     end         
     classes = Array.new      
-   
+    
     resource.type.each do |type|      
-        classes <<   type.localname.downcase     
+      classes <<   type.localname.downcase     
     end    
     classes.uniq.join(' ') << ' '    
   end

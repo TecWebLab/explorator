@@ -23,12 +23,12 @@ dbdir = Dir.pwd +  File::SEPARATOR + 'db'
 #adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8181/org.semanticdesktop.services.rdfrepository/repositories/main", :results => :sparql_xml, :caching =>true
 #adapter.title='NEPOMUK_SPARQL'
 
-sesamedir = Dir.new(dbdir + File::SEPARATOR + 'Sesame' + File::SEPARATOR + "repositories")
-sesamedir.each  do |x| 
+$sesamedir = Dir.new(dbdir + File::SEPARATOR + 'Sesame' + File::SEPARATOR + "repositories")
+$sesamedir.each  do |x| 
   
-  if x.rindex('.') == nil && x!= ('SYSTEM') 
+  if x.rindex('.') == nil && x!= ('SYSTEM') && x!= ('WORK') 
     
-    adapter =ConnectionPool.add_data_source :type => :sparql_sesame_api ,  :caching =>true, :repository => x, :dir => sesamedir.path
+    adapter = ConnectionPool.add_data_source :type => :sparql_sesame_api ,  :caching =>true, :repository => x, :dir => $sesamedir.path
     adapter.title=x + '_DEFAULT'    
   end
 end

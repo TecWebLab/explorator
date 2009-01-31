@@ -29,6 +29,7 @@ class Application
       @instance.rdfs::label='Default'
       @instance.save
     end 
+
     @instance
   end
   #checks whether it is the current application
@@ -62,7 +63,8 @@ class Application
   end    
   #gets the list of all sets from the current application
   def sets 
-    all = instance.all_explorator::set       
+    all = instance.all_explorator::set 
+    puts all
     if all == nil
       Array.new        
     end

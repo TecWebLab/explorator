@@ -6,8 +6,9 @@ resources =  resources_paginated(:s) %>
     <%= render :partial => 'windowheader' %>
     
     <%= render :partial => 'windowfilter' %>
-    <% resources.each do |resource| %>
-   
+    <%   puts  resource
+ resources.each do |resource| %>
+     
 	  <%sddm = UUID.random_create.to_s%>
 	  <ul class="subjmenu" id="<%=sddm%>">
         <li>

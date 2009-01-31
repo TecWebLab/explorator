@@ -20,7 +20,7 @@ class SparqlSesameApiAdapter < ActiveRdfAdapter
     super() 
     @sparql_cache = {}
     @reads = true
-    @writes = false
+    @writes = true
     @caching = params[:caching] || false
     @result_format = :sparql_xml       
     @repository = params[:repository] 
@@ -35,20 +35,20 @@ class SparqlSesameApiAdapter < ActiveRdfAdapter
       vmargs = [ '-Xms256m', '-Xmx1024m' ]
       vmargs << ('-Dinfo.aduna.platform.appdata.basedir=' + @sesamedir)
       Rjb::load sesame_jars , vmargs
-
+      
     rescue => ex
       raise ex, "Could not load Java Virtual Machine. Please, check if your JAVA_HOME environment variable is pointing to a valid JDK (1.4+)."
       
     rescue LoadError => ex
       raise ex, "Could not load RJB. Please, install it properly with the command 'gem install rjb'"
     end        
-  
+    
     @bridge = Rjb::import('br.tecweb.explorator.SesameApiRubyAdapter').new(@repository)
   end  
   def size
     query(Query.new.select(:s,:p,:o).where(:s,:p,:o)).size
   end
- 
+  
   # query datastore with query string (SPARQL), returns array with query results
   # may be called with a block
   def query(query, &block)    
@@ -73,9 +73,10 @@ class SparqlSesameApiAdapter < ActiveRdfAdapter
   def execute_sparql_query(qs, header=nil, &block)    
     response = ''
     begin 
-       
+      
       response = @bridge.query(qs.to_s)
-    #  puts response
+ 
+      #  puts response
     rescue 
       raise ActiveRdfError, "JAVA BRIDGE ERRO ON SPARQL ADAPTER"
       return "timeout"     
@@ -93,6 +94,48 @@ class SparqlSesameApiAdapter < ActiveRdfAdapter
   def close
     ConnectionPool.remove_data_source(self)
   end	
+  
+  
+  # adds triple(s,p,o) to datastore
+  # s,p must be resources, o can be primitive data or resource
+  def add(s,p,o,c=nil)
+   
+    # check illegal input
+    raise(ActiveRdfError, "adding non-resource #{s} while adding (#{s},#{p},#{o},#{c})") unless s.respond_to?(:uri)
+    raise(ActiveRdfError, "adding non-resource #{p} while adding (#{s},#{p},#{o},#{c})") unless p.respond_to?(:uri)
+    s = s.to_s if s != nil
+    p = p.to_s if p != nil
+    o = o.to_s if o != nil
+    c = c.to_s if c != nil
+    response = @bridge.insert(s,p,o,c)
+  end  
+  
+  def delete(s,p,o,c=nil)
+    
+    # check illegal input
+    raise(ActiveRdfError, "deleting non-resource #{s} while adding (#{s},#{p},#{o},#{c})") unless s.respond_to?(:uri)
+    raise(ActiveRdfError, "deleting non-resource #{p} while adding (#{s},#{p},#{o},#{c})") unless p.respond_to?(:uri)
+    
+    quad = [s,p,o,c].collect {|r| r.nil? ? nil : internalise(r) }
+    puts quad[0]
+    puts quad[1]
+    puts quad[2]
+    puts quad[3]
+    response = @bridge.delete(quad[0],quad[1],quad[2],quad[3])
+    
+    
+    
+  end  
+  # transform triple into internal format <uri> and "literal"
+  def internalise(r)
+    if r.respond_to?(:uri)
+      r.uri 
+    elsif r.is_a?(Symbol)
+      nil
+    else
+      r.to_s 
+    end
+  end
   private
   def add_to_cache(query_string, result)
     unless result.nil? or result.empty?
