@@ -1,3 +1,5 @@
+require 'uuidtools'
+
 require 'dataload.rb'
 require 'query_builder.rb'
 require 'query_factory.rb'
