@@ -28,9 +28,7 @@ module ExploratorHelper
       @size = resources.size()
       return resources
     end
-    puts '#############%%%%%%%%%%%%%%%%%%%%%'
-        puts  @resourceset.rdfs::label
-            puts '#############%%%%%%%%%%%%%%%%%%%%%'
+    
     resources = resources[@resourceset.offset.to_i,@resourceset.pagination.to_i]
  
     resources
