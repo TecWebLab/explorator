@@ -65,59 +65,7 @@ end
 #adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://spade.lbl.gov:2020/sparql", :results => :sparql_xml
 #adapter.title='Spade'
 
-#adapter = ConnectionPool.add(:type => :rdflite, :location => 'db/semanticweb/semanticweb.db', :reasoning => false,:keyword => true)
-#adapter.title='SEMANTICWEB'
-#adapter.load('lib/semanticweb.nt')
-#createdir("cia")
-#adapter = ConnectionPool.add( :type => :rdflite, :location => 'db/cia/cia.db', :reasoning => false,:keyword => false)
-#adapter.title='CIA'
-#
-#
-##adapter.load('lib/cia.nt')
-#createdir("terrorist")
-#adapter = ConnectionPool.add(:type => :rdflite, :location => 'db/terrorist/terrorist.db', :reasoning => false,:keyword => true)
-#adapter.title='TERRORIST'
-#
-#
-#createdir("mondial")
-#adapter = ConnectionPool.add(:type => :rdflite, :location => 'db/mondial/mondial.db', :reasoning => false,:keyword => true)
-#adapter.title='MONDIAL'
-#
-##adapter.load('lib/mondial.nt')
-#
-#createdir("portinari")
-#adapter = ConnectionPool.add(:type => :rdflite, :location => 'db/portinari/portinari.db', :reasoning => false,:keyword => true)
-#adapter.title='PORTINARI'
-#
-#
-#adapter = ConnectionPool.add(:type => :rdflite, :location => 'db/rdfexplot.db', :reasoning => false,:keyword => true)
-#adapter.title='DBLP 500MB'
-#
-#createdir("nokia")
-#adapter = ConnectionPool.add(:type => :rdflite, :location => 'db/nokia/nokia.db', :reasoning => false,:keyword => true)
-#adapter.title='Nokia'
-##adapter.load('public/data/nokia.nt')
-#
-#
-#createdir("wn")
-#adapter = ConnectionPool.add(:type => :rdflite, :location => 'db/wn/wn.db', :reasoning => false,:keyword => false)
-#adapter.title='WordNet'
-##adapter.load('public/data/wn.nt.001')
-#
-#createdir("www2008")
-#adapter = ConnectionPool.add(:type => :rdflite, :location => 'db/www2008/www.db', :reasoning => false,:keyword => true)
-#adapter.title='WWW 2008'
-##adapter.load('lib/www2008.nt')
-# 
-#createdir("eswc") 
-#adapter = ConnectionPool.add(:type => :rdflite, :location => 'db/eswc/eswc.db', :reasoning => false,:keyword => true)
-#adapter.title='ESWC 2008'
-##adapter.load('lib/eswc2008.nt')
-#createdir("explorator")
-#adapter = ConnectionPool.add(:type => :rdflite, :location => 'db/metamodel/metamodel.db', :reasoning => false,:keyword => true)
-#adapter.title='METAMODEL'
-#adapter.load('public/data/metamodel.nt')
-
+ 
 #You should insert here a line for each namespace that you want to use in your application.
 #The namespace must be unique. If you have doubt please see the ActiveRDF documentation.
 Namespace.register(:dp1, 'http://sw.nokia.com/DP-1/')
