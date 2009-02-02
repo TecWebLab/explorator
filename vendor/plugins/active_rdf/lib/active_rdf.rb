@@ -53,10 +53,10 @@ if Gem::cache.search(/^activerdf$/).empty?
 	  load_adapter this_dir + '/activerdf/activerdf-sparql/lib/activerdf_sparql/sparql'
     #load_adapter this_dir + '/../activerdf-sesame/lib/activerdf_sesame/sesame'
 	else
-  	load_adapter this_dir + '/../activerdf-rdflite/lib/activerdf_rdflite/rdflite'
-  	load_adapter this_dir + '/../activerdf-rdflite/lib/activerdf_rdflite/fetching'
-  	load_adapter this_dir + '/../activerdf-rdflite/lib/activerdf_rdflite/suggesting'
-  	load_adapter this_dir + '/../activerdf-redland/lib/activerdf_redland/redland'
+  	#load_adapter this_dir + '/../activerdf-rdflite/lib/activerdf_rdflite/rdflite'
+  	#load_adapter this_dir + '/../activerdf-rdflite/lib/activerdf_rdflite/fetching'
+  	#load_adapter this_dir + '/../activerdf-rdflite/lib/activerdf_rdflite/suggesting'
+  	#load_adapter this_dir + '/../activerdf-redland/lib/activerdf_redland/redland'
   	load_adapter this_dir + '/../activerdf-sparql/lib/activerdf_sparql/sparql'
   	#load_adapter this_dir + '/../activerdf-yars/lib/activerdf_yars/jars2'	  
   end
