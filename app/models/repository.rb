@@ -2,7 +2,7 @@
 #This is a VO  used by the user interface.
 #Author: Samur Araujo
 #Date: 25 jun 2008.
-class Repository < ActiveRecord::Base
+class Repository  
   #name - the repository name
   #id - the repository id 
   #enable - a boolean value that indicates whether the repository is enable or disable.

@@ -69,11 +69,12 @@ class EXPLORATOR::Set < RDFS::Resource
    # begin           
       #for avoid loop evaluation.
       current_expression = self.explorator::expression
+ 
       exp.gsub!("'" + self.to_s + "'",current_expression) if  current_expression != nil
       #evaluates the expression      
       x = eval(exp)     
 #      updates the expression
-      self.explorator::expression = exp 
+      self.explorator::expression = exp.to_s 
       #  set_repositories()
    # rescue      
       #whether the expression is invalid.
