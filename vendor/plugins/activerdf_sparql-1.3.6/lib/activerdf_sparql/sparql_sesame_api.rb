@@ -113,10 +113,10 @@ class SparqlSesameApiAdapter < ActiveRdfAdapter
   
   def delete(s,p,o,c=nil)
     
-    # check illegal input
-    raise(ActiveRdfError, "deleting non-resource #{s} while adding (#{s},#{p},#{o},#{c})") unless s.respond_to?(:uri)
-    raise(ActiveRdfError, "deleting non-resource #{p} while adding (#{s},#{p},#{o},#{c})") unless p.respond_to?(:uri)
-    
+#    # check illegal input
+#    raise(ActiveRdfError, "deleting non-resource #{s} while adding (#{s},#{p},#{o},#{c})") unless s.respond_to?(:uri)
+#    raise(ActiveRdfError, "deleting non-resource #{p} while adding (#{s},#{p},#{o},#{c})") unless p.respond_to?(:uri)
+#    
     quad = [s,p,o,c].collect {|r| r.nil? ? nil : internalise(r) }
     puts quad[0]
     puts quad[1]
