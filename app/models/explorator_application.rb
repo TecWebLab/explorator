@@ -90,7 +90,7 @@ class Application
       s.each do |resource|
         apps = Query.new.distinct(:s).where(:s,:p,resource).execute         
         if apps.size == 1 
-          SemanticExpression.new.delete(resource,nil,nil)
+        SemanticExpression.new.delete(resource,:p,:o)
         end
       end
     end
@@ -117,11 +117,11 @@ class Application
       #delete the set only whether is only referenced by the current application
       apps = Query.new.distinct(:s).where(:s,:p,resource).execute        
       if apps.size == 1 
-        SemanticExpression.new.delete(resource,nil,nil)
+        SemanticExpression.new.delete(resource,:p,:o)
       end        
     end
     #remove the resources from the application
-    SemanticExpression.new.delete(app,nil,nil)      
+    SemanticExpression.new.delete(app,:p,:o)      
     true
   end    
   #remove a specific resource set from the pool
@@ -140,7 +140,7 @@ class Application
     #remove the set by itself
     apps = Query.new.distinct(:s).where(:s,:p,resource).execute        
     if apps.size == 1 
-      SemanticExpression.new.delete(resource,nil,nil)
+      SemanticExpression.new.delete(resource,:p,:o)
     end      
     instance.save
   end  
