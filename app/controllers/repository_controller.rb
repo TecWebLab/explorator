@@ -24,7 +24,7 @@ class RepositoryController < ApplicationController
     adapters.each do |repository|
       #create a model repository passing the repository's id, title and enableness 
       if repository.title == params[:title]
-          repository.limit=params[:limit]
+        repository.limit=params[:limit]
       end
     end       
     render :text => '',:layout => false
@@ -32,19 +32,19 @@ class RepositoryController < ApplicationController
   #The disable method disable a adapter.
   #disable a specific adapter in the ConnectionPool.
   def enable
-     RDFS::Resource.reset_cache() 
+    RDFS::Resource.reset_cache() 
     session[:disablerepositories] << (params[:title]) 
     session[:disablerepositories].uniq!
-   # Repository.disable_by_title(params[:title])
+    # Repository.disable_by_title(params[:title])
     #render nothing.
     render :text => '',:layout => false    
   end
   #The enable method enable a adapter.
   #enable a specific adapter in the ConnectionPool.
   def disable
-     RDFS::Resource.reset_cache() 
-     session[:disablerepositories].delete(params[:title])
-   # Repository.enable_by_title(params[:title])
+    RDFS::Resource.reset_cache() 
+    session[:disablerepositories].delete(params[:title])
+    # Repository.enable_by_title(params[:title])
     #render nothing.
     render :text => '',:layout => false
   end
@@ -53,16 +53,34 @@ class RepositoryController < ApplicationController
       render :text => 'O título do sparql endpoint é obrigatório.',:layout => false      
       return
     end
-    adapter = ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => params[:uri], :results => :sparql_xml, :caching =>true
-    adapter.title=params[:title]    
-    adapter.limit=params[:limit]  if params[:limit] != nil   
-    session[:addrepositories]<<adapter
+    begin
+      adapter = ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => params[:uri], :results => :sparql_xml, :caching =>true
+      adapter.title=params[:title]    
+      adapter.limit=params[:limit]  if params[:limit] != nil   
+       session[:addrepositories]<<adapter
     session[:disablerepositories] << (params[:title]) 
     session[:disablerepositories].uniq!
-    RDFS::Resource.find_all_predicates    
-    # construct the necessary Ruby Modules and Classes to use the Namespace
-    ObjectManager.construct_classes
+      RDFS::Resource.find_all_predicates    
+      # construct the necessary Ruby Modules and Classes to use the Namespace
+      ObjectManager.construct_classes
+      
+      #Test the sparql endpoint.
+      Query.new.distinct(:s).where(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:rdfs,:Class)).limit(5).execute      
+
+     
+
+rescue Exception => e
+  puts e.message
+   session[:addrepositories].delete(adapter)
+    session[:disablerepositories].delete(params[:title]) 
+ 
+       ConnectionPool.remove_data_source(adapter)
+render :text => e.message,:layout => false
+
+   return
+end
+
    # enable(params[:title])    
-    render :text => 'SparqlEndpoint Added!',:layout => false
+render :text => 'SparqlEndpoint Added!',:layout => false
   end
 end
