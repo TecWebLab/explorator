@@ -24,7 +24,7 @@
             </div>
         </li>
     </ul>
-    <div class = " _WINDOW  select <%=css(resource)%> inverse" set = "<%=uri(resourceset)%>" resource="<%=(uri(resource)) %>" exp="('<%=h(uri(resource)) %>',:p,:o)" title="<%= h(to_s(resource)) %>">
+    <div class = " _WINDOW  select <%=css(resource)%> inverse" set = "<%=uri(resourceset)%>" resource="<%=(uri(resource)) %>" exp="('<%=h(uri(resource)) %>',:p,:o)" title="<%= h(to_s(resource)) %>" onmouseover="mopenmenu('<%=sddm%>');" onmouseout="mclosetimemenu();">        
         <div class ="expand _NO_MINIMIZE">
             <div class ='_collapseproperties' style="float:left;">
                 <span class="tool">-<span class="tip">Hide all properties values.</span></span>

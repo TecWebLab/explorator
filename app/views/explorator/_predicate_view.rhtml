@@ -26,7 +26,7 @@
             </div>
         </li>
     </ul>
-    <div class = " _WINDOW  select <%=css(p)%> " set = "<%=uri(resourceset)%>" resource="<%=(uri(p)) %>" exp="('<%=h(uri(p)) %>',:p,:o)" title="<%= (to_s(p)) %>">
+    <div class = " _WINDOW  select <%=css(p)%> " set = "<%=uri(resourceset)%>" resource="<%=(uri(p)) %>" exp="('<%=h(uri(p)) %>',:p,:o)" title="<%= (to_s(p)) %>" onmouseover="mopenmenu('<%=sddm%>');" onmouseout="mclosetimemenu();">
        
 		 <div class ="expand _NO_MINIMIZE">
         	 <div class ='_collapseproperties' style="float:left;">
@@ -41,7 +41,7 @@
         
         <%subjects(p).each do |resource|%>
         <div class = " _WINDOW properties">
-            <div class = "_WINDOW draggable select _NO_MINIMIZE <%=css(resource)%> predicate" resource="<%= (uri(resource)) %>" exp="('<%=(uri(resource)) %>',:p,:o)" title="<%= h(to_s(resource)) %>">
+            <div class = "_WINDOW draggable select _NO_MINIMIZE <%=css(resource)%> predicate" resource="<%= (uri(resource)) %>" exp="('<%=(uri(resource)) %>',:p,:o)" title="<%= h(to_s(resource)) %>" >        
                 <div class ="resourceuioperations _NO_MINIMIZE">
                  <div class ='_hide'>
                        <div>
