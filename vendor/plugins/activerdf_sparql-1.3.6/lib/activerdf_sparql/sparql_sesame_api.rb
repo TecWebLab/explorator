@@ -83,6 +83,7 @@ class SparqlSesameApiAdapter < ActiveRdfAdapter
     end    
     # we parse content depending on the result format    
     results =  parse_xml(response)    
+    
     if block_given?
       results.each do |*clauses|
         yield(*clauses)
