@@ -27,6 +27,10 @@ class ApplicationController < ActionController::Base
     @applications = EXPLORATOR::Application.find_by_explorator::uuid(session[:application].uri)
     render :action => 'index', :layout =>false
   end
+  def reset 
+    session[:application].clear
+    redirect_to :controller => 'explorator' 
+  end
   def create
     session[:application].create(params[:name])  
     redirect_to :controller => "explorator"
