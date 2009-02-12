@@ -64,7 +64,7 @@ class Application
   #gets the list of all sets from the current application
   def sets 
     all = instance.all_explorator::set 
-    puts all
+   
     if all == nil
       Array.new        
     end
