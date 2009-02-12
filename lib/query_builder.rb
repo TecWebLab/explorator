@@ -121,13 +121,16 @@ class SemanticExpression
       variables << :p if p.instance_of? Symbol
       variables << :x
       variables << :y
-      eval ('q.distinct('+ variables.join(',') +')')    #      q.distinct(:p,:x,:y)
+      q.distinct(:p)      if p.instance_of? Symbol
+      q.distinct(:x,:y)
       q.where (to_resource(s,:s),to_resource(p,:p),to_resource(o,:o))  .where(to_resource(p,:p),:x,:y)
     elsif r.to_s == :o.to_s      
       variables << :o if o.instance_of? Symbol
       variables << :x
       variables << :y 
-      eval ('q.distinct('+ variables.join(',') +')')    #      q.distinct(:p,:x,:y)
+      q.distinct(:o)      if o.instance_of? Symbol
+      q.distinct(:x,:y)
+      
       q.where (to_resource(s,:s),to_resource(p,:p),to_resource(o,:o))  .where(to_resource(o,:o),:x,:y)
     else     
       variables << :s if s.instance_of? Symbol
@@ -136,8 +139,11 @@ class SemanticExpression
       if variables.size == 0
         q.ask() 
         ask =true
+        
       else
-        eval ('q.distinct('+ variables.join(',') +')')    
+        q.distinct(:s)  if s.instance_of? Symbol
+        q.distinct(:p)      if p.instance_of? Symbol
+        q.distinct(:o)      if o.instance_of? Symbol        
       end
       q.where (to_resource(s,:s),to_resource(p,:p),to_resource(o,:o))  
     end
@@ -159,8 +165,7 @@ class SemanticExpression
       
     end
     values.each do |x|
-      triple = Array.new 
-      
+      triple = Array.new       
       triple << (idxs == nil ? to_resource(s,:s) : (x.instance_of?(Array) ? x[idxs] : x))  #subject
       triple << (idxp == nil ? to_resource(p,:p) : (x.instance_of?(Array) ? x[idxp] : x))  #predicate
       triple << (idxo == nil ? to_resource(o,:o) : (x.instance_of?(Array) ? x[idxo] : x))  #object     
@@ -169,7 +174,7 @@ class SemanticExpression
     end   if !ask
     
     if ask && values.index('true') != nil
-       triple = Array.new 
+      triple = Array.new 
       triple <<  to_resource(s,:s)  
       triple <<  to_resource(p,:p)  
       triple <<  to_resource(o,:o)  
