@@ -53,7 +53,7 @@ class SemanticExpression
   #the same method as query, but it is able to treat arrays.
   #This methos
   def spo(s,p,o,r=nil)      
-  
+    
     result = Array.new 
     s = resource_or_self(s,r)
     p = resource_or_self(p,r)
@@ -73,20 +73,20 @@ class SemanticExpression
     if  word.index('http://')     
       k = RDFS::Resource.new(word)
       spo(k,:p,:o)
-     # spo(:s,k,:o)
-     # spo(:s,:p,k)    
-  else
-     #not URI
+      # spo(:s,k,:o)
+      # spo(:s,:p,k)    
+    else
+      #not URI
       @result = @result | Query.new.distinct(:s,:p,:o).where(:s,:p,:o).keyword_where(:o,word).execute    
     end  
     self
   end
   def go(uri)
     adapter = ConnectionPool.adapters.select {|adapter| 
-       adapter.title == 'EXPLORATOR_DEFAULT'
+      adapter.title == 'EXPLORATOR_DEFAULT'
     }
     uri = RDFS::Resource.new(uri)
-  
+    
     adapter.first().bridge.loaduri(uri.uri, false,'rdf');   
     adapter.first().reset_cache()
     @result = @result | Query.new.distinct(:s,:p,:o).where(:s,:p,:o,RDFS::Resource.new(uri)).execute
@@ -98,46 +98,125 @@ class SemanticExpression
   end  
   #Wrapper for the class ActiveRDF Query. This method executes a query and returns a set of resources.
   #With parameter must be a single resource.
-  def query(s,p,o,r=nil)   
-    
-    q = Query.new    
-    if r.to_s == :p.to_s
-      #  q.distinct(:p,:x,:y).where(:s,:p,:o).where(:p,:x,:y).optional(:p,RDFS::label,:label).sort(' ?p ')
-      q.distinct(:p,:x,:y).where(:s,:p,:o).where(:p,:x,:y)
-    elsif r.to_s == :o.to_s
-      # q.distinct(:o,:x,:y).where(:s,:p,:o).where(:o,:x,:y).optional(:o,RDFS::label,:label).sort(' ?o ')        
-      q.distinct(:o,:x,:y).where(:s,:p,:o).where(:o,:x,:y)
-    else
-      #  q.distinct(:s,:p,:o).where(:s,:p,:o).optional(:s,RDFS::label,:label).sort(' ?s ')
-      q.distinct(:s,:p,:o).where(:s,:p,:o)
-    end   
-    q.filter(to_filter(s,:s)).filter(to_filter(p,:p)).filter(to_filter(o,:o))   
-    #    q.sort(' ?label ')
-    q.execute       
-    
-  end   
-  def to_filter(value,symbol)
-    
-    if value == symbol
-      nil
-    else
-      str =''
-      
-      if !isLiteral(value)
-        str = '?' + symbol.to_s + ' = ' + value.to_s      
+  #  In the following situations we have to build the triples after query result.
+  #
+  #Two variables in the query 
+  #x ? ?
+  #? x ?
+  #? ? x
+  #
+  #One variable in the query
+  #
+  #x y ?
+  #x ? Y
+  #? x y
+  #
+  #No variable
+  #In this case we have to execute a ASK statement instead the select
+  def query (s,p,o,r=nil)       
+    q = Query.new
+    ask =false
+    variables = Array.new
+    if r.to_s == :p.to_s       
+      variables << :p if p.instance_of? Symbol
+      variables << :x
+      variables << :y
+      eval ('q.distinct('+ variables.join(',') +')')    #      q.distinct(:p,:x,:y)
+      q.where (to_resource(s,:s),to_resource(p,:p),to_resource(o,:o))  .where(to_resource(p,:p),:x,:y)
+    elsif r.to_s == :o.to_s      
+      variables << :o if o.instance_of? Symbol
+      variables << :x
+      variables << :y 
+      eval ('q.distinct('+ variables.join(',') +')')    #      q.distinct(:p,:x,:y)
+      q.where (to_resource(s,:s),to_resource(p,:p),to_resource(o,:o))  .where(to_resource(o,:o),:x,:y)
+    else     
+      variables << :s if s.instance_of? Symbol
+      variables << :p if p.instance_of? Symbol
+      variables << :o if o.instance_of? Symbol    
+      if variables.size == 0
+        q.ask() 
+        ask =true
       else
-        str = "str(?"+symbol.to_s+")='"+value.to_s+"'"
+        eval ('q.distinct('+ variables.join(',') +')')    
       end
-      str
+      q.where (to_resource(s,:s),to_resource(p,:p),to_resource(o,:o))  
     end
-  end  
+    values = q.execute  
+    #process a sparql result and convert it to triple
+    triples = Array.new
+    idxs=variables.index(:s)
+    idxp=variables.index(:p)
+    idxo=variables.index(:o) 
+    if r.to_s == :p.to_s       
+      idxs=variables.index(:p)
+      idxp=variables.index(:x)
+      idxo=variables.index(:y)      
+    elsif r.to_s == :o.to_s      
+      idxs=variables.index(:o)
+      idxp=variables.index(:x)
+      idxo=variables.index(:y)
+      
+      
+    end
+    values.each do |x|
+      triple = Array.new 
+      
+      triple << (idxs == nil ? to_resource(s,:s) : (x.instance_of?(Array) ? x[idxs] : x))  #subject
+      triple << (idxp == nil ? to_resource(p,:p) : (x.instance_of?(Array) ? x[idxp] : x))  #predicate
+      triple << (idxo == nil ? to_resource(o,:o) : (x.instance_of?(Array) ? x[idxo] : x))  #object     
+      triples << triple        
+      
+    end   if !ask
+    
+    if ask && values.index('true') != nil
+       triple = Array.new 
+      triple <<  to_resource(s,:s)  
+      triple <<  to_resource(p,:p)  
+      triple <<  to_resource(o,:o)  
+      triples << triple        
+      
+    end
+    
+    triples.uniq
+  end
+  #this code does the same that the function query above does. However, it use filter and it is less efficient. 
+  #  def query(s,p,o,r=nil)       
+  #    q = Query.new    
+  #    if r.to_s == :p.to_s
+  #      #  q.distinct(:p,:x,:y).where(:s,:p,:o).where(:p,:x,:y).optional(:p,RDFS::label,:label).sort(' ?p ')
+  #      q.distinct(:p,:x,:y).where(:s,:p,:o).where(:p,:x,:y)
+  #    elsif r.to_s == :o.to_s
+  #      # q.distinct(:o,:x,:y).where(:s,:p,:o).where(:o,:x,:y).optional(:o,RDFS::label,:label).sort(' ?o ')        
+  #      q.distinct(:o,:x,:y).where(:s,:p,:o).where(:o,:x,:y)
+  #    else
+  #      #  q.distinct(:s,:p,:o).where(:s,:p,:o).optional(:s,RDFS::label,:label).sort(' ?s ')
+  #      q.distinct(:s,:p,:o).where(:s,:p,:o)
+  #    end   
+  #    q.filter(to_filter(s,:s)).filter(to_filter(p,:p)).filter(to_filter(o,:o))   
+  #    #    q.sort(' ?label ')
+  #    q.execute           
+  #  end   
+  #  def to_filter(value,symbol)    
+  #    if value == symbol
+  #      nil
+  #    else
+  #      str =''
+  #      
+  #      if !isLiteral(value)
+  #        str = '?' + symbol.to_s + ' = ' + value.to_s      
+  #      else
+  #        str = "str(?"+symbol.to_s+")='"+value.to_s+"'"
+  #      end
+  #      str
+  #    end
+  #  end  
   #Union method,
   #s - represents the s in the (s,p,o) triple or the set id or a SemanticExpression instance.
   #p - p in the triple
   #o - o in the triple
   #r - the position on the triple that should be returned.
   def union(s,p=nil,o=nil, r=nil)   
-      puts 'SPO'
+    puts 'SPO'
     if s.instance_of? SemanticExpression 
       @result = @result | s.result
       #Union, Intersection and Difference are operation over sets.
