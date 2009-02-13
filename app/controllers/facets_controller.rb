@@ -27,7 +27,7 @@ class FacetsController < ApplicationController
     facets = Array.new
     properties.each do |predicate|
       if predicate.instance_of? RDF::Property        
-        puts predicate
+        # puts predicate
         #create a object FACETO:Facet for each resource property and add it to the facets array.
         #This code only creates facets that represents properties. Facets that represents expressions are not considerated here.
         id =UUID.random_create.to_s
@@ -48,7 +48,7 @@ class FacetsController < ApplicationController
   #the parameter id is the ResourceSet identification in the SetsPool.
   def facet (exp)  
     #gets a ResourceSet instance in the pool.
- set = session[:application].get(exp)    #the object @resourceset is a global object that will be used by render
+    set = session[:application].get(exp)    #the object @resourceset is a global object that will be used by render
     @resourceset = set     
     
     #Gets a facet defined by the user in the repository.
@@ -68,7 +68,7 @@ class FacetsController < ApplicationController
   def infer   (exp)      
     #gets a ResourceSet instance in the pool.
     set = session[:application].get(exp)
-     
+    
     #the object @resourceset is a global object that will be used by render
     @resourceset = set     
     
@@ -88,7 +88,8 @@ class FacetsController < ApplicationController
   def entropy_by_set(_resources) 
     puts 'FACETANDO...'
     #store the valid facets
-    @facets = Hash.new
+    @facets_cardinalities = Hash.new
+    @entropies = Hash.new
     @exp=Hash.new
     if _resources.size() ==0
       return
@@ -101,7 +102,8 @@ class FacetsController < ApplicationController
     @facetgroup.all_faceto::facet.each do |facet|              
       #handles the facets that have an hierarchy of values.
       facetroot = facet.instance_eval("faceto::level1")
-      puts facet
+      puts '############CALCULATING ENTROPY FOR FACET ############'
+      puts 'FACET NAME: ' + facet.faceto::derivedTerm.to_s
       if   facetroot  != nil 
         facet = facetroot 
       end
@@ -141,11 +143,11 @@ class FacetsController < ApplicationController
         synonyms[synonym.all_word] = synonym
       }      
       entropy = 0
-      objects = Array.new
+      objects = Array.new # all possible values for this facet
       @exp[facet]= Hash.new
-      puts facet
-      prob_p=0
-      hash_object=Hash.new
+      
+      prob_p=0 # probability of occurency of this facet (or predicate) in this resource
+      hash_object=Hash.new # objects occurency
       _resources.each do |resource|        
         next if !resource.instance_of? RDFS::Resource    
         qresult = Array.new
@@ -198,8 +200,7 @@ class FacetsController < ApplicationController
           prob_p += 1
         end
         #frequence that :o occurs for each :s
-        qresult.each do |o|   
-          
+        qresult.each do |o|             
           #gets the default word in case where exists a table of synonyms   
           synomymswords =nil
           if synonyms.size() > 0
@@ -214,8 +215,7 @@ class FacetsController < ApplicationController
           if hash_object[o] == nil
             hash_object[o] = 1              
             #create the query expression for this facet values
-            exp(facet, resource, o,type,synomymswords,constraint)  
-            
+            exp(facet, resource, o,type,synomymswords,constraint)              
           else
             hash_object[o] = hash_object[o]+1            
           end          
@@ -224,38 +224,71 @@ class FacetsController < ApplicationController
       
       # puts prob_p
       #calculates the object occurencies
+      condition = hash_object.values.sort
       
+      next if condition.first == 1 && condition.last ==1
       hash_object.each_key do |object|     
-        count=   hash_object[object]
+        count= hash_object[object]
+         
         # puts object
         
         #calculate the object probability
         #puts prob_p.to_f
         #puts count
         prob_o = count.to_f / prob_p.to_f
-        
+        # puts prob_o
         if prob_o !=1          
           objects << object
-        end
-        
-        #puts prob_o
-        #calculate the entropy based on the object probability
-        entropy = entropy + prob_o * Math.log(prob_o)    
-      end      
+          
+          #calculate the entropy based on the object probability
+          entropy = entropy + prob_o * Math.log(prob_o)  / Math.log( 2 )  
+        end       
+      end       
       #calculates the objects' cardinality 
       if entropy != 0         
         cardinalities = Array.new       
         objects.each do |object|
           #  puts object
           h = Hash.new
+          
           h[object]=hash_object[object]
           cardinalities << h
-        end        
-        @facets[FACETO::Facet.new(facet)]=cardinalities        
+        end                    
+        f = FACETO::Facet.new(facet)
+        puts 'entropy'
+        puts entropy
+        puts 'object size'
+        puts hash_object.size
+        puts 'max entropy'
+        puts  max_entropy_for_n(hash_object.size)
+        puts 'probability'
+        puts prob_p
+        @entropies[f]=[prob_p,normatize (max_entropy_for_n(hash_object.size),entropy)] #normatize entropy value to be used in the sort function
+        puts @entropies[f]
+        @facets_cardinalities[f]=cardinalities        
       end      
     end        
-    
+    @entropies = @entropies.to_a
+    #sort the facets by property occurency and by maximum entropy        
+    @entropies.sort!  do |a, b|
+      r = b[1][0]<=>a[1][0]
+      r = a[1][1]<=>b[1][1]  if r == 0
+      r
+    end   
   end
+  #calculates the max entropy for  n probability values.
+  def   max_entropy_for_n(n)
+   (( 1 / n.to_f) * Math.log(( 1 / n.to_f))  )  * n.to_f / Math.log( 2 )
+  end
+  def   normatize(max,value)
+    a = ((max * -1) - (value  * -1))
+    if a >= 0
+      a 
+    else
+      a * -1
+    end
+  end
+  
   ####################################################################################
   #The inference method determines each possible facet, based on each resources properties
   #The algorithm used is basd on entropy concept.
