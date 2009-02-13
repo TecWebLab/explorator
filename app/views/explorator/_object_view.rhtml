@@ -82,12 +82,12 @@
     <div>
         <%if resourceset.offset.to_i>0 %>
         <div class='pagination '>
-            <a onclick="javascript:ajax_update(Element.extend(this).up('._WINDOW').id,'explorator/reload?view=object_view&offset=<%=resourceset.offset.to_i - resourceset.pagination.to_i%>&uri=<%=resourceset%>');">&lt;&lt;</a>
+            <a onclick="javascript:ajax_update(Element.extend(this).up('._WINDOW').id,'/explorator/reload?view=object_view&offset=<%=resourceset.offset.to_i - resourceset.pagination.to_i%>&uri=<%=resourceset%>');">&lt;&lt;</a>
         </div>
         <%end %>
         &nbsp;<% if resourceset.offset.to_i + resourceset.pagination.to_i <= get_resources.size() %>
         <div class='pagination '>
-            <a onclick="javascript:ajax_update(Element.extend(this).up('._WINDOW').id,'explorator/reload?view=object_view&offset=<%=resourceset.offset.to_i + resourceset.pagination.to_i%>&uri=<%=resourceset%>');">>></a>
+            <a onclick="javascript:ajax_update(Element.extend(this).up('._WINDOW').id,'/explorator/reload?view=object_view&offset=<%=resourceset.offset.to_i + resourceset.pagination.to_i%>&uri=<%=resourceset%>');">>></a>
         </div>
         <%end %>
     </div>
