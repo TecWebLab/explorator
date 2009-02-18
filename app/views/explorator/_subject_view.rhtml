@@ -42,15 +42,19 @@ resources =  resources_paginated(:s) %>
          <%elsif resource.type.include?(RDFS::Class) %>
 		<font class = "instances " classes="('<%=h(uri(resource)) %>',:p,:o)" instances="(:s,RDF::type,'<%=h(uri(resource)) %>')">i</font>
 		<%end%>
-       <%= render_resource(resource) %>		
-        <%
+		        <%
         pred = predicates(resource,:s)
         if resources_paginated(:s).size() == 1
         limit = pred.size()
         else
         limit =1
         end
-        pred[0..limit].each do |p| %>
+%>
+       <%= render_resource(resource) %>		
+	   <%if limit > 1%>
+	   <hr>
+	   <%end%>
+<%        pred[0..limit].each do |p| %>
         <div class = " _WINDOW properties">
             <div class = "_WINDOW draggable select _NO_MINIMIZE <%=css(p)%> predicate" resource="<%= (uri(p)) %>" exp="('<%=(uri(p)) %>',:p,:o)" title="<%=  (to_s(p)) %>">
                 <div class ="resourceuioperations _NO_MINIMIZE">                   
