@@ -4,7 +4,10 @@
 body {
     background-color: #efefef;
 }
-
+hr{
+	height:1px;
+	 border: 1px solid #efefef;
+}
 h1 {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
@@ -81,19 +84,28 @@ div.resource:hover > div.resourceuioperations {
  * ******************************* RDF RELATED FORMATTING ********************
  *
  */
-/* Format a resource*/ .resource {
+/* Format a resource*/ 
+
+.resource {
     overflow: hidden;
-    margin-bottom: 2px;
+    margin-bottom: 1px;
     padding: 1px;
     padding-left: 4px;
     font-family: Arial, Helvetica, sans-serif;
     background-color: #fff;
-    border: 1px solid #ccc;
+    border: 1px solid white; /*#ccc;*/
     text-align: left;
     color: black;
     font-weight: normal;
 	cursor:pointer;
+	 
 }
+ 
+div.resource:hover {
+     
+     border: 1px dashed #4f3df3;
+    
+} 
 
 a.all {
     color: #aaa;
@@ -107,25 +119,44 @@ div.resource:hover a.all {
     color: black;
     text-decoration: underline;
 } .properties {
-    margin: 10px;
+    margin: 1px;
 } .objects {
-    border: 2px solid #999;
-    margin: 10px;
+    border: 1px solid white;/*#999;*/
+    margin: 5px;
     padding: 5px;
     background-color: transparent;
-} .predicate {
+} 
+div.objects:hover {
+    border: 1px dashed #4f3df3;
+ } 
+.predicate {
     float: none;
-    border: 1px dashed #8FBC8F;
+    border: 1px dashed white;/*#8FBC8F;*/
     font-size: 14px;
     text-align: left;
-} .object {
+} 
+div.predicate:hover {
+     
+     border: 1px dashed #4f3df3;
+    
+} 
+
+
+.object {
+	 border: 1px dashed white;
     text-align: left;
     float: none;
     font-size: 14px;
 }
+div.object:hover {
+     
+    border: 1px dashed #4f3df3;
+    
+} 
 
 div.predicate > div.object {
-    margin: 10px;
+	
+    margin: 2px;
 }
 
 /**
@@ -252,12 +283,14 @@ div.windowtoolbar div._view {
 /* CSS for the window header */ .windowheader {
     font-weight: bold;
     padding: 4px 4px 4px 4px;
-    border: 1px solid #cccccc;
+    border: 0px solid #cccccc;
     background-color: #efefef;
     margin-bottom: 3px;
 } .windowtitle {
     z-index: 9;
     position: absolute;
+	     
+	 
 } #resname {
     height: 25px;
 } .winoperations {
@@ -438,8 +471,8 @@ div.landmark:hover a {
 } .toolbar {
     float: left;
     margin-left: 12px;
-    margin-top: 6px;
-    border: 1px solid #4f94cd;
+    margin-top: 8px;
+    border: 0px solid #4f94cd;
     padding: 3px;
 } .toolbar div {
     float: left;
@@ -458,7 +491,7 @@ div.space {
 }
 
 div.operation {
-    border: 1px solid white;
+    border: 1px solid #4f94cd;
     color: white;
     background-color: #4f94cd;
     width: 20px;
@@ -531,6 +564,12 @@ input[type = submit] {
 div.SELECTED {
     border: 2px dashed #4f3df3;
 }
+div.SELECTED:hover {
+     
+    border: 2px dashed #4f3df3;
+    
+} 
+
 
 div.FACETED {
     background-color: #32cd32;
