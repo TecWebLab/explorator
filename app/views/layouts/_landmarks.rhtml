@@ -28,7 +28,7 @@
                 <h2>MENU &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img class="arrow" src="/images/arrow_video_down_white_2.png" width="13" height="13"></h2>
                 <ul>
                     <div>
-                        <a onclick ="ajax_request('/css/')">CSS</a>
+                        <a onclick ="ajax_request('/repository/index')">Repositories</a>
                     </div>
 					
                     <div>
@@ -40,14 +40,16 @@
                     <div>
                         <a onclick ="$('container').show()">Query</a>
                     </div>
-                    <div>
-                        <a onclick ="ajax_request('/repository/index')">Repositories</a>
+                   
+                  
+					 <div>
+                        <a href="/application/reset">Reset Session</a>
                     </div>
-                    <div>
+					  <div>
                         <a onclick ="ajax_request('/application/index')">Sessions (<%=session[:application].instance.rdfs::label %>)</a>
                     </div>
 					 <div>
-                        <a href="/application/reset">Reset Session</a>
+                        <a onclick ="ajax_request('/css/')">CSS</a>
                     </div>
                     <div>
                         <a href = "http://www.tecweb.inf.puc-rio.br/explorator/" target = "_blank">Help</a>
