@@ -217,12 +217,23 @@ function cmd_semantic(){
     });
     //Add a listener for the keyword search. 
     //This observer is applied over the form id_form_keyword
-    $('go').onclick = function(){
+    $('load').onclick = function(){
         ajax_create(new SemanticExpression().go($F('seachbykeyword')));
     };
     $('search').onclick = function(){
         ajax_create(new SemanticExpression().search($F('seachbykeyword')));
     };
+    $('id_form_keyword').onsubmit = function(){
+        if ($F('seachbykeyword').indexOf('http://')!= -1) 
+            ajax_create(new SemanticExpression().go($F('seachbykeyword')));
+        else 
+	
+            ajax_create(new SemanticExpression().search($F('seachbykeyword')));
+        return false;
+    };
+    
+    
+    
     //Add a listener for the facet create form. 
     //This observer is applied over the form id_form_facet
     $$('._form_facet').each(function(item){
@@ -308,12 +319,12 @@ var SemanticExpression = Class.create({
         var expression = '';
         if (a == undefined) 
             return param;
-			
+        
         //The parameter could be only one element or several.			
         if (Object.isArray(a)) {
             expression += a.map(function(x){
                 var resource = Element.resource(x);
-				 
+                
                 if (resource == 'null' || x.hasClassName('class')) {
                     var exp = x.readAttribute('exp');
                     if (exp.indexOf(':o,:o') != -1) {
@@ -335,7 +346,7 @@ var SemanticExpression = Class.create({
         return expression; //returns a array of resources in ruby
     },
     spo: function(s, p, o, r){
-	 
+    
         this.expression += '.spo(' + this.getResourcesArray(s) + ',' + this.getResourcesArray(p) + ',' + this.getResourcesArray(o) + ',' + parameters.get(r) + ')';
         return this;
     },
