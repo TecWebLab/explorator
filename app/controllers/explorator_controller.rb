@@ -15,19 +15,19 @@ class ExploratorController < ApplicationController
   # attr_accessor :resourceset
   #default rails method. returns the view index.rhtml.
   def index     
- 
-end
- 
-def resourcefilter
-   @resourceset =  Application.get(params[:uri])  
-   render  :partial => 'subject_view',:layout=>false;
-end 
-#change the set name
-def editSetName
+    
+  end
+  
+  def resourcefilter
+    @resourceset =  Application.get(params[:uri])  
+    render  :partial => 'subject_view',:layout=>false;
+  end 
+  #change the set name
+  def editSetName
     set = session[:application].get(params[:uri])
     set.explorator::name=params[:value]
     render :text => params[:value], :layout=>false
-end
+  end
   #  prints the filter screen
   def filter    
     @setid=params[:uri]
@@ -39,30 +39,36 @@ end
   #Request sample:
   #/explorator/create?exp=SemanticExpression.new.union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:rdfs,:Class))
   def create    
-     
-    puts params[:exp]
-    #creates a new set. 
-    #the expression must be passed by the uri
-    set = EXPLORATOR::Set.new('http://www.tecweb.inf.puc-rio.br/resourceset/id/' + UUID.random_create.to_s)       
-    set.init(params[:exp])
-
-    #the object @resourceset is a global object that will be used by render
-    @resourceset = set     
-   
-    view = params['view']
-    view = 'subject_view' if  params['view'] == nil || params['view'] == 'null'
-    #render the _window.rhtml view
-    render :partial => view,:layout=>false;
+    begin      
+      puts params[:exp]
+      #creates a new set. 
+      #the expression must be passed by the uri
+      set = EXPLORATOR::Set.new('http://www.tecweb.inf.puc-rio.br/resourceset/id/' + UUID.random_create.to_s)       
+      
+      set.init(params[:exp])
+      
+      #the object @resourceset is a global object that will be used by render
+      @resourceset = set     
+      
+      view = params['view']
+      view = 'subject_view' if  params['view'] == nil || params['view'] == 'null'
+      #render the _window.rhtml view
+      render :partial => view,:layout=>false;
+      
+    rescue Exception => e
+ puts e.backtrace
+        redirect_to :controller => 'message',:action => 'error',:message => e.message ,:layout => false
+    end
   end
   # The  update method updates a specfic ResourceSet instance identified by the parameter id.
   # The new value will be defined by the expression passed by the parameter exp.
   # The exp value must be a valid SemanticExpression class instance and the ResourceSet instance
   # must has been defined before.
   def update     
-       puts params[:exp]
+    puts params[:exp]
     #reevaluate the expression and return the set
     resource = session[:application].get(params[:uri])
-  
+    
     resource.expression = params[:exp] 
     
     #the object @resourceset is a global object that will be used by render   
@@ -102,16 +108,16 @@ end
   #This method is called by the Execute method, being passed as a parameter by the interface.
   def refresh(uri,view=:subject_view, filter='')   
     @resourceset= session[:application].get(uri).setWithOffset(0)    
-     @filter=filter
+    @filter=filter
     #render the _window.rhtml view
     render :partial => view.to_s , :layout=>false
   end
   
-#  def addfilter     
-#    @resourceset= session[:application].get(params[:uri])
-#    @resourceset.addFilter("filter('select{|i| i.to_i" + params[:op] +  params[:value]+ "}')")
-#    render :partial => "subject_view" , :layout=>false
-#  end
-   
+  #  def addfilter     
+  #    @resourceset= session[:application].get(params[:uri])
+  #    @resourceset.addFilter("filter('select{|i| i.to_i" + params[:op] +  params[:value]+ "}')")
+  #    render :partial => "subject_view" , :layout=>false
+  #  end
+  
   
 end

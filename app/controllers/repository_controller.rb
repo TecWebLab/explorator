@@ -50,37 +50,46 @@ class RepositoryController < ApplicationController
   end
   def add
     if params[:title]==nil || params[:title]  == ''
-      render :text => 'O título do sparql endpoint é obrigatório.',:layout => false      
+      redirect_to :controller => 'message',:action => 'error', :message => "Type the SPARQL Enpoint title",:layout => false
       return
     end
     begin
       adapter = ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => params[:uri], :results => :sparql_xml, :caching =>true
       adapter.title=params[:title]    
       adapter.limit=params[:limit]  if params[:limit] != nil   
-       session[:addrepositories]<<adapter
+      session[:addrepositories]<<adapter
     session[:disablerepositories] << (params[:title]) 
     session[:disablerepositories].uniq!
+    
+rescue Exception => e
+  puts e.message
+  puts e.backtrace
+  
+   session[:addrepositories].delete(adapter)
+    session[:disablerepositories].delete(params[:title]) 
+   ConnectionPool.remove_data_source(adapter)
+      redirect_to :controller => 'message',:action => 'error', :message => "SPARQL Enpoint invalid: "+e.message ,:layout => false
+    return
+end
+       begin 
       RDFS::Resource.find_all_predicates    
       # construct the necessary Ruby Modules and Classes to use the Namespace
       ObjectManager.construct_classes
       
       #Test the sparql endpoint.
       Query.new.distinct(:s).where(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:rdfs,:Class)).limit(5).execute      
-
-     
-
 rescue Exception => e
   puts e.message
+  puts e.backtrace
    session[:addrepositories].delete(adapter)
     session[:disablerepositories].delete(params[:title]) 
+    ConnectionPool.remove_data_source(adapter)
+    
+        redirect_to :controller => 'message',:action => 'error',:message => e.message ,:layout => false
  
-       ConnectionPool.remove_data_source(adapter)
-render :text => e.message,:layout => false
-
    return
 end
-
-   # enable(params[:title])    
-render :text => 'SparqlEndpoint Added!',:layout => false
+ redirect_to :controller => 'message',:action => 'confirmation', :message => "SPARQL Enpoint added successfuly ",:layout => false
+ 
   end
 end
