@@ -19,6 +19,9 @@ table td#css {
     font-size: 12px;
     border: 1px solid #efefef;
 }
+.blue{
+	  color: #4f94cd;
+}
 
 /**********************************************************************************/
 /*********************************************************************************
@@ -361,7 +364,7 @@ div#loadwindow {
     font-family: Arial, Helvetica, sans-serif;
     padding: 10px;
     position: fixed;
-    z-index: 1000;
+    z-index: 10000;
     color: white;
     top: 50%;
     left: 50%;

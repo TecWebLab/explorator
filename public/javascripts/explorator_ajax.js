@@ -37,6 +37,7 @@ function ajax_insert(element, _uri,callbackfunction){
 
 //Execute a ajax request.
 function ajax_request(uri){
+
     $('loadwindow').show();
     new Ajax.Request(uri, {
         method: 'get',
