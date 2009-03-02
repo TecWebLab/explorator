@@ -66,6 +66,7 @@ class SparqlSesameApiAdapter < ActiveRdfAdapter
     result = execute_sparql_query(qs,   &block)
     add_to_cache(qs, result) if @caching
     result = [] if result == "timeout"
+        puts qs.to_s  
     return result
   end
   
@@ -139,7 +140,9 @@ class SparqlSesameApiAdapter < ActiveRdfAdapter
   end
   private
   def add_to_cache(query_string, result)
-    unless result.nil? or result.empty?
+    if result.nil? or result.empty?
+      @sparql_cache.store(query_string, [])
+    else
       if result == "timeout"
         @sparql_cache.store(query_string, [])
       else 

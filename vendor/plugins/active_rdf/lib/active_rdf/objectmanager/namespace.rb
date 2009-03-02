@@ -80,7 +80,8 @@ class Namespace
 
   # returns local-part of URI
   def self.localname(resource)
-    raise ActiveRdfError, "localname called on something that doesn't respond to uri" unless resource.respond_to? :uri
+
+    raise ActiveRdfError, "localname ("+resource+") called on something that doesn't respond to uri" unless resource.respond_to? :uri
     # get string representation of resource uri
     uri = resource.uri
 
