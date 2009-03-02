@@ -234,6 +234,29 @@ div.windowtoolbar div.filter:hover {
     background-color: #fefefe;
 }
 
+/*an window representing an error screen*/ .error {
+    font-family: Arial, Helvetica, sans-serif;    
+    z-index: 10000;     
+    border: 2px solid red;     
+    font-size: 14px;
+    padding: 9px;
+    position: fixed;  
+    width:97%;
+    position: fixed;
+    background-color: white;
+}
+
+/*an window representing an error screen*/ .confirmation {
+    font-family: Arial, Helvetica, sans-serif;    
+    z-index: 10000;     
+    border: 2px solid green;     
+    font-size: 14px;
+    padding: 9px;
+    position: fixed;  
+    width:97%;
+    position: fixed;
+    background-color: white;
+}
 /*format the window ui component*/ .window {
     font-family: Arial, Helvetica, sans-serif;
     float: left;
