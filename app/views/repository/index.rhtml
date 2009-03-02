@@ -30,12 +30,10 @@
                 <input id = "limit" name = "limit" value = "200" size ="6"/>
             </td>
         </tr>
-        <tr>
-            <td colspan="3" align="center">
-                <input name = "title" type="button" value = "Add" onclick="ajax_request('/repository/add?title='+$F($('sparqltitle'))+ '&uri=' +$F($('sparqluri'))+ '&limit=' +$F($('limit')));"/> <input type="button" class = "_close" name="Close" value="Close">
-            </td>
-        </tr>
-    </table><h1>All Repositories</h1>
+    </table>
+<br>	 <input name = "title" type="button" value = "Add" onclick="ajax_request('/repository/add?title='+$F($('sparqltitle'))+ '&uri=' +$F($('sparqluri'))+ '&limit=' +$F($('limit')));"/> <input type="button" class = "_close" name="Close" value="Close">
+<br><br>	<br><br>
+	<h1>All Repositories</h1>
     <table width="100%" border="1">
         <tr>
             <td>
