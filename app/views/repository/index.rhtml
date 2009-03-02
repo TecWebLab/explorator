@@ -31,8 +31,8 @@
             </td>
         </tr>
         <tr>
-            <td colspan="3" align="right">
-                <input name = "title" type="button" value = "Add" onclick="new Ajax.Request('/repository/add?title='+$F($('sparqltitle'))+ '&uri=' +$F($('sparqluri'))+ '&limit=' +$F($('limit')) ,{  method: 'get',  onComplete: function( transport){ alert( transport.responseText); $('repositorywindow').remove();}} );"/>
+            <td colspan="3" align="center">
+                <input name = "title" type="button" value = "Add" onclick="ajax_request('/repository/add?title='+$F($('sparqltitle'))+ '&uri=' +$F($('sparqluri'))+ '&limit=' +$F($('limit')));"/> <input type="button" class = "_close" name="Close" value="Close">
             </td>
         </tr>
     </table><h1>All Repositories</h1>
