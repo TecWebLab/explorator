@@ -22,15 +22,15 @@ module ExploratorHelper
     
     @size =  resources.size()
     if((@filter!=nil)&&(@filter!=""))
-      resources =   resources.select {|x| 
-        
-        render_resource(x).to_s().downcase.index(@filter.downcase) != nil}
+      resources =   resources.select {|x|         
+        render_resource(x).to_s().downcase.index(@filter.downcase) != nil
+      }
       @size = resources.size()
       return resources
-    end
-    
+  end
+  
     resources = resources[@resourceset.offset.to_i,@resourceset.pagination.to_i]
- 
+     
     resources
   end
   def subjects(predicate, resource=nil)
