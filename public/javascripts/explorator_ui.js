@@ -32,8 +32,11 @@ Element.addMethods({
     }, //close an element
     ui_close: function(item){
         new Effect.Shrink(item, {
-            duration: 0.2
-        
+            duration: 0.2,
+       afterFinish: function(){
+                //definitely removes the element from the set.
+                item.remove();
+            }
         });
     }, //open an element
     ui_open: function(item){
