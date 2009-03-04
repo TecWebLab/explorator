@@ -51,3 +51,6 @@
     </table>
  </div> 
  <%=render_component (:controller => 'message',:action => params[:messageaction] != nil ? params[:messageaction] : 'error',:params => { :message => @message }  ,:layout => false) if @message !=nil %>
+ <script>
+ 	ajax_update('listenabledrepositories','/repository/listenabledrepositories');
+ </script>

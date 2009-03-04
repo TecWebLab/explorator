@@ -33,10 +33,10 @@
                 <input id = "sparqluri" name = "sparqlendpoint" value = "" size ="40" style="border-color: #cfcfcf; width:100%;"/>
             </td>
             <td>
-                <input id = "limit" name = "limit" value = "200" size ="6" style="border-color: #cfcfcf; width:100%;"/>
+                <input id = "sparqllimit" name = "sparqllimit" value = "200" size ="6" style="border-color: #cfcfcf; width:100%;"/>
             </td>
             <td align=center>
-                <input name = "title" type="button" value = "Add"  onclick = "ajax_update('endpointsform', '/repository/add?title=' + $F($('sparqltitle')) + '&uri=' + $F($('sparqluri')) + '&limit=' + $F($('limit'))); $('endpointsform').innerHTML = 'Adding new sparql endpoint ... '     " style ="background-color: #efefef; color: #4f94cd; "/>
+                <input name = "title" type="button" value = "Add"  onclick = "ajax_update('endpointsform', '/repository/add?title=' + $F($('sparqltitle')) + '&uri=' + $F($('sparqluri')) + '&limit=' + $F($('sparqllimit'))); $('endpointsform').innerHTML = 'Adding new sparql endpoint ... '     " style ="background-color: #efefef; color: #4f94cd; "/>
             </td>
         </tr>
     </table>
