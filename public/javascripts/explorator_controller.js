@@ -215,6 +215,8 @@ function cmd_semantic(){
             clear();
         };
     });
+
+    
     //Add a listener for the keyword search. 
     //This observer is applied over the form id_form_keyword
     $('load').onclick = function(){
@@ -223,15 +225,18 @@ function cmd_semantic(){
     $('search').onclick = function(){
         ajax_create(new SemanticExpression().search($F('seachbykeyword')));
     };
+    
+    
+    
+    
     $('id_form_keyword').onsubmit = function(){
-        if ($F('seachbykeyword').indexOf('http://')!= -1) 
+        if ($F('seachbykeyword').indexOf('http://') != -1) 
             ajax_create(new SemanticExpression().go($F('seachbykeyword')));
         else 
-	
+        
             ajax_create(new SemanticExpression().search($F('seachbykeyword')));
         return false;
     };
-    
     
     
     //Add a listener for the facet create form. 
