@@ -7,16 +7,7 @@ class RepositoryController < ApplicationController
   #list all adapters registered in the pool.
   @repositories
   def index
-    #variable that will store the list of adapters.
-    @repositories = Array.new
-    #Gets all adapters    
-    adapters = ConnectionPool.adapters()
-    adapters.each do |repository|
-      #create a model repository passing the repository's id, title and enableness 
-      if repository.title!= 'INTERNAL' && (repository.title.index('_LOCAL') || session[:addrepositories].include?(repository))
-        @repositories <<  Repository.new(repository.object_id,repository.title, session[:disablerepositories].include?(repository.title),repository.limit)
-      end
-    end       
+   
     render :layout => false
   end
   def limit
@@ -68,8 +59,9 @@ rescue Exception => e
    session[:addrepositories].delete(adapter)
     session[:disablerepositories].delete(params[:title]) 
    ConnectionPool.remove_data_source(adapter)
-      redirect_to :controller => 'message',:action => 'error', :message => "SPARQL Enpoint invalid: "+e.message ,:layout => false
-    return
+#      render_component :controller => 'message',:action => 'error', :message => "SPARQL Enpoint invalid: "+e.message ,:layout => false
+redirect_to :action => 'endpointsform' , :message => "SPARQL Enpoint invalid: "+e.message ,:layout => false
+return
 end
        begin 
       RDFS::Resource.find_all_predicates    
@@ -84,15 +76,31 @@ rescue Exception => e
    session[:addrepositories].delete(adapter)
     session[:disablerepositories].delete(params[:title]) 
     ConnectionPool.remove_data_source(adapter)
-    
-        redirect_to :controller => 'message',:action => 'error',:message => e.message ,:layout => false
- 
-   return
+redirect_to :action => 'endpointsform' ,:message => e.message ,:layout => false
+return
+#       render_component :controller => 'message',:action => 'error',:message => e.message ,:layout => false
 end
- redirect_to :controller => 'message',:action => 'confirmation', :message => "SPARQL Enpoint added successfuly ",:layout => false
+redirect_to :action => 'endpointsform',:message => 'Sparql endpoint added successfully!' ,:messageaction=>'confirmation'
  
 end
 def listenabledrepositories
  render :partial => 'listenabledrepositories',:layout =>false
+end
+
+def endpointsform
+   #variable that will store the list of adapters.
+    @repositories = Array.new
+    @message = params[:message]
+    puts @message
+    #Gets all adapters    
+    adapters = ConnectionPool.adapters()
+    adapters.each do |repository|
+      #create a model repository passing the repository's id, title and enableness 
+      if repository.title!= 'INTERNAL' && (repository.title.index('_LOCAL') || session[:addrepositories].include?(repository))
+        @repositories <<  Repository.new(repository.object_id,repository.title, session[:disablerepositories].include?(repository.title),repository.limit)
+      end
+    end       
+
+ render :layout =>false
 end
 end
