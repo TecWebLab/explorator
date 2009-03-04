@@ -90,7 +90,7 @@ class SparqlAdapter < ActiveRdfAdapter
           # puts url
           open(url, header) do |f|            
             response = f.read   
-              puts response
+#              puts response
           end
         end
         when :post
