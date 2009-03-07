@@ -64,7 +64,7 @@ class SparqlAdapter < ActiveRdfAdapter
         return result
       end
     end
-    puts qs.to_s
+   # puts qs.to_s
     result = execute_sparql_query(qs, header(query), &block)
     add_to_cache(qs, result) if @caching
     result = [] if result == "timeout"
