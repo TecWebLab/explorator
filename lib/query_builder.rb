@@ -55,12 +55,13 @@ class SemanticExpression
   def spo(s,p,o,r=nil)      
     
     result = Array.new 
-    s = resource_or_self(s,r)
-    p = resource_or_self(p,r)
-    o = resource_or_self(o,r)
-    s.each do |x|
+    s = resource_or_self(s,r).uniq
+    p = resource_or_self(p,r).uniq
+    o = resource_or_self(o,r).uniq
+     s.each do |x|
       p.each do |y|
         o.each do |z|
+#          puts x.to_s + ' **** ' + y.to_s  + ' **** ' + z.to_s
           result |= query(x,y,z,r)
         end        
       end     
