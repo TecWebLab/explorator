@@ -54,9 +54,8 @@ end
 #adapter.title='IMDB_SPARQL'
 
 
-#
-#adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :virtuoso, :url => "http://www.w3c.es/Prensa/sparql/", :results => :sparql_xml, :caching =>true
-#adapter.title='REVYU'
+adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :virtuoso, :url => "http://139.82.71.60:8890/sparql", :results => :sparql_xml, :caching =>true
+adapter.title='DBPEDIA_LOCAL'
 
 
 #adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://dbtune.org:2105/sparql/", :results => :sparql_xml
