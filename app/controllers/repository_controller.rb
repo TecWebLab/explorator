@@ -15,7 +15,10 @@ class RepositoryController < ApplicationController
     adapters.each do |repository|
       #create a model repository passing the repository's id, title and enableness 
       if repository.title == params[:title]
-        repository.limit=params[:limit]
+        
+        repository.limit=params[:limit].rstrip
+        repository.limit=nil if repository.limit == 0 || repository.limit ==''
+        puts repository.limit
       end
     end       
     render :text => '',:layout => false
@@ -47,7 +50,7 @@ class RepositoryController < ApplicationController
     begin
       adapter = ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => params[:uri], :results => :sparql_xml, :caching =>true
       adapter.title=params[:title]    
-      adapter.limit=params[:limit]  if params[:limit] != nil   
+      adapter.limit=params[:limit]  if params[:limit] != nil && params[:limit].rstrip != ''  
       session[:addrepositories]<<adapter
     session[:disablerepositories] << (params[:title]) 
     session[:disablerepositories].uniq!
