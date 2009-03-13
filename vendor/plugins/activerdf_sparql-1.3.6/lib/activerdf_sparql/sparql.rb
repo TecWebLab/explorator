@@ -54,7 +54,7 @@ class SparqlAdapter < ActiveRdfAdapter
   # may be called with a block
   def query(query, &block)    
     qs = Query2SPARQL.translate(query)
-    puts qs.to_s  
+  
     if @caching
       result = query_cache(qs)
       if result.nil?
