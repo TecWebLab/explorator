@@ -25,6 +25,7 @@ class SparqlSesameApiAdapter < ActiveRdfAdapter
     @result_format = :sparql_xml       
     @repository = params[:repository] 
     @sesamedir =params[:dir] 
+    @title =params[:title] 
     
     sesame_jars=''
     dir ="#{File.dirname(__FILE__)}/java/"

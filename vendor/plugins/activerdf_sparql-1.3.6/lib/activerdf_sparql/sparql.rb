@@ -30,7 +30,7 @@ class SparqlAdapter < ActiveRdfAdapter
     @sparql_cache = {}
     @reads = true
     @writes = false
-    
+     @title =params[:title] 
     @url = params[:url] || ''
     @caching = params[:caching] || false
     @timeout = params[:timeout] || 100
@@ -54,7 +54,7 @@ class SparqlAdapter < ActiveRdfAdapter
   # may be called with a block
   def query(query, &block)    
     qs = Query2SPARQL.translate(query)
-     
+    puts qs.to_s  
     if @caching
       result = query_cache(qs)
       if result.nil?
@@ -64,7 +64,7 @@ class SparqlAdapter < ActiveRdfAdapter
         return result
       end
     end
-   # puts qs.to_s
+   
     result = execute_sparql_query(qs, header(query), &block)
     add_to_cache(qs, result) if @caching
     result = [] if result == "timeout"
