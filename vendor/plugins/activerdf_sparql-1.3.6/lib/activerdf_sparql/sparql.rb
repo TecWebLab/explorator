@@ -30,7 +30,7 @@ class SparqlAdapter < ActiveRdfAdapter
     @sparql_cache = {}
     @reads = true
     @writes = false
-     @title =params[:title] 
+    @title =params[:title] 
     @url = params[:url] || ''
     @caching = params[:caching] || false
     @timeout = params[:timeout] || 100
@@ -39,8 +39,17 @@ class SparqlAdapter < ActiveRdfAdapter
     @result_format = params[:results] || :json
     raise ActiveRdfError, "Result format unsupported" unless [:xml, :json, :sparql_xml].include? @result_format
     
-    @engine = params[:engine]
-    raise ActiveRdfError, "SPARQL engine unsupported" unless [:yars2, :sesame2, :joseki, :virtuoso].include? @engine
+    
+     @engine = params[:engine]
+    if @engine == nil
+      response = Net::HTTP.get_response(URI.parse(@url))    
+      if  response['server'].to_s.downcase.index('virtuoso') != nil  
+        @engine = :virtuoso 
+      else
+        @engine = :sesame2 
+      end
+    end 
+     raise ActiveRdfError, "SPARQL engine unsupported" unless [:yars2, :sesame2, :joseki, :virtuoso].include? @engine
     
     @request_method = params[:request_method] || :get
     raise ActiveRdfError, "Request method unsupported" unless [:get,:post].include? @request_method
@@ -54,7 +63,7 @@ class SparqlAdapter < ActiveRdfAdapter
   # may be called with a block
   def query(query, &block)    
     qs = Query2SPARQL.translate(query,@engine)
-  puts qs.to_s
+    puts qs.to_s
     if @caching
       result = query_cache(qs)
       if result.nil?
@@ -64,11 +73,11 @@ class SparqlAdapter < ActiveRdfAdapter
         return result
       end
     end
-   
+    
     result = execute_sparql_query(qs, header(query), &block)
     add_to_cache(qs, result) if @caching
     result = [] if result == "timeout"
-
+    
     return result
   end
   
@@ -90,7 +99,7 @@ class SparqlAdapter < ActiveRdfAdapter
           # puts url
           open(url, header) do |f|            
             response = f.read   
-#              puts response
+            #              puts response
           end
         end
         when :post
