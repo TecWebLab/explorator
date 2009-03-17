@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   @resourceset
   def session_init
     #puts  session[:application].instance
-    if session[:application] == nil
+    if session[:application] == nil || Thread.current[:application] == nil
       puts 'initializing session'
       session[:disablerepositories]=Array.new
       session[:disablerepositories] << 'INTERNAL'
