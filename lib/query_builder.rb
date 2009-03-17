@@ -84,7 +84,7 @@ class SemanticExpression
   end
   def go(uri)
     adapter = ConnectionPool.adapters.select {|adapter| 
-      adapter.title == 'EXPLORATOR_LOCAL'
+      adapter.title == 'EXPLORATOR(Local)'
     }
     uri = RDFS::Resource.new(uri)
     
@@ -222,7 +222,7 @@ class SemanticExpression
   #o - o in the triple
   #r - the position on the triple that should be returned.
   def union(s,p=nil,o=nil, r=nil)   
-    puts 'SPO'
+   
     if s.instance_of? SemanticExpression 
       @result = @result | s.result
       #Union, Intersection and Difference are operation over sets.

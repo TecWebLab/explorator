@@ -28,7 +28,7 @@ $sesamedir.each  do |x|
   
   if x.rindex('.') == nil && x!= ('SYSTEM') && x!= ('INTERNAL') 
     
-    adapter = ConnectionPool.add_data_source :type => :sparql_sesame_api, :title => x + '_LOCAL'  ,  :caching =>true, :repository => x, :dir => $sesamedir.path
+    adapter = ConnectionPool.add_data_source :type => :sparql_sesame_api, :title => x + '(Local)'  ,  :caching =>true, :repository => x, :dir => $sesamedir.path
    
   end
 end
@@ -54,7 +54,7 @@ end
 #adapter.title='IMDB_SPARQL'
 
 
-adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :virtuoso,:title=>'DBPEDIA_LOCAL', :url => "http://139.82.71.60:8890/sparql", :results => :sparql_xml, :caching =>true
+adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :virtuoso,:title=>'DBPEDIA(Local)', :url => "http://139.82.71.60:8890/sparql", :results => :sparql_xml, :caching =>true
 
 
 
