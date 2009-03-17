@@ -14,7 +14,7 @@ class Query2SPARQL
       select_clauses = query.select_clauses.collect{|s| construct_clause(s)}
       
       str << "SELECT #{distinct}#{select_clauses.join(' ')} "
-      str << "WHERE { #{where_clauses(query)} #{optional_clauses(query)} #{filter_clauses(query)} #{keywords_clauses(query)}} "
+      str << "WHERE { #{where_clauses(query)} #{optional_clauses(query)} #{filter_clauses(query)} #{keywords_clauses(query,engine)}} "
       str << "ORDER BY #{query.sort_clauses} " unless query.sort_clauses.empty?
       str << "LIMIT #{query.limits} " if query.limits
       str << "OFFSET #{query.offsets} " if query.offsets
@@ -36,14 +36,14 @@ class Query2SPARQL
         o = 'a' + count.to_s
         o=o.to_sym()
       end
-
+      
       # does there where clause use a context ? 
       if c.nil?         
         where = "OPTIONAL {"
         where = where +  [s,p,o].collect {|term| construct_clause(term) }.join(' ')        
         where = where + " FILTER(str(?#{o}) = '#{object}')  " unless object == nil
         where = where + " } "
-     
+        
         where
       else
         "GRAPH #{construct_clause(c)} { #{construct_clause(s)} #{construct_clause(p)} #{construct_clause(o)} }"
@@ -56,19 +56,23 @@ class Query2SPARQL
     "FILTER (#{query.filter_clauses.join(" && ")})" unless query.filter_clauses.empty?
   end
   #build keywords
-  def self.keywords_clauses(query)
+  def self.keywords_clauses(query,engine=nil)
     if query.keyword?           
       filters= Array.new
       query.keywords.each do |term, keyword|
-        filters << "regex(str(?#{term}),'#{keyword}','i')"        
+        if engine == :virtuoso
+          filters << "bif:contains (?#{term}, '\"#{keyword}\"')"    
+        else
+          filters << "regex(str(?#{term}),'#{keyword}','i')"        
+        end           
       end      
       filters = " FILTER (#{filters.join(" || ")})" unless filters.empty?     
-     filters 
+      filters 
     end 
   end
   # concatenate each where clause using space (e.g. 's p o')
   # and concatenate the clauses using dot, e.g. 's p o . s2 p2 o2 .'
-   def self.where_clauses(query)   
+  def self.where_clauses(query)   
     object = nil
     count = 0
     where_clauses = query.where_clauses.collect do |s,p,o,c|
