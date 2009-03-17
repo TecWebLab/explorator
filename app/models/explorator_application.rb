@@ -39,8 +39,7 @@ class Application
     raise ExploratorError.new('Must be a ResourceSet instance') if !resourceset.instance_of? EXPLORATOR::Set
     puts '## Adding to cache ##'
     puts resourceset.uri
-    @cache[RDF::Resource.new(resourceset.uri)] = resourceset
-    
+    @cache[RDF::Resource.new(resourceset.uri)] = resourceset    
     if instance.explorator::set == nil
       instance.explorator::set = [resourceset]
     else
