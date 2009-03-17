@@ -60,6 +60,7 @@ class Query2SPARQL
     if query.keyword?           
       filters= Array.new
       query.keywords.each do |term, keyword|
+     
         if engine == :virtuoso
           filters << "bif:contains (?#{term}, '\"#{keyword}\"')"    
         else
