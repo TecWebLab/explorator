@@ -7,7 +7,7 @@ class RepositoryController < ApplicationController
   #list all adapters registered in the pool.
   @repositories
   def index
-   
+    
     render :layout => false
   end
   def limit
@@ -42,56 +42,57 @@ class RepositoryController < ApplicationController
     #render nothing.
     render :text => '',:layout => false
   end
+ 
   def add
     if params[:title]==nil || params[:title]  == ''
       redirect_to :controller => 'message',:action => 'error', :message => "Type the SPARQL Enpoint title",:layout => false
       return
     end
     begin
-      adapter = ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => params[:uri], :results => :sparql_xml, :caching =>true
+      adapter = ConnectionPool.add_data_source :type => :sparql, :url => params[:uri], :results => :sparql_xml, :caching =>true   
       adapter.title=params[:title]    
       adapter.limit=params[:limit]  if params[:limit] != nil && params[:limit].rstrip != ''  
-      session[:addrepositories]<<adapter
-    session[:disablerepositories] << (params[:title]) 
-    session[:disablerepositories].uniq!
-    
-rescue Exception => e
-  puts e.message
-  puts e.backtrace
-  
-   session[:addrepositories].delete(adapter)
-    session[:disablerepositories].delete(params[:title]) 
-   ConnectionPool.remove_data_source(adapter)
-#      render_component :controller => 'message',:action => 'error', :message => "SPARQL Enpoint invalid: "+e.message ,:layout => false
-redirect_to :action => 'endpointsform' , :message => "SPARQL Enpoint invalid: "+e.message ,:layout => false
-return
-end
-       begin 
+      session[:addrepositories]<< adapter
+      session[:disablerepositories] << (params[:title]) 
+      session[:disablerepositories].uniq!
+      
+    rescue Exception => e
+      puts e.message
+      puts e.backtrace
+      
+      session[:addrepositories].delete(adapter)
+      session[:disablerepositories].delete(params[:title]) 
+      ConnectionPool.remove_data_source(adapter)
+      #      render_component :controller => 'message',:action => 'error', :message => "SPARQL Enpoint invalid: "+e.message ,:layout => false
+      redirect_to :action => 'endpointsform' , :message => "SPARQL Enpoint invalid: "+e.message ,:layout => false
+      return
+    end
+    begin 
       RDFS::Resource.find_all_predicates    
       # construct the necessary Ruby Modules and Classes to use the Namespace
       ObjectManager.construct_classes
       
       #Test the sparql endpoint.
       Query.new.distinct(:s).where(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:rdfs,:Class)).limit(5).execute      
-rescue Exception => e
-  puts e.message
-  puts e.backtrace
-   session[:addrepositories].delete(adapter)
-    session[:disablerepositories].delete(params[:title]) 
-    ConnectionPool.remove_data_source(adapter)
-redirect_to :action => 'endpointsform' ,:message => e.message ,:layout => false
-return
-#       render_component :controller => 'message',:action => 'error',:message => e.message ,:layout => false
-end
-redirect_to :action => 'endpointsform',:message => 'Sparql endpoint added successfully!' ,:messageaction=>'confirmation'
- 
-end
-def listenabledrepositories
- render :partial => 'listenabledrepositories',:layout =>false
-end
-
-def endpointsform
-   #variable that will store the list of adapters.
+    rescue Exception => e
+      puts e.message
+      puts e.backtrace
+      session[:addrepositories].delete(adapter)
+      session[:disablerepositories].delete(params[:title]) 
+      ConnectionPool.remove_data_source(adapter)
+      redirect_to :action => 'endpointsform' ,:message => e.message ,:layout => false
+      return
+      #       render_component :controller => 'message',:action => 'error',:message => e.message ,:layout => false
+    end
+    redirect_to :action => 'endpointsform',:message => 'Sparql endpoint added successfully!' ,:messageaction=>'confirmation'
+    
+  end
+  def listenabledrepositories
+    render :partial => 'listenabledrepositories',:layout =>false
+  end
+  
+  def endpointsform
+    #variable that will store the list of adapters.
     @repositories = Array.new
     @message = params[:message]
     puts @message
@@ -103,7 +104,7 @@ def endpointsform
         @repositories <<  Repository.new(repository.object_id,repository.title, session[:disablerepositories].include?(repository.title),repository.limit)
       end
     end       
-
- render :layout =>false
-end
+    
+    render :layout =>false
+  end
 end
