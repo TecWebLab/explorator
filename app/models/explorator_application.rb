@@ -20,6 +20,7 @@ class Application
   def initialize(id)   
     super()
     @uri = 'http://www.tecweb.inf.puc-rio.br/application/id/'+  id + '/'
+    instance()
   end
   def instance()    
     if @instance == nil     
@@ -29,7 +30,6 @@ class Application
       @instance.rdfs::label='Default'
       @instance.save
     end 
-
     @instance
   end
   #checks whether it is the current application
@@ -39,6 +39,7 @@ class Application
     raise ExploratorError.new('Must be a ResourceSet instance') if !resourceset.instance_of? EXPLORATOR::Set
     puts '## Adding to cache ##'
     puts resourceset.uri
+    puts @cache
     @cache[RDF::Resource.new(resourceset.uri)] = resourceset    
     if instance.explorator::set == nil
       instance.explorator::set = [resourceset]
