@@ -53,8 +53,8 @@ class SparqlAdapter < ActiveRdfAdapter
   # query datastore with query string (SPARQL), returns array with query results
   # may be called with a block
   def query(query, &block)    
-    qs = Query2SPARQL.translate(query)
-  
+    qs = Query2SPARQL.translate(query,@engine)
+  puts qs.to_s
     if @caching
       result = query_cache(qs)
       if result.nil?
@@ -129,7 +129,7 @@ class SparqlAdapter < ActiveRdfAdapter
   def close
     ConnectionPool.remove_data_source(self)
   end	
-  private
+  protected
   def add_to_cache(query_string, result)
     if result.nil? or result.empty?
       @sparql_cache.store(query_string, [])
