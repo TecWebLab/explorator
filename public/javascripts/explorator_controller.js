@@ -220,7 +220,10 @@ function cmd_semantic(){
     //Add a listener for the keyword search. 
     //This observer is applied over the form id_form_keyword
     $('load').onclick = function(){
+	new Ajax.Request('/repository/enable?title=EXPLORATOR(Local)',{  method: 'get'} );
+ 		
         ajax_create(new SemanticExpression().go($F('seachbykeyword')));
+		ajax_update('listenabledrepositories','/repository/listenabledrepositories');
     };
     $('search').onclick = function(){
         ajax_create(new SemanticExpression().search($F('seachbykeyword')));

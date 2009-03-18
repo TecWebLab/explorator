@@ -45,7 +45,7 @@ function ajax_request(uri){
     new Ajax.Request(uri, {
         method: 'get',
         onComplete: function(transport){
-			$('loadwindow').innerHTML = loading_text;
+			$('loadingtext').innerHTML = loading_text;
             $('loadwindow').hide();
 
             ui_add_window(transport.responseText);
@@ -60,7 +60,7 @@ function ajax_request_forfacet(uri, item){
     new Ajax.Request(uri, {
         method: 'get',
         onComplete: function(transport){
-			$('loadwindow').innerHTML = loading_text;
+			$('loadingtext').innerHTML = loading_text;
             $('loadwindow').hide();
             
             ui_add_window(transport.responseText);

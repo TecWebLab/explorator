@@ -17,7 +17,7 @@ function getTextValue(element){
 }
 
 function init_all(){
-    $('loadwindow').innerHTML = loading_text;
+    $('loadingtext').innerHTML = loading_text;
     $('loadwindow').hide();
     register_ui_behaviour();
     register_controllers();

@@ -64,7 +64,7 @@ function register_ui_resource_behaviour(){
         resource.identify();
         resource.ondblclick = function(e){
             resource.ui_open();			
-		$('loadwindow').innerHTML = "Loading: " + getTextValue(resource);
+		$('loadingtext').innerHTML = "Loading: " + getTextValue(resource);
             e.stopPropagation();
         };
         //	   resource.onclick = function(e){        
