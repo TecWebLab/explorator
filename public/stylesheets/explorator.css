@@ -364,20 +364,28 @@ div.windowtoolbar div._view {
 /********************
  * Loading Window
  */
-div#loadwindow {
-    font-weight: bold;
+#loadwindow {
+    padding: 10px;
+	float:right;
+    position: absolute;
+    z-index: 10000;
+	    background: white;
+    color: blue;
+ 
+ left:50%;
+ top:50%;
+    border: 2px solid #cccccc;
+} 
+#loadingtext{
+	color: blue;
+	    font-weight: bold;
     font-size: 13px;
     text-align: center;
-    background: blue;
+    background: white;
     font-family: Arial, Helvetica, sans-serif;
-    padding: 10px;
-    position: fixed;
-    z-index: 10000;
-    color: white;
-    top: 50%;
-    left: 50%;
-    border: 2px solid #cccccc;
-} .filterwindow {
+
+}
+.filterwindow {
     float: left;
     margin-left: 14px;
     width: 288px;
