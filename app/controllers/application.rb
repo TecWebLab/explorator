@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
     end
     Thread.current[:disablerepositories]=session[:disablerepositories]    
     Thread.current[:application]=session[:application]
+ 
   end
   
   #This was set to false for enable ajaxs request over post HTTP method.
