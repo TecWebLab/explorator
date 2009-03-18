@@ -87,8 +87,7 @@ class SemanticExpression
       adapter.title == 'EXPLORATOR(Local)'
     }
     uri = RDFS::Resource.new(uri)
-    
-    adapter.first().bridge.loaduri(uri.uri, false,'rdf');   
+     adapter.first().bridge.loaduri(uri.uri, false,'rdf');   
     adapter.first().reset_cache()
     @result = @result | Query.new.distinct(:s,:p,:o).where(:s,:p,:o,RDFS::Resource.new(uri)).execute
     self
