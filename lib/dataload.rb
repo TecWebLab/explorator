@@ -32,7 +32,7 @@ $sesamedir.each  do |x|
    
   end
 end
-
+ 
 #adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://localhost:8080/openrdf-sesame/repositories/PRESIDENT", :results => :sparql_xml, :caching =>true
 #adapter.title='PRESIDENT_PARALLAX_DEFAULT'
 #
