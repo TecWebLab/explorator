@@ -233,7 +233,7 @@ div.windowtoolbar div.filter:hover {
     z-index: 1000;
     margin-left: 14px;
     width: 50%;
-    height: 100%;
+    height: 95%;
     border: 2px solid #cccccc;
     text-align: center;
     font-size: 14px;
@@ -242,6 +242,7 @@ div.windowtoolbar div.filter:hover {
     left: 25%;
     top: 0px;
     position: fixed;
+	overflow:auto;
     background-color: #fefefe;
 }
 
