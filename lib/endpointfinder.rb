@@ -112,6 +112,9 @@ class FinderUtil
     end
     
     def find_and_add(uri)
+      if Thread.current[:autodiscovery] != 'true'
+        return
+      end
       #it verifies whether exist in the pool an adapter to answer this domain(root)     
       root = get_root_uri(uri)
       if ConnectionPool.void.keys.include?(root)
