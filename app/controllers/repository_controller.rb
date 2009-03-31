@@ -16,7 +16,7 @@ class RepositoryController < ApplicationController
   def autodiscovery
     
     session[:autodiscovery] = params[:flag] 
-    
+   
     render :text => ''
   end
 

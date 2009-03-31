@@ -20,6 +20,7 @@ class ApplicationController < ActionController::Base
     Thread.current[:addrepositories]=session[:addrepositories]
     Thread.current[:disablerepositories]=session[:disablerepositories]    
     Thread.current[:application]=session[:application]
+     Thread.current[:autodiscovery]=session[:autodiscovery]
  
   end
   
