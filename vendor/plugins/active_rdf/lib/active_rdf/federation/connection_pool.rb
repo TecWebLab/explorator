@@ -16,6 +16,8 @@ class ConnectionPool
   # pool of all adapters
   @@adapter_pool = Array.new
   
+  @@void = Hash.new
+  
   # pool of connection parameters to all adapter
   @@adapter_parameters = Array.new
   
@@ -35,9 +37,12 @@ class ConnectionPool
     $activerdflog.info "ConnectionPool: clear called"
     @@adapter_pool = []
     @@adapter_parameters = []
+    @@void=Hash.new
     self.write_adapter = nil
   end
-  
+   def ConnectionPool.void
+   @@void
+  end
   def ConnectionPool.adapters
     @@adapter_pool.dup
   end
@@ -88,6 +93,8 @@ class ConnectionPool
     # sets the adapter as current write-source if it can write
     self.write_adapter = adapter if adapter.writes?
     
+    void_source =  adapter.query(Query.new.select(:o).where(:s,RDFS::Resource.new('<http://xmlns.com/foaf/0.1/homepage>') ,:o).where(:s,RDF::type,RDFS::Resource.new('<http://rdfs.org/ns/void#Dataset>'))).uniq
+    @@void[void_source.to_s.gsub(/>/,'').gsub(/</,'')]=adapter if void_source != nil
     return adapter
   end
   
@@ -131,7 +138,20 @@ class ConnectionPool
   class << self
     alias add add_data_source
   end
-  
+  #find an sparql adapter by its uri
+  def ConnectionPool.find_by_uri(uri)
+ 
+    @@adapter_pool.each {|x|
+     if x.instance_of? SparqlAdapter
+ 
+       if x.url == uri
+         return x
+       end
+     end
+    }
+    return nil
+   
+  end
   # adapter-types can register themselves with connection pool by
   # indicating which adapter-type they are
   def ConnectionPool.register_adapter(type, klass)
