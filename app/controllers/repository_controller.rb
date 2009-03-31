@@ -6,10 +6,20 @@ class RepositoryController < ApplicationController
   # The index method get the list of all adapter in the pool.
   #list all adapters registered in the pool.
   @repositories
-  def index
-    
+  def index    
     render :layout => false
   end
+  def autoadd
+    FinderUtil.find_and_add(params[:uri].gsub('>','').gsub('<',''))
+    render :text => ''
+  end
+  def autodiscovery
+    
+    session[:autodiscovery] = params[:flag] 
+    
+    render :text => ''
+  end
+
   def limit
     adapters = ConnectionPool.adapters()
     adapters.each do |repository|

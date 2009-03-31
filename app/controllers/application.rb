@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
       session[:addrepositories] = Array.new
       session[:application] =  Application.new(session.session_id)
     end
+    Thread.current[:addrepositories]=session[:addrepositories]
     Thread.current[:disablerepositories]=session[:disablerepositories]    
     Thread.current[:application]=session[:application]
  
