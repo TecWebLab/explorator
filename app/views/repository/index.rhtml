@@ -5,6 +5,12 @@
         </div>
         &nbsp;
     </div>
+	<h1>Auto-discovery endpoint</h1>
+ 
+	     <input name="autodiscovery"  onchange="new Ajax.Request('/repository/autodiscovery?flag='+this.checked,{  method: 'get'} )" type="checkbox" <%= 'checked' if  session[:autodiscovery] == 'true'%> />
+	  <br>
+    <br>
+	
     <h1>Enable/Disable Repositories</h1>
     <%= render_component :action => "endpointsform", :layout => false %>
     <br>
