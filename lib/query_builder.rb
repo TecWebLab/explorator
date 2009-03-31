@@ -52,8 +52,7 @@ class SemanticExpression
   # the parameter r is the variable in the triple that should be gathered.
   #the same method as query, but it is able to treat arrays.
   #This methos
-  def spo(s,p,o,r=nil)      
-    
+  def spo(s,p,o,r=nil)          
     result = Array.new 
     s = resource_or_self(s,r).uniq
     p = resource_or_self(p,r).uniq
@@ -123,7 +122,7 @@ class SemanticExpression
       variables << :y
       q.distinct(:p)      if p.instance_of? Symbol
       q.distinct(:x,:y)
-      q.where (to_resource(s,:s),to_resource(p,:p),to_resource(o,:o))  .where(to_resource(p,:p),:x,:y)
+      q.where(to_resource(s,:s),to_resource(p,:p),to_resource(o,:o))  .where(to_resource(p,:p),:x,:y)
     elsif r.to_s == :o.to_s      
       variables << :o if o.instance_of? Symbol
       variables << :x
@@ -131,7 +130,7 @@ class SemanticExpression
       q.distinct(:o)      if o.instance_of? Symbol
       q.distinct(:x,:y)
       
-      q.where (to_resource(s,:s),to_resource(p,:p),to_resource(o,:o))  .where(to_resource(o,:o),:x,:y)
+      q.where(to_resource(s,:s),to_resource(p,:p),to_resource(o,:o))  .where(to_resource(o,:o),:x,:y)
     else     
       variables << :s if s.instance_of? Symbol
       variables << :p if p.instance_of? Symbol
@@ -145,7 +144,7 @@ class SemanticExpression
         q.distinct(:p)      if p.instance_of? Symbol
         q.distinct(:o)      if o.instance_of? Symbol        
       end
-      q.where (to_resource(s,:s),to_resource(p,:p),to_resource(o,:o))  
+      q.where(to_resource(s,:s),to_resource(p,:p),to_resource(o,:o))  
     end
     values = q.execute  
     #process a sparql result and convert it to triple
@@ -260,7 +259,7 @@ class SemanticExpression
       if r != nil   && r!= :s
         tmp = SemanticExpression.new.spo(Thread.current[:application].get(s).elements.collect{|s,p,o| eval(r.to_s)}.uniq,:p,:o).result
       else
-        tmp =Thread.current[:application].get(s).elements
+        tmp = Thread.current[:application].get(s).elements
       end
       #Intersection method, passed as parameter a triple expression
     else
@@ -329,7 +328,9 @@ class SemanticExpression
   def resources(r)
     self.result.collect {|s,p,o| eval(r.to_s)}
   end
-  
+  def auto_enable_or_find_and_add_repository(uri)
+    
+  end
   #The to_resource method is necessary because the ActiveRDF Query only accept a RDFS::Resource, a Literal(String) or a Ruby Symbol as parameter.
   #Convert a string to RDFS:Resource or symbol. The String should be in the format: "SOME TEXT"
   def to_resource(term,symbol)   

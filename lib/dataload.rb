@@ -5,7 +5,6 @@ require "logger"
 #See the ActiveRDF documentation for further references.
 #Author: Samur Araujo
 #Date: 25 jun 2008.
-
 require 'active_rdf' 
 def createdir(dir)
   Dir.mkdir("db/" + dir) unless File.directory?("db/" + dir)
@@ -26,10 +25,9 @@ dbdir = Dir.pwd +  File::SEPARATOR + 'db'
 $sesamedir = Dir.new(dbdir + File::SEPARATOR + 'Sesame' + File::SEPARATOR + "repositories")
 $sesamedir.each  do |x| 
   
-  if x.rindex('.') == nil && x!= ('SYSTEM') && x!= ('INTERNAL') 
-    
-    adapter = ConnectionPool.add_data_source :type => :sparql_sesame_api, :title => x + '(Local)'  ,  :caching =>true, :repository => x, :dir => $sesamedir.path
-   
+  if x.rindex('.') == nil && x!= ('SYSTEM') && x!= ('INTERNAL')     
+    adapter = ConnectionPool.add_data_source :type => :sparql_sesame_api, :title => x + '(Local)'  ,  :caching =>true, :repository => x, :dir => $sesamedir.path   
+ 
   end
 end
  
@@ -97,6 +95,7 @@ Namespace.register(:omdb,"http://triplify.org/vocabulary/omdb#")
 Namespace.register(:movie,"http://triplify.org/vocabulary/movie#")
 Namespace.register(:mondial,"http://www.semwebtech.org/mondial/10/meta#")
 
+ 
 RDFS::Resource.find_all_predicates
 
 # construct the necessary Ruby Modules and Classes to use the Namespace
