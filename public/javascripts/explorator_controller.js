@@ -35,6 +35,8 @@ Element.addMethods({
     },
     //open a new window where his content will be defined by the item.exp attribute.
     ctr_open: function(item){
+	   _uri =  '/repository/autoadd?uri='+ Element.resource(item);
+		new Ajax.Request((_uri), {   method: 'get'       });
         parameters.set('O', item);
         ajax_create(new SemanticExpression('O') + '&view=' + item.readAttribute('view'));
     },
@@ -94,10 +96,7 @@ Element.addMethods({
     },
     exp: function(item){
         return encodeURIComponent(item.readAttribute('exp'));
-    },
-    resource: function(item){
-        return encodeURIComponent(item.readAttribute('resource'));
-    }
+    }    
 });
 
 //Helper functions defined in explorator_helper.js	
