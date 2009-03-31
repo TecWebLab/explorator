@@ -7,20 +7,21 @@ class Repository
   #id - the repository id 
   #enable - a boolean value that indicates whether the repository is enable or disable.
   attr_accessor :title, :id, :enable,:limit
-  #the class constructor.
+  #the class constructor. 
   def initialize(id,title,  enable,limit)   
     @id=id
-  @title=title
+    @title=title
     @enable=enable
-        @limit=limit
+    @limit=limit
   end  
   class << self
-      def disable_all      
+    
+    def disable_all      
       #gets all adapters.
       adapters = ConnectionPool.adapters()
       #finds the adapter identified by the id parameter.
       adapters.each do |repository|                   
-          FederationManager.enable(repository,false)
+        FederationManager.enable(repository,false)
       end      
     end
     def disable_by_title(title)      
