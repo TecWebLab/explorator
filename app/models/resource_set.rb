@@ -48,7 +48,13 @@ class EXPLORATOR::Set < RDFS::Resource
     return @elements.collect{|s,p,o| s}.compact.uniq  
   end
   def elements
-    return @elements
+    if @elements == nil
+      Array.new
+    else
+          return @elements
+    end
+
+    
   end
   #setup repositories
   def setup_repositories

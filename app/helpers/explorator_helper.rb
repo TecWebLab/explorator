@@ -13,8 +13,7 @@ module ExploratorHelper
   end 
   #return an interval of resources from the offset to the pagination attribute.
   #This method is used when the user is paginating a set of resources
-  def groupBy (type=:s)     
-    
+  def groupBy (type=:s)         
     @resourceset.elements.collect{|s,p,o| eval(type.to_s)}.compact.uniq   
   end
   def resources_paginated(type=:s)      

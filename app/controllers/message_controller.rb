@@ -1,6 +1,5 @@
 class MessageController < ApplicationController
-  def error    
- 
+  def error     
     @message=params[:message]
     render :layout => false
   end

@@ -106,7 +106,7 @@ class RepositoryController < ApplicationController
     #variable that will store the list of adapters.
     @repositories = Array.new
     @message = params[:message]
-    puts @message
+    
     #Gets all adapters    
     adapters = ConnectionPool.adapters()
     adapters.each do |repository|

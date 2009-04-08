@@ -15,7 +15,7 @@ class ExploratorController < ApplicationController
   # attr_accessor :resourceset
   #default rails method. returns the view index.rhtml.
   def index     
-    
+     
   end
   
   def resourcefilter

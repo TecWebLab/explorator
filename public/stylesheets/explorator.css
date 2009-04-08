@@ -4,10 +4,12 @@
 body {
     background-color: #efefef;
 }
-hr{
-	height:1px;
-	 border: 1px solid #efefef;
+
+hr {
+    height: 1px;
+    border: 1px solid #efefef;
 }
+
 h1 {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
@@ -18,17 +20,13 @@ table td#css {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
     border: 1px solid #efefef;
-}
-.blue{
-	  color: #4f94cd;
-}
-.tableheader{
-	font-weight:bold;
-	color:white;
-	
-}
-.image{
-max-width: 200px;
+} .blue {
+    color: #4f94cd;
+} .tableheader {
+    font-weight: bold;
+    color: white;
+} .image {
+    max-width: 200px;
 }
 
 /**********************************************************************************/
@@ -95,9 +93,7 @@ div.resource:hover > div.resourceuioperations {
  * ******************************* RDF RELATED FORMATTING ********************
  *
  */
-/* Format a resource*/ 
-
-.resource {
+/* Format a resource*/ .resource {
     overflow: hidden;
     margin-bottom: 1px;
     padding: 1px;
@@ -108,21 +104,18 @@ div.resource:hover > div.resourceuioperations {
     text-align: left;
     color: black;
     font-weight: normal;
-	cursor:pointer;
-	 
+    cursor: pointer;
 }
- 
+
 div.resource:hover {
-     
-     border: 1px dashed #4f3df3;
-    
-} 
+    border: 1px dashed #4f3df3;
+}
 
 a.all {
     color: #aaa;
     font-size: 11px;
     display: none;
-	cursor:pointer;
+    cursor: pointer;
 }
 
 div.resource:hover a.all {
@@ -132,41 +125,35 @@ div.resource:hover a.all {
 } .properties {
     margin: 1px;
 } .objects {
-    border: 1px solid white;/*#999;*/
+    border: 1px solid white; /*#999;*/
     margin: 5px;
     padding: 5px;
     background-color: transparent;
-} 
+}
+
 div.objects:hover {
     border: 1px dashed #4f3df3;
- } 
-.predicate {
+} .predicate {
     float: none;
-    border: 1px dashed white;/*#8FBC8F;*/
+    border: 1px dashed white; /*#8FBC8F;*/
     font-size: 14px;
     text-align: left;
-} 
+}
+
 div.predicate:hover {
-     
-     border: 1px dashed #4f3df3;
-    
-} 
-
-
-.object {
-	 border: 1px dashed white;
+    border: 1px dashed #4f3df3;
+} .object {
+    border: 1px dashed white;
     text-align: left;
     float: none;
     font-size: 14px;
 }
+
 div.object:hover {
-     
     border: 1px dashed #4f3df3;
-    
-} 
+}
 
 div.predicate > div.object {
-	
     margin: 2px;
 }
 
@@ -242,33 +229,34 @@ div.windowtoolbar div.filter:hover {
     left: 25%;
     top: 0px;
     position: fixed;
-	overflow:auto;
+    overflow: auto;
     background-color: #fefefe;
 }
 
 /*a window representing an error screen*/ .error {
-    font-family: Arial, Helvetica, sans-serif;    
-    z-index: 10000;     
-    border: 2px solid red;     
+    font-family: Arial, Helvetica, sans-serif;
+    z-index: 10000;
+    border: 2px solid red;
     font-size: 14px;
     padding: 9px;
-   left:25%;
-    width:50%;
+    left: 25%;
+    width: 50%;
     position: fixed;
     background-color: white;
 }
 
 /*a window representing an error screen*/ .confirmation {
-    font-family: Arial, Helvetica, sans-serif;    
-    z-index: 10000;     
-    border: 2px solid green;     
+    font-family: Arial, Helvetica, sans-serif;
+    z-index: 10000;
+    border: 2px solid green;
     font-size: 14px;
     padding: 9px;
- 	left:25%;
-    width:50%;
+    left: 25%;
+    width: 50%;
     position: fixed;
     background-color: white;
 }
+
 /*format the window ui component*/ .window {
     font-family: Arial, Helvetica, sans-serif;
     float: left;
@@ -324,8 +312,6 @@ div.windowtoolbar div._view {
 } .windowtitle {
     z-index: 9;
     position: absolute;
-	     
-	 
 } #resname {
     height: 25px;
 } .winoperations {
@@ -346,7 +332,7 @@ div.windowtoolbar div._view {
     text-align: center;
     border: 1px solid #cccccc;
     margin-bottom: 0px;
-	cursor:pointer;
+    cursor: pointer;
 }
 
 /****** pagination css.*/ .pagination {
@@ -364,32 +350,22 @@ div.windowtoolbar div._view {
 
 /********************
  * Loading Window
- */
-#loadwindow {
+ */ #loadwindow {
     padding: 10px;
-
-
     z-index: 10000;
-	background: white;
+    background: white;
     color: red;
- 
-     left:45%;
- position:fixed;
+    left: 45%;
+    position: fixed;
     top: 50%;
-
-	    border: 2px solid red;
-		
-} 
-#loadingtext{
-	 color:#555;
-	    font-weight: bold;
+    border: 2px solid red;
+} #loadingtext {
+    color: #555;
+    font-weight: bold;
     font-size: 13px;
     text-align: center;
-     
     font-family: Arial, Helvetica, sans-serif;
-
-}
-.filterwindow {
+} .filterwindow {
     float: left;
     margin-left: 14px;
     width: 288px;
@@ -479,20 +455,19 @@ span.tool:hover span.tip {
 
 div.landmark:hover a {
     color: #4f94cd;
-} 
-.header {
-	position:fixed;
-	height:40px;
-	width:100%;
-	top:0px;
-	left:0px;
+} .header {
+    position: fixed;
+    height: 40px;
+    width: 100%;
+    top: 0px;
+    left: 0px;
     background: white;
-	padding:4px;
-	z-index:17;
-} 
-.header div {
+    padding: 4px;
+    z-index: 17;
+} .header div {
     float: left;
-} 
+}
+
 /*
  #searchform {
  border: 1px solid #afafaf;
@@ -529,7 +504,7 @@ div.landmark:hover a {
     text-align: center;
     background-color: white;
     margin-left: 1px;
-	cursor:pointer;
+    cursor: pointer;
 }
 
 div.space {
@@ -591,7 +566,7 @@ input[type = button] {
     background-color: #4f94cd;
     color: #ffffff;
     border: 1px outset #4f94cd;
-		cursor:pointer;
+    cursor: pointer;
 }
 
 input[type = submit] {
@@ -599,10 +574,8 @@ input[type = submit] {
     background-color: #4f94cd;
     color: #ffffff;
     border: 1px outset #4f94cd;
-		cursor:pointer;
+    cursor: pointer;
 }
-
-
 
 /*********************************************************************************
  
@@ -612,12 +585,10 @@ input[type = submit] {
 div.SELECTED {
     border: 2px dashed #4f3df3;
 }
-div.SELECTED:hover {
-     
-    border: 2px dashed #4f3df3;
-    
-} 
 
+div.SELECTED:hover {
+    border: 2px dashed #4f3df3;
+}
 
 div.FACETED {
     background-color: #32cd32;
@@ -661,7 +632,7 @@ div#mainmenu {
     float: left;
     margin-top: 0.75em;
     z-index: 16;
-	margin-left:10px;
+    margin-left: 10px;
 }
 
 div#mainmenu ul {
@@ -670,7 +641,7 @@ div#mainmenu ul {
     padding: 0;
     width: 12em;
     z-index: 16;
-	cursor:pointer;
+    cursor: pointer;
 }
 
 div#mainmenu a, div#mainmenu h2 {
@@ -819,15 +790,14 @@ div#mainmenu ul li:hover ul, div#mainmenu ul ul li:hover ul, div#mainmenu ul ul 
     border: 0px solid #333;
     border-top: 2px solid #333;
 } .tecweb {
-	width:124px;
-	height:20px;
+    width: 124px;
+    height: 20px;
     margin-left: 9px;
 } .logo {
-	width:110px;
-	height:15px;
+    width: 110px;
+    height: 15px;
     margin-left: 9px;
     margin-right: 55px;
-} 
-#seachbykeyword{
-	width:100%;
+} #seachbykeyword {
+    width: 100%;
 }
