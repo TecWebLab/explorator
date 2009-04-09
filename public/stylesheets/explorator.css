@@ -241,6 +241,7 @@ div.windowtoolbar div.filter:hover {
     padding: 9px;
     left: 25%;
     width: 50%;
+	top:25%;
     position: fixed;
     background-color: white;
 }
