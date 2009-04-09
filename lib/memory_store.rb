@@ -16,10 +16,12 @@ begin
         def get_session(env, sid)
           sid ||= generate_sid  
             session = @pool[sid] || {}
+           
            [sid, session]
         end
         
         def set_session(env, sid, session_data)
+          
           options = env['rack.session.options']
           expiry  = options[:expire_after] || 0
           @pool[sid]=session_data
