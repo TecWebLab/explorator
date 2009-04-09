@@ -60,8 +60,8 @@ class RepositoryController < ApplicationController
       return
     end
     begin
-      adapter = ConnectionPool.add_data_source :type => :sparql, :url => params[:uri], :results => :sparql_xml, :caching =>true   
-      adapter.title=params[:title]    
+      adapter = ConnectionPool.add_data_source :title =>params[:title]    , :type => :sparql, :url => params[:uri], :results => :sparql_xml, :caching =>true   
+ 
       adapter.limit=params[:limit]  if params[:limit] != nil && params[:limit].rstrip != ''  
       session[:addrepositories]<< adapter
       session[:disablerepositories] << (params[:title]) 
