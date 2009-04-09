@@ -5,8 +5,9 @@
 # Make sure the secret is at least 30 characters and all random, 
 # no regular words or you'll be exposed to dictionary attacks.
 ActionController::Base.session = {
-  :key         => '_explorator_session',
-  :secret      => '5d242ad0bb45d319b25af36f47acaaff9629eb596333e7d96d118b3aa4483d0662f2592feee03a16db0b7084b22adc8cd685b2cf47a93f83adb1a69f118aa2d6'
+  :key         => '_explorator_session2',
+  :secret      => '5d242ad0bb45d319b25af36f47acaaff9629eb596333e7d96d118b3aa4483d0662f2592feee03a16db0b7084b22adc8cd685b2cf47a93f83adb1a69f118aa2d6',
+   
 }
 
 # Use the database for sessions instead of the cookie-based default,
@@ -16,6 +17,8 @@ ActionController::Base.session = {
 #ActionController::Base.session_options[:cache] = CACHE 
 #ActionController::Session::MemCacheStore.new('explorator',ActionController::Base.session_options )
 ActionController::Base.session_store = :memory_store
+ 
+ 
 #ActionController::Base.session_store = ActionController::Session::MemoryStore.new(nil)
 #ActionController::Session::MemCacheStore.destroy_all
 #ActionController::Base.cache_store = :synchronized_memory_store 

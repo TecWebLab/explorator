@@ -7,14 +7,14 @@ class ApplicationController < ActionController::Base
   before_filter :session_init
   #global attribute use for all explorator controllers
   @resourceset
+
   def session_init
-    #puts  session[:application].instance
-    if session[:application] == nil       
+     if session[:application] == nil       
       session[:disablerepositories]=Array.new
       session[:disablerepositories] << 'INTERNAL'
       session[:disablerepositories] << 'EXPLORATOR(Local)'     
       session[:addrepositories] = Array.new
-      session[:application] =  Application.new(session.session_id)
+      session[:application] =  Application.new(request.session_options[:id])
     end
     Thread.current[:addrepositories]=session[:addrepositories]
     Thread.current[:disablerepositories]=session[:disablerepositories]    

@@ -40,7 +40,7 @@ class ExploratorController < ApplicationController
   #/explorator/create?exp=SemanticExpression.new.union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:rdfs,:Class))
   def create    
     begin      
-      puts params[:exp]
+#      puts params[:exp]
       #creates a new set. 
       #the expression must be passed by the uri
       set = EXPLORATOR::Set.new('http://www.tecweb.inf.puc-rio.br/resourceset/id/' + UUID.random_create.to_s)       
@@ -65,7 +65,7 @@ class ExploratorController < ApplicationController
   # The exp value must be a valid SemanticExpression class instance and the ResourceSet instance
   # must has been defined before.
   def update     
-    puts params[:exp]
+#    puts params[:exp]
     #reevaluate the expression and return the set
     resource = session[:application].get(params[:uri])
     
@@ -83,7 +83,7 @@ class ExploratorController < ApplicationController
   # call to the method refresh or remove.
   def execute
     #eval an expression    
-    puts params[:exp]
+#    puts params[:exp]
     eval (params[:exp])
   end
   

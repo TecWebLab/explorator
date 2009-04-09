@@ -28,7 +28,7 @@ class RepositoryController < ApplicationController
         
         repository.limit=params[:limit].rstrip
         repository.limit=nil if repository.limit == 0 || repository.limit ==''
-        puts repository.limit
+         
       end
     end       
     render :text => '',:layout => false
