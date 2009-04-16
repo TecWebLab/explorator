@@ -27,8 +27,11 @@ class FinderUtil
       return if root == nil
       return @@alreadyfound[root] if @@alreadyfound[root] != nil
       
-      default = root + 'sparql'
+      default = root + 'sparql/'
       if is_endpoint(default,uri)   
+        a = Array.new 
+        a << default 
+      elsif is_endpoint(get_root_uri(uri,1) + 'sparql/',uri)   
         a = Array.new 
         a << default        
       else 
@@ -46,10 +49,14 @@ class FinderUtil
       end
       a
     end
-    def get_root_uri(uri)
+    def get_root_uri(uri,level=0)
       root = nil
       begin 
-        root = uri[0,uri.index('/',7)] + '/'
+        if level == 0
+          root = uri[0,uri.index('/',7)] + '/'
+        else
+          root = uri[0,uri.index('/',uri.index('/',7)+1)] + '/'
+        end
       rescue
         puts 'URI does not have a root or it is a root uri: ' + uri
       end
@@ -140,3 +147,4 @@ class FinderUtil
   end
 end
 #query('')
+FinderUtil.find_endpoint_for('http://dbtune.org/jamendo/artist/5')
