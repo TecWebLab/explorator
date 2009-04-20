@@ -40,8 +40,8 @@ class ConnectionPool
     @@void=Hash.new
     self.write_adapter = nil
   end
-   def ConnectionPool.void
-   @@void
+  def ConnectionPool.void
+    @@void
   end
   def ConnectionPool.adapters
     @@adapter_pool.dup
@@ -69,7 +69,7 @@ class ConnectionPool
   end
   
   # returns adapter-instance for given parameters (either existing or new)
-  def ConnectionPool.add_data_source(connection_params)
+  def ConnectionPool.add_data_source(connection_params )
     $activerdflog.info "ConnectionPool: add_data_source with params: #{connection_params.inspect}"
     
     # either get the adapter-instance from the pool
@@ -81,8 +81,15 @@ class ConnectionPool
       # and add it to the pool (at same index-position as parameters)
       $activerdflog.debug("Create a new adapter for parameters #{connection_params.inspect}")
       adapter = create_adapter(connection_params)
-      @@adapter_parameters << connection_params
-      @@adapter_pool << adapter
+      # this is necessary because activerdf search in the order repositories were added
+      if adapter.title == 'INTERNAL' 
+        
+        @@adapter_parameters << connection_params
+        @@adapter_pool << adapter
+      else
+        @@adapter_parameters.insert(0,connection_params)
+        @@adapter_pool.insert(0,adapter)
+      end
     else
       # if adapter parametrs registered already,
       # then adapter must be in the pool, at the same index-position as its parameters
@@ -101,7 +108,7 @@ class ConnectionPool
   # remove one adapter from activerdf
   def ConnectionPool.remove_data_source(adapter)
     RDFS::Resource.reset_cache() 
-     
+    
     $activerdflog.info "ConnectionPool: remove_data_source with params: #{adapter.to_s}"
     
     index = @@adapter_pool.index(adapter)
@@ -110,11 +117,11 @@ class ConnectionPool
     unless index.nil?
       @@adapter_parameters.delete_at(index)
       @@adapter_pool.delete_at(index)
-#      if self.write_adapters.empty?
-#        self.write_adapter = nil
-#      else
-#        self.write_adapter = self.write_adapters.first
-#      end
+      #      if self.write_adapters.empty?
+      #        self.write_adapter = nil
+      #      else
+      #        self.write_adapter = self.write_adapters.first
+      #      end
       
     end
     
@@ -140,17 +147,17 @@ class ConnectionPool
   end
   #find an sparql adapter by its uri
   def ConnectionPool.find_by_uri(uri)
- 
+    
     @@adapter_pool.each {|x|
-     if x.instance_of? SparqlAdapter
- 
-       if x.url == uri
-         return x
-       end
-     end
+      if x.instance_of? SparqlAdapter
+        
+        if x.url == uri
+          return x
+        end
+      end
     }
     return nil
-   
+    
   end
   # adapter-types can register themselves with connection pool by
   # indicating which adapter-type they are
