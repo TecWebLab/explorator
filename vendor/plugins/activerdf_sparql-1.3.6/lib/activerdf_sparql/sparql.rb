@@ -93,7 +93,12 @@ class SparqlAdapter < ActiveRdfAdapter
       case @request_method
         when :get
         # encoding query string in URL
-        url = "#@url?query=#{CGI.escape(qs)}"        
+        if @url.index('?') == nil
+          url = "#@url?query=#{CGI.escape(qs)}"        
+        else
+        url = "#@url&query=#{CGI.escape(qs)}"          
+        end
+        #puts url
         $activerdflog.debug "GET #{url}"        
         timeout(@timeout) do          
           # puts url
