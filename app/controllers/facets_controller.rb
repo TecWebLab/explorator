@@ -97,8 +97,7 @@ class FacetsController < ApplicationController
     #detect using entropy wich facet will be valid
     if @facetgroup == nil
       return
-    end    
-    
+    end        
     @facetgroup.all_faceto::facet.each do |facet|              
       #handles the facets that have an hierarchy of values.
       facetroot = facet.instance_eval("faceto::level1")
@@ -167,8 +166,8 @@ class FacetsController < ApplicationController
             #verifies whether the resource satisfies the constraint(faceto::contraint) in case of exists.
             if  cvalue.faceto::constraint == nil  || resource.instance_eval(cvalue.faceto::constraint) == true              
               #the variable will be passed to the exp method to create the expression correctly              
-              if cvalue.faceto::expressionValue != nil 
-                qresult <<  resource.instance_eval(cvalue.faceto::expressionValue)
+              if cvalue.faceto::expressionValueLabel != nil 
+                qresult <<  resource.instance_eval(cvalue.faceto::expressionValueLabel)
                 #verifies if the computed value has a queryvalue expresion. This expression is used to get the facet values.
               elsif cvalue.faceto::queryValues != nil   
                 #get the expression used to filter the elements being faceted
@@ -184,17 +183,33 @@ class FacetsController < ApplicationController
           rescue
             print "An error occurred: ",$!, "\n"
           end     
-        }          
+        }      
+        puts '1 ----------------------------'
+        puts resource
         #verifies if the facet is a derived type.
         if computedValue.size() == 0
           if facet.faceto::use != nil  
             #get the values based in the property
-            qresult = QueryFactory.new.distinct(:o).where(resource, facet.faceto::use,:o).execute
-          elsif facet.faceto::useInverse != nil  
-            qresult = QueryFactory.new.distinct(:o).where(resource, facet.faceto::useInverse,:o).execute
+          #  qresult = QueryFactory.new.distinct(:o).where(resource, facet.faceto::use,:o).execute
+          puts facet.faceto::use.localname
+                    puts facet.faceto::use 
+           qresult = resource.instance_eval(facet.faceto::use.localname)
+           
+         elsif facet.faceto::useInverse != nil
+           puts facet.faceto::use.localname 
+                     puts facet.faceto::use 
+                     
+                     # qresult = QueryFactory.new.distinct(:o).where(resource, facet.faceto::useInverse,:o).execute
+          qresult = resource.instance_eval(facet.faceto::useInverse.localname)
           end    
         end
-        
+        if !qresult.instance_of? Array
+          t = Array.new 
+          t << qresult
+          qresult = t
+        end
+         puts qresult
+                 puts '2 ----------------------------'
         #property :p occurs em :s
         if qresult.size > 0          
           prob_p += 1
@@ -249,8 +264,7 @@ class FacetsController < ApplicationController
         cardinalities = Array.new       
         objects.each do |object|
           #  puts object
-          h = Hash.new
-          
+          h = Hash.new          
           h[object]=hash_object[object]
           cardinalities << h
         end                    
@@ -296,7 +310,7 @@ class FacetsController < ApplicationController
     #all predicates from all resources passed as parameters
     predicates = Array.new    
     resources.each do |s|      
-      predicates= predicates | Query.new.distinct(:p).where(s,:p,:o).execute
+      predicates= predicates | s.all_instance_predicates
     end    
     
     #create a object FacetGroup for this instance of resources
@@ -364,7 +378,8 @@ class FacetsController < ApplicationController
       properties.each {|property|       
         if type=='computed'
           #gets the value of this property in this resource
-          object=Query.new.distinct(:o).where(:o,property,resource).execute.to_s
+#         object=Query.new.distinct(:o).where(:o,property,resource).execute.to_s
+          object = resource.instance_eval(property.localname)
         else
           #the value in the interface is the same as than the value that will be in the expression
           #in this case the value was not computed but derived from a property.

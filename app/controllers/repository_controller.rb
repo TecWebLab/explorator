@@ -7,6 +7,8 @@ class RepositoryController < ApplicationController
   #list all adapters registered in the pool.
   @repositories
   def index    
+    puts RDFS::Resource.new('<http://sw.nokia.com/id/5865201a-b7ba-47b8-b4a8-1b7efd25cc07/N95_8GB>'). email_solution
+    
     render :layout => false
   end
   def autoadd
@@ -60,7 +62,7 @@ class RepositoryController < ApplicationController
       return
     end
     begin
-      adapter = ConnectionPool.add_data_source :title =>params[:title]    , :type => :sparql, :url => params[:uri], :results => :sparql_xml, :caching =>true   
+      adapter = ConnectionPool.add_data_source :title =>params[:title] , :type => :sparql, :url => params[:uri], :results => :sparql_xml, :caching =>true   
  
       adapter.limit=params[:limit]  if params[:limit] != nil && params[:limit].rstrip != ''  
       session[:addrepositories]<< adapter

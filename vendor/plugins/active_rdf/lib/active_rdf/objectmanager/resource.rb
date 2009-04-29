@@ -477,11 +477,16 @@ module RDFS
         tuple[p] << o      
       end
       $triple[self.uri]=tuple
+       
+    end 
+    def  all_instance_predicates
+       cache(true) if $triple[self.uri] == nil   
+       $triple[self.uri].keys
     end
-    def get_properties      
-        cache(true) if $triple[self.uri] == nil   
-      $triple[self.uri]
-    end
+#    def get_properties      
+#        cache(true) if $triple[self.uri] == nil   
+#      $triple[self.uri]
+#    end
     def get_predicate(predicate, flatten=false)        
        cache(flatten) if $triple[self.uri] == nil
       #original code

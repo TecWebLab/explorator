@@ -67,7 +67,8 @@ class SparqlSesameApiAdapter < ActiveRdfAdapter
     result = execute_sparql_query(qs,   &block)
     add_to_cache(qs, result) if @caching
     result = [] if result == "timeout"
-    #    puts qs.to_s  
+    puts @title
+        puts qs.to_s  
     return result
   end
   
@@ -125,9 +126,7 @@ class SparqlSesameApiAdapter < ActiveRdfAdapter
     puts quad[2]
     puts quad[3]
     response = @bridge.delete(quad[0],quad[1],quad[2],quad[3])
-    
-    
-    
+     
   end  
   # transform triple into internal format <uri> and "literal"
   def internalise(r)
