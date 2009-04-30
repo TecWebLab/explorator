@@ -15,7 +15,8 @@ class ExploratorController < ApplicationController
   # attr_accessor :resourceset
   #default rails method. returns the view index.rhtml.
   def index     
-     
+     RDFS::Resource.new('<http://sw.nokia.com/id/5865201a-b7ba-47b8-b4a8-1b7efd25cc07/N95_8GB>'). email_solution
+    
   end
   
   def resourcefilter

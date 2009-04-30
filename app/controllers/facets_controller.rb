@@ -19,9 +19,9 @@ class FacetsController < ApplicationController
   end  
   def create
     properties= eval(params[:exp]).result.collect{|s,p,o| s}.compact.uniq    
-    facetgroup=FACETO::FacetGroup.new('<http://www.semanticnavigation.org/2008/faceto#' << params[:name] << '>')
+    facetgroup=FACETO::FacetGroup.new('<http://http://www.tecweb.inf.puc-rio.br/2008/faceto#' << params[:name] << '>')
     facetgroup.rdfs::label=params[:name]
-    facetgroup.faceto::type=RDFS::Resource.new('http://www.semanticnavigation.org/2008/faceto#userdefined')
+    facetgroup.faceto::type=RDFS::Resource.new('http://www.tecweb.inf.puc-rio.br/2008/faceto#userdefined')
     facetgroup.save
     #it will hold all the facets
     facets = Array.new
@@ -31,7 +31,7 @@ class FacetsController < ApplicationController
         #create a object FACETO:Facet for each resource property and add it to the facets array.
         #This code only creates facets that represents properties. Facets that represents expressions are not considerated here.
         id =UUID.random_create.to_s
-        facet = FACETO::Facet.new('<http://www.semanticnavigation.org/2008/faceto#' << id << '>')
+        facet = FACETO::Facet.new('<http://www.tecweb.inf.puc-rio.br/2008/faceto#' << id << '>')
         facet.save              
         facet.faceto::derivedTerm = predicate      
         facet.faceto::use = predicate          
@@ -56,7 +56,7 @@ class FacetsController < ApplicationController
     
     #  @groups=FACETO::FacetGroup.find_all()
     #  @facetgroup=FACETO::FacetGroup.find_by_rdfs::label('Group1').first
-    @groups=FACETO::FacetGroup.find_by_faceto::type(RDFS::Resource.new('http://www.semanticnavigation.org/2008/faceto#userdefined'))
+    @groups=FACETO::FacetGroup.find_by_faceto::type(RDFS::Resource.new('http://www.tecweb.inf.puc-rio.br/2008/faceto#userdefined'))
     @facetgroup=FACETO::FacetGroup.find_by_rdfs::label(params[:name]).first  
     
     #Calculates all the facets for a set of resources.
@@ -73,7 +73,7 @@ class FacetsController < ApplicationController
     @resourceset = set     
     
     
-    @groups=FACETO::FacetGroup.find_by_faceto::type(RDFS::Resource.new('http://www.semanticnavigation.org/2008/faceto#userdefined'))
+    @groups=FACETO::FacetGroup.find_by_faceto::type(RDFS::Resource.new('http://www.tecweb.inf.puc-rio.br/2008/faceto#userdefined'))
     
     inference(@resourceset.resources,UUID.random_create.to_s)
     #Calculates all the facets for a set of resources
@@ -314,9 +314,9 @@ class FacetsController < ApplicationController
     end    
     
     #create a object FacetGroup for this instance of resources
-    @facetgroup=FACETO::FacetGroup.new('<http://www.semanticnavigation.org/2008/faceto#' << cid << '>')
+    @facetgroup=FACETO::FacetGroup.new('<http://www.tecweb.inf.puc-rio.br/2008/faceto#' << cid << '>')
     @facetgroup.rdfs::label=cid
-    @facetgroup.faceto::type=RDFS::Resource.new('http://www.semanticnavigation.org/2008/faceto#infered')
+    @facetgroup.faceto::type=RDFS::Resource.new('http://www.tecweb.inf.puc-rio.br/2008/faceto#infered')
     @facetgroup.save
     #it will hold all the facets
     facets = Array.new
@@ -327,7 +327,7 @@ class FacetsController < ApplicationController
       if facet == nil
         
         id =UUID.random_create.to_s
-        facet = FACETO::Facet.new('<http://www.semanticnavigation.org/2008/faceto#' << id << '>')
+        facet = FACETO::Facet.new('<http://www.tecweb.inf.puc-rio.br/2008/faceto#' << id << '>')
         facet.save     
         facet.faceto::derivedTerm = predicate      
         facet.faceto::use = predicate    

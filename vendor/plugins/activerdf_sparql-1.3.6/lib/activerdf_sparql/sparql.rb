@@ -40,7 +40,7 @@ class SparqlAdapter < ActiveRdfAdapter
     raise ActiveRdfError, "Result format unsupported" unless [:xml, :json, :sparql_xml].include? @result_format
     
     
-     @engine = params[:engine]
+    @engine = params[:engine]
     if @engine == nil
       response = Net::HTTP.get_response(URI.parse(@url))    
       if  response['server'].to_s.downcase.index('virtuoso') != nil  
@@ -49,7 +49,7 @@ class SparqlAdapter < ActiveRdfAdapter
         @engine = :sesame2 
       end
     end 
-     raise ActiveRdfError, "SPARQL engine unsupported" unless [:yars2, :sesame2, :joseki, :virtuoso].include? @engine
+    raise ActiveRdfError, "SPARQL engine unsupported" unless [:yars2, :sesame2, :joseki, :virtuoso].include? @engine
     
     @request_method = params[:request_method] || :get
     raise ActiveRdfError, "Request method unsupported" unless [:get,:post].include? @request_method
@@ -63,16 +63,12 @@ class SparqlAdapter < ActiveRdfAdapter
   # may be called with a block
   def query(query, &block)    
     qs = Query2SPARQL.translate(query,@engine)
-    #puts qs.to_s
-    if @caching
-      result = query_cache(qs)
-      if result.nil?
-        $activerdflog.debug "cache miss for query #{qs}"
-      else
+    if @caching 
+      if is_into_cache(qs) 
         $activerdflog.debug "cache hit for query #{qs}"
-        return result
+        return  query_cache(qs)
       end
-    end
+    end    
     
     result = execute_sparql_query(qs, header(query), &block)
     add_to_cache(qs, result) if @caching
@@ -96,7 +92,7 @@ class SparqlAdapter < ActiveRdfAdapter
         if @url.index('?') == nil
           url = "#@url?query=#{CGI.escape(qs)}"        
         else
-        url = "#@url&query=#{CGI.escape(qs)}"          
+          url = "#@url&query=#{CGI.escape(qs)}"          
         end
         #puts url
         $activerdflog.debug "GET #{url}"        
@@ -156,14 +152,11 @@ class SparqlAdapter < ActiveRdfAdapter
       end
     end
   end 
-  def query_cache(query_string)
-    
-    if @sparql_cache.include?(query_string)
-      
-      return @sparql_cache.fetch(query_string)
-    else
-      return nil
-    end
+  def is_into_cache(query_string)
+    @sparql_cache.include?(query_string)      
+  end
+  def query_cache(query_string)         
+    return @sparql_cache.fetch(query_string)    
   end
   
   # constructs correct HTTP header for selected query-result format

@@ -54,21 +54,19 @@ class SparqlSesameApiAdapter < ActiveRdfAdapter
   # may be called with a block
   def query(query, &block)    
     qs = Query2SPARQL.translate(query)
-    
-    if @caching
-      result = query_cache(qs)
-      if result.nil?
-        $activerdflog.debug "cache miss for query #{qs}"
-      else
-        $activerdflog.debug "cache hit for query #{qs}"
-        return result
-      end
-    end    
-    result = execute_sparql_query(qs,   &block)
+    if !(@title.include?'INTERNAL' and qs.to_s.include? "http://www.tecweb.inf.puc-rio.br")      
+      if @caching 
+        if is_into_cache(qs) 
+          $activerdflog.debug "cache hit for query #{qs}"
+          return  query_cache(qs)
+        end
+      end 
+    end
+    result = execute_sparql_query(qs, &block)
     add_to_cache(qs, result) if @caching
     result = [] if result == "timeout"
     puts @title
-        puts qs.to_s  
+    puts qs.to_s  
     return result
   end
   
@@ -78,7 +76,7 @@ class SparqlSesameApiAdapter < ActiveRdfAdapter
     begin 
       
       response = @bridge.query(qs.to_s)
- 
+      
       #  puts response
     rescue 
       raise ActiveRdfError, "JAVA BRIDGE ERRO ON SPARQL ADAPTER"
@@ -103,7 +101,7 @@ class SparqlSesameApiAdapter < ActiveRdfAdapter
   # adds triple(s,p,o) to datastore
   # s,p must be resources, o can be primitive data or resource
   def add(s,p,o,c=nil)
-   
+    
     # check illegal input
     raise(ActiveRdfError, "adding non-resource #{s} while adding (#{s},#{p},#{o},#{c})") unless s.respond_to?(:uri)
     raise(ActiveRdfError, "adding non-resource #{p} while adding (#{s},#{p},#{o},#{c})") unless p.respond_to?(:uri)
@@ -116,17 +114,17 @@ class SparqlSesameApiAdapter < ActiveRdfAdapter
   
   def delete(s,p,o,c=nil)
     
-#    # check illegal input
-#    raise(ActiveRdfError, "deleting non-resource #{s} while adding (#{s},#{p},#{o},#{c})") unless s.respond_to?(:uri)
-#    raise(ActiveRdfError, "deleting non-resource #{p} while adding (#{s},#{p},#{o},#{c})") unless p.respond_to?(:uri)
-#    
+    #    # check illegal input
+    #    raise(ActiveRdfError, "deleting non-resource #{s} while adding (#{s},#{p},#{o},#{c})") unless s.respond_to?(:uri)
+    #    raise(ActiveRdfError, "deleting non-resource #{p} while adding (#{s},#{p},#{o},#{c})") unless p.respond_to?(:uri)
+    #    
     quad = [s,p,o,c].collect {|r| r.nil? ? nil : internalise(r) }
     puts quad[0]
     puts quad[1]
     puts quad[2]
     puts quad[3]
     response = @bridge.delete(quad[0],quad[1],quad[2],quad[3])
-     
+    
   end  
   # transform triple into internal format <uri> and "literal"
   def internalise(r)
@@ -151,6 +149,9 @@ class SparqlSesameApiAdapter < ActiveRdfAdapter
       end
     end
   end 
+  def is_into_cache(query_string)
+    @sparql_cache.include?(query_string)      
+  end
   def query_cache(query_string)    
     if @sparql_cache.include?(query_string)      
       return @sparql_cache.fetch(query_string)

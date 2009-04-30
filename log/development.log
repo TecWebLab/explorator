@@ -1,0 +1,3239 @@
+# Logfile created on Wed Apr 29 17:38:30 -0300 2009
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 17:42:03) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (16.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (16.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 17:42:07) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (672.0ms)
+Completed in 781ms (View: 781 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 4797ms (View: 875 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 17:42:10) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 17:42:12) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing RepositoryController#index (for 127.0.0.1 at 2009-04-29 17:42:12) [GET]
+Rendering repository/index
+Start rendering component ({:layout=>false, :action=>"endpointsform"}): 
+
+
+Processing RepositoryController#endpointsform (for 127.0.0.1 at 2009-04-29 17:42:13) [GET]
+  Parameters: {"id"=>nil}
+Rendering repository/endpointsform
+Completed in 16ms (View: 0 | 200 OK [http://localhost/repository/index]
+
+
+End of component rendering
+Completed in 359ms (View: 46 | 200 OK [http://localhost/repository/index]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 17:42:13) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing RepositoryController#listenabledrepositories (for 127.0.0.1 at 2009-04-29 17:42:13) [POST]
+Rendered repository/_listenabledrepositories (0.0ms)
+Completed in 0ms (View: 0 | 200 OK [http://localhost/repository/listenabledrepositories]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 17:42:14) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing RepositoryController#enable (for 127.0.0.1 at 2009-04-29 17:42:16) [GET]
+  Parameters: {"title"=>"NOKIA(Local)"}
+Completed in 32ms (View: 0 | 200 OK [http://localhost/repository/enable?title=NOKIA(Local)]
+
+
+Processing RepositoryController#listenabledrepositories (for 127.0.0.1 at 2009-04-29 17:42:16) [POST]
+Rendered repository/_listenabledrepositories (0.0ms)
+Completed in 0ms (View: 0 | 200 OK [http://localhost/repository/listenabledrepositories]
+
+
+Processing RepositoryController#disable (for 127.0.0.1 at 2009-04-29 17:42:18) [GET]
+  Parameters: {"title"=>"EXPLORATOR(Local)"}
+Completed in 47ms (View: 0 | 200 OK [http://localhost/repository/disable?title=EXPLORATOR(Local)]
+
+
+Processing RepositoryController#listenabledrepositories (for 127.0.0.1 at 2009-04-29 17:42:18) [POST]
+Rendered repository/_listenabledrepositories (0.0ms)
+Completed in 0ms (View: 0 | 200 OK [http://localhost/repository/listenabledrepositories]
+
+
+Processing RepositoryController#enable (for 127.0.0.1 at 2009-04-29 17:42:19) [GET]
+  Parameters: {"title"=>"FACETO(Local)"}
+Completed in 31ms (View: 0 | 200 OK [http://localhost/repository/enable?title=FACETO(Local)]
+
+
+Processing RepositoryController#listenabledrepositories (for 127.0.0.1 at 2009-04-29 17:42:19) [POST]
+Rendered repository/_listenabledrepositories (0.0ms)
+Completed in 0ms (View: 0 | 200 OK [http://localhost/repository/listenabledrepositories]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-04-29 17:42:24) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:rdfs,:Class)).union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:owl,:Class))"}
+Rendered explorator/_windowheader (0.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (7594.0ms)
+Completed in 13875ms (View: 7609 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%3As%2CNamespace.lookup(%3Ardf%2C%3Atype)%2CNamespace.lookup(%3Ardfs%2C%3AClass)).union(%3As%2CNamespace.lookup(%3Ardf%2C%3Atype)%2CNamespace.lookup(%3Aowl%2C%3AClass))]
+
+
+Processing RepositoryController#autoadd (for 127.0.0.1 at 2009-04-29 17:42:50) [GET]
+  Parameters: {"uri"=>"<http://sw.nokia.com/FN-1/Type/Terminal>"}
+Completed in 0ms (View: 0 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fsw.nokia.com%2FFN-1%2FType%2FTerminal%3E]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-04-29 17:42:50) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union(:s,RDF::type,'<http://sw.nokia.com/FN-1/Type/Terminal>')", "view"=>"null"}
+Rendered explorator/_windowheader (16.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (6453.0ms)
+Completed in 32531ms (View: 6453 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%3As%2CRDF%3A%3Atype%2C%27%3Chttp%3A%2F%2Fsw.nokia.com%2FFN-1%2FType%2FTerminal%3E%27)&view=null]
+
+
+Processing RepositoryController#autoadd (for 127.0.0.1 at 2009-04-29 17:43:39) [GET]
+  Parameters: {"uri"=>"<http://sw.nokia.com/FN-1/Type/Terminal>"}
+Completed in 16ms (View: 16 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fsw.nokia.com%2FFN-1%2FType%2FTerminal%3E]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-04-29 17:43:39) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union('<http://sw.nokia.com/FN-1/Type/Terminal>',:p,:o)", "view"=>"null"}
+Rendered explorator/_windowheader (0.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (2500.0ms)
+Completed in 2828ms (View: 2515 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%27%3Chttp%3A%2F%2Fsw.nokia.com%2FFN-1%2FType%2FTerminal%3E%27%2C%3Ap%2C%3Ao)&view=null]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-04-29 17:45:57) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/75715a7e-44cd-47b0-b95b-eb7aef48515a>')"}
+Completed in 438ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/75715a7e-44cd-47b0-b95b-eb7aef48515a%3E%27)]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-04-29 17:45:59) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/301a02e5-0bca-48a3-842c-c69a7c3e805d>')"}
+Completed in 453ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/301a02e5-0bca-48a3-842c-c69a7c3e805d%3E%27)]
+
+
+Processing FacetsController#execute (for 127.0.0.1 at 2009-04-29 17:46:03) [GET]
+  Parameters: {"name"=>"default", "exp"=>"facet('<http://www.tecweb.inf.puc-rio.br/resourceset/id/dbb27527-acef-45c0-9d9f-89bff1c76e74>')"}
+Rendered facets/_windowheader (0.0ms)
+Rendered facets/_windowheader (0.0ms)
+Rendered facets/_windowfacet (0.0ms)
+Rendered facets/_facet (94.0ms)
+Completed in 828ms (View: 110 | 200 OK [http://localhost/facets/execute?exp=facet(%27%3Chttp%3A%2F%2Fwww.tecweb.inf.puc-rio.br%2Fresourceset%2Fid%2Fdbb27527-acef-45c0-9d9f-89bff1c76e74%3E%27)&name=default]
+
+
+Processing FacetsController#execute (for 127.0.0.1 at 2009-04-29 17:46:07) [GET]
+  Parameters: {"name"=>"Nokia", "exp"=>"facet('<http://www.tecweb.inf.puc-rio.br/resourceset/id/dbb27527-acef-45c0-9d9f-89bff1c76e74>')"}
+Rendered facets/_windowheader (0.0ms)
+Rendered facets/_windowheader (0.0ms)
+Rendered facets/_windowfacet (0.0ms)
+Rendered facets/_facet (954.0ms)
+Completed in 6938ms (View: 954 | 200 OK [http://localhost/facets/execute?exp=facet(%27%3Chttp%3A%2F%2Fwww.tecweb.inf.puc-rio.br%2Fresourceset%2Fid%2Fdbb27527-acef-45c0-9d9f-89bff1c76e74%3E%27)&name=Nokia]
+
+
+Processing ExploratorController#update (for 127.0.0.1 at 2009-04-29 17:46:22) [POST]
+  Parameters: {"uri"=>"<http://www.tecweb.inf.puc-rio.br/resourceset/id/dbb27527-acef-45c0-9d9f-89bff1c76e74>", "exp"=>"SemanticExpression.new.union(SemanticExpression.new.union(:s,RDF::type,'<http://sw.nokia.com/FN-1/Type/Terminal>')).intersection(SemanticExpression.new.union(SemanticExpression.new(:s,'<http://sw.nokia.com/DP-1/browser>', '<http://sw.nokia.com/DP-1/Browser/wap_v1_2_1>')))"}
+Rendered explorator/_windowheader (0.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (6000.0ms)
+Completed in 6281ms (View: 6000 | 200 OK [http://localhost/explorator/update?exp=SemanticExpression.new.union(SemanticExpression.new.union(%3As%2CRDF%3A%3Atype%2C%27%3Chttp%3A%2F%2Fsw.nokia.com%2FFN-1%2FType%2FTerminal%3E%27)).intersection(SemanticExpression.new.union(SemanticExpression.new(%3As%2C%27%3Chttp%3A%2F%2Fsw.nokia.com%2FDP-1%2Fbrowser%3E%27%2C%20%27%3Chttp%3A%2F%2Fsw.nokia.com%2FDP-1%2FBrowser%2Fwap_v1_2_1%3E%27)))&uri=%3Chttp%3A%2F%2Fwww.tecweb.inf.puc-rio.br%2Fresourceset%2Fid%2Fdbb27527-acef-45c0-9d9f-89bff1c76e74%3E]
+
+
+Processing ExploratorController#update (for 127.0.0.1 at 2009-04-29 17:46:31) [POST]
+  Parameters: {"uri"=>"<http://www.tecweb.inf.puc-rio.br/resourceset/id/dbb27527-acef-45c0-9d9f-89bff1c76e74>", "exp"=>"SemanticExpression.new.union(SemanticExpression.new.union(:s,RDF::type,'<http://sw.nokia.com/FN-1/Type/Terminal>'))"}
+Rendered explorator/_windowheader (0.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (4360.0ms)
+Completed in 4578ms (View: 4375 | 200 OK [http://localhost/explorator/update?exp=SemanticExpression.new.union(SemanticExpression.new.union(%3As%2CRDF%3A%3Atype%2C%27%3Chttp%3A%2F%2Fsw.nokia.com%2FFN-1%2FType%2FTerminal%3E%27))&uri=%3Chttp%3A%2F%2Fwww.tecweb.inf.puc-rio.br%2Fresourceset%2Fid%2Fdbb27527-acef-45c0-9d9f-89bff1c76e74%3E]
+
+
+Processing RepositoryController#autoadd (for 127.0.0.1 at 2009-04-29 17:50:28) [GET]
+  Parameters: {"uri"=>"<http://sw.nokia.com/id/1b7a6de9-dd38-43d1-b338-d1eb8ff1d81f/2355>"}
+Completed in 0ms (View: 0 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fsw.nokia.com%2Fid%2F1b7a6de9-dd38-43d1-b338-d1eb8ff1d81f%2F2355%3E]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-04-29 17:50:29) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union('<http://sw.nokia.com/id/1b7a6de9-dd38-43d1-b338-d1eb8ff1d81f/2355>',:p,:o)", "view"=>"null"}
+Rendered explorator/_windowheader (0.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (4625.0ms)
+Completed in 4937ms (View: 4625 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%27%3Chttp%3A%2F%2Fsw.nokia.com%2Fid%2F1b7a6de9-dd38-43d1-b338-d1eb8ff1d81f%2F2355%3E%27%2C%3Ap%2C%3Ao)&view=null]
+
+
+Processing RepositoryController#autoadd (for 127.0.0.1 at 2009-04-29 17:50:38) [GET]
+  Parameters: {"uri"=>"<http://sw.nokia.com/id/1b7a6de9-dd38-43d1-b338-d1eb8ff1d81f/2355>"}
+Completed in 15ms (View: 15 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fsw.nokia.com%2Fid%2F1b7a6de9-dd38-43d1-b338-d1eb8ff1d81f%2F2355%3E]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-04-29 17:50:39) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union('<http://sw.nokia.com/id/1b7a6de9-dd38-43d1-b338-d1eb8ff1d81f/2355>',:p,:o)", "view"=>"null"}
+Rendered explorator/_windowheader (0.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (1593.0ms)
+Completed in 1734ms (View: 1593 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%27%3Chttp%3A%2F%2Fsw.nokia.com%2Fid%2F1b7a6de9-dd38-43d1-b338-d1eb8ff1d81f%2F2355%3E%27%2C%3Ap%2C%3Ao)&view=null]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-04-29 17:51:54) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/003ba40e-5047-4bfe-8cdd-14e6c6687578>')"}
+Completed in 516ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/003ba40e-5047-4bfe-8cdd-14e6c6687578%3E%27)]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-04-29 17:51:55) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/dbb27527-acef-45c0-9d9f-89bff1c76e74>')"}
+Completed in 422ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/dbb27527-acef-45c0-9d9f-89bff1c76e74%3E%27)]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-04-29 17:51:57) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/6f2fa2c3-ff23-4c32-8617-2b16a4445b86>')"}
+Completed in 203ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/6f2fa2c3-ff23-4c32-8617-2b16a4445b86%3E%27)]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 17:52:05) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (0.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 17:52:05) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (47.0ms)
+Completed in 47ms (View: 47 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 172ms (View: 62 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 17:52:07) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 17:52:08) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 17:52:08) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 17:52:09) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 17:53:09) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (0.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 17:53:09) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (62.0ms)
+Completed in 62ms (View: 62 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 94ms (View: 78 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 17:53:11) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 17:53:12) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 17:53:13) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 17:53:14) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 17:53:28) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (0.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 17:53:28) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (47.0ms)
+Completed in 63ms (View: 47 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 94ms (View: 78 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 17:53:31) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 17:53:31) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 17:53:32) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 17:53:33) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 17:54:00) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 17:54:01) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 17:54:02) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 17:54:03) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 17:57:33) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (16.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (16.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 17:57:35) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (1266.0ms)
+Completed in 1312ms (View: 1312 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 3312ms (View: 1437 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 18:02:27) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (47.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 18:02:31) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (937.0ms)
+Completed in 984ms (View: 969 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 5187ms (View: 1094 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:02:33) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:02:34) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:02:35) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:02:35) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 18:02:43) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (0.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 18:02:43) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (969.0ms)
+Completed in 969ms (View: 969 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 1469ms (View: 984 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:02:45) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:02:46) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:02:47) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:02:47) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 18:04:51) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (0.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 18:04:52) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (953.0ms)
+Completed in 953ms (View: 953 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 1438ms (View: 969 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:04:54) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:04:55) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:04:56) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:04:56) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:05:03) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:05:03) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:05:09) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:05:10) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:05:11) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:05:12) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 18:09:01) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (0.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 18:09:01) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (1000.0ms)
+Completed in 1000ms (View: 1000 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 1797ms (View: 1031 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:09:06) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:09:07) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:09:07) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:09:08) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 18:18:41) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (0.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 18:18:42) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (1125.0ms)
+Completed in 1125ms (View: 1125 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 2375ms (View: 1141 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:18:46) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:18:47) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:18:48) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:18:49) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 18:18:49) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (0.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 18:18:50) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (968.0ms)
+Completed in 968ms (View: 968 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 1359ms (View: 984 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:18:53) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:18:54) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:18:54) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:18:55) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 18:19:09) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (0.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 18:19:10) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (1390.0ms)
+Completed in 1390ms (View: 1390 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 2218ms (View: 1406 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 18:19:20) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (0.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 18:19:20) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (1079.0ms)
+Completed in 1079ms (View: 1079 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 1484ms (View: 1109 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 18:21:13) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (0.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 18:21:14) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (766.0ms)
+Completed in 766ms (View: 766 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 1516ms (View: 922 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:21:17) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:21:18) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:21:19) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:21:19) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 18:22:18) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (7625.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 18:26:51) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (7906.0ms)
+Completed in 7922ms (View: 7906 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 281109ms (View: 42484 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:27:01) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:27:01) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:27:02) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:27:03) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 18:27:20) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (0.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 18:30:49) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (16750.0ms)
+Completed in 16750ms (View: 16750 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 225781ms (View: 16765 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:31:07) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:31:08) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:31:09) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:31:10) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 18:31:15) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (0.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 18:32:20) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (18219.0ms)
+Completed in 18219ms (View: 18219 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 83407ms (View: 18266 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:32:40) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:32:41) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:32:42) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 18:32:42) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (0.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 18:32:43) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (1328.0ms)
+Completed in 1328ms (View: 1328 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 1750ms (View: 1344 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:32:44) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:32:46) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:32:47) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:32:47) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:32:48) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 18:32:55) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (16.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 18:33:21) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (87859.0ms)
+Completed in 87859ms (View: 87859 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 113953ms (View: 87875 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 18:34:49) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (0.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 18:34:49) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (969.0ms)
+Completed in 969ms (View: 969 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 1547ms (View: 984 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:34:52) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:34:53) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:34:54) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:34:54) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 18:34:59) [GET]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 18:44:12) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (156.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 18:44:13) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (641.0ms)
+Completed in 657ms (View: 657 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 1828ms (View: 844 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:44:16) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:44:16) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:44:17) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:44:18) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 18:44:19) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (0.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 18:44:19) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (625.0ms)
+Completed in 625ms (View: 625 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 906ms (View: 641 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:44:22) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:44:23) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:44:24) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:44:24) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 18:44:25) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (0.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 18:44:25) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (563.0ms)
+Completed in 563ms (View: 563 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 953ms (View: 578 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:44:28) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:44:28) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:44:29) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:44:30) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 18:44:36) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (0.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 18:44:37) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (547.0ms)
+Completed in 547ms (View: 547 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 954ms (View: 563 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:44:39) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:44:40) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:44:41) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:44:42) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 18:48:14) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (16.0ms)
+Rendered repository/_listenabledrepositories (15.0ms)
+Rendered layouts/_landmarks (47.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 18:48:16) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (922.0ms)
+Completed in 968ms (View: 968 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 2781ms (View: 1078 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:48:19) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:48:20) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:48:20) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:48:21) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 18:48:26) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (16.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 18:48:27) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (969.0ms)
+Completed in 969ms (View: 969 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 1422ms (View: 985 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:48:30) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:48:30) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:48:31) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:48:32) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 18:48:37) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (15.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 18:50:06) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (4406.0ms)
+Completed in 4422ms (View: 4422 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 92859ms (View: 4500 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:50:12) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:50:13) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:50:14) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:50:15) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_load'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/lib/ruby-debug.rb:101:in `debug_program'
+  c:/ruby/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.4.2/bin/rdebug-ide:82
+  c:\ruby\bin\rdebug-ide:19:in `load'
+  c:\ruby\bin\rdebug-ide:19
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 18:50:20) [GET]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 18:54:39) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (125.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 18:54:40) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (610.0ms)
+Completed in 641ms (View: 625 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 1719ms (View: 813 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:54:43) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:54:44) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing RepositoryController#index (for 127.0.0.1 at 2009-04-29 18:54:44) [GET]
+Rendering repository/index
+Start rendering component ({:layout=>false, :action=>"endpointsform"}): 
+
+
+Processing RepositoryController#endpointsform (for 127.0.0.1 at 2009-04-29 18:54:44) [GET]
+  Parameters: {"id"=>nil}
+Rendering repository/endpointsform
+Completed in 16ms (View: 16 | 200 OK [http://localhost/repository/index]
+
+
+End of component rendering
+Completed in 31ms (View: 31 | 200 OK [http://localhost/repository/index]
+
+
+Processing RepositoryController#listenabledrepositories (for 127.0.0.1 at 2009-04-29 18:54:44) [POST]
+Rendered repository/_listenabledrepositories (0.0ms)
+Completed in 0ms (View: 0 | 200 OK [http://localhost/repository/listenabledrepositories]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:54:45) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 18:54:45) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing RepositoryController#disable (for 127.0.0.1 at 2009-04-29 18:54:47) [GET]
+  Parameters: {"title"=>"EXPLORATOR(Local)"}
+Completed in 15ms (View: 0 | 200 OK [http://localhost/repository/disable?title=EXPLORATOR(Local)]
+
+
+Processing RepositoryController#listenabledrepositories (for 127.0.0.1 at 2009-04-29 18:54:47) [POST]
+Rendered repository/_listenabledrepositories (0.0ms)
+Completed in 0ms (View: 0 | 200 OK [http://localhost/repository/listenabledrepositories]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-04-29 18:54:51) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:rdfs,:Class)).union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:owl,:Class))"}
+Rendered explorator/_windowheader (0.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (2469.0ms)
+Completed in 2953ms (View: 2469 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%3As%2CNamespace.lookup(%3Ardf%2C%3Atype)%2CNamespace.lookup(%3Ardfs%2C%3AClass)).union(%3As%2CNamespace.lookup(%3Ardf%2C%3Atype)%2CNamespace.lookup(%3Aowl%2C%3AClass))]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 18:57:01) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (141.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (74750.0ms)
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (31.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 18:58:18) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (687.0ms)
+Completed in 703ms (View: 703 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 77359ms (View: 76437 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 18:58:19) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (0.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 18:59:09) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (141.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (73828.0ms)
+Rendered layouts/_toolbar (16.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (16.0ms)
+Rendered layouts/_loading (15.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 19:00:24) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (765.0ms)
+Completed in 781ms (View: 781 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 76421ms (View: 75531 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:00:26) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:00:27) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:00:28) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:00:29) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-04-29 19:00:37) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/c10a5861-825a-40f5-8f31-d14f013c1322>')"}
+Completed in 204ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/c10a5861-825a-40f5-8f31-d14f013c1322%3E%27)]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 19:00:44) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (0.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (74765.0ms)
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (0.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 19:01:59) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (1078.0ms)
+Completed in 1078ms (View: 1078 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 76141ms (View: 75859 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:02:02) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:02:03) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:02:03) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:02:04) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-04-29 19:02:12) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/c10a5861-825a-40f5-8f31-d14f013c1322>')"}
+Completed in 219ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/c10a5861-825a-40f5-8f31-d14f013c1322%3E%27)]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 19:02:27) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (0.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (73562.0ms)
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (0.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 19:03:40) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (547.0ms)
+Completed in 547ms (View: 547 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 74375ms (View: 74125 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:03:43) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:03:44) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:03:45) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:03:46) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 19:04:14) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (0.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 19:21:33) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (141.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (77969.0ms)
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (31.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 19:22:56) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (828.0ms)
+Completed in 843ms (View: 843 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 83796ms (View: 79812 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:23:00) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:23:00) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:23:01) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:23:02) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-04-29 19:23:08) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/c10a5861-825a-40f5-8f31-d14f013c1322>')"}
+Completed in 250ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/c10a5861-825a-40f5-8f31-d14f013c1322%3E%27)]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 19:23:15) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (15.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 19:23:15) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (579.0ms)
+Completed in 579ms (View: 579 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 985ms (View: 594 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:23:18) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:23:19) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:23:20) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:23:20) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 19:24:57) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (0.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 19:24:57) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (578.0ms)
+Completed in 578ms (View: 578 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 1000ms (View: 593 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:25:00) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:25:01) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:25:01) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:25:02) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 19:26:38) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (0.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 19:26:39) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (656.0ms)
+Completed in 656ms (View: 656 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 1188ms (View: 844 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:26:44) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:26:45) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:26:46) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:26:47) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 19:29:55) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (16.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 19:29:55) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (687.0ms)
+Completed in 687ms (View: 687 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 984ms (View: 703 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:29:58) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:29:58) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:29:59) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:30:00) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 19:30:02) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (0.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 19:30:03) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (719.0ms)
+Completed in 719ms (View: 719 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 1016ms (View: 734 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:30:05) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:30:06) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:30:07) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:30:08) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-04-29 19:30:21) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:rdfs,:Class)).union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:owl,:Class))"}
+Rendered explorator/_windowheader (0.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (81391.0ms)
+Completed in 81625ms (View: 81407 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%3As%2CNamespace.lookup(%3Ardf%2C%3Atype)%2CNamespace.lookup(%3Ardfs%2C%3AClass)).union(%3As%2CNamespace.lookup(%3Ardf%2C%3Atype)%2CNamespace.lookup(%3Aowl%2C%3AClass))]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-04-29 19:31:43) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:rdfs,:Class)).union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:owl,:Class))"}
+Rendered explorator/_windowheader (0.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (79688.0ms)
+Completed in 80031ms (View: 79688 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%3As%2CNamespace.lookup(%3Ardf%2C%3Atype)%2CNamespace.lookup(%3Ardfs%2C%3AClass)).union(%3As%2CNamespace.lookup(%3Ardf%2C%3Atype)%2CNamespace.lookup(%3Aowl%2C%3AClass))]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 19:49:04) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (125.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (78093.0ms)
+Rendered explorator/_windowheader (16.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 19:53:20) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (16.0ms)
+Rendered layouts/_landmarks (157.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 19:53:21) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (656.0ms)
+Completed in 687ms (View: 672 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 1734ms (View: 875 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:53:24) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:53:24) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:53:25) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:53:26) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#reset (for 127.0.0.1 at 2009-04-29 19:53:32) [GET]
+Redirected to http://localhost:3000/explorator
+Completed in 47ms | 302 Found [http://localhost/application/reset]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 19:53:32) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (0.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 19:53:32) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (797.0ms)
+Completed in 813ms (View: 797 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 1109ms (View: 813 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:53:34) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:53:34) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:53:35) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:53:35) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-04-29 19:53:47) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:rdfs,:Class)).union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:owl,:Class))"}
+Rendered explorator/_windowheader (0.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (83453.0ms)
+Completed in 84438ms (View: 83453 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%3As%2CNamespace.lookup(%3Ardf%2C%3Atype)%2CNamespace.lookup(%3Ardfs%2C%3AClass)).union(%3As%2CNamespace.lookup(%3Ardf%2C%3Atype)%2CNamespace.lookup(%3Aowl%2C%3AClass))]
+
+
+Processing RepositoryController#autoadd (for 127.0.0.1 at 2009-04-29 19:55:22) [GET]
+  Parameters: {"uri"=>"<http://www.w3.org/2000/01/rdf-schema#Class>"}
+Completed in 16ms (View: 0 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23Class%3E]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-04-29 19:55:22) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union('<http://www.w3.org/2000/01/rdf-schema#Class>',:p,:o)", "view"=>"null"}
+Rendered explorator/_windowheader (0.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (6703.0ms)
+Completed in 6859ms (View: 6703 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%27%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23Class%3E%27%2C%3Ap%2C%3Ao)&view=null]
+
+
+Processing RepositoryController#autoadd (for 127.0.0.1 at 2009-04-29 19:55:33) [GET]
+  Parameters: {"uri"=>"<http://purl.org/dc/terms/Agent>"}
+Completed in 0ms (View: 0 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Fterms%2FAgent%3E]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-04-29 19:55:34) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union(:s,RDF::type,'<http://purl.org/dc/terms/Agent>')", "view"=>"null"}
+Rendered explorator/_windowheader (0.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (3343.0ms)
+Completed in 3687ms (View: 3343 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%3As%2CRDF%3A%3Atype%2C%27%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Fterms%2FAgent%3E%27)&view=null]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-04-29 19:55:37) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/c085d2bd-bd5b-47b1-84c4-fd145d7b76d8>')"}
+Completed in 421ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/c085d2bd-bd5b-47b1-84c4-fd145d7b76d8%3E%27)]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-04-29 19:55:38) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/d1bbd9d5-586f-4162-845e-a91cdc880ff4>')"}
+Completed in 282ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/d1bbd9d5-586f-4162-845e-a91cdc880ff4%3E%27)]
+
+
+Processing RepositoryController#autoadd (for 127.0.0.1 at 2009-04-29 19:55:50) [GET]
+  Parameters: {"uri"=>"<http://purl.org/dc/terms/Agent>"}
+Completed in 16ms (View: 0 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Fterms%2FAgent%3E]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-04-29 19:55:50) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union('<http://purl.org/dc/terms/Agent>',:p,:o)", "view"=>"null"}
+Rendered explorator/_windowheader (0.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (6296.0ms)
+Completed in 6406ms (View: 6296 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%27%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Fterms%2FAgent%3E%27%2C%3Ap%2C%3Ao)&view=null]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 19:58:16) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (140.0ms)
+Rendered explorator/_windowfilter (15.0ms)
+Rendered explorator/_subject_view (3359.0ms)
+Rendered explorator/_windowheader (0.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (6265.0ms)
+Rendered layouts/_toolbar (15.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (31.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 19:58:27) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (875.0ms)
+Completed in 891ms (View: 891 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 12140ms (View: 11187 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:58:30) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:58:31) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-04-29 19:58:32) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/c50b9230-345e-493e-90bb-9100aec05e29>')"}
+Completed in 235ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/c50b9230-345e-493e-90bb-9100aec05e29%3E%27)]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:58:32) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:58:33) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing RepositoryController#autoadd (for 127.0.0.1 at 2009-04-29 19:58:39) [GET]
+  Parameters: {"uri"=>"<http://purl.org/dc/terms/Agent>"}
+Completed in 0ms (View: 0 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Fterms%2FAgent%3E]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-04-29 19:58:39) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union('<http://purl.org/dc/terms/Agent>',:p,:o)", "view"=>"null"}
+Rendered explorator/_windowheader (0.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (6016.0ms)
+Completed in 6125ms (View: 6016 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%27%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Fterms%2FAgent%3E%27%2C%3Ap%2C%3Ao)&view=null]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-04-29 19:58:49) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/aee9ca15-c26d-4e87-8805-bb3770450349>')"}
+Completed in 235ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/aee9ca15-c26d-4e87-8805-bb3770450349%3E%27)]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-04-29 19:58:49) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/8ba0549d-00bd-4c91-be1e-0d2899d46d0e>')"}
+Completed in 156ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/8ba0549d-00bd-4c91-be1e-0d2899d46d0e%3E%27)]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 19:58:54) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (0.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 19:58:54) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (656.0ms)
+Completed in 656ms (View: 656 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 937ms (View: 672 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:58:57) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:58:58) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:58:58) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 19:58:59) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-04-29 19:59:02) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:rdfs,:Class)).union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:owl,:Class))"}
+Rendered explorator/_windowheader (0.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (76344.0ms)
+Completed in 77203ms (View: 76360 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%3As%2CNamespace.lookup(%3Ardf%2C%3Atype)%2CNamespace.lookup(%3Ardfs%2C%3AClass)).union(%3As%2CNamespace.lookup(%3Ardf%2C%3Atype)%2CNamespace.lookup(%3Aowl%2C%3AClass))]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-04-29 20:00:31) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:rdfs,:Class)).union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:owl,:Class))"}
+Rendered explorator/_windowheader (0.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (68782.0ms)
+Completed in 68938ms (View: 68782 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%3As%2CNamespace.lookup(%3Ardf%2C%3Atype)%2CNamespace.lookup(%3Ardfs%2C%3AClass)).union(%3As%2CNamespace.lookup(%3Ardf%2C%3Atype)%2CNamespace.lookup(%3Aowl%2C%3AClass))]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-04-29 20:03:00) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/a3205b07-7ed1-463e-9707-d9b974887f5f>')"}
+Completed in 234ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/a3205b07-7ed1-463e-9707-d9b974887f5f%3E%27)]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-04-29 20:03:01) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/609b0032-576b-45a4-83c0-dcd76d057f1c>')"}
+Completed in 172ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/609b0032-576b-45a4-83c0-dcd76d057f1c%3E%27)]
+
+
+Processing RepositoryController#index (for 127.0.0.1 at 2009-04-29 20:03:03) [GET]
+Rendering repository/index
+Start rendering component ({:layout=>false, :action=>"endpointsform"}): 
+
+
+Processing RepositoryController#endpointsform (for 127.0.0.1 at 2009-04-29 20:03:03) [GET]
+  Parameters: {"id"=>nil}
+Rendering repository/endpointsform
+Completed in 16ms (View: 16 | 200 OK [http://localhost/repository/index]
+
+
+End of component rendering
+Completed in 32ms (View: 32 | 200 OK [http://localhost/repository/index]
+
+
+Processing RepositoryController#listenabledrepositories (for 127.0.0.1 at 2009-04-29 20:03:03) [POST]
+Rendered repository/_listenabledrepositories (0.0ms)
+Completed in 0ms (View: 0 | 200 OK [http://localhost/repository/listenabledrepositories]
+
+
+Processing RepositoryController#enable (for 127.0.0.1 at 2009-04-29 20:03:05) [GET]
+  Parameters: {"title"=>"NOKIA(Local)"}
+Completed in 31ms (View: 0 | 200 OK [http://localhost/repository/enable?title=NOKIA(Local)]
+
+
+Processing RepositoryController#listenabledrepositories (for 127.0.0.1 at 2009-04-29 20:03:05) [POST]
+Rendered repository/_listenabledrepositories (0.0ms)
+Completed in 0ms (View: 0 | 200 OK [http://localhost/repository/listenabledrepositories]
+
+
+Processing RepositoryController#disable (for 127.0.0.1 at 2009-04-29 20:03:06) [GET]
+  Parameters: {"title"=>"EXPLORATOR(Local)"}
+Completed in 15ms (View: 0 | 200 OK [http://localhost/repository/disable?title=EXPLORATOR(Local)]
+
+
+Processing RepositoryController#listenabledrepositories (for 127.0.0.1 at 2009-04-29 20:03:06) [POST]
+Rendered repository/_listenabledrepositories (0.0ms)
+Completed in 15ms (View: 0 | 200 OK [http://localhost/repository/listenabledrepositories]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-04-29 20:03:13) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:rdfs,:Class)).union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:owl,:Class))"}
+Rendered explorator/_windowheader (0.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (3984.0ms)
+Completed in 8531ms (View: 3984 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%3As%2CNamespace.lookup(%3Ardf%2C%3Atype)%2CNamespace.lookup(%3Ardfs%2C%3AClass)).union(%3As%2CNamespace.lookup(%3Ardf%2C%3Atype)%2CNamespace.lookup(%3Aowl%2C%3AClass))]
+
+
+Processing RepositoryController#autoadd (for 127.0.0.1 at 2009-04-29 20:03:33) [GET]
+  Parameters: {"uri"=>"<http://sw.nokia.com/FN-1/Type/Terminal>"}
+Completed in 16ms (View: 16 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fsw.nokia.com%2FFN-1%2FType%2FTerminal%3E]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-04-29 20:03:33) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union(:s,RDF::type,'<http://sw.nokia.com/FN-1/Type/Terminal>')", "view"=>"null"}
+Rendered explorator/_windowheader (0.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (4750.0ms)
+Completed in 29687ms (View: 4765 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%3As%2CRDF%3A%3Atype%2C%27%3Chttp%3A%2F%2Fsw.nokia.com%2FFN-1%2FType%2FTerminal%3E%27)&view=null]
+
+
+Processing RepositoryController#autoadd (for 127.0.0.1 at 2009-04-29 20:04:07) [GET]
+  Parameters: {"uri"=>"<http://sw.nokia.com/id/d2f7cb6d-414c-45f2-8cfd-80135699fbf5/3200>"}
+Completed in 15ms (View: 15 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fsw.nokia.com%2Fid%2Fd2f7cb6d-414c-45f2-8cfd-80135699fbf5%2F3200%3E]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-04-29 20:04:07) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union('<http://sw.nokia.com/id/d2f7cb6d-414c-45f2-8cfd-80135699fbf5/3200>',:p,:o)", "view"=>"null"}
+Rendered explorator/_windowheader (0.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (3890.0ms)
+Completed in 4000ms (View: 3890 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%27%3Chttp%3A%2F%2Fsw.nokia.com%2Fid%2Fd2f7cb6d-414c-45f2-8cfd-80135699fbf5%2F3200%3E%27%2C%3Ap%2C%3Ao)&view=null]
+
+
+Processing RepositoryController#autoadd (for 127.0.0.1 at 2009-04-29 20:04:41) [GET]
+  Parameters: {"uri"=>"<http://sw.nokia.com/DP-1/Band/gsm_1800>"}
+Completed in 15ms (View: 15 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fsw.nokia.com%2FDP-1%2FBand%2Fgsm_1800%3E]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-04-29 20:04:41) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union('<http://sw.nokia.com/DP-1/Band/gsm_1800>',:p,:o)", "view"=>"null"}
+Rendered explorator/_windowheader (15.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (1328.0ms)
+Completed in 1469ms (View: 1328 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%27%3Chttp%3A%2F%2Fsw.nokia.com%2FDP-1%2FBand%2Fgsm_1800%3E%27%2C%3Ap%2C%3Ao)&view=null]
+
+
+Processing RepositoryController#autoadd (for 127.0.0.1 at 2009-04-29 20:04:47) [GET]
+  Parameters: {"uri"=>"<http://sw.nokia.com/DP-1/Band/gsm_1900>"}
+Completed in 0ms (View: 0 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fsw.nokia.com%2FDP-1%2FBand%2Fgsm_1900%3E]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-04-29 20:04:47) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union('<http://sw.nokia.com/DP-1/Band/gsm_1900>',:p,:o)", "view"=>"null"}
+Rendered explorator/_windowheader (0.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (266.0ms)
+Completed in 391ms (View: 281 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%27%3Chttp%3A%2F%2Fsw.nokia.com%2FDP-1%2FBand%2Fgsm_1900%3E%27%2C%3Ap%2C%3Ao)&view=null]
+
+
+Processing RepositoryController#autoadd (for 127.0.0.1 at 2009-04-29 20:04:51) [GET]
+  Parameters: {"uri"=>"<http://sw.nokia.com/id/bcbbd4d0-7b44-4b0e-9891-6820aa3ad265/2855>"}
+Completed in 15ms (View: 15 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fsw.nokia.com%2Fid%2Fbcbbd4d0-7b44-4b0e-9891-6820aa3ad265%2F2855%3E]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-04-29 20:04:51) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union('<http://sw.nokia.com/id/bcbbd4d0-7b44-4b0e-9891-6820aa3ad265/2855>',:p,:o)", "view"=>"null"}
+Rendered explorator/_windowheader (0.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (2906.0ms)
+Completed in 3078ms (View: 2922 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%27%3Chttp%3A%2F%2Fsw.nokia.com%2Fid%2Fbcbbd4d0-7b44-4b0e-9891-6820aa3ad265%2F2855%3E%27%2C%3Ap%2C%3Ao)&view=null]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-04-29 20:05:00) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/4432795a-0ead-4d53-a602-d1047cf220fb>')"}
+Completed in 438ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/4432795a-0ead-4d53-a602-d1047cf220fb%3E%27)]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-04-29 20:05:00) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/ea316c94-44d2-46af-aec6-34c51e416298>')"}
+Completed in 578ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/ea316c94-44d2-46af-aec6-34c51e416298%3E%27)]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-04-29 20:05:01) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/e5c3cf47-4f65-441a-97ec-63e7c09618a6>')"}
+Completed in 406ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/e5c3cf47-4f65-441a-97ec-63e7c09618a6%3E%27)]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-04-29 20:05:02) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/468830d1-0ee6-4d25-a586-f70ee76fd851>')"}
+Completed in 281ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/468830d1-0ee6-4d25-a586-f70ee76fd851%3E%27)]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-04-29 20:05:11) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/e41e9e1e-44a4-4bcd-9941-bd6cd3441c4b>')"}
+Completed in 468ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/e41e9e1e-44a4-4bcd-9941-bd6cd3441c4b%3E%27)]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-04-29 20:05:13) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/c2d3c726-3b31-4c06-a57e-2e9071cffd78>')"}
+Completed in 282ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/c2d3c726-3b31-4c06-a57e-2e9071cffd78%3E%27)]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-04-29 21:52:40) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (31.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-04-29 21:52:41) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (32.0ms)
+Completed in 47ms (View: 47 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 485ms (View: 375 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 21:52:53) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 21:52:54) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 21:52:55) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-04-29 21:52:55) [GET]
+
+ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
