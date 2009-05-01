@@ -17,12 +17,11 @@ module RDFS
     # the uri of the rdf resource being represented by this class
     class << self
       attr_accessor :class_uri
-      def reset_cache()       
-       
+      def reset_cache()               
         $triple = Hash.new 
-        $all_predicates_array = nil        
+        $all_predicates_array = Array.new        
         RDFS::Resource.find_all_predicates()
-       
+        
       end
     end
     
@@ -44,6 +43,7 @@ module RDFS
       else 
         raise ActiveRdfError, "cannot create resource <#{uri}>"
       end      
+      $all_predicates_array = Array.new    if         $all_predicates_array ==nil    
       $triple = Hash.new if $triple == nil
       @predicates = Hash.new
     end
@@ -208,8 +208,7 @@ module RDFS
     
     # manages invocations such as eyal.age
     def method_missing(method, *args)
-     
-      # possibilities:
+       # possibilities:
       # 1. eyal.age is a property of eyal (triple exists <eyal> <age> "30")
       # evidence: eyal age ?a, ?a is not nil (only if value exists)
       # action: return ?a
@@ -299,11 +298,14 @@ module RDFS
 
  
       $all_predicates_array.each do |pred|
+        
         if Namespace.localname(pred) == methodname
+ 
           if update
             return set_predicate(pred, args)
           else 
                 value =  get_predicate(pred, flatten)
+                        
             return value if value != nil
           end
         end
@@ -323,6 +325,7 @@ module RDFS
           if update
             return set_predicate(pred, args)
           else
+  
             return get_predicate(pred, flatten)
           end
 				end
@@ -359,7 +362,8 @@ module RDFS
 			self.type.each do |klass|
     
 				if klass.instance_methods.include?(method.to_s)
-					_dup = klass.new(uri)
+		 
+          _dup = klass.new(uri)
 					return _dup.send(method,*args)
 				end
 			end
@@ -429,6 +433,7 @@ module RDFS
 			domain = Namespace.lookup(:rdfs, 'domain')
       result = Query.new.distinct(:p).where(self,type,:t).where(:p, domain, :t).execute || []
       $all_predicates_array = $all_predicates_array | result
+
       result
 		end
 
@@ -443,6 +448,7 @@ module RDFS
      result = query.execute
      $all_predicates_array = $all_predicates_array | result
      result
+ 
 		end
 
 		def property_accessors
