@@ -99,7 +99,7 @@ Namespace.register(:movie,"http://triplify.org/vocabulary/movie#")
 Namespace.register(:mondial,"http://www.semwebtech.org/mondial/10/meta#")
 
 
-RDFS::Resource.find_all_predicates
+#RDFS::Resource.find_all_predicates
 
 # construct the necessary Ruby Modules and Classes to use the Namespace
 ObjectManager.construct_classes
