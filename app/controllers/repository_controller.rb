@@ -41,6 +41,7 @@ class RepositoryController < ApplicationController
 
     session[:disablerepositories] << (params[:title]) 
     session[:disablerepositories].uniq!
+    session[:triples]=Hash.new
     # Repository.disable_by_title(params[:title])
     #render nothing.
     render :text => '',:layout => false    
@@ -50,6 +51,7 @@ class RepositoryController < ApplicationController
   def disable
     RDFS::Resource.reset_cache() 
     session[:disablerepositories].delete(params[:title])
+    session[:triples]=Hash.new
     # Repository.enable_by_title(params[:title])
     #render nothing.
     render :text => '',:layout => false
@@ -67,6 +69,7 @@ class RepositoryController < ApplicationController
       session[:addrepositories]<< adapter
       session[:disablerepositories] << (params[:title]) 
       session[:disablerepositories].uniq!
+ 
       
     rescue Exception => e
       puts e.message
@@ -80,7 +83,7 @@ class RepositoryController < ApplicationController
       return
     end
     begin 
-      RDFS::Resource.find_all_predicates    
+ 
       # construct the necessary Ruby Modules and Classes to use the Namespace
       ObjectManager.construct_classes
       
@@ -96,6 +99,7 @@ class RepositoryController < ApplicationController
       return
       #       render_component :controller => 'message',:action => 'error',:message => e.message ,:layout => false
     end
+    session[:triples]=Hash.new
     redirect_to :action => 'endpointsform',:message => 'Sparql endpoint added successfully!' ,:messageaction=>'confirmation'
     
   end
