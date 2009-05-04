@@ -224,7 +224,5 @@ end
 def to_sp
   require 'queryengine/query2sparql'
   Query2SPARQL.translate(self)
-end
-
-
+end 
 end
