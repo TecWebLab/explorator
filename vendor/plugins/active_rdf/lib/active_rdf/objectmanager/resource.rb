@@ -1,3 +1,4 @@
+require "uri"
 require 'active_rdf'
 require 'objectmanager/object_manager'
 require 'objectmanager/namespace'
@@ -18,16 +19,12 @@ module RDFS
     class << self
       attr_accessor :class_uri
       def reset_cache()               
-        $triple = Hash.new 
-        $all_predicates_array = Array.new        
-        RDFS::Resource.find_all_predicates()
-        
+        Thread.current[:triples].clear        
       end
-    end
-    
+    end    
     # uri of the resource (for instances of this class: rdf resources)
     attr_reader :uri
-    $triple
+   
     # creates new resource representing an RDF resource
     def initialize uri      
       @uri = case uri
@@ -42,9 +39,8 @@ module RDFS
         uri
       else 
         raise ActiveRdfError, "cannot create resource <#{uri}>"
-      end      
-      $all_predicates_array = Array.new    if         $all_predicates_array ==nil    
-      $triple = Hash.new if $triple == nil
+      end           
+      Thread.current[:triples]=Hash.new if Thread.current[:triples]== nil 
       @predicates = Hash.new
     end
     
@@ -198,9 +194,9 @@ module RDFS
         query.execute(:flatten => false)
       end
     end
-    def self.find_all_predicates  
-      puts '############ FINDING PREDICATES #############'
-      $all_predicates_array = Query.new.distinct(:s).where(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:rdf,:Property)).execute if $all_predicates_array == nil
+    
+    def load
+      Query.new.distinct(:p,:o).where(self, :p,:o).execute
     end
     def localname      
       Namespace.localname(self)
@@ -208,7 +204,8 @@ module RDFS
     
     # manages invocations such as eyal.age
     def method_missing(method, *args)
-       # possibilities:
+       
+      # possibilities:
       # 1. eyal.age is a property of eyal (triple exists <eyal> <age> "30")
       # evidence: eyal age ?a, ?a is not nil (only if value exists)
       # action: return ?a
@@ -295,41 +292,35 @@ module RDFS
         end
         return namespace
       end
-
- 
-      $all_predicates_array.each do |pred|
-        
+      all_instance_predicates.each do |pred|        
         if Namespace.localname(pred) == methodname
  
           if update
             return set_predicate(pred, args)
           else 
-                value =  get_predicate(pred, flatten)
-                        
+            value =  get_predicate(pred, flatten)                        
             return value if value != nil
           end
         end
     end
-     
- 
-      candidates = if update
-                      (class_level_predicates + direct_predicates).compact.uniq
-                   else
-                     direct_predicates
-                    end
-
- 
-			# checking possibility (1) and (3)
-			candidates.each do |pred|
-				if Namespace.localname(pred) == methodname
-          if update
-            return set_predicate(pred, args)
-          else
-  
-            return get_predicate(pred, flatten)
-          end
-				end
-			end
+#      candidates = if update
+#                      (class_level_predicates + direct_predicates).compact.uniq
+#                   else
+#                     direct_predicates
+#                    end
+#
+# 
+#			# checking possibility (1) and (3)
+#			candidates.each do |pred|
+#				if Namespace.localname(pred) == methodname
+#          if update
+#            return set_predicate(pred, args)
+#          else
+#  
+#            return get_predicate(pred, flatten)
+#          end
+#				end
+#			end
 			
 			raise ActiveRdfError, "could not set #{methodname} to #{args}: no suitable 
 			predicate found. Maybe you are missing some schema information?" if update
@@ -341,19 +332,19 @@ module RDFS
 			# anything with direct_predicates, we need to try the
 			# class_level_predicates. Only if we don't find either, we
 			# throw "method_missing"
-			candidates = class_level_predicates
-
-			# if any of the class_level candidates fits the sought method, then we
-			# found situation (2), so we return nil or [] depending on the {:array =>
-			# true} value
-			if candidates.any?{|c| Namespace.localname(c) == methodname}
-				return_ary = args[0][:array] if args[0].is_a? Hash
-				if return_ary
-					return []
-				else
-					return nil
-				end
-			end
+#			candidates = class_level_predicates
+#
+#			# if any of the class_level candidates fits the sought method, then we
+#			# found situation (2), so we return nil or [] depending on the {:array =>
+#			# true} value
+#			if candidates.any?{|c| Namespace.localname(c) == methodname}
+#				return_ary = args[0][:array] if args[0].is_a? Hash
+#				if return_ary
+#					return []
+#				else
+#					return nil
+#				end
+#			end
  
 			# checking possibility (4)
 			# TODO: implement search strategy to select in which class to invoke
@@ -412,7 +403,6 @@ module RDFS
     def add_predicate localname, fulluri
 			localname = localname.to_s
 			fulluri = RDFS::Resource.new(fulluri) if fulluri.is_a? String
-
 			# predicates is a hash from abbreviation string to full uri resource
 			@predicates[localname] = fulluri
 		end
@@ -426,30 +416,30 @@ module RDFS
     end
     end
 
-		# returns all predicates that fall into the domain of the rdf:type of this
-		# resource
-		def class_level_predicates    
-			type = Namespace.lookup(:rdf, 'type')
-			domain = Namespace.lookup(:rdfs, 'domain')
-      result = Query.new.distinct(:p).where(self,type,:t).where(:p, domain, :t).execute || []
-      $all_predicates_array = $all_predicates_array | result
+#		# returns all predicates that fall into the domain of the rdf:type of this
+#		# resource
+#		def class_level_predicates    
+#			type = Namespace.lookup(:rdf, 'type')
+#			domain = Namespace.lookup(:rdfs, 'domain')
+#      result = Query.new.distinct(:p).where(self,type,:t).where(:p, domain, :t).execute || []
+#      $all_predicates_array = $all_predicates_array | result
+#
+#      result
+#		end
 
-      result
-		end
-
-		# returns all predicates that are directly defined for this resource
-		def direct_predicates(distinct = true)
-        query = nil     
-			if distinct
-			 	query = Query.new.distinct(:p).where(self, :p, :o)
-			else
-				query = Query.new.select(:p).where(self, :p, :o)
-		end
-     result = query.execute
-     $all_predicates_array = $all_predicates_array | result
-     result
- 
-		end
+#		# returns all predicates that are directly defined for this resource
+#		def direct_predicates(distinct = true)
+#        query = nil     
+#			if distinct
+#			 	query = Query.new.distinct(:p).where(self, :p, :o)
+#			else
+#				query = Query.new.select(:p).where(self, :p, :o)
+#		end
+#     result = query.execute
+#     $all_predicates_array = $all_predicates_array | result
+#     result
+# 
+#		end
 
 		def property_accessors
 			direct_predicates.collect {|pred| Namespace.localname(pred) }
@@ -468,36 +458,34 @@ module RDFS
       FederationManager.delete(self, predicate)
       values.flatten.each {|v| FederationManager.add(self, predicate, v) }
       #clear cache
-      $triple[self.uri]=nil  
+      Thread.current[:triples][self.uri]=nil  
       values
     end
-    def cache(flatten=false)               
-      tuple = Hash.new
-      properties = Query.new.distinct(:p,:o).where(self, :p, :o).execute(:flatten => flatten) 
-      if properties == nil 
-        $triple[self.uri]=tuple
-        return
-      end     
-      properties.each do |p,o|     
+    def cache(flatten=false)             
+      tuple = Hash.new       
+      Thread.current[:triples][self.uri]=tuple      
+      properties = Query.new.distinct(:p,:o).where(self, :p, :o).execute(:flatten => flatten)      
+      
+      properties.each do |p,o|    
+      
         tuple[p] = Array.new if tuple[p] == nil
         tuple[p] << o      
-      end
-      $triple[self.uri]=tuple
+      end    if properties != nil  
        
     end 
-    def  all_instance_predicates
-       cache(true) if $triple[self.uri] == nil   
-       $triple[self.uri].keys
+    def all_instance_predicates
+       cache(true) if Thread.current[:triples][self.uri] == nil   
+       Thread.current[:triples][self.uri].keys
     end
 #    def get_properties      
-#        cache(true) if $triple[self.uri] == nil   
-#      $triple[self.uri]
+#        cache(true) if Thread.current[:triples][self.uri] == nil   
+#      Thread.current[:triples][self.uri]
 #    end
     def get_predicate(predicate, flatten=false)        
-       cache(flatten) if $triple[self.uri] == nil
+       cache(flatten) if Thread.current[:triples][self.uri] == nil
       #original code
      # values = Query.new.distinct(:o).where(self, predicate, :o).execute(:flatten => flatten)
-       values  = $triple[self.uri][predicate]!= nil && $triple[self.uri][predicate].size == 1 && flatten ?  $triple[self.uri][predicate].first : $triple[self.uri][predicate]
+       values  = Thread.current[:triples][self.uri][predicate]!= nil && Thread.current[:triples][self.uri][predicate].size == 1 && flatten ?  Thread.current[:triples][self.uri][predicate].first : Thread.current[:triples][self.uri][predicate]
       
        values = Array.new if values == nil && flatten==false
      
