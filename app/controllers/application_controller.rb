@@ -14,8 +14,10 @@ class ApplicationController < ActionController::Base
       session[:disablerepositories] << 'INTERNAL'
       session[:disablerepositories] << 'EXPLORATOR(Local)'     
       session[:addrepositories] = Array.new
+      session[:triples]=Hash.new
       session[:application] =  Application.new(request.session_options[:id])
     end
+    Thread.current[:triples]=session[:triples]
     Thread.current[:addrepositories]=session[:addrepositories]
     Thread.current[:disablerepositories]=session[:disablerepositories]    
     Thread.current[:application]=session[:application]
@@ -43,4 +45,5 @@ class ApplicationController < ActionController::Base
   def delete
     session[:application].delete(params[:uri])  
   end
+ 
 end
