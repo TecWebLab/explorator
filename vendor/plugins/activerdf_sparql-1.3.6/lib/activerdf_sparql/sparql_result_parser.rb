@@ -44,8 +44,7 @@ class SparqlResultParser
   # create ruby objects for each RDF node
   def create_node(type, value)
     case type
-      when 'uri'
-       
+      when 'uri'       
       RDFS::Resource.new(value)
       when 'bnode'
       BNode.new(value)

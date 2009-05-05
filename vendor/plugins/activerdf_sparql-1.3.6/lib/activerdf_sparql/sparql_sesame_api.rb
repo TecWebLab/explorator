@@ -65,8 +65,8 @@ class SparqlSesameApiAdapter < ActiveRdfAdapter
     result = execute_sparql_query(qs, &block)
     add_to_cache(qs, result) if @caching
     result = [] if result == "timeout"
-    puts @title
-    puts qs.to_s  
+#    puts @title
+#    puts qs.to_s  
     return result
   end
   
