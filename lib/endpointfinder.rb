@@ -145,6 +145,4 @@ class FinderUtil
       end
     end
   end
-end
-#query('')
-FinderUtil.find_endpoint_for('http://dbtune.org/jamendo/artist/5')
+end 

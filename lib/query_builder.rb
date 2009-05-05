@@ -228,15 +228,16 @@ class SemanticExpression
       @result = @result | s 
     elsif Thread.current[:application].is_set?(s)
       #returns all set of resources
-      puts '################## SET'
+    
       if r != nil   && r!= :s
         @result = @result | SemanticExpression.new.spo(Thread.current[:application].get(s).elements.collect{|s,p,o| eval(r.to_s)}.uniq,:p,:o).result
       else
         @result = @result | Thread.current[:application].get(s).elements
       end
-      puts '################## END SET'
+      
       #Union method, passed as parameter a triple expression
     else
+      
       @result = @result | query(s,p,o,r)
     end
     self
