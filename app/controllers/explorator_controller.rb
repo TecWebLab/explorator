@@ -15,7 +15,7 @@ class ExploratorController < ApplicationController
   # attr_accessor :resourceset
   #default rails method. returns the view index.rhtml.
   def index     
-    
+      
   end
   
   def resourcefilter
@@ -43,15 +43,18 @@ class ExploratorController < ApplicationController
 #      puts params[:exp]
       #creates a new set. 
       #the expression must be passed by the uri
+      
       set = EXPLORATOR::Set.new('http://www.tecweb.inf.puc-rio.br/resourceset/id/' + UUID.random_create.to_s)       
-      
+         
       set.init(params[:exp])
-      
+           
       #the object @resourceset is a global object that will be used by render
       @resourceset = set     
-      
+            
       view = params['view']
+            
       view = 'subject_view' if  params['view'] == nil || params['view'] == 'null'
+          
       #render the _window.rhtml view
       render :partial => view,:layout=>false;
       
