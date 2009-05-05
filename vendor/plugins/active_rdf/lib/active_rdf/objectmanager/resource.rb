@@ -24,7 +24,7 @@ module RDFS
     end    
     # uri of the resource (for instances of this class: rdf resources)
     attr_reader :uri
-   
+    
     # creates new resource representing an RDF resource
     def initialize uri      
       @uri = case uri
@@ -204,7 +204,7 @@ module RDFS
     
     # manages invocations such as eyal.age
     def method_missing(method, *args)
-       
+      
       # possibilities:
       # 1. eyal.age is a property of eyal (triple exists <eyal> <age> "30")
       # evidence: eyal age ?a, ?a is not nil (only if value exists)
@@ -408,12 +408,23 @@ module RDFS
 		end
 		# overrides built-in instance_of? to use rdf:type definitions
 		def instance_of?(klass)        
-    if klass.to_s == BNode.to_s || self.class.to_s == BNode.to_s     
+   
+   if klass.to_s == 'Array'
+      return false
+   end
+   
+   if klass.to_s == RDFS::Resource.class.to_s
+     return true
+   end
+   
+    if klass.to_s == BNode.to_s || self.class.to_s == BNode.to_s  
+    
       return (klass.to_s == self.class.to_s) ? true : false
     else  
-     
+    
      self.type.include?(klass)
-    end
+   end
+      
     end
 
 #		# returns all predicates that fall into the domain of the rdf:type of this
@@ -464,10 +475,10 @@ module RDFS
     def cache(flatten=false)             
       tuple = Hash.new       
       Thread.current[:triples][self.uri]=tuple      
+     
       properties = Query.new.distinct(:p,:o).where(self, :p, :o).execute(:flatten => flatten)      
-      
-      properties.each do |p,o|    
-      
+     
+      properties.each do |p,o|          
         tuple[p] = Array.new if tuple[p] == nil
         tuple[p] << o      
       end    if properties != nil  
