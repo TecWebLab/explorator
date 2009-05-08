@@ -60,7 +60,7 @@ rescue
 end 
 
 begin 
-  adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2,:title=>'LDSR', :url => "http://ldsr.ontotext.com/openrdf-sesame/repositories/ldsr", :results => :sparql_xml, :caching =>true
+  adapter =ConnectionPool.add_data_source :type => :sparql,:title=>'LDSR', :url => "http://ldsr.ontotext.com/openrdf-sesame/repositories/ldsr", :results => :sparql_xml, :caching =>true
 rescue Exception=> e
 puts   e.backtrace
 end
