@@ -50,4 +50,6 @@ require 'libs.rb'
 require "will_paginate" 
 WillPaginate::ViewHelpers.pagination_options[:previous_label] ='<'
 WillPaginate::ViewHelpers.pagination_options[:next_label] = '>' 
+WillPaginate::ViewHelpers.pagination_options[:inner_window] = 2 
+
 $WILL_PAGINATE_PER_PAGE=30  #number of resourcer per page
