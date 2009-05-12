@@ -16,4 +16,3 @@ $work = ConnectionPool.add_data_source :type => :sparql_sesame_api , :title=> 'I
 #maximum number of facets display on the interface
 $VIEW_FACET_NUMBER=10
  
-
