@@ -31,7 +31,7 @@ class EXPLORATOR::Set < RDFS::Resource
   def init(exp) 
     $contextindex = 65 if $contextindex == nil
     self.explorator::pagination=30
-    self.explorator::offset = 0
+    self.explorator::offset = 1
     
     #naming the set  
     self.explorator::name='SET ' + $contextindex.chr 

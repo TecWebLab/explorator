@@ -79,18 +79,14 @@
         <% end %>
     </div>
     <% end %>
-    <div>
-        <%if resourceset.offset.to_i>0 %>
-        <div class='pagination '>
-            <a onclick="javascript:ajax_update(Element.extend(this).up('._WINDOW').id,'/explorator/reload?view=object_view&offset=<%=resourceset.offset.to_i - resourceset.pagination.to_i%>&uri=<%=resourceset%>');">&lt;&lt;</a>
+    <br>
+    <div class ="flickr_pagination">
+        <%require "will_paginate" %>
+        <div align= center>
+            <%= will_paginate resources, :remote => {:update =>  uri(resourceset), :url =>{:action=>'reload',:uri=> uri(resourceset),:view=>'subject_view'}} %>
         </div>
-        <%end %>
-        &nbsp;<% if resourceset.offset.to_i + resourceset.pagination.to_i <= get_resources.size() %>
-        <div class='pagination '>
-            <a onclick="javascript:ajax_update(Element.extend(this).up('._WINDOW').id,'/explorator/reload?view=object_view&offset=<%=resourceset.offset.to_i + resourceset.pagination.to_i%>&uri=<%=resourceset%>');">>></a>
-        </div>
-        <%end %>
     </div>
+</div>
 </div>
 <%if @size > 1 %>
 <script>
