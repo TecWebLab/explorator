@@ -17,7 +17,7 @@ class ExploratorController < ApplicationController
   def index     
       
   end
-  
+ 
   def resourcefilter
     @resourceset =  Application.get(params[:uri])  
     render  :partial => 'subject_view',:layout=>false;
@@ -95,7 +95,8 @@ class ExploratorController < ApplicationController
   #The UI pass 2 parameters, the ResourceSet id and an offset value.
   def reload  
     #return a specific set of resource considering an offset.
-    @resourceset= session[:application].get(params[:uri]).setWithOffset( params[:offset])    
+     @resourceset= session[:application].get(params[:uri]).setWithOffset( params[:page])    
+       
     #render the _window.rhtml view
     render :partial => params[:view]  , :layout=>false
   end
@@ -110,7 +111,7 @@ class ExploratorController < ApplicationController
   #The refresh method return a determined ResourceSet from the SetsPool
   #This method is called by the Execute method, being passed as a parameter by the interface.
   def refresh(uri,view=:subject_view, filter='')   
-    @resourceset= session[:application].get(uri).setWithOffset(0)    
+    @resourceset= session[:application].get(uri).setWithOffset(1)    
     @filter=filter
     #render the _window.rhtml view
     render :partial => view.to_s , :layout=>false
