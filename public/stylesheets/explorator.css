@@ -336,18 +336,7 @@ div.windowtoolbar div._view {
     cursor: pointer;
 }
 
-/****** pagination css.*/ .pagination {
-    font-weight: bold;
-    font-size: 12px;
-    color: #333333;
-    float: right;
-    margin-left: 5px;
-    margin-top: 5px;
-    text-align: center;
-    z-index: 1;
-    width: 40px;
-    border: 1px solid #cccccc;
-}
+ 
 
 /********************
  * Loading Window
