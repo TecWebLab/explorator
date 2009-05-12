@@ -26,12 +26,16 @@ module ExploratorHelper
       }
       @size = resources.size()
       return resources
-  end
-  
-    resources = resources[@resourceset.offset.to_i,@resourceset.pagination.to_i]
+    end    
+
+#    resources = resources[@resourceset.offset.to_i,@resourceset.pagination.to_i]
      
+ 
+    resources = resources.paginate(:page=>@resourceset.offset.to_i,:per_page =>$WILL_PAGINATE_PER_PAGE)
     resources
   end
+   
+  
   def subjects(predicate, resource=nil)
     @resourceset.elements.collect{|s,p,o| s if  (resource == o || resource == nil) && predicate == p}.compact.uniq    
   end
