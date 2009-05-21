@@ -3,9 +3,11 @@
 .flickr_pagination {
     text-align: center;
     font-size: 10px;
-    padding: .2em;
+    padding: .2em; 
+	
 } .flickr_pagination a, .flickr_pagination span {
     padding: .1em .4em;
+	 
 } .flickr_pagination span.disabled {
     color: #AAA;
 } .flickr_pagination span.current {
@@ -15,13 +17,14 @@
     border: 1px solid #DDDDDD;
     color: #4f94cd;
     text-decoration: none;
+	 
 } .flickr_pagination a:hover, .flickr_pagination a:focus {
     border-color: #003366;
     background: #4f94cd;
     color: white;
 } .flickr_pagination .page_info {
     color: #aaa;
-    padding-top: .7em;
+    padding-top: 0.7em;
 } .flickr_pagination .prev_page, .flickr_pagination .next_page {
     border-width: 1px;
 } .flickr_pagination .prev_page {

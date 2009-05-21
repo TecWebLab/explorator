@@ -50,6 +50,20 @@ require 'libs.rb'
 require "will_paginate" 
 WillPaginate::ViewHelpers.pagination_options[:previous_label] ='<'
 WillPaginate::ViewHelpers.pagination_options[:next_label] = '>' 
-WillPaginate::ViewHelpers.pagination_options[:inner_window] = 2 
+WillPaginate::ViewHelpers.pagination_options[:inner_window] = 2
 
 $WILL_PAGINATE_PER_PAGE=30  #number of resourcer per page
+#Setting this $QUERY_RETRIEVE_LABEL_AND_TYPE to true will force Explorator's queries to retrieve resources's label and type , of course, if they exist.
+#This increase the Explorator's response time because only 1 query will be executed at all. 
+#If $QUERY_RETRIEVE_LABEL_AND_TYPE=false then Explorator will execute one query for each resource rendered on the interface.
+#We MUST set $LABEL_PROPERTIES as ['rdfs::label'], otherwise the heuristic above will not behave as described.
+$QUERY_RETRIEVE_LABEL_AND_TYPE=false
+
+#RENDER HEURISTIC CONFIGURATION
+# if $USE_EXPLORATOR_VIEW=true explorator's render will try to get the Resource'label from an expression defined in a property explorator:view
+$USE_EXPLORATOR_VIEW=false 
+#The $LABEL_PROPERTIES is used to defined which properties Explorator should look for human readable label. The first one found will be used on the interface.
+#If you are using $QUERY_RETRIEVE_LABEL_AND_TYPE=true the you must set $LABEL_PROPERTIES=['rdfs::label']
+$LABEL_PROPERTIES=['rdfs::label','name','title'] 
+#$LABEL_PROPERTIES=['rdfs::label']
+ 

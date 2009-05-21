@@ -57,10 +57,10 @@ class SemanticExpression
     s = resource_or_self(s,r).uniq
     p = resource_or_self(p,r).uniq
     o = resource_or_self(o,r).uniq
-     s.each do |x|
+    s.each do |x|
       p.each do |y|
         o.each do |z|
-#          puts x.to_s + ' **** ' + y.to_s  + ' **** ' + z.to_s
+          #          puts x.to_s + ' **** ' + y.to_s  + ' **** ' + z.to_s
           result |= query(x,y,z,r)
         end        
       end     
@@ -86,7 +86,7 @@ class SemanticExpression
       adapter.title == 'EXPLORATOR(Local)'
     }
     uri = RDFS::Resource.new(uri)
-     adapter.first().bridge.loaduri(uri.uri, false,'rdf');   
+    adapter.first().bridge.loaduri(uri.uri, false,'rdf');   
     adapter.first().reset_cache()
     @result = @result | Query.new.distinct(:s,:p,:o).where(:s,:p,:o,RDFS::Resource.new(uri)).execute
     self
@@ -96,8 +96,8 @@ class SemanticExpression
     self
   end  
   #Wrapper for the class ActiveRDF Query. This method executes a query and returns a set of resources.
-  #With parameter must be a single resource.
-  #  In the following situations we have to build the triples after query result.
+  #Each parameter must be a single resource.
+  #In the following situations we have to build the triples after query results.
   #
   #Two variables in the query 
   #x ? ?
@@ -114,7 +114,7 @@ class SemanticExpression
   #In this case we have to execute a ASK statement instead the select
   def query (s,p,o,r=nil)       
     q = Query.new
-    ask =false
+    ask = false
     variables = Array.new
     if r.to_s == :p.to_s       
       variables << :p if p.instance_of? Symbol
@@ -122,15 +122,18 @@ class SemanticExpression
       variables << :y
       q.distinct(:p)      if p.instance_of? Symbol
       q.distinct(:x,:y)
-      q.where(to_resource(s,:s),to_resource(p,:p),to_resource(o,:o))  .where(to_resource(p,:p),:x,:y)
+      q.distinct(:label,:type) if Thread.current[:query_retrieve_label_and_type]
+      q.where(to_resource(s,:s),to_resource(p,:p),to_resource(o,:o)).where(to_resource(p,:p),:x,:y)
+      q.optional(to_resource(p,:p),RDFS::label,:label).optional(to_resource(p,:p),RDF::type,:type) if Thread.current[:query_retrieve_label_and_type]
     elsif r.to_s == :o.to_s      
       variables << :o if o.instance_of? Symbol
       variables << :x
       variables << :y 
-      q.distinct(:o)      if o.instance_of? Symbol
+      q.distinct(:o) if o.instance_of? Symbol
       q.distinct(:x,:y)
-      
-      q.where(to_resource(s,:s),to_resource(p,:p),to_resource(o,:o))  .where(to_resource(o,:o),:x,:y)
+      q.distinct(:label,:type) if Thread.current[:query_retrieve_label_and_type]
+      q.where(to_resource(s,:s),to_resource(p,:p),to_resource(o,:o)).where(to_resource(o,:o),:x,:y)
+      q.optional(to_resource(o,:o),RDFS::label,:label).optional(to_resource(o,:o),RDF::type,:type) if Thread.current[:query_retrieve_label_and_type]
     else     
       variables << :s if s.instance_of? Symbol
       variables << :p if p.instance_of? Symbol
@@ -138,13 +141,18 @@ class SemanticExpression
       if variables.size == 0
         q.ask() 
         ask =true
-        
       else
         q.distinct(:s)  if s.instance_of? Symbol
-        q.distinct(:p)      if p.instance_of? Symbol
-        q.distinct(:o)      if o.instance_of? Symbol        
+        q.distinct(:p)  if p.instance_of? Symbol
+        q.distinct(:o)  if o.instance_of? Symbol        
+        q.distinct(:label,:type) if Thread.current[:query_retrieve_label_and_type]
       end
-      q.where(to_resource(s,:s),to_resource(p,:p),to_resource(o,:o))  
+      q.where(to_resource(s,:s),to_resource(p,:p),to_resource(o,:o))
+      q.optional(to_resource(s,:s),RDFS::label,:label).optional(to_resource(s,:s),RDF::type,:type) if Thread.current[:query_retrieve_label_and_type]
+    end
+    if Thread.current[:query_retrieve_label_and_type]
+      variables << :label
+      variables << :type
     end
     values = q.execute  
     #process a sparql result and convert it to triple
@@ -152,6 +160,12 @@ class SemanticExpression
     idxs=variables.index(:s)
     idxp=variables.index(:p)
     idxo=variables.index(:o) 
+    
+    if Thread.current[:query_retrieve_label_and_type]
+      idxlabel=variables.index(:label)
+      idxtype=variables.index(:type)
+    end
+    
     if r.to_s == :p.to_s       
       idxs=variables.index(:p)
       idxp=variables.index(:x)
@@ -160,25 +174,50 @@ class SemanticExpression
       idxs=variables.index(:o)
       idxp=variables.index(:x)
       idxo=variables.index(:y)
-      
-      
+    end 
+    
+    if Thread.current[:query_retrieve_label_and_type]
+      cache = Hash.new    
+      c_label = RDFS::label
+      c_type = RDF::type
     end
+    
     values.each do |x|
       triple = Array.new       
       triple << (idxs == nil ? to_resource(s,:s) : (x.instance_of?(Array) ? x[idxs] : x))  #subject
       triple << (idxp == nil ? to_resource(p,:p) : (x.instance_of?(Array) ? x[idxp] : x))  #predicate
-      triple << (idxo == nil ? to_resource(o,:o) : (x.instance_of?(Array) ? x[idxo] : x))  #object     
+      triple << (idxo == nil ? to_resource(o,:o) : (x.instance_of?(Array) ? x[idxo] : x))  #object
+      
+      if Thread.current[:query_retrieve_label_and_type]
+        c_uri = triple[0].uri
+        cache[c_uri]= Hash.new  if cache[c_uri] == nil
+        
+        if x[idxlabel] != nil
+          cache[c_uri][c_label]= Array.new if cache[c_uri][c_label] == nil
+          cache[c_uri][c_label] << x[idxlabel]
+          
+        end
+        if x[idxtype] != nil
+          cache[c_uri][c_type]= Array.new if cache[c_uri][c_type] == nil
+          cache[c_uri][c_type] << x[idxtype]
+        end
+      end
+      
       triples << triple        
       
     end   if !ask
+    
+    if Thread.current[:query_retrieve_label_and_type]
+      Thread.current[:label_type_cache] = cache   if  Thread.current[:label_type_cache] == nil 
+      Thread.current[:label_type_cache].merge!(cache)
+    end
     
     if ask && values.index('true') != nil
       triple = Array.new 
       triple <<  to_resource(s,:s)  
       triple <<  to_resource(p,:p)  
       triple <<  to_resource(o,:o)  
-      triples << triple        
-      
+      triples << triple   
     end
     
     triples.uniq
@@ -220,7 +259,6 @@ class SemanticExpression
   #o - o in the triple
   #r - the position on the triple that should be returned.
   def union(s,p=nil,o=nil, r=nil)   
-   
     if s.instance_of? SemanticExpression 
       @result = @result | s.result
       #Union, Intersection and Difference are operation over sets.
@@ -228,16 +266,13 @@ class SemanticExpression
       @result = @result | s 
     elsif Thread.current[:application].is_set?(s)
       #returns all set of resources
-    
       if r != nil   && r!= :s
         @result = @result | SemanticExpression.new.spo(Thread.current[:application].get(s).elements.collect{|s,p,o| eval(r.to_s)}.uniq,:p,:o).result
       else
         @result = @result | Thread.current[:application].get(s).elements
       end
-      
       #Union method, passed as parameter a triple expression
     else
-      
       @result = @result | query(s,p,o,r)
     end
     self
@@ -296,8 +331,7 @@ class SemanticExpression
     end
     #@result = @result & tmp - The difference is between the subjects and it is not between triples.
     a = tmp.collect{|s,p,o| s}
-    @result = @result.collect { |s,p,o| [s,p,o] if !a.include?(s) } 
-    
+    @result = @result.collect { |s,p,o| [s,p,o] if !a.include?(s) }     
     self
   end   
   #this method applies a filter to the result of the expression.

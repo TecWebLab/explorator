@@ -20,35 +20,36 @@ module RenderHelper
     
   end
   ##sorts the resources using render_resource label
-   
+  
   #Render a resource view. 
   # The heuristic used is the following:
   #If was defined a resource view than render it, else render the first resource type's view. 
   def render_resource (resource)       
     return truncate(resource) if !(resource.instance_of? RDFS::Resource)     
     #if a view was defined by the user.        
-    if  resource.explorator::view != nil && !is_class(resource)  
+    
+    if $USE_EXPLORATOR_VIEW && resource.explorator::view != nil && !is_class(resource)  
       resource.instance_eval(resource.explorator::view.to_s)          
       #render the resource type's view.
-    elsif RDFS::Resource.new(resource.type[0].uri).explorator::view != nil 
+    elsif $USE_EXPLORATOR_VIEW && RDFS::Resource.new(resource.type[0].uri).explorator::view != nil 
       resource.instance_eval(RDFS::Resource.new(resource.type[0].uri).explorator::view)    
       #render a default property: label, name, title, or the resource localname
-    else           
-      if resource.rdfs::label != nil
-        truncate(resource.rdfs::label)
-      elsif resource.name != nil
-        truncate(resource.name )
-      elsif resource.title != nil
-        truncate(resource.title)     
-      else
-        str = resource.uri.to_s.downcase
-        str = str[str.length-4,str.length]
-         if  str == '.jpg' || str =='.gif' || str =='.png'
+  else  
+      session[:label_properties].each do |methodname| 
+        #Do not use send here.
+        value = eval ("resource." + methodname)
+        if value != nil 
+          return  truncate(value)
+        end
+      end      
+      str = resource.uri.to_s.downcase
+      str = str[str.length-4,str.length]
+      if  str == '.jpg' || str =='.gif' || str =='.png'
           '<img class = "image"   src ="' + resource.uri + '"/>'
-        else
-          truncate(resource.localname)
-        end        
-      end
+      else
+        truncate(resource.localname)
+      end        
+      
     end    
   end 
 end

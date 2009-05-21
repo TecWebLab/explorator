@@ -16,12 +16,16 @@ class ApplicationController < ActionController::Base
       session[:addrepositories] = Array.new
       session[:triples]=Hash.new
       session[:application] =  Application.new(request.session_options[:id])
+      session[:query_retrieve_label_and_type]=$QUERY_RETRIEVE_LABEL_AND_TYPE
+      session[:label_properties]=$LABEL_PROPERTIES
     end
     Thread.current[:triples]=session[:triples]
     Thread.current[:addrepositories]=session[:addrepositories]
     Thread.current[:disablerepositories]=session[:disablerepositories]    
     Thread.current[:application]=session[:application]
-    Thread.current[:autodiscovery]=session[:autodiscovery]    
+    Thread.current[:autodiscovery]=session[:autodiscovery]  
+    Thread.current[:query_retrieve_label_and_type]=session[:query_retrieve_label_and_type]
+    Thread.current[:label_properties]=session[:label_properties]
   end  
   #This was set to false for enable ajaxs request over post HTTP method.
   self.allow_forgery_protection = false  

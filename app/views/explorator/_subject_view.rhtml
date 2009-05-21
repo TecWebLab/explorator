@@ -96,7 +96,7 @@
         
    <br>
     <div class ="flickr_pagination">
-        <%require "will_paginate" %>
+         
         <div align= center>
             <%= will_paginate resources, :remote => {:update =>  uri(resourceset), :url =>{:action=>'reload',:uri=> uri(resourceset),:view=>'subject_view'}} %>
         </div>

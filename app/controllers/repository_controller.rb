@@ -17,10 +17,20 @@ class RepositoryController < ApplicationController
   def autodiscovery
     
     session[:autodiscovery] = params[:flag] 
-   
+    
     render :text => ''
   end
-
+  def queryRetrieveLabelAndType
+    
+    if  params[:flag] =='true'
+      Thread.current[:query_retrieve_label_and_type]=session[:query_retrieve_label_and_type]=true
+      Thread.current[:label_properties]=session[:label_properties]=['rdfs::label']
+    else
+      Thread.current[:query_retrieve_label_and_type]=session[:query_retrieve_label_and_type]=false
+      Thread.current[:label_properties]=session[:label_properties]=$LABEL_PROPERTIES
+    end
+  end
+  
   def limit
     adapters = ConnectionPool.adapters()
     adapters.each do |repository|
@@ -29,7 +39,7 @@ class RepositoryController < ApplicationController
         
         repository.limit=params[:limit].rstrip
         repository.limit=nil if repository.limit == 0 || repository.limit ==''
-         
+        
       end
     end       
     render :text => '',:layout => false
@@ -38,7 +48,7 @@ class RepositoryController < ApplicationController
   #disable a specific adapter in the ConnectionPool.
   def enable
     RDFS::Resource.reset_cache() 
-
+    
     session[:disablerepositories] << (params[:title]) 
     session[:disablerepositories].uniq!
     session[:triples]=Hash.new
@@ -56,7 +66,7 @@ class RepositoryController < ApplicationController
     #render nothing.
     render :text => '',:layout => false
   end
- 
+  
   def add
     if params[:title]==nil || params[:title]  == ''
       redirect_to :controller => 'message',:action => 'error', :message => "Type the SPARQL Enpoint title",:layout => false
@@ -64,12 +74,12 @@ class RepositoryController < ApplicationController
     end
     begin
       adapter = ConnectionPool.add_data_source :title =>params[:title] , :type => :sparql, :url => params[:uri], :results => :sparql_xml, :caching =>true   
- 
+      
       adapter.limit=params[:limit]  if params[:limit] != nil && params[:limit].rstrip != ''  
       session[:addrepositories]<< adapter
       session[:disablerepositories] << (params[:title]) 
       session[:disablerepositories].uniq!
- 
+      
       
     rescue Exception => e
       puts e.message
@@ -83,7 +93,7 @@ class RepositoryController < ApplicationController
       return
     end
     begin 
- 
+      
       # construct the necessary Ruby Modules and Classes to use the Namespace
       ObjectManager.construct_classes
       

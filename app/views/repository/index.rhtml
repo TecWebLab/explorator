@@ -5,10 +5,31 @@
         </div>
         &nbsp;
     </div>
-	<h1>Auto-discovery endpoint</h1>
- 
-	     <input name="autodiscovery"  onchange="new Ajax.Request('/repository/autodiscovery?flag='+this.checked,{  method: 'get'} )" type="checkbox" <%= 'checked' if  session[:autodiscovery] == 'true'%> />
-	  <br>
+	<h1>Configurations</h1>
+	<center>
+  <table cellpadding=4 border="0">
+        <tr   align=left bgcolor="#efefef" >
+         
+             
+            <td>
+               <input name="autodiscovery"  onchange="new Ajax.Request('/repository/autodiscovery?flag='+this.checked,{  method: 'get'} )" type="checkbox" <%= 'checked' if  session[:autodiscovery] == 'true'%> />
+            </td>
+             <td nowrap>
+                Auto-discovery endpoint
+            </td>
+        </tr>
+		 <tr   align=left  >
+           
+            <td>
+               <input name="queryRetrieveLabelAndType"  onchange="new Ajax.Request('/repository/queryRetrieveLabelAndType?flag='+this.checked,{  method: 'get'} )" type="checkbox" <%= 'checked' if  session[:query_retrieve_label_and_type] == true%> />
+            </td>
+           <td nowrap>
+                Retrieve label and type on queries
+            </td>
+             
+        </tr>
+		</table>
+	     </center> 
     <br>
 	
     <h1>Enable/Disable Repositories</h1>

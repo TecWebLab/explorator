@@ -237,7 +237,7 @@ module RDFS
       # rewriting into predicate lookup (similar to case (5)
       
       $activerdflog.debug "method_missing: #{method}"
-      
+   
       
       # are we doing an update or not? 
       # checking if method ends with '='
@@ -367,7 +367,6 @@ module RDFS
    
 			nil
 		end
-
 		# saves instance into datastore
 		def save
 			db = ConnectionPool.write_adapter
@@ -375,7 +374,6 @@ module RDFS
 			types.each do |t|
 				db.add(self, rdftype, t)
 			end
-
 			Query.new.distinct(:p,:o).where(self, :p, :o).execute do |p, o|
 				db.add(self, p, o)
 			end
@@ -463,7 +461,8 @@ module RDFS
 		# returns uri of resource, can be overridden in subclasses
 		def to_s
 			"<#{uri}>"
-		end
+	end
+     
 
 		def set_predicate(predicate, values)     
       FederationManager.delete(self, predicate)
@@ -473,18 +472,17 @@ module RDFS
       values
     end
     def cache(flatten=false)             
-      tuple = Hash.new       
-      Thread.current[:triples][self.uri]=tuple      
-     
-      properties = Query.new.distinct(:p,:o).where(self, :p, :o).execute(:flatten => flatten)      
-     
+      tuple = Hash.new  
+      Thread.current[:triples][self.uri]=tuple         
+      properties = Query.new.distinct(:p,:o).where(self, :p, :o).execute(:flatten => flatten)    
+    
       properties.each do |p,o|          
         tuple[p] = Array.new if tuple[p] == nil
         tuple[p] << o      
-      end    if properties != nil  
-       
+      end    if properties != nil         
     end 
     def all_instance_predicates
+ 
        cache(true) if Thread.current[:triples][self.uri] == nil   
        Thread.current[:triples][self.uri].keys
     end
@@ -492,14 +490,18 @@ module RDFS
 #        cache(true) if Thread.current[:triples][self.uri] == nil   
 #      Thread.current[:triples][self.uri]
 #    end
-    def get_predicate(predicate, flatten=false)        
-       cache(flatten) if Thread.current[:triples][self.uri] == nil
-      #original code
-     # values = Query.new.distinct(:o).where(self, predicate, :o).execute(:flatten => flatten)
-       values  = Thread.current[:triples][self.uri][predicate]!= nil && Thread.current[:triples][self.uri][predicate].size == 1 && flatten ?  Thread.current[:triples][self.uri][predicate].first : Thread.current[:triples][self.uri][predicate]
+    def get_predicate(predicate, flatten=false)     
       
-       values = Array.new if values == nil && flatten==false
+      values = nil
+      if Thread.current[:query_retrieve_label_and_type] && Thread.current[:label_type_cache]  != nil && Thread.current[:label_type_cache][self.uri]!= nil &&  (predicate == RDFS::label || predicate == RDF::type )
+           values = Thread.current[:label_type_cache][self.uri][predicate]!= nil && Thread.current[:label_type_cache][self.uri][predicate].size == 1 && flatten ?  Thread.current[:label_type_cache][self.uri][predicate].first : Thread.current[:label_type_cache][self.uri][predicate]          
+      else 
      
+       cache(flatten) if Thread.current[:triples][self.uri] == nil      
+       values  = Thread.current[:triples][self.uri][predicate]!= nil && Thread.current[:triples][self.uri][predicate].size == 1 && flatten ?  Thread.current[:triples][self.uri][predicate].first : Thread.current[:triples][self.uri][predicate]
+       values = Array.new if values == nil && flatten==false
+       
+      end
       # TODO: fix '<<' for Fixnum values etc (we cannot use values.instance_eval 
       # because Fixnum cannot do instace_eval, they're not normal classes)
       if values.is_a?(RDFS::Resource) and !values.nil?
@@ -518,8 +520,7 @@ module RDFS
             FederationManager.add(@subj, @pred, value)
           end
         end
-      end
-
+      end 
       values
     end
 
