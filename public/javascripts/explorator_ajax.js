@@ -15,9 +15,7 @@ function ajax_update_callback(id, _uri, callbackfunction){
     });
 }
 function ajax_update(id, _uri){
-	 
-
-     $(id).innerHTML = '<div ><table><tr><td valign= "center" align=center width = 255px height= 500><img src = "/images/loading_big.gif" /></td></tr></table></div>'
+   
     new Ajax.Request((_uri), {
         method: 'post',
         onComplete: function(transport){

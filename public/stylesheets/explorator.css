@@ -241,7 +241,7 @@ div.windowtoolbar div.filter:hover {
     padding: 9px;
     left: 25%;
     width: 50%;
-	top:25%;
+    top: 25%;
     position: fixed;
     background-color: white;
 }
@@ -336,8 +336,6 @@ div.windowtoolbar div._view {
     cursor: pointer;
 }
 
- 
-
 /********************
  * Loading Window
  */ #loadwindow {
@@ -349,6 +347,13 @@ div.windowtoolbar div._view {
     position: fixed;
     top: 50%;
     border: 2px solid red;
+} .tranparentpanel {
+    opacity: 0.9;
+    z-index: 10;
+    top: 0px;
+    left: 0px;
+    display:none;
+    background-color: #fff
 } #loadingtext {
     color: #555;
     font-weight: bold;

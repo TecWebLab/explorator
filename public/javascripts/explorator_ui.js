@@ -80,6 +80,15 @@ function register_ui_resource_behaviour(){
          };*/
     });
     
+	 $$('.flickr_pagination').each(function(item){
+        
+        item.onclick = function(e){ 
+         item.previous('.tranparentpanel').setStyle({display: 'block', position: 'absolute', width: '100%', height: '100%'  });
+            
+        };
+        
+    });
+	
     $$('.all').each(function(resource){
         resource.identify();
         resource.onclick = function(e){

@@ -92,15 +92,16 @@
         </div>
     </div>
     <% end %>
-   
-        
-   <br>
-    <div class ="flickr_pagination">
-         
-        <div align= center>
+    <br> 
+	 <div class= "tranparentpanel" >
+        <img src = "/images/loading_big.gif" style="position:absolute; top : 50%;left:43% "/>
+    </div>
+    <div class ="flickr_pagination ">
+        <div align= center  >
             <%= will_paginate resources, :remote => {:update =>  uri(resourceset), :url =>{:action=>'reload',:uri=> uri(resourceset),:view=>'subject_view'}} %>
         </div>
     </div>
+  
 </div>
 <%if @size > 1 %>
 <script>
@@ -108,7 +109,6 @@
         n.hide();
     })
     $('<%=uri(resourceset)%>').select('._collapseproperties').invoke('hide');
-    
 </script>
 <%else %>
 <script>
