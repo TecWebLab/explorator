@@ -55,7 +55,8 @@ end
 
 begin
 adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :virtuoso,:title=>'DBPEDIA(Local)', :url => "http://139.82.71.60:8890/sparql", :results => :sparql_xml, :caching =>true
-adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :virtuoso,:title=>'MEDICAL(Local)', :url => "http://139.82.71.60:8890/sparql?default-graph-uri=http://medical.org", :results => :sparql_xml, :caching =>true
+#adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :virtuoso,:title=>'MEDICAL(Local)', :url => "http://139.82.71.60:8890/sparql?default-graph-uri=http://medical.org", :results => :sparql_xml, :caching =>true
+adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :virtuoso,:title=>'MEDICAL(Local)', :url => "http://139.82.71.60:8890/sparql", :results => :sparql_xml, :caching =>true
 rescue
 end 
 
