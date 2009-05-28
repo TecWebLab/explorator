@@ -29,6 +29,7 @@ class RepositoryController < ApplicationController
       Thread.current[:query_retrieve_label_and_type]=session[:query_retrieve_label_and_type]=false
       Thread.current[:label_properties]=session[:label_properties]=$LABEL_PROPERTIES
     end
+      render :text => ''
   end
   
   def limit
