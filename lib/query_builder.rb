@@ -122,18 +122,22 @@ class SemanticExpression
       variables << :y
       q.distinct(:p)      if p.instance_of? Symbol
       q.distinct(:x,:y)
-      q.distinct(:label,:type) if Thread.current[:query_retrieve_label_and_type]
+      q.distinct(:label_s,:type_s ) if Thread.current[:query_retrieve_label_and_type]
       q.where(to_resource(s,:s),to_resource(p,:p),to_resource(o,:o)).where(to_resource(p,:p),:x,:y)
-      q.optional(to_resource(p,:p),RDFS::label,:label).optional(to_resource(p,:p),RDF::type,:type) if Thread.current[:query_retrieve_label_and_type]
+      q.optional(to_resource(p,:p),RDFS::label,:label_s).optional(to_resource(p,:p),RDF::type,:type_s) if Thread.current[:query_retrieve_label_and_type]
+   #   q.optional(to_resource(x,:x),RDFS::label,:label_p).optional(to_resource(x,:x),RDF::type,:type_p) if Thread.current[:query_retrieve_label_and_type]
+#      q.optional(to_resource(y,:y),RDFS::label,:label_o).optional(to_resource(y,:y),RDF::type,:type_o) if Thread.current[:query_retrieve_label_and_type]      
     elsif r.to_s == :o.to_s      
       variables << :o if o.instance_of? Symbol
       variables << :x
       variables << :y 
       q.distinct(:o) if o.instance_of? Symbol
       q.distinct(:x,:y)
-      q.distinct(:label,:type) if Thread.current[:query_retrieve_label_and_type]
+      q.distinct(:label_s,:type_s  )if Thread.current[:query_retrieve_label_and_type]
       q.where(to_resource(s,:s),to_resource(p,:p),to_resource(o,:o)).where(to_resource(o,:o),:x,:y)
-      q.optional(to_resource(o,:o),RDFS::label,:label).optional(to_resource(o,:o),RDF::type,:type) if Thread.current[:query_retrieve_label_and_type]
+      q.optional(to_resource(o,:o),RDFS::label,:label_s).optional(to_resource(o,:o),RDF::type,:type_s) if Thread.current[:query_retrieve_label_and_type]
+    #  q.optional(to_resource(x,:x),RDFS::label,:label_p).optional(to_resource(x,:x),RDF::type,:type_p) if Thread.current[:query_retrieve_label_and_type]
+#      q.optional(to_resource(y,:y),RDFS::label,:label_o).optional(to_resource(y,:y),RDF::type,:type_o) if Thread.current[:query_retrieve_label_and_type]      
     else     
       variables << :s if s.instance_of? Symbol
       variables << :p if p.instance_of? Symbol
@@ -145,14 +149,16 @@ class SemanticExpression
         q.distinct(:s)  if s.instance_of? Symbol
         q.distinct(:p)  if p.instance_of? Symbol
         q.distinct(:o)  if o.instance_of? Symbol        
-        q.distinct(:label,:type) if Thread.current[:query_retrieve_label_and_type]
+        q.distinct(:label_s,:type_s  ) if Thread.current[:query_retrieve_label_and_type]
       end
       q.where(to_resource(s,:s),to_resource(p,:p),to_resource(o,:o))
-      q.optional(to_resource(s,:s),RDFS::label,:label).optional(to_resource(s,:s),RDF::type,:type) if Thread.current[:query_retrieve_label_and_type]
+      q.optional(to_resource(s,:s),RDFS::label,:label_s).optional(to_resource(s,:s),RDF::type,:type_s) if Thread.current[:query_retrieve_label_and_type]
+    #  q.optional(to_resource(p,:p),RDFS::label,:label_p).optional(to_resource(p,:p),RDF::type,:type_p) if Thread.current[:query_retrieve_label_and_type]
+#      q.optional(to_resource(o,:o),RDFS::label,:label_o).optional(to_resource(o,:o),RDF::type,:type_o) if Thread.current[:query_retrieve_label_and_type]      
     end
     if Thread.current[:query_retrieve_label_and_type]
-      variables << :label
-      variables << :type
+      variables |= [:label_s,:type_s  ]
+      
     end
     values = q.execute  
     #process a sparql result and convert it to triple
@@ -162,8 +168,9 @@ class SemanticExpression
     idxo=variables.index(:o) 
     
     if Thread.current[:query_retrieve_label_and_type]
-      idxlabel=variables.index(:label)
-      idxtype=variables.index(:type)
+      idxs_label = [variables.index(:label_s) ]
+      idxs_type = [variables.index(:type_s)  ]
+      
     end
     
     if r.to_s == :p.to_s       
@@ -189,18 +196,22 @@ class SemanticExpression
       triple << (idxo == nil ? to_resource(o,:o) : (x.instance_of?(Array) ? x[idxo] : x))  #object
       
       if Thread.current[:query_retrieve_label_and_type]
-        c_uri = triple[0].uri
-        cache[c_uri]= Hash.new  if cache[c_uri] == nil
         
-        if x[idxlabel] != nil
-          cache[c_uri][c_label]= Array.new if cache[c_uri][c_label] == nil
-          cache[c_uri][c_label] << x[idxlabel]
+        uris =   [triple[0].uri] 
+        uris.each {|t| cache[t]= Hash.new  if cache[t] == nil}        
+         
+        uris.each_index{|idx| 
+         if x[idxs_label[idx]] != nil
+          cache[uris[idx]][c_label]= Array.new if cache[uris[idx]][c_label] == nil
+          cache[uris[idx]][c_label] << x[idxs_label[idx]]
           
         end
-        if x[idxtype] != nil
-          cache[c_uri][c_type]= Array.new if cache[c_uri][c_type] == nil
-          cache[c_uri][c_type] << x[idxtype]
+        if x[idxs_type[idx]] != nil
+          cache[uris[idx]][c_type]= Array.new if cache[uris[idx]][c_type] == nil
+          cache[uris[idx]][c_type] << x[idxs_type[idx]]
         end
+        }
+       
       end
       
       triples << triple        
