@@ -58,8 +58,9 @@ class ObjectManager
     klassname = localname_to_class(localname)
 
     # look whether module defined
-    # else: create it
-   
+    # else: create it   
+ begin 
+
     _module = if Object.const_defined?(modulename.to_sym)
         $activerdflog.debug "ObjectManager: construct_class: module name #{modulename} previously defined"
         Object.const_get(modulename.to_sym)
@@ -69,7 +70,7 @@ class ObjectManager
       end
 
     # look whether class defined in that module
-    begin 
+
     if _module.const_defined?(klassname.to_sym)
       $activerdflog.debug "ObjectManager: construct_class: given class #{klassname} defined in the module"
       # if so, return the existing class

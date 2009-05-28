@@ -407,11 +407,11 @@ module RDFS
 		# overrides built-in instance_of? to use rdf:type definitions
 		def instance_of?(klass)        
    
-   if klass.to_s == 'Array'
+   if klass == Array    || klass == Symbol || klass == String
       return false
    end
    
-   if klass.to_s == RDFS::Resource.class.to_s
+   if klass.to_s == RDFS::Resource.to_s
      return true
    end
    
@@ -419,7 +419,7 @@ module RDFS
     
       return (klass.to_s == self.class.to_s) ? true : false
     else  
-    
+  
      self.type.include?(klass)
    end
       
