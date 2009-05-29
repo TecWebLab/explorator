@@ -77,7 +77,10 @@ class SemanticExpression
       # spo(:s,:p,k)    
     else
       #not URI
+      
       @result = @result | Query.new.distinct(:s,:p,:o).where(:s,:p,:o).keyword_where(:o,word).execute    
+
+     
     end  
     self
   end
@@ -112,7 +115,8 @@ class SemanticExpression
   #
   #No variable
   #In this case we have to execute a ASK statement instead the select
-  def query (s,p,o,r=nil)       
+  def query (s,p,o,r=nil)  
+    
     q = Query.new
     ask = false
     variables = Array.new
@@ -125,8 +129,8 @@ class SemanticExpression
       q.distinct(:label_s,:type_s ) if Thread.current[:query_retrieve_label_and_type]
       q.where(to_resource(s,:s),to_resource(p,:p),to_resource(o,:o)).where(to_resource(p,:p),:x,:y)
       q.optional(to_resource(p,:p),RDFS::label,:label_s).optional(to_resource(p,:p),RDF::type,:type_s) if Thread.current[:query_retrieve_label_and_type]
-   #   q.optional(to_resource(x,:x),RDFS::label,:label_p).optional(to_resource(x,:x),RDF::type,:type_p) if Thread.current[:query_retrieve_label_and_type]
-#      q.optional(to_resource(y,:y),RDFS::label,:label_o).optional(to_resource(y,:y),RDF::type,:type_o) if Thread.current[:query_retrieve_label_and_type]      
+      #   q.optional(to_resource(x,:x),RDFS::label,:label_p).optional(to_resource(x,:x),RDF::type,:type_p) if Thread.current[:query_retrieve_label_and_type]
+      #      q.optional(to_resource(y,:y),RDFS::label,:label_o).optional(to_resource(y,:y),RDF::type,:type_o) if Thread.current[:query_retrieve_label_and_type]      
     elsif r.to_s == :o.to_s      
       variables << :o if o.instance_of? Symbol
       variables << :x
@@ -136,8 +140,8 @@ class SemanticExpression
       q.distinct(:label_s,:type_s  )if Thread.current[:query_retrieve_label_and_type]
       q.where(to_resource(s,:s),to_resource(p,:p),to_resource(o,:o)).where(to_resource(o,:o),:x,:y)
       q.optional(to_resource(o,:o),RDFS::label,:label_s).optional(to_resource(o,:o),RDF::type,:type_s) if Thread.current[:query_retrieve_label_and_type]
-    #  q.optional(to_resource(x,:x),RDFS::label,:label_p).optional(to_resource(x,:x),RDF::type,:type_p) if Thread.current[:query_retrieve_label_and_type]
-#      q.optional(to_resource(y,:y),RDFS::label,:label_o).optional(to_resource(y,:y),RDF::type,:type_o) if Thread.current[:query_retrieve_label_and_type]      
+      #  q.optional(to_resource(x,:x),RDFS::label,:label_p).optional(to_resource(x,:x),RDF::type,:type_p) if Thread.current[:query_retrieve_label_and_type]
+      #      q.optional(to_resource(y,:y),RDFS::label,:label_o).optional(to_resource(y,:y),RDF::type,:type_o) if Thread.current[:query_retrieve_label_and_type]      
     else     
       variables << :s if s.instance_of? Symbol
       variables << :p if p.instance_of? Symbol
@@ -153,8 +157,8 @@ class SemanticExpression
       end
       q.where(to_resource(s,:s),to_resource(p,:p),to_resource(o,:o))
       q.optional(to_resource(s,:s),RDFS::label,:label_s).optional(to_resource(s,:s),RDF::type,:type_s) if Thread.current[:query_retrieve_label_and_type]
-    #  q.optional(to_resource(p,:p),RDFS::label,:label_p).optional(to_resource(p,:p),RDF::type,:type_p) if Thread.current[:query_retrieve_label_and_type]
-#      q.optional(to_resource(o,:o),RDFS::label,:label_o).optional(to_resource(o,:o),RDF::type,:type_o) if Thread.current[:query_retrieve_label_and_type]      
+      #  q.optional(to_resource(p,:p),RDFS::label,:label_p).optional(to_resource(p,:p),RDF::type,:type_p) if Thread.current[:query_retrieve_label_and_type]
+      #      q.optional(to_resource(o,:o),RDFS::label,:label_o).optional(to_resource(o,:o),RDF::type,:type_o) if Thread.current[:query_retrieve_label_and_type]      
     end
     if Thread.current[:query_retrieve_label_and_type]
       variables |= [:label_s,:type_s  ]
@@ -189,29 +193,35 @@ class SemanticExpression
       c_type = RDF::type
     end
     
+    
+    
+    
     values.each do |x|
+      
+      
       triple = Array.new       
       triple << (idxs == nil ? to_resource(s,:s) : (x.instance_of?(Array) ? x[idxs] : x))  #subject
       triple << (idxp == nil ? to_resource(p,:p) : (x.instance_of?(Array) ? x[idxp] : x))  #predicate
       triple << (idxo == nil ? to_resource(o,:o) : (x.instance_of?(Array) ? x[idxo] : x))  #object
       
-      if Thread.current[:query_retrieve_label_and_type]
+      
+      if Thread.current[:query_retrieve_label_and_type] 
         
         uris =   [triple[0].uri] 
         uris.each {|t| cache[t]= Hash.new  if cache[t] == nil}        
-         
+        
         uris.each_index{|idx| 
-         if x[idxs_label[idx]] != nil
-          cache[uris[idx]][c_label]= Array.new if cache[uris[idx]][c_label] == nil
-          cache[uris[idx]][c_label] << x[idxs_label[idx]]
-          
-        end
-        if x[idxs_type[idx]] != nil
-          cache[uris[idx]][c_type]= Array.new if cache[uris[idx]][c_type] == nil
-          cache[uris[idx]][c_type] << x[idxs_type[idx]]
-        end
+          if x[idxs_label[idx]] != nil
+            cache[uris[idx]][c_label]= Array.new if cache[uris[idx]][c_label] == nil
+            cache[uris[idx]][c_label] << x[idxs_label[idx]]
+            
+          end
+          if x[idxs_type[idx]] != nil
+            cache[uris[idx]][c_type]= Array.new if cache[uris[idx]][c_type] == nil
+            cache[uris[idx]][c_type] << x[idxs_type[idx]]
+          end
         }
-       
+        
       end
       
       triples << triple        
@@ -231,6 +241,7 @@ class SemanticExpression
       triples << triple   
     end
     
+   
     triples.uniq
   end
   #this code does the same that the function query above does. However, it use filter and it is less efficient. 
@@ -286,6 +297,7 @@ class SemanticExpression
     else
       @result = @result | query(s,p,o,r)
     end
+  
     self
   end
   #Intersection method 
@@ -313,8 +325,11 @@ class SemanticExpression
       tmp = query(s,p,o,r)
     end
     #@result = @result & tmp - The intersection is between the subjects and it is not between triples.
+    
     a = tmp.collect{|s,p,o| s}
+    
     @result = @result.collect { |s,p,o| [s,p,o] if a.include?(s) } 
+    
     self
   end
   #Difference method
