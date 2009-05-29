@@ -605,12 +605,20 @@ div.S {
     border-style: solid;
     border-color: green;
     border-width: 2px;
-}
 
+}
+.toolbar div.S {
+	 background:green;
+	color:white;
+}
 div.P {
     border-style: solid;
-    border-color: gray;
+    border-color: orange;
     border-width: 2px;
+}
+.toolbar div.P{
+	 background: orange;
+	color:white;
 }
 
 div.O {
@@ -618,7 +626,10 @@ div.O {
     border-color: red;
     border-width: 2px;
 }
-
+.toolbar div.O{
+	 background:red;
+	color:white;
+}
 /************************************************************
  * Main Menu CSS
  ************************************************************/

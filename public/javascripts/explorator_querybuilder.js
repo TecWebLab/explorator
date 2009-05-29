@@ -2,14 +2,14 @@
 function querybuilderselection(){
     $$('.querybuildertool').each(function(item){
         item.onclick = function(e){
-            $('container').show();
+            $('qcontainer').show();
             
         };
     });
     $$('.removerelation').each(function(item){
         item.onclick = function(e){
             if (item.up('.relation') == undefined) {
-                item.up('.container').down('.relation').immediateDescendants().invoke('remove');
+                item.up('.qcontainer').down('.relation').immediateDescendants().invoke('remove');
             }
             else {
                 item.up('.tuple').remove();
@@ -88,9 +88,9 @@ function querybuilder(preview){
     var i = 0;
     var q = "SemanticExpression.new(Query.new.distinct(:s,:p,:o).where(:s,:p,:o).where(:s,RDF::type,:o).";
     
-    var root = Element.resource($('container').down('.node'));
+    var root = Element.resource($('qcontainer').down('.node'));
     q = q + "where(:s,RDF::type,RDFS::Resource.new('" + root + "')).";
-    $('container').down('.relation').immediateDescendants().each(function(item){
+    $('qcontainer').down('.relation').immediateDescendants().each(function(item){
         var o = "o" + i;
         q = q + "where(:s,RDFS::Resource.new('" + Element.resource(item.down('.edge')) + "'),:" + o + ").";
         if ('%3Chttp%3A%2F%2Fwww.w3.org%2F2002%2F07%2Fowl%23DatatypeProperty%3E' == Element.resource(item.down('.node'))) {
