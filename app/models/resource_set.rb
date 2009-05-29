@@ -89,7 +89,10 @@ class EXPLORATOR::Set < RDFS::Resource
     #whether the expression is not a SemanticExpresion instance.
     raise ExploratorError.new('The expression must be a SemanticExpression instance') if !x.instance_of? SemanticExpression
     #return a sorted array of RDFS::Resources 
-    @elements = x.result
+    @elements = x.result.compact
+    
+        
+
     #try to sort the array as a array of numbers
 #    begin
 #      #@resources.sort!{|a,b|a.to_f<=>b.to_f}
