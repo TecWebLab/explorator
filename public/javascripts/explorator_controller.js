@@ -115,6 +115,7 @@ function setParameter(item){
     $$('.SELECTED').invoke('addClassName', Element.exp(item));
     item.addClassName(Element.exp(item));
     parameters.set(item.id, $$('.SELECTED'));
+	removeCSS('SELECTED');
 }
 
 //These are the operations applyed over sets
