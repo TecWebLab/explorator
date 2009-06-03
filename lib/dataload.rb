@@ -55,14 +55,13 @@ end
 
 begin
 adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :virtuoso,:title=>'DBPEDIA(Local)', :url => "http://139.82.71.60:8890/sparql", :results => :sparql_xml, :caching =>true
-#adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :virtuoso,:title=>'MEDICAL(Local)', :url => "http://139.82.71.60:8890/sparql?default-graph-uri=http://medical.org", :results => :sparql_xml, :caching =>true
-adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :virtuoso,:title=>'MEDICAL(Local)', :url => "http://139.82.71.60:8890/sparql", :results => :sparql_xml, :caching =>true
+adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :virtuoso,:title=>'MEDICAL(Local)', :url => "http://139.82.71.60:8890/sparql?default-graph-uri=http://medical.org", :results => :sparql_xml, :caching =>true
+
 rescue
 end 
-
+#
 #begin 
-#  adapter =ConnectionPool.add_data_source :type => :sparql,:title=>'LDSR', :url => "http://ldsr.ontotext.com/openrdf-sesame/repositories/ldsr", :results => :sparql_xml, :caching =>true
-#  
+#  adapter =ConnectionPool.add_data_source :type => :sparql,:title=>'DRUGBANK(Local)', :url => "http://www4.wiwiss.fu-berlin.de/drugbank/sparql", :results => :sparql_xml, :caching =>true  
 #   rescue Exception => e
 # puts e.backtrace
 #end
