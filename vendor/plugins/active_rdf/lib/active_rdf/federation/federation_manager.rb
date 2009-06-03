@@ -47,14 +47,18 @@ class FederationManager
       ConnectionPool.read_adapters.each do |source|    
         #verifies if the repository was enabled by the Explorator's user.
         begin
-          if !(Thread.current[:disablerepositories].include? source.title) 
+          if Thread.current[:disablerepositories] != nil && !(Thread.current[:disablerepositories].include? source.title) 
             next
           end
         rescue    
-       
+          
           #outside the Explorator.
-      end
-       # puts source.title
+        end
+        #Forces skip INTERNAL repository searches for users's queries, or not system' queries.
+        if source.title == "INTERNAL" && !q.to_s.include?('http://www.tecweb.inf.puc-rio.br')
+          next
+        end
+        # puts source.title
         q.limit(source.limit) if source.limit != nil
         source_results = source.query(q)
         source_results.each do |clauses|
