@@ -3,7 +3,10 @@
         <img src = "/images/loading_big.gif" style="position:absolute; top : 50%;left:43% "/>
     </div>
 	<% @style_s = ' style = "background-color:white;" '
-    resources =  resources_paginated(:s) %>
+
+    resources =  resources_paginated(:s) 
+
+%>
     <%= render :partial => 'windowheader' %>
     <%= render :partial => 'windowfilter' %>
     <% resources.each do |resource| %>
