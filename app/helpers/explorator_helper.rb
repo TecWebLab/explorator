@@ -13,7 +13,8 @@ module ExploratorHelper
   end 
   #return an interval of resources from the offset to the pagination attribute.
   #This method is used when the user is paginating a set of resources
-  def groupBy (type=:s)         
+  def groupBy (type=:s)   
+   
     @resourceset.elements.collect{|s,p,o| eval(type.to_s)}.compact.uniq   
   end
   def resources_paginated(type=:s)      
@@ -27,14 +28,14 @@ module ExploratorHelper
       @size = resources.size()
       return resources
     end    
-
-#    resources = resources[@resourceset.offset.to_i,@resourceset.pagination.to_i]
-     
- 
+    
+    #    resources = resources[@resourceset.offset.to_i,@resourceset.pagination.to_i]
+    
+    
     resources = resources.paginate(:page=>@resourceset.offset.to_i,:per_page =>$WILL_PAGINATE_PER_PAGE)
     resources
   end
-   
+  
   
   def subjects(predicate, resource=nil)
     @resourceset.elements.collect{|s,p,o| s if  (resource == o || resource == nil) && predicate == p}.compact.uniq    
