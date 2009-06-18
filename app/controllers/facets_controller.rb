@@ -188,13 +188,13 @@ class FacetsController < ApplicationController
         puts resource
         #verifies if the facet is a derived type.
         if computedValue.size() == 0
+          
           if facet.faceto::use != nil  
             #get the values based in the property
           #  qresult = QueryFactory.new.distinct(:o).where(resource, facet.faceto::use,:o).execute
-          puts facet.faceto::use.localname
-                    puts facet.faceto::use 
-           qresult = resource.instance_eval(facet.faceto::use.localname)
-           
+       #   puts facet.faceto::use.localname
+        #  puts facet.faceto::use 
+          qresult = resource.instance_eval(facet.faceto::use.localname)          
          elsif facet.faceto::useInverse != nil
            puts facet.faceto::use.localname 
                      puts facet.faceto::use 
@@ -209,11 +209,12 @@ class FacetsController < ApplicationController
           qresult = t
         end
          puts qresult
-                 puts '2 ----------------------------'
+         puts '2 ----------------------------'
         #property :p occurs em :s
         if qresult.size > 0          
           prob_p += 1
         end
+         
         #frequence that :o occurs for each :s
         qresult.each do |o|             
           #gets the default word in case where exists a table of synonyms   
@@ -242,6 +243,7 @@ class FacetsController < ApplicationController
       condition = hash_object.values.sort
       
       next if condition.first == 1 && condition.last ==1
+      puts hash_object
       hash_object.each_key do |object|     
         count= hash_object[object]
          
@@ -253,13 +255,14 @@ class FacetsController < ApplicationController
         prob_o = count.to_f / prob_p.to_f
         # puts prob_o
         if prob_o !=1          
-          objects << object
-          
+          objects << object          
           #calculate the entropy based on the object probability
           entropy = entropy + prob_o * Math.log(prob_o)  / Math.log( 2 )  
         end       
       end       
+
       #calculates the objects' cardinality 
+      
       if entropy != 0         
         cardinalities = Array.new       
         objects.each do |object|
@@ -283,7 +286,7 @@ class FacetsController < ApplicationController
       end      
     end        
     @entropies = @entropies.to_a
-    #sort the facets by property occurency and by maximum entropy        
+     #sort the facets by property occurency and by maximum entropy        
     @entropies.sort!  do |a, b|
       r = b[1][0]<=>a[1][0]
       r = a[1][1]<=>b[1][1]  if r == 0
