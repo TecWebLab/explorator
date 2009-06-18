@@ -83,6 +83,7 @@ Element.addMethods({
             }
         });
         ajax_update(facetwindow.readAttribute('set'), updateuri + expression + '&uri=' + Element.set(facetwindow));
+		item.up('.facetgroupwindow').down('.tranparentpanel').setStyle({display: 'block', position: 'absolute', width: '100%', height: '100%'  });
         
     },
     sum: function(item){
