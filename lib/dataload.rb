@@ -54,11 +54,24 @@ end
 #adapter.title='IMDB_SPARQL'
 #
 begin
-adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :virtuoso,:title=>'DBPEDIA(Local)', :url => "http://139.82.71.60:8890/sparql", :results => :sparql_xml, :caching =>true
-adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :virtuoso,:title=>'MEDICAL(Local)', :url => "http://139.82.71.60:8890/sparql?default-graph-uri=http://medical.org", :results => :sparql_xml, :caching =>true
-
-rescue
+  adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :virtuoso,:title=>'DBPEDIA(Local)', :url => "http://139.82.71.60:8890/sparql", :results => :sparql_xml, :caching =>true 
+rescue Exception => e
+  puts 'Removing datasource: ' 
+  #puts e.backtrace 
+  ConnectionPool.remove_last_data_source_added()
+  puts 'Datasource removed'
 end 
+
+begin
+  adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :virtuoso,:title=>'MEDICAL(Local)', :url => "http://139.82.71.60:8890/sparql?default-graph-uri=http://medical.org", :results => :sparql_xml, :caching =>true 
+rescue Exception => e
+  puts 'Removing datasource: ' 
+ # puts e.backtrace  
+  ConnectionPool.remove_last_data_source_added()
+  puts 'Datasource removed'
+end 
+
+
 
 #begin 
 #  adapter =ConnectionPool.add_data_source :type => :sparql,:title=>'DRUGBANK(Local)', :url => "http://www4.wiwiss.fu-berlin.de/drugbank/sparql", :results => :sparql_xml, :caching =>true  
@@ -105,10 +118,10 @@ Namespace.register(:omdb,"http://triplify.org/vocabulary/omdb#")
 Namespace.register(:movie,"http://triplify.org/vocabulary/movie#")
 Namespace.register(:mondial,"http://www.semwebtech.org/mondial/10/meta#")
 
- 
+
 # construct the necessary Ruby Modules and Classes to use the Namespace
 begin
-ObjectManager.construct_classes
+  ObjectManager.construct_classes
 rescue Exception => e
- puts e.backtrace
+  puts e.backtrace
 end

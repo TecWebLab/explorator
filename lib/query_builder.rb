@@ -94,6 +94,7 @@ class SemanticExpression
     @result = @result | Query.new.distinct(:s,:p,:o).where(:s,:p,:o,RDFS::Resource.new(uri)).execute
     self
   end
+  
   def keyword(k)        
     @result = @result | Query.new.distinct(:s,:p,:o).where(:s,:p,:o).keyword_where(:s,k).execute | Query.new.distinct(:s,:p,:o).where(:s,:p,:o).keyword_where(:p,k).execute | Query.new.distinct(:s,:p,:o).where(:s,:p,:o).keyword_where(:o,k).execute
     self
