@@ -54,6 +54,7 @@ class SparqlSesameApiAdapter < ActiveRdfAdapter
   # may be called with a block
   def query(query, &block)    
     qs = Query2SPARQL.translate(query)
+     
     if !(@title.include?'INTERNAL' and qs.to_s.include? "http://www.tecweb.inf.puc-rio.br")      
       if @caching 
         if is_into_cache(qs) 

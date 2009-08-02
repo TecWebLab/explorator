@@ -63,7 +63,7 @@ class SparqlAdapter < ActiveRdfAdapter
   # may be called with a block
   def query(query, &block)    
     qs = Query2SPARQL.translate(query,@engine)
-   
+    
     if @caching 
       if is_into_cache(qs) 
         $activerdflog.debug "cache hit for query #{qs}"
@@ -74,7 +74,8 @@ class SparqlAdapter < ActiveRdfAdapter
     result = execute_sparql_query(qs, header(query), &block)
     add_to_cache(qs, result) if @caching
     result = [] if result == "timeout"
-  
+   puts @title
+    puts qs.to_s  
     return result
   end
   
@@ -95,10 +96,10 @@ class SparqlAdapter < ActiveRdfAdapter
         else
           url = "#@url&query=#{CGI.escape(qs)}"          
         end
-        #puts url
+        puts url
         $activerdflog.debug "GET #{url}"        
         timeout(@timeout) do          
-          # puts url
+           puts url
           open(url, header) do |f|            
             response = f.read   
             #              puts response
