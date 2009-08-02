@@ -230,6 +230,10 @@ function cmd_semantic(){
         ajax_create(new SemanticExpression().search($F('seachbykeyword')));
     };
     
+    $('sigma').onclick = function(){ 
+         ajax_create(new SemanticExpression().go("http://sig.ma/search?q=" + $F('seachbykeyword')+ "&format=rdf"));
+		 ajax_update('listenabledrepositories','/repository/listenabledrepositories');
+    };
     
     
     
@@ -370,7 +374,7 @@ var SemanticExpression = Class.create({
     go: function(k){
         this.expression += '.go(\'' + encodeURIComponent(k) + '\')';
         return this;
-    },
+    } ,
     toString: function(){
         return this.expression;
     }
