@@ -87,6 +87,7 @@ module ExploratorHelper
       if type.localname.downcase == 'class'
         return true
       end
+
     end
     return false
   end  
