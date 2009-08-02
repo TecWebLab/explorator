@@ -126,7 +126,26 @@ class ConnectionPool
     end
     
   end
-  
+   def ConnectionPool.remove_last_data_source_added()
+    RDFS::Resource.reset_cache() 
+     
+    $activerdflog.info "ConnectionPool: remove_last_data_source with params: "
+    
+    index =0
+    
+    # remove_data_source mit be called repeatedly, e.g because the adapter object is stale
+    unless index.nil?
+      @@adapter_parameters.delete_at(index)
+      @@adapter_pool.delete_at(index)
+      #      if self.write_adapters.empty?
+      #        self.write_adapter = nil
+      #      else
+      #        self.write_adapter = self.write_adapters.first
+      #      end
+      
+    end
+   
+  end
   # sets adapter-instance for connection parameters (if you want to re-enable an existing adapter)
   def ConnectionPool.set_data_source(adapter, connection_params = {})
     index = @@adapter_parameters.index(connection_params)
