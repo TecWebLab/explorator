@@ -230,10 +230,10 @@ function cmd_semantic(){
         ajax_create(new SemanticExpression().search($F('seachbykeyword')));
     };
     
-    $('sigma').onclick = function(){ 
-         ajax_create(new SemanticExpression().go("http://sig.ma/search?q=" + $F('seachbykeyword')+ "&format=rdf"));
-		 ajax_update('listenabledrepositories','/repository/listenabledrepositories');
-    };
+//    $('sigma').onclick = function(){ 
+//         ajax_create(new SemanticExpression().go("http://sig.ma/search?q=" + $F('seachbykeyword')+ "&format=rdf"));
+//		 ajax_update('listenabledrepositories','/repository/listenabledrepositories');
+//    };
     
     
     
