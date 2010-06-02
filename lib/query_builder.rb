@@ -68,19 +68,48 @@ class SemanticExpression
     @result = @result | result
     self
   end
+  
+  def remove(s,p,o,r=nil)          
+    result = Array.new 
+    s = resource_or_self(s,r).uniq
+    p = resource_or_self(p,r).uniq
+    o = resource_or_self(o,r).uniq
+    adapter=ConnectionPool.get_adapter('USERDATA(Local)')         
+    repository =adapter.bridge  
+    s.each do |x|
+      p.each do |y|
+        o.each do |z|
+          x = nil if x.instance_of? Symbol
+          y = nil if y.instance_of? Symbol
+          z = nil if z.instance_of? Symbol
+          repository.delete(x,y,z,nil)            
+        end        
+      end     
+    end   
+    adapter.reset_cache()
+    @result = []
+    self
+  end
   #adds keyword query to the expression
   def search (word)
-    if  word.index('http://')     
+    k=word
+    if  word.index('http://')  || word.index('imap://')      
       k = RDFS::Resource.new(word)
       spo(k,:p,:o)
       # spo(:s,k,:o)
-      # spo(:s,:p,k)    
+      spo(:s,:p,k)    
     else
       #not URI
-      
-      @result = @result | Query.new.distinct(:s,:p,:o).where(:s,:p,:o).keyword_where(:o,word).execute    
-
-     
+      if k[0] == 58 # ASCII for :
+        tokens = k.split(' ')
+        predicate = tokens[0]
+        tokens.delete_at(0)
+        p = Query.new.distinct(:p).where(:s,:p,:o).keyword_where(:p,predicate.gsub(':','')).execute
+        k = tokens.join(' ')
+        @result = @result | Query.new.distinct(:s ,:o).where(:s,p[0],:o).keyword_where(:o,k).execute.collect{|s,o| [s,p[0],o]}
+      else
+        @result = @result | Query.new.distinct(:s,:p,:o).where(:s,:p,:o).keyword_where(:o,word).execute  
+      end     
     end  
     self
   end
@@ -94,9 +123,11 @@ class SemanticExpression
     @result = @result | Query.new.distinct(:s,:p,:o).where(:s,:p,:o,RDFS::Resource.new(uri)).execute
     self
   end
-  
   def keyword(k)        
+    
     @result = @result | Query.new.distinct(:s,:p,:o).where(:s,:p,:o).keyword_where(:s,k).execute | Query.new.distinct(:s,:p,:o).where(:s,:p,:o).keyword_where(:p,k).execute | Query.new.distinct(:s,:p,:o).where(:s,:p,:o).keyword_where(:o,k).execute
+    
+    
     self
   end  
   #Wrapper for the class ActiveRDF Query. This method executes a query and returns a set of resources.
@@ -242,7 +273,7 @@ class SemanticExpression
       triples << triple   
     end
     
-   
+    
     triples.uniq
   end
   #this code does the same that the function query above does. However, it use filter and it is less efficient. 
@@ -298,7 +329,7 @@ class SemanticExpression
     else
       @result = @result | query(s,p,o,r)
     end
-  
+    
     self
   end
   #Intersection method 
