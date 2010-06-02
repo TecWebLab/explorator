@@ -48,23 +48,24 @@ class RepositoryController < ApplicationController
   #The disable method disable a adapter.
   #disable a specific adapter in the ConnectionPool.
   def enable
-    RDFS::Resource.reset_cache() 
-    
-    session[:disablerepositories] << (params[:title]) 
-    session[:disablerepositories].uniq!
+    RDFS::Resource.reset_cache()     
+    session[:enablerepositories] << (params[:title]) 
+    session[:enablerepositories].uniq!
     session[:triples]=Hash.new
-    # Repository.disable_by_title(params[:title])
+#      Repository.disable_by_title(params[:title])
     #render nothing.
     render :text => '',:layout => false    
   end
   #The enable method enable a adapter.
   #enable a specific adapter in the ConnectionPool.
-  def disable
-    RDFS::Resource.reset_cache() 
-    session[:disablerepositories].delete(params[:title])
-    session[:triples]=Hash.new
-    # Repository.enable_by_title(params[:title])
+  def disable     
+    puts  request.session_options[:id]
+           
+    session[:enablerepositories].delete(params[:title])        
+    session[:triples]=Hash.new 
+#     Repository.enable_by_title(params[:title])
     #render nothing.
+  
     render :text => '',:layout => false
   end
   
@@ -78,8 +79,8 @@ class RepositoryController < ApplicationController
       
       adapter.limit=params[:limit]  if params[:limit] != nil && params[:limit].rstrip != ''  
       session[:addrepositories]<< adapter
-      session[:disablerepositories] << (params[:title]) 
-      session[:disablerepositories].uniq!
+      session[:enablerepositories] << (params[:title]) 
+      session[:enablerepositories].uniq!
       
       
     rescue Exception => e
@@ -87,7 +88,7 @@ class RepositoryController < ApplicationController
       puts e.backtrace
       
       session[:addrepositories].delete(adapter)
-      session[:disablerepositories].delete(params[:title]) 
+      session[:enablerepositories].delete(params[:title]) 
       ConnectionPool.remove_data_source(adapter)
       #      render_component :controller => 'message',:action => 'error', :message => "SPARQL Enpoint invalid: "+e.message ,:layout => false
       redirect_to :action => 'endpointsform' , :message => "SPARQL Enpoint invalid: "+e.message ,:layout => false
@@ -104,7 +105,7 @@ class RepositoryController < ApplicationController
       puts e.message
       puts e.backtrace
       session[:addrepositories].delete(adapter)
-      session[:disablerepositories].delete(params[:title]) 
+      session[:enablerepositories].delete(params[:title]) 
       ConnectionPool.remove_data_source(adapter)
       redirect_to :action => 'endpointsform' ,:message => e.message ,:layout => false
       return
@@ -128,10 +129,13 @@ class RepositoryController < ApplicationController
     adapters.each do |repository|
       #create a model repository passing the repository's id, title and enableness 
       if repository.title!= 'INTERNAL' && (repository.title.index('(Local)') || session[:addrepositories].include?(repository))
-        @repositories <<  Repository.new(repository.object_id,repository.title, session[:disablerepositories].include?(repository.title),repository.limit)
+        @repositories <<  Repository.new(repository.object_id,repository.title, session[:enablerepositories].include?(repository.title),repository.limit)
       end
-    end       
+    end           
+    @repositories.each{|r| 
+     puts r.title + " " + r.enable.to_s
     
+    }
     render :layout =>false
   end
 end
