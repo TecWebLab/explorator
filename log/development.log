@@ -3237,3 +3237,1430 @@ ActionController::RoutingError (No route matches "/has/rss" with {:method=>:get}
   -e:2
 
 Rendering rescues/layout (not_found)
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-08-12 15:30:29) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (6.0ms)
+Rendered repository/_listenabledrepositories (18.0ms)
+Rendered layouts/_landmarks (45.0ms)
+Rendered layouts/_loading (1.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-08-12 15:30:32) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (16.0ms)
+Completed in 118ms (View: 116 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 2737ms (View: 330 | 200 OK [http://localhost/explorator]
+
+
+Processing RepositoryController#enable (for 127.0.0.1 at 2009-08-12 15:30:36) [GET]
+  Parameters: {"title"=>"EXPLORATOR(Local)"}
+Completed in 3ms (View: 0 | 200 OK [http://localhost/repository/enable?title=EXPLORATOR(Local)]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-08-12 15:30:36) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.go('http://sws.geonames.org/3470127/')"}
+Rendered explorator/_windowheader (18.0ms)
+Rendered explorator/_windowfilter (8.0ms)
+Rendered explorator/_subject_view (1137.0ms)
+Completed in 2313ms (View: 1142 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.go(%27http%3A%2F%2Fsws.geonames.org%2F3470127%2F%27)]
+
+
+Processing RepositoryController#listenabledrepositories (for 127.0.0.1 at 2009-08-12 15:30:39) [POST]
+Rendered repository/_listenabledrepositories (0.0ms)
+Completed in 4ms (View: 2 | 200 OK [http://localhost/repository/listenabledrepositories]
+
+
+Processing RepositoryController#autoadd (for 127.0.0.1 at 2009-08-12 15:30:47) [GET]
+  Parameters: {"uri"=>"<http://www.geonames.org/ontology#P>"}
+Completed in 6ms (View: 3 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fwww.geonames.org%2Fontology%23P%3E]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-08-12 15:30:47) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union('<http://www.geonames.org/ontology#P>',:p,:o)", "view"=>"null"}
+Rendered explorator/_windowheader (6.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (62.0ms)
+Completed in 1427ms (View: 69 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%27%3Chttp%3A%2F%2Fwww.geonames.org%2Fontology%23P%3E%27%2C%3Ap%2C%3Ao)&view=null]
+
+
+Processing RepositoryController#enable (for 127.0.0.1 at 2009-08-12 15:30:49) [GET]
+  Parameters: {"title"=>"EXPLORATOR(Local)"}
+Completed in 3ms (View: 0 | 200 OK [http://localhost/repository/enable?title=EXPLORATOR(Local)]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-08-12 15:30:49) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.go('http://www.geonames.org/ontology#P')"}
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (244.0ms)
+Completed in 1864ms (View: 250 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.go(%27http%3A%2F%2Fwww.geonames.org%2Fontology%23P%27)]
+
+
+Processing RepositoryController#listenabledrepositories (for 127.0.0.1 at 2009-08-12 15:30:51) [POST]
+Rendered repository/_listenabledrepositories (0.0ms)
+Completed in 6ms (View: 2 | 200 OK [http://localhost/repository/listenabledrepositories]
+
+
+Processing RepositoryController#enable (for 127.0.0.1 at 2009-08-12 15:30:55) [GET]
+  Parameters: {"title"=>"EXPLORATOR(Local)"}
+Completed in 2ms (View: 0 | 200 OK [http://localhost/repository/enable?title=EXPLORATOR(Local)]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-08-12 15:30:55) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.go('http://www.geonames.org/ontology/ontology_v1.2.3_Lite.rdf')"}
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (5227.0ms)
+Completed in 13173ms (View: 5232 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.go(%27http%3A%2F%2Fwww.geonames.org%2Fontology%2Fontology_v1.2.3_Lite.rdf%27)]
+
+
+Processing RepositoryController#listenabledrepositories (for 127.0.0.1 at 2009-08-12 15:31:09) [POST]
+Rendered repository/_listenabledrepositories (0.0ms)
+Completed in 5ms (View: 2 | 200 OK [http://localhost/repository/listenabledrepositories]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-08-12 15:31:09) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/c28995de-8656-44ed-9dae-ff4130feb0b9>')"}
+Completed in 5631ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/c28995de-8656-44ed-9dae-ff4130feb0b9%3E%27)]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-08-12 15:31:15) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/642a6c57-fdeb-4552-a94b-c19312aec7a7>')"}
+Completed in 4562ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/642a6c57-fdeb-4552-a94b-c19312aec7a7%3E%27)]
+
+
+Processing RepositoryController#autoadd (for 127.0.0.1 at 2009-08-12 15:31:20) [GET]
+  Parameters: {"uri"=>"<http://www.w3.org/2002/07/owl#Class>"}
+Completed in 7ms (View: 4 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fwww.w3.org%2F2002%2F07%2Fowl%23Class%3E]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-08-12 15:31:20) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union(:s,RDF::type,'<http://www.w3.org/2002/07/owl#Class>')", "view"=>"null"}
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (161.0ms)
+Completed in 1512ms (View: 162 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%3As%2CRDF%3A%3Atype%2C%27%3Chttp%3A%2F%2Fwww.w3.org%2F2002%2F07%2Fowl%23Class%3E%27)&view=null]
+
+
+Processing ExploratorController#reload (for 127.0.0.1 at 2009-08-12 15:31:29) [POST]
+  Parameters: {"uri"=>"<http://www.tecweb.inf.puc-rio.br/resourceset/id/3b3f1025-4792-4f30-b392-404fa3553ae2>", "page"=>"4", "view"=>"subject_view"}
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (5295.0ms)
+Completed in 6265ms (View: 5299 | 200 OK [http://localhost/explorator/reload?page=4&uri=%3Chttp%3A%2F%2Fwww.tecweb.inf.puc-rio.br%2Fresourceset%2Fid%2F3b3f1025-4792-4f30-b392-404fa3553ae2%3E&view=subject_view]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-08-12 15:31:44) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/a04d134f-0d0e-40d8-8e2c-0af7795fa02b>')"}
+Completed in 4061ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/a04d134f-0d0e-40d8-8e2c-0af7795fa02b%3E%27)]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-08-12 15:31:48) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/42663f33-49de-4512-a1b8-fd88c0a584fb>')"}
+Completed in 3504ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/42663f33-49de-4512-a1b8-fd88c0a584fb%3E%27)]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-08-12 15:31:59) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (2.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (5697.0ms)
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (4.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-08-12 15:32:05) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (20.0ms)
+Completed in 28ms (View: 25 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 5769ms (View: 5765 | 200 OK [http://localhost/explorator]
+
+
+Processing RepositoryController#enable (for 127.0.0.1 at 2009-08-12 15:32:06) [GET]
+  Parameters: {"title"=>"EXPLORATOR(Local)"}
+Completed in 19ms (View: 0 | 200 OK [http://localhost/repository/enable?title=EXPLORATOR(Local)]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-08-12 15:32:06) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (6182.0ms)
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (4.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-08-12 15:32:12) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (4.0ms)
+Completed in 11ms (View: 8 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 6251ms (View: 6248 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-08-12 15:32:13) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (2.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (6056.0ms)
+Rendered layouts/_toolbar (1.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (5.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-08-12 15:32:19) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (4.0ms)
+Completed in 11ms (View: 8 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 6110ms (View: 6107 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#reload (for 127.0.0.1 at 2009-08-12 15:32:19) [POST]
+  Parameters: {"uri"=>"<http://www.tecweb.inf.puc-rio.br/resourceset/id/3b3f1025-4792-4f30-b392-404fa3553ae2>", "page"=>"1", "view"=>"subject_view"}
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (1.0ms)
+Rendered explorator/_subject_view (6272.0ms)
+Completed in 7142ms (View: 6276 | 200 OK [http://localhost/explorator/reload?page=1&uri=%3Chttp%3A%2F%2Fwww.tecweb.inf.puc-rio.br%2Fresourceset%2Fid%2F3b3f1025-4792-4f30-b392-404fa3553ae2%3E&view=subject_view]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-08-12 15:32:27) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (5581.0ms)
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (1.0ms)
+Rendered layouts/_landmarks (5.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-08-12 15:32:32) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (4.0ms)
+Completed in 11ms (View: 8 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 5633ms (View: 5630 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-08-12 15:32:32) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (5835.0ms)
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (6.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-08-12 15:32:38) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (3.0ms)
+Completed in 12ms (View: 9 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 5978ms (View: 5888 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-08-12 15:32:39) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (4695.0ms)
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (4.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-08-12 15:32:44) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (3.0ms)
+Completed in 9ms (View: 7 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 4739ms (View: 4736 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-08-12 15:32:44) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (2.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (6407.0ms)
+Rendered layouts/_toolbar (1.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (6.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-08-12 15:32:51) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (4.0ms)
+Completed in 11ms (View: 8 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 6571ms (View: 6567 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-08-12 15:32:51) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (1.0ms)
+Rendered explorator/_subject_view (5582.0ms)
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (1.0ms)
+Rendered layouts/_landmarks (5.0ms)
+Rendered layouts/_loading (1.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-08-12 15:32:56) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (4.0ms)
+Completed in 11ms (View: 8 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 5636ms (View: 5632 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#reload (for 127.0.0.1 at 2009-08-12 15:32:57) [POST]
+  Parameters: {"uri"=>"<http://www.tecweb.inf.puc-rio.br/resourceset/id/3b3f1025-4792-4f30-b392-404fa3553ae2>", "page"=>"3", "view"=>"subject_view"}
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (4666.0ms)
+Completed in 5578ms (View: 4668 | 200 OK [http://localhost/explorator/reload?page=3&uri=%3Chttp%3A%2F%2Fwww.tecweb.inf.puc-rio.br%2Fresourceset%2Fid%2F3b3f1025-4792-4f30-b392-404fa3553ae2%3E&view=subject_view]
+
+
+Processing ExploratorController#reload (for 127.0.0.1 at 2009-08-12 15:33:02) [POST]
+  Parameters: {"uri"=>"<http://www.tecweb.inf.puc-rio.br/resourceset/id/3b3f1025-4792-4f30-b392-404fa3553ae2>", "page"=>"4", "view"=>"subject_view"}
+Rendered explorator/_windowheader (2.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (4584.0ms)
+Completed in 5460ms (View: 4586 | 200 OK [http://localhost/explorator/reload?page=4&uri=%3Chttp%3A%2F%2Fwww.tecweb.inf.puc-rio.br%2Fresourceset%2Fid%2F3b3f1025-4792-4f30-b392-404fa3553ae2%3E&view=subject_view]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-08-12 15:33:08) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (4496.0ms)
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (1.0ms)
+Rendered layouts/_landmarks (3.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-08-12 15:33:13) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (3.0ms)
+Completed in 9ms (View: 7 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 4539ms (View: 4535 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#reload (for 127.0.0.1 at 2009-08-12 15:33:13) [POST]
+  Parameters: {"uri"=>"<http://www.tecweb.inf.puc-rio.br/resourceset/id/3b3f1025-4792-4f30-b392-404fa3553ae2>", "page"=>"5", "view"=>"subject_view"}
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (6615.0ms)
+Completed in 7627ms (View: 6618 | 200 OK [http://localhost/explorator/reload?page=5&uri=%3Chttp%3A%2F%2Fwww.tecweb.inf.puc-rio.br%2Fresourceset%2Fid%2F3b3f1025-4792-4f30-b392-404fa3553ae2%3E&view=subject_view]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-08-12 15:33:21) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (2.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (5944.0ms)
+Rendered layouts/_toolbar (1.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (6.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-08-12 15:33:27) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (3.0ms)
+Completed in 12ms (View: 9 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 5999ms (View: 5996 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-08-12 15:33:27) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (5408.0ms)
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (5.0ms)
+Rendered layouts/_loading (1.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-08-12 15:33:33) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (3.0ms)
+Completed in 10ms (View: 7 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 5461ms (View: 5458 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-08-12 15:33:33) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (5842.0ms)
+Rendered layouts/_toolbar (1.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (6.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-08-12 15:33:39) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (4.0ms)
+Completed in 12ms (View: 8 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 6001ms (View: 5998 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-08-12 15:33:39) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (1.0ms)
+Rendered explorator/_subject_view (4590.0ms)
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (3.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-08-12 15:33:44) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (4.0ms)
+Completed in 8ms (View: 6 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 4632ms (View: 4629 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-08-12 15:33:44) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (2.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (5773.0ms)
+Rendered layouts/_toolbar (1.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (6.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-08-12 15:33:50) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (4.0ms)
+Completed in 12ms (View: 9 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 5831ms (View: 5827 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-08-12 15:33:50) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (5794.0ms)
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (1.0ms)
+Rendered layouts/_landmarks (5.0ms)
+Rendered layouts/_loading (1.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-08-12 15:33:56) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (4.0ms)
+Completed in 12ms (View: 8 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 5851ms (View: 5848 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-08-12 15:33:56) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (2.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (5317.0ms)
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (5.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-08-12 15:34:02) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (3.0ms)
+Completed in 11ms (View: 8 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 5370ms (View: 5368 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-08-12 15:34:02) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (5903.0ms)
+Rendered layouts/_toolbar (1.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (5.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-08-12 15:34:08) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (5.0ms)
+Completed in 13ms (View: 9 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 5965ms (View: 5962 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-08-12 15:34:08) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (4725.0ms)
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (1.0ms)
+Rendered layouts/_landmarks (4.0ms)
+Rendered layouts/_loading (1.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-08-12 15:34:13) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (4.0ms)
+Completed in 10ms (View: 8 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 4768ms (View: 4766 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-08-12 15:34:13) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (2.0ms)
+Rendered explorator/_windowfilter (1.0ms)
+Rendered explorator/_subject_view (5892.0ms)
+Rendered layouts/_toolbar (1.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (5.0ms)
+Rendered layouts/_loading (1.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-08-12 15:34:19) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (3.0ms)
+Completed in 12ms (View: 8 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 5948ms (View: 5945 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-08-12 15:34:20) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-08-12 15:35:02) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (539.0ms)
+Rendered explorator/_windowfilter (1.0ms)
+Rendered explorator/_subject_view (4732.0ms)
+Rendered layouts/_toolbar (5.0ms)
+Rendered repository/_listenabledrepositories (2.0ms)
+Rendered layouts/_landmarks (39.0ms)
+Rendered layouts/_loading (2.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-08-12 15:35:16) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (17.0ms)
+Completed in 37ms (View: 35 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 14504ms (View: 11139 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-08-12 15:35:16) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (3817.0ms)
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (2.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-08-12 15:35:20) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (2.0ms)
+Completed in 8ms (View: 5 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 3852ms (View: 3850 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-08-12 15:35:20) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (3725.0ms)
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (2.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-08-12 15:35:24) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (3.0ms)
+Completed in 7ms (View: 4 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 3757ms (View: 3754 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-08-12 15:35:24) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (3631.0ms)
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (1.0ms)
+Rendered layouts/_landmarks (2.0ms)
+Rendered layouts/_loading (1.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-08-12 15:35:28) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (2.0ms)
+Completed in 6ms (View: 4 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 3661ms (View: 3659 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-08-12 15:35:28) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (3677.0ms)
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (1.0ms)
+Rendered layouts/_landmarks (3.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-08-12 15:35:32) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (2.0ms)
+Completed in 7ms (View: 5 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 3707ms (View: 3705 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-08-12 15:35:32) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (0.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (3616.0ms)
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (2.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-08-12 15:35:36) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (2.0ms)
+Completed in 7ms (View: 5 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 3649ms (View: 3646 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-08-12 15:35:36) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (3645.0ms)
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (2.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-08-12 15:35:40) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (2.0ms)
+Completed in 7ms (View: 5 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 3679ms (View: 3676 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-08-12 15:35:40) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (3660.0ms)
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (1.0ms)
+Rendered layouts/_landmarks (2.0ms)
+Rendered layouts/_loading (1.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-08-12 15:35:44) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (3.0ms)
+Completed in 7ms (View: 5 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 3693ms (View: 3691 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-08-12 15:35:44) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (3728.0ms)
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (1.0ms)
+Rendered layouts/_landmarks (3.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-08-12 15:35:48) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (3.0ms)
+Completed in 7ms (View: 5 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 3762ms (View: 3760 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-08-12 15:35:48) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (3831.0ms)
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (2.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-08-12 15:35:52) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (3.0ms)
+Completed in 7ms (View: 5 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 3864ms (View: 3861 | 200 OK [http://localhost/explorator]
+
+
+Processing ApplicationController#reset (for 127.0.0.1 at 2009-08-12 15:35:52) [GET]
+Redirected to http://localhost:3001/explorator
+Completed in 1802ms | 302 Found [http://localhost/application/reset]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-08-12 15:35:54) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (2.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-08-12 15:35:54) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (2.0ms)
+Completed in 8ms (View: 6 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 37ms (View: 34 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-08-12 15:35:54) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (3.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-08-12 15:35:54) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (3.0ms)
+Completed in 8ms (View: 5 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 32ms (View: 30 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-08-12 15:35:59) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:rdfs,:Class)).union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:owl,:Class))"}
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (1040.0ms)
+Completed in 1346ms (View: 1042 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%3As%2CNamespace.lookup(%3Ardf%2C%3Atype)%2CNamespace.lookup(%3Ardfs%2C%3AClass)).union(%3As%2CNamespace.lookup(%3Ardf%2C%3Atype)%2CNamespace.lookup(%3Aowl%2C%3AClass))]
+
+
+Processing ExploratorController#reload (for 127.0.0.1 at 2009-08-12 15:36:04) [POST]
+  Parameters: {"uri"=>"<http://www.tecweb.inf.puc-rio.br/resourceset/id/407d3a8f-1468-41b0-ba1c-4d4b4ac8c5e8>", "page"=>"3", "view"=>"subject_view"}
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (893.0ms)
+Completed in 1777ms (View: 894 | 200 OK [http://localhost/explorator/reload?page=3&uri=%3Chttp%3A%2F%2Fwww.tecweb.inf.puc-rio.br%2Fresourceset%2Fid%2F407d3a8f-1468-41b0-ba1c-4d4b4ac8c5e8%3E&view=subject_view]
+
+
+Processing ExploratorController#reload (for 127.0.0.1 at 2009-08-12 15:36:08) [POST]
+  Parameters: {"uri"=>"<http://www.tecweb.inf.puc-rio.br/resourceset/id/407d3a8f-1468-41b0-ba1c-4d4b4ac8c5e8>", "page"=>"5", "view"=>"subject_view"}
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (813.0ms)
+Completed in 1682ms (View: 815 | 200 OK [http://localhost/explorator/reload?page=5&uri=%3Chttp%3A%2F%2Fwww.tecweb.inf.puc-rio.br%2Fresourceset%2Fid%2F407d3a8f-1468-41b0-ba1c-4d4b4ac8c5e8%3E&view=subject_view]
+
+
+Processing RepositoryController#index (for 127.0.0.1 at 2009-08-12 15:36:14) [GET]
+Rendering repository/index
+Start rendering component ({:layout=>false, :action=>"endpointsform"}): 
+
+
+Processing RepositoryController#endpointsform (for 127.0.0.1 at 2009-08-12 15:36:14) [GET]
+  Parameters: {"id"=>nil}
+Rendering repository/endpointsform
+Completed in 55ms (View: 24 | 200 OK [http://localhost/repository/index]
+
+
+End of component rendering
+Completed in 82ms (View: 80 | 200 OK [http://localhost/repository/index]
+
+
+Processing RepositoryController#listenabledrepositories (for 127.0.0.1 at 2009-08-12 15:36:14) [POST]
+Rendered repository/_listenabledrepositories (1.0ms)
+Completed in 4ms (View: 2 | 200 OK [http://localhost/repository/listenabledrepositories]
+
+
+Processing RepositoryController#enable (for 127.0.0.1 at 2009-08-12 15:36:17) [GET]
+  Parameters: {"title"=>"NOKIA(Local)"}
+Completed in 2ms (View: 0 | 200 OK [http://localhost/repository/enable?title=NOKIA(Local)]
+
+
+Processing RepositoryController#listenabledrepositories (for 127.0.0.1 at 2009-08-12 15:36:17) [POST]
+Rendered repository/_listenabledrepositories (1.0ms)
+Completed in 4ms (View: 2 | 200 OK [http://localhost/repository/listenabledrepositories]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-08-12 15:36:18) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/407d3a8f-1468-41b0-ba1c-4d4b4ac8c5e8>')"}
+Completed in 1978ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/407d3a8f-1468-41b0-ba1c-4d4b4ac8c5e8%3E%27)]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-08-12 15:36:22) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:rdfs,:Class)).union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:owl,:Class))"}
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (1694.0ms)
+Completed in 1876ms (View: 1696 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%3As%2CNamespace.lookup(%3Ardf%2C%3Atype)%2CNamespace.lookup(%3Ardfs%2C%3AClass)).union(%3As%2CNamespace.lookup(%3Ardf%2C%3Atype)%2CNamespace.lookup(%3Aowl%2C%3AClass))]
+
+
+Processing RepositoryController#autoadd (for 127.0.0.1 at 2009-08-12 15:36:27) [GET]
+  Parameters: {"uri"=>"<http://sw.nokia.com/FN-1/Type/Terminal>"}
+Completed in 5ms (View: 3 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fsw.nokia.com%2FFN-1%2FType%2FTerminal%3E]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-08-12 15:36:27) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union(:s,RDF::type,'<http://sw.nokia.com/FN-1/Type/Terminal>')", "view"=>"null"}
+Rendered explorator/_windowheader (3.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (4070.0ms)
+Completed in 5464ms (View: 4073 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%3As%2CRDF%3A%3Atype%2C%27%3Chttp%3A%2F%2Fsw.nokia.com%2FFN-1%2FType%2FTerminal%3E%27)&view=null]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-08-12 15:36:33) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/69bd242e-c75e-4759-b673-c49a498ef9d9>')"}
+Completed in 2961ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/69bd242e-c75e-4759-b673-c49a498ef9d9%3E%27)]
+
+
+Processing ExploratorController#reload (for 127.0.0.1 at 2009-08-12 15:36:36) [POST]
+  Parameters: {"uri"=>"<http://www.tecweb.inf.puc-rio.br/resourceset/id/8d32adf5-8d60-4cd1-9a1f-02d55c8fc02b>", "page"=>"5", "view"=>"subject_view"}
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (5713.0ms)
+Completed in 7045ms (View: 5716 | 200 OK [http://localhost/explorator/reload?page=5&uri=%3Chttp%3A%2F%2Fwww.tecweb.inf.puc-rio.br%2Fresourceset%2Fid%2F8d32adf5-8d60-4cd1-9a1f-02d55c8fc02b%3E&view=subject_view]
+
+
+Processing ExploratorController#reload (for 127.0.0.1 at 2009-08-12 15:36:49) [POST]
+  Parameters: {"uri"=>"<http://www.tecweb.inf.puc-rio.br/resourceset/id/8d32adf5-8d60-4cd1-9a1f-02d55c8fc02b>", "page"=>"7", "view"=>"subject_view"}
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (2288.0ms)
+Completed in 3105ms (View: 2291 | 200 OK [http://localhost/explorator/reload?page=7&uri=%3Chttp%3A%2F%2Fwww.tecweb.inf.puc-rio.br%2Fresourceset%2Fid%2F8d32adf5-8d60-4cd1-9a1f-02d55c8fc02b%3E&view=subject_view]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-08-12 15:36:57) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.search('belo')"}
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (785.0ms)
+Completed in 3310ms (View: 786 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.search(%27belo%27)]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-08-12 15:37:00) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/8d32adf5-8d60-4cd1-9a1f-02d55c8fc02b>')"}
+Completed in 3131ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/8d32adf5-8d60-4cd1-9a1f-02d55c8fc02b%3E%27)]
+
+
+Processing RepositoryController#autoadd (for 127.0.0.1 at 2009-08-12 15:37:06) [GET]
+  Parameters: {"uri"=>"<http://sws.geonames.org/3470127/>"}
+Completed in 6ms (View: 4 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fsws.geonames.org%2F3470127%2F%3E]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-08-12 15:37:06) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union('<http://sws.geonames.org/3470127/>',:p,:o)", "view"=>"null"}
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (1803.0ms)
+Completed in 2780ms (View: 1804 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%27%3Chttp%3A%2F%2Fsws.geonames.org%2F3470127%2F%3E%27%2C%3Ap%2C%3Ao)&view=null]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-08-12 15:37:10) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/51473826-2549-4aef-8b61-2ce8c1fb3e95>')"}
+Completed in 3173ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/51473826-2549-4aef-8b61-2ce8c1fb3e95%3E%27)]
+
+
+Processing RepositoryController#autoadd (for 127.0.0.1 at 2009-08-12 15:37:15) [GET]
+  Parameters: {"uri"=>"<http://www.geonames.org/ontology#P>"}
+Completed in 5ms (View: 3 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fwww.geonames.org%2Fontology%23P%3E]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-08-12 15:37:16) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union('<http://www.geonames.org/ontology#P>',:p,:o)", "view"=>"null"}
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (1.0ms)
+Rendered explorator/_subject_view (79.0ms)
+Completed in 1180ms (View: 82 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%27%3Chttp%3A%2F%2Fwww.geonames.org%2Fontology%23P%3E%27%2C%3Ap%2C%3Ao)&view=null]
+
+
+Processing RepositoryController#autoadd (for 127.0.0.1 at 2009-08-12 15:37:23) [GET]
+  Parameters: {"uri"=>"<http://www.geonames.org/ontology#Class>"}
+Completed in 5ms (View: 3 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fwww.geonames.org%2Fontology%23Class%3E]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-08-12 15:37:23) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union(:s,RDF::type,'<http://www.geonames.org/ontology#Class>')", "view"=>"null"}
+Rendered explorator/_windowheader (3.0ms)
+Rendered explorator/_windowfilter (1.0ms)
+Rendered explorator/_subject_view (260.0ms)
+Completed in 1529ms (View: 263 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%3As%2CRDF%3A%3Atype%2C%27%3Chttp%3A%2F%2Fwww.geonames.org%2Fontology%23Class%3E%27)&view=null]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-08-12 15:37:25) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/30f5b7f9-4d20-4372-8eb8-6b97000a92ea>')"}
+Completed in 4226ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/30f5b7f9-4d20-4372-8eb8-6b97000a92ea%3E%27)]
+
+
+Processing RepositoryController#autoadd (for 127.0.0.1 at 2009-08-12 15:37:33) [GET]
+  Parameters: {"uri"=>"<http://www.geonames.org/ontology#H>"}
+Completed in 6ms (View: 4 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fwww.geonames.org%2Fontology%23H%3E]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-08-12 15:37:33) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union('<http://www.geonames.org/ontology#H>',:p,:o)", "view"=>"null"}
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (28.0ms)
+Completed in 1095ms (View: 30 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%27%3Chttp%3A%2F%2Fwww.geonames.org%2Fontology%23H%3E%27%2C%3Ap%2C%3Ao)&view=null]
+
+
+Processing RepositoryController#autoadd (for 127.0.0.1 at 2009-08-12 15:37:38) [GET]
+  Parameters: {"uri"=>"<http://www.geonames.org/ontology#U>"}
+Completed in 5ms (View: 3 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fwww.geonames.org%2Fontology%23U%3E]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-08-12 15:37:38) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union('<http://www.geonames.org/ontology#U>',:p,:o)", "view"=>"null"}
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (27.0ms)
+Completed in 1110ms (View: 29 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%27%3Chttp%3A%2F%2Fwww.geonames.org%2Fontology%23U%3E%27%2C%3Ap%2C%3Ao)&view=null]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-08-12 15:37:42) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:rdfs,:Class)).union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:owl,:Class))"}
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (922.0ms)
+Completed in 2174ms (View: 924 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%3As%2CNamespace.lookup(%3Ardf%2C%3Atype)%2CNamespace.lookup(%3Ardfs%2C%3AClass)).union(%3As%2CNamespace.lookup(%3Ardf%2C%3Atype)%2CNamespace.lookup(%3Aowl%2C%3AClass))]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-08-12 15:37:45) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/3fc5fb4d-e5a1-4b9b-9018-42c62e567e48>')"}
+Completed in 6371ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/3fc5fb4d-e5a1-4b9b-9018-42c62e567e48%3E%27)]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-08-12 15:37:52) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/eb837e4f-04a3-4e77-a579-6f87da5d2fbd>')"}
+Completed in 4945ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/eb837e4f-04a3-4e77-a579-6f87da5d2fbd%3E%27)]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-08-12 15:37:57) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/06ea14d0-2e70-449a-8d49-029daf79cacb>')"}
+Completed in 3891ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/06ea14d0-2e70-449a-8d49-029daf79cacb%3E%27)]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-08-12 15:38:01) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/510ffd98-a2cd-41a8-aa22-38d765bf5929>')"}
+Completed in 3125ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/510ffd98-a2cd-41a8-aa22-38d765bf5929%3E%27)]
+
+
+Processing ExploratorController#reload (for 127.0.0.1 at 2009-08-12 15:38:04) [POST]
+  Parameters: {"uri"=>"<http://www.tecweb.inf.puc-rio.br/resourceset/id/08bea16f-ed20-495d-88b1-bc4ffc827126>", "page"=>"9", "view"=>"subject_view"}
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (1471.0ms)
+Completed in 2370ms (View: 1474 | 200 OK [http://localhost/explorator/reload?page=9&uri=%3Chttp%3A%2F%2Fwww.tecweb.inf.puc-rio.br%2Fresourceset%2Fid%2F08bea16f-ed20-495d-88b1-bc4ffc827126%3E&view=subject_view]
+
+
+Processing RepositoryController#autoadd (for 127.0.0.1 at 2009-08-12 15:38:15) [GET]
+  Parameters: {"uri"=>"<http://www.semanticdesktop.org/ontologies/2007/03/22/nco#ContactList>"}
+Completed in 6ms (View: 3 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fwww.semanticdesktop.org%2Fontologies%2F2007%2F03%2F22%2Fnco%23ContactList%3E]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-08-12 15:38:15) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union(:s,RDF::type,'<http://www.semanticdesktop.org/ontologies/2007/03/22/nco#ContactList>')", "view"=>"null"}
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (7.0ms)
+Completed in 1137ms (View: 9 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%3As%2CRDF%3A%3Atype%2C%27%3Chttp%3A%2F%2Fwww.semanticdesktop.org%2Fontologies%2F2007%2F03%2F22%2Fnco%23ContactList%3E%27)&view=null]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-08-12 15:38:19) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/87371e0a-942e-4b1b-8d6c-7c9b644f71d7>')"}
+Completed in 2896ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/87371e0a-942e-4b1b-8d6c-7c9b644f71d7%3E%27)]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-08-12 15:38:22) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/08bea16f-ed20-495d-88b1-bc4ffc827126>')"}
+Completed in 2066ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/08bea16f-ed20-495d-88b1-bc4ffc827126%3E%27)]
+
+
+Processing RepositoryController#enable (for 127.0.0.1 at 2009-08-12 15:38:39) [GET]
+  Parameters: {"title"=>"EXPLORATOR(Local)"}
+Completed in 3ms (View: 0 | 200 OK [http://localhost/repository/enable?title=EXPLORATOR(Local)]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-08-12 15:38:40) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.go('http://dbpedia.org/resource/Belo_Horizonte')"}
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (3350.0ms)
+Completed in 9177ms (View: 3352 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.go(%27http%3A%2F%2Fdbpedia.org%2Fresource%2FBelo_Horizonte%27)]
+
+
+Processing RepositoryController#listenabledrepositories (for 127.0.0.1 at 2009-08-12 15:38:49) [POST]
+Rendered repository/_listenabledrepositories (0.0ms)
+Completed in 5ms (View: 2 | 200 OK [http://localhost/repository/listenabledrepositories]
+
+
+Processing ExploratorController#reload (for 127.0.0.1 at 2009-08-12 15:38:56) [POST]
+  Parameters: {"uri"=>"<http://www.tecweb.inf.puc-rio.br/resourceset/id/48064f1a-65a8-4a82-9836-55d2ff387089>", "page"=>"4", "view"=>"subject_view"}
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (2183.0ms)
+Completed in 3144ms (View: 2186 | 200 OK [http://localhost/explorator/reload?page=4&uri=%3Chttp%3A%2F%2Fwww.tecweb.inf.puc-rio.br%2Fresourceset%2Fid%2F48064f1a-65a8-4a82-9836-55d2ff387089%3E&view=subject_view]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-08-12 15:39:21) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.search('http://sws.geonames.org/3470127/')"}
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (1.0ms)
+Rendered explorator/_subject_view (1319.0ms)
+Completed in 2726ms (View: 1322 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.search(%27http%3A%2F%2Fsws.geonames.org%2F3470127%2F%27)]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-08-12 15:39:24) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/48064f1a-65a8-4a82-9836-55d2ff387089>')"}
+Completed in 6494ms (View: 1 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/48064f1a-65a8-4a82-9836-55d2ff387089%3E%27)]
+
+
+Processing RepositoryController#autoadd (for 127.0.0.1 at 2009-08-12 15:39:31) [GET]
+  Parameters: {"uri"=>"<http://www.geonames.org/ontology#P>"}
+Completed in 6ms (View: 3 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fwww.geonames.org%2Fontology%23P%3E]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-08-12 15:39:31) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union('<http://www.geonames.org/ontology#P>',:p,:o)", "view"=>"null"}
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (63.0ms)
+Completed in 1117ms (View: 65 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%27%3Chttp%3A%2F%2Fwww.geonames.org%2Fontology%23P%3E%27%2C%3Ap%2C%3Ao)&view=null]
+
+
+Processing RepositoryController#enable (for 127.0.0.1 at 2009-08-12 15:39:35) [GET]
+  Parameters: {"title"=>"EXPLORATOR(Local)"}
+Completed in 2ms (View: 0 | 200 OK [http://localhost/repository/enable?title=EXPLORATOR(Local)]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-08-12 15:39:35) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.go('http://www.geonames.org/ontology#P')"}
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (1.0ms)
+Rendered explorator/_subject_view (384.0ms)
+Completed in 1696ms (View: 387 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.go(%27http%3A%2F%2Fwww.geonames.org%2Fontology%23P%27)]
+
+
+Processing RepositoryController#listenabledrepositories (for 127.0.0.1 at 2009-08-12 15:39:37) [POST]
+Rendered repository/_listenabledrepositories (0.0ms)
+Completed in 5ms (View: 2 | 200 OK [http://localhost/repository/listenabledrepositories]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-08-12 15:39:42) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.search('http://www.geonames.org/ontology/ontology_v1.2.3_Lite.rdf')"}
+Rendered explorator/_windowheader (0.0ms)
+Rendered explorator/_windowfilter (1.0ms)
+Rendered explorator/_subject_view (36.0ms)
+Completed in 1154ms (View: 38 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.search(%27http%3A%2F%2Fwww.geonames.org%2Fontology%2Fontology_v1.2.3_Lite.rdf%27)]
+
+
+Processing RepositoryController#enable (for 127.0.0.1 at 2009-08-12 15:39:47) [GET]
+  Parameters: {"title"=>"EXPLORATOR(Local)"}
+Completed in 3ms (View: 1 | 200 OK [http://localhost/repository/enable?title=EXPLORATOR(Local)]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-08-12 15:39:47) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.go('http://www.geonames.org/ontology/ontology_v1.2.3_Lite.rdf')"}
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (4646.0ms)
+Completed in 10161ms (View: 4649 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.go(%27http%3A%2F%2Fwww.geonames.org%2Fontology%2Fontology_v1.2.3_Lite.rdf%27)]
+
+
+Processing RepositoryController#listenabledrepositories (for 127.0.0.1 at 2009-08-12 15:39:58) [POST]
+Rendered repository/_listenabledrepositories (0.0ms)
+Completed in 4ms (View: 2 | 200 OK [http://localhost/repository/listenabledrepositories]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-08-12 15:39:58) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/66116c0e-5193-4c43-b29f-d0e3e7acd17b>')"}
+Completed in 6080ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/66116c0e-5193-4c43-b29f-d0e3e7acd17b%3E%27)]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-08-12 15:40:04) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/9d114de0-b84b-4335-b85b-3a8652c1772f>')"}
+Completed in 4917ms (View: 1 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/9d114de0-b84b-4335-b85b-3a8652c1772f%3E%27)]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-08-12 15:40:09) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/c9eb02ae-6e3c-4557-81f4-55d51952a250>')"}
+Completed in 4007ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/c9eb02ae-6e3c-4557-81f4-55d51952a250%3E%27)]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-08-12 15:40:14) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/8fd5ffae-11e4-449c-a491-c7f1c726d369>')"}
+Completed in 2768ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/8fd5ffae-11e4-449c-a491-c7f1c726d369%3E%27)]
+
+
+Processing ExploratorController#reload (for 127.0.0.1 at 2009-08-12 15:40:17) [POST]
+  Parameters: {"uri"=>"<http://www.tecweb.inf.puc-rio.br/resourceset/id/ce0df42d-419c-4ce5-a24d-0a11df9c0f83>", "page"=>"2", "view"=>"subject_view"}
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (5786.0ms)
+Completed in 6707ms (View: 5790 | 200 OK [http://localhost/explorator/reload?page=2&uri=%3Chttp%3A%2F%2Fwww.tecweb.inf.puc-rio.br%2Fresourceset%2Fid%2Fce0df42d-419c-4ce5-a24d-0a11df9c0f83%3E&view=subject_view]
+
+
+Processing ExploratorController#reload (for 127.0.0.1 at 2009-08-12 15:40:33) [POST]
+  Parameters: {"uri"=>"<http://www.tecweb.inf.puc-rio.br/resourceset/id/ce0df42d-419c-4ce5-a24d-0a11df9c0f83>", "page"=>"1", "view"=>"subject_view"}
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (4770.0ms)
+Completed in 5794ms (View: 4772 | 200 OK [http://localhost/explorator/reload?page=1&uri=%3Chttp%3A%2F%2Fwww.tecweb.inf.puc-rio.br%2Fresourceset%2Fid%2Fce0df42d-419c-4ce5-a24d-0a11df9c0f83%3E&view=subject_view]
+
+
+Processing RepositoryController#autoadd (for 127.0.0.1 at 2009-08-12 15:40:53) [GET]
+  Parameters: {"uri"=>"<http://www.w3.org/2002/07/owl#Class>"}
+Completed in 5ms (View: 3 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fwww.w3.org%2F2002%2F07%2Fowl%23Class%3E]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-08-12 15:40:53) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union('<http://www.w3.org/2002/07/owl#Class>',:p,:o)", "view"=>"null"}
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (76.0ms)
+Completed in 1090ms (View: 78 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%27%3Chttp%3A%2F%2Fwww.w3.org%2F2002%2F07%2Fowl%23Class%3E%27%2C%3Ap%2C%3Ao)&view=null]
+
+
+Processing RepositoryController#autoadd (for 127.0.0.1 at 2009-08-12 15:41:05) [GET]
+  Parameters: {"uri"=>"<http://www.w3.org/2002/07/owl#ObjectProperty>"}
+Completed in 6ms (View: 4 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fwww.w3.org%2F2002%2F07%2Fowl%23ObjectProperty%3E]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-08-12 15:41:06) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union('<http://www.w3.org/2002/07/owl#ObjectProperty>',:p,:o)", "view"=>"null"}
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (45.0ms)
+Completed in 1154ms (View: 46 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%27%3Chttp%3A%2F%2Fwww.w3.org%2F2002%2F07%2Fowl%23ObjectProperty%3E%27%2C%3Ap%2C%3Ao)&view=null]
+
+
+Processing RepositoryController#autoadd (for 127.0.0.1 at 2009-08-12 15:41:10) [GET]
+  Parameters: {"uri"=>"<http://www.w3.org/2002/07/owl#Class>"}
+Completed in 6ms (View: 4 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fwww.w3.org%2F2002%2F07%2Fowl%23Class%3E]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-08-12 15:41:10) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union(:s,RDF::type,'<http://www.w3.org/2002/07/owl#Class>')", "view"=>"null"}
+Rendered explorator/_windowheader (3.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (1582.0ms)
+Completed in 2712ms (View: 1585 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%3As%2CRDF%3A%3Atype%2C%27%3Chttp%3A%2F%2Fwww.w3.org%2F2002%2F07%2Fowl%23Class%3E%27)&view=null]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-08-12 15:41:13) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/517cb5e2-fba8-485d-b1e1-0cc71e3187ad>')"}
+Completed in 5106ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/517cb5e2-fba8-485d-b1e1-0cc71e3187ad%3E%27)]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-08-12 15:42:45) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/99953c90-aa39-4220-99c1-6c4746c4a4e9>')"}
+Completed in 3900ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/99953c90-aa39-4220-99c1-6c4746c4a4e9%3E%27)]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-08-12 15:47:53) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/1c435182-5e11-4738-a756-6139c73fe0f0>')"}
+Completed in 3061ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/1c435182-5e11-4738-a756-6139c73fe0f0%3E%27)]
+
+
+Processing ApplicationController#reset (for 127.0.0.1 at 2009-08-12 15:47:58) [GET]
+Redirected to http://localhost:3001/explorator
+Completed in 1892ms | 302 Found [http://localhost/application/reset]
+
+
+Processing ExploratorController#index (for 127.0.0.1 at 2009-08-12 15:48:00) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (0.0ms)
+Rendered repository/_listenabledrepositories (0.0ms)
+Rendered layouts/_landmarks (2.0ms)
+Rendered layouts/_loading (0.0ms)
+Start rendering component ({:layout=>false, :controller=>"querybuilder", :action=>"index"}): 
+
+
+Processing QuerybuilderController#index (for 127.0.0.1 at 2009-08-12 15:48:00) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (3.0ms)
+Completed in 8ms (View: 5 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 33ms (View: 31 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#create (for 127.0.0.1 at 2009-08-12 15:48:04) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:rdfs,:Class)).union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:owl,:Class))"}
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (1188.0ms)
+Completed in 1407ms (View: 1190 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%3As%2CNamespace.lookup(%3Ardf%2C%3Atype)%2CNamespace.lookup(%3Ardfs%2C%3AClass)).union(%3As%2CNamespace.lookup(%3Ardf%2C%3Atype)%2CNamespace.lookup(%3Aowl%2C%3AClass))]
+
+
+Processing ExploratorController#reload (for 127.0.0.1 at 2009-08-12 15:48:11) [POST]
+  Parameters: {"uri"=>"<http://www.tecweb.inf.puc-rio.br/resourceset/id/4ba50518-351d-4757-82ec-df3de802dc86>", "page"=>"5", "view"=>"subject_view"}
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (1656.0ms)
+Completed in 2637ms (View: 1658 | 200 OK [http://localhost/explorator/reload?page=5&uri=%3Chttp%3A%2F%2Fwww.tecweb.inf.puc-rio.br%2Fresourceset%2Fid%2F4ba50518-351d-4757-82ec-df3de802dc86%3E&view=subject_view]
+
+
+Processing RepositoryController#index (for 127.0.0.1 at 2009-08-12 15:48:22) [GET]
+Rendering repository/index
+Start rendering component ({:layout=>false, :action=>"endpointsform"}): 
+
+
+Processing RepositoryController#endpointsform (for 127.0.0.1 at 2009-08-12 15:48:22) [GET]
+  Parameters: {"id"=>nil}
+Rendering repository/endpointsform
+Completed in 15ms (View: 1 | 200 OK [http://localhost/repository/index]
+
+
+End of component rendering
+Completed in 20ms (View: 18 | 200 OK [http://localhost/repository/index]
+
+
+Processing RepositoryController#listenabledrepositories (for 127.0.0.1 at 2009-08-12 15:48:22) [POST]
+Rendered repository/_listenabledrepositories (1.0ms)
+Completed in 4ms (View: 2 | 200 OK [http://localhost/repository/listenabledrepositories]
+
+
+Processing RepositoryController#disable (for 127.0.0.1 at 2009-08-12 15:48:25) [GET]
+  Parameters: {"title"=>"NOKIA(Local)"}
+Completed in 3ms (View: 0 | 200 OK [http://localhost/repository/disable?title=NOKIA(Local)]
+
+
+Processing RepositoryController#listenabledrepositories (for 127.0.0.1 at 2009-08-12 15:48:25) [POST]
+Rendered repository/_listenabledrepositories (0.0ms)
+Completed in 4ms (View: 1 | 200 OK [http://localhost/repository/listenabledrepositories]
+
+
+Processing ExploratorController#execute (for 127.0.0.1 at 2009-08-12 15:48:28) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/4ba50518-351d-4757-82ec-df3de802dc86>')"}
+Completed in 2214ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/4ba50518-351d-4757-82ec-df3de802dc86%3E%27)]
