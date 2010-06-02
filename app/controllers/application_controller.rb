@@ -7,21 +7,27 @@ class ApplicationController < ActionController::Base
   before_filter :session_init
   #global attribute use for all explorator controllers
   @resourceset
-
-  def session_init
-     if session[:application] == nil       
-      session[:disablerepositories]=Array.new
-      session[:disablerepositories] << 'INTERNAL'
-      session[:disablerepositories] << 'EXPLORATOR(Local)'     
+  
+  def session_init    
+       puts request.session_options[:id]
+    puts session[:application] 
+    if session[:application] == nil       
+      
+      session[:enablerepositories]=Array.new
+ 
+      session[:enablerepositories] << 'INTERNAL'
+  
       session[:addrepositories] = Array.new
       session[:triples]=Hash.new
+   
       session[:application] =  Application.new(request.session_options[:id])
       session[:query_retrieve_label_and_type]=$QUERY_RETRIEVE_LABEL_AND_TYPE
       session[:label_properties]=$LABEL_PROPERTIES
     end
+       
     Thread.current[:triples]=session[:triples]
     Thread.current[:addrepositories]=session[:addrepositories]
-    Thread.current[:disablerepositories]=session[:disablerepositories]    
+    Thread.current[:enablerepositories]=session[:enablerepositories]    
     Thread.current[:application]=session[:application]
     Thread.current[:autodiscovery]=session[:autodiscovery]  
     Thread.current[:query_retrieve_label_and_type]=session[:query_retrieve_label_and_type]
@@ -49,5 +55,11 @@ class ApplicationController < ActionController::Base
   def delete
     session[:application].delete(params[:uri])  
   end
- 
+  
+  def get_adapter(name)    
+    adapter = ConnectionPool.adapters.select {|adapter| 
+      adapter.title == name
+    }
+    adapter.first()
+  end
 end
