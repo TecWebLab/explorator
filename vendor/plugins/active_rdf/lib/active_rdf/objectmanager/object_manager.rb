@@ -1,4 +1,4 @@
-require 'active_rdf'
+require 'active_rdf' unless PLATFORM =~ /java/
 
 # Constructs Ruby classes for RDFS classes (in the right namespace)
 

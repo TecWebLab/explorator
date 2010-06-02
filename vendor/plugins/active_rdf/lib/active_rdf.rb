@@ -4,7 +4,7 @@ require 'rubygems'
 # ActiveRDF loader
 
 # determine the directory in which we are running depending on cruby or jruby
-if RUBY_PLATFORM =~ /java/
+if RUBY_PLATFORM =~ /xjava/
   # jruby can not follow symlinks, because java does not know the symlink concept
   this_dir = File.dirname(File.expand_path(__FILE__))
 else
@@ -13,7 +13,7 @@ else
 end
 
 # set the load path, which uses the running directory, but has to be different if running on jruby directly from source. 
-if RUBY_PLATFORM =~ /java/ and Gem::cache.search(/^activerdf$/).empty?
+if RUBY_PLATFORM =~ /xjava/ and Gem::cache.search(/^activerdf$/).empty?
   $: << this_dir + '/activerdf/lib/'
   $: << this_dir + '/activerdf/lib/active_rdf/'
 else
@@ -48,7 +48,7 @@ end
 if Gem::cache.search(/^activerdf$/).empty?
 	# we are not running as a gem
 	$activerdflog.info 'ActiveRDF is NOT installed as a Gem'
-	if RUBY_PLATFORM =~ /java/
+	if RUBY_PLATFORM =~ /xjava/
 	  load_adapter this_dir + '/activerdf/activerdf-jena/lib/activerdf_jena/init'
 	  load_adapter this_dir + '/activerdf/activerdf-sparql/lib/activerdf_sparql/sparql'
     #load_adapter this_dir + '/../activerdf-sesame/lib/activerdf_sesame/sesame'
