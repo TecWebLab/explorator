@@ -127,8 +127,8 @@ class FinderUtil
       if ConnectionPool.void.keys.include?(root)
         adapter = ConnectionPool.void[root]
         Thread.current[:addrepositories]<< adapter
-        Thread.current[:disablerepositories]<< adapter.title
-        Thread.current[:disablerepositories].uniq!            
+        Thread.current[:enablerepositories]<< adapter.title
+        Thread.current[:enablerepositories].uniq!            
         return   
       end
       founds = find_endpoint_for(uri)
@@ -140,8 +140,8 @@ class FinderUtil
           adapter.limit=50
         end
         Thread.current[:addrepositories]<< adapter
-        Thread.current[:disablerepositories]<< adapter.title
-        Thread.current[:disablerepositories].uniq!        
+        Thread.current[:enablerepositories]<< adapter.title
+        Thread.current[:enablerepositories].uniq!        
       end
     end
   end
