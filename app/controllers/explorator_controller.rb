@@ -14,13 +14,16 @@ class ExploratorController < ApplicationController
   require_dependency "explorator_application"
   # attr_accessor :resourceset
   #default rails method. returns the view index.rhtml.
-  def index      
+  def index
+  
+    
   end
- 
   def resourcefilter
     @resourceset =  Application.get(params[:uri])  
     render  :partial => 'subject_view',:layout=>false;
   end 
+  
+  
   #change the set name
   def editSetName
     set = session[:application].get(params[:uri])
@@ -32,6 +35,7 @@ class ExploratorController < ApplicationController
     @setid=params[:uri]
     render :partial => 'filter',:layout=>false;
   end
+  
   # This create method  a ResourceSet based on the Semantic Expression passed
   # by the parameter 'exp';
   # The exp value must be a valid SemanticExpression class instance.
@@ -58,7 +62,7 @@ class ExploratorController < ApplicationController
       render :partial => view,:layout=>false;
       
     rescue Exception => e
- puts e.backtrace
+        puts e.backtrace
         redirect_to :controller => 'message',:action => 'error',:message => e.message ,:layout => false
     end
   end
