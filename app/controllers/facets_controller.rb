@@ -47,6 +47,9 @@ class FacetsController < ApplicationController
   end  
   #the parameter id is the ResourceSet identification in the SetsPool.
   def facet (exp)  
+    puts "$$$$$ 1"
+    puts Query.new.adapters(ConnectionPool.get_adapter('INTERNAL')).sparql("SELECT DISTINCT ?s WHERE { ?s <http://www.w3.org/2000/01/rdf-schema#label> ?o1 FILTER(str(?o1) = 'dblpfacets2')").execute
+    puts '$$$$$ 4'
     #gets a ResourceSet instance in the pool.
     set = session[:application].get(exp)    #the object @resourceset is a global object that will be used by render
     @resourceset = set     
@@ -57,8 +60,12 @@ class FacetsController < ApplicationController
     #  @groups=FACETO::FacetGroup.find_all()
     #  @facetgroup=FACETO::FacetGroup.find_by_rdfs::label('Group1').first
     @groups=FACETO::FacetGroup.find_by_faceto::type(RDFS::Resource.new('http://www.tecweb.inf.puc-rio.br/2008/faceto#userdefined'))
-    @facetgroup=FACETO::FacetGroup.find_by_rdfs::label(params[:name]).first  
-    
+    puts '###### 1'
+    @facetgroup =nil
+    @groups.each do |x|
+      @facetgroup =x if x.label == params[:name]
+      
+    end 
     #Calculates all the facets for a set of resources.
     entropy_by_set(@resourceset.resources)
     #render the _facet.rhtml view
@@ -191,16 +198,17 @@ class FacetsController < ApplicationController
           
           if facet.faceto::use != nil  
             #get the values based in the property
-          #  qresult = QueryFactory.new.distinct(:o).where(resource, facet.faceto::use,:o).execute
-       #   puts facet.faceto::use.localname
-        #  puts facet.faceto::use 
-          qresult = resource.instance_eval(facet.faceto::use.localname)          
-         elsif facet.faceto::useInverse != nil
-           puts facet.faceto::use.localname 
-                     puts facet.faceto::use 
-                     
-                     # qresult = QueryFactory.new.distinct(:o).where(resource, facet.faceto::useInverse,:o).execute
-          qresult = resource.instance_eval(facet.faceto::useInverse.localname)
+            #  qresult = QueryFactory.new.distinct(:o).where(resource, facet.faceto::use,:o).execute
+            puts facet.faceto::use.localname
+            # puts facet.faceto::use 
+            
+            qresult = resource.instance_eval(facet.faceto::use.localname)          
+          elsif facet.faceto::useInverse != nil
+            puts facet.faceto::use.localname 
+            puts facet.faceto::use 
+            
+            # qresult = QueryFactory.new.distinct(:o).where(resource, facet.faceto::useInverse,:o).execute
+            qresult = resource.instance_eval(facet.faceto::useInverse.localname)
           end    
         end
         if !qresult.instance_of? Array
@@ -208,13 +216,13 @@ class FacetsController < ApplicationController
           t << qresult
           qresult = t
         end
-         puts qresult
-         puts '2 ----------------------------'
+        puts qresult
+        puts '2 ----------------------------'
         #property :p occurs em :s
         if qresult.size > 0          
           prob_p += 1
         end
-         
+        
         #frequence that :o occurs for each :s
         qresult.each do |o|             
           #gets the default word in case where exists a table of synonyms   
@@ -246,7 +254,7 @@ class FacetsController < ApplicationController
       puts hash_object
       hash_object.each_key do |object|     
         count= hash_object[object]
-         
+        
         # puts object
         
         #calculate the object probability
@@ -260,7 +268,7 @@ class FacetsController < ApplicationController
           entropy = entropy + prob_o * Math.log(prob_o)  / Math.log( 2 )  
         end       
       end       
-
+      
       #calculates the objects' cardinality 
       
       if entropy != 0         
@@ -280,13 +288,13 @@ class FacetsController < ApplicationController
         puts  max_entropy_for_n(hash_object.size)
         puts 'probability'
         puts prob_p
-        @entropies[f]=[prob_p,normatize (max_entropy_for_n(hash_object.size),entropy)] #normatize entropy value to be used in the sort function
+        @entropies[f]=[prob_p,normatize(max_entropy_for_n(hash_object.size),entropy)] #normatize entropy value to be used in the sort function
         puts @entropies[f]
         @facets_cardinalities[f]=cardinalities        
       end      
     end        
     @entropies = @entropies.to_a
-     #sort the facets by property occurency and by maximum entropy        
+    #sort the facets by property occurency and by maximum entropy        
     @entropies.sort!  do |a, b|
       r = b[1][0]<=>a[1][0]
       r = a[1][1]<=>b[1][1]  if r == 0
@@ -381,7 +389,7 @@ class FacetsController < ApplicationController
       properties.each {|property|       
         if type=='computed'
           #gets the value of this property in this resource
-#         object=Query.new.distinct(:o).where(:o,property,resource).execute.to_s
+          #         object=Query.new.distinct(:o).where(:o,property,resource).execute.to_s
           object = resource.instance_eval(property.localname)
         else
           #the value in the interface is the same as than the value that will be in the expression
