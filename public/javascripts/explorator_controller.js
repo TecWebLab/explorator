@@ -35,8 +35,10 @@ Element.addMethods({
     },
     //open a new window where his content will be defined by the item.exp attribute.
     ctr_open: function(item){
-	   _uri =  '/repository/autoadd?uri='+ Element.resource(item);
-		new Ajax.Request((_uri), {   method: 'get'       });
+        _uri = '/repository/autoadd?uri=' + Element.resource(item);
+        new Ajax.Request((_uri), {
+            method: 'get'
+        });
         parameters.set('O', item);
         ajax_create(new SemanticExpression('O') + '&view=' + item.readAttribute('view'));
     },
@@ -83,7 +85,12 @@ Element.addMethods({
             }
         });
         ajax_update(facetwindow.readAttribute('set'), updateuri + expression + '&uri=' + Element.set(facetwindow));
-		item.up('.facetgroupwindow').down('.tranparentpanel').setStyle({display: 'block', position: 'absolute', width: '100%', height: '100%'  });
+        item.up('.facetgroupwindow').down('.tranparentpanel').setStyle({
+            display: 'block',
+            position: 'absolute',
+            width: '100%',
+            height: '100%'
+        });
         
     },
     sum: function(item){
@@ -97,7 +104,7 @@ Element.addMethods({
     },
     exp: function(item){
         return encodeURIComponent(item.readAttribute('exp'));
-    }    
+    }
 });
 
 //Helper functions defined in explorator_helper.js	
@@ -116,7 +123,7 @@ function setParameter(item){
     $$('.SELECTED').invoke('addClassName', Element.exp(item));
     item.addClassName(Element.exp(item));
     parameters.set(item.id, $$('.SELECTED'));
-	removeCSS('SELECTED');
+    removeCSS('SELECTED');
 }
 
 //These are the operations applyed over sets
@@ -144,6 +151,19 @@ function cmd_set(){
             parameters.set('operation', 'difference');
         };
     });
+    $$('._delete').each(function(item){
+        item.onclick = function(){
+            if (validation_spo()) 
+                return;
+            parameters.set(item.id, Element.exp(item));
+            var view = 'subject_view';
+            if (parameters.get(':s') != undefined && parameters.get(':p') != undefined && parameters.get(':o') == undefined) {
+                view = 'object_view';
+            }
+            ajax_create(new SemanticExpression().remove(':s', ':p', ':o', ':r') + "&view=" + view);
+            clear();
+        };
+    });
     $$('._equal').each(function(item){
         item.onclick = function(){
             parameters.set('B', $$('.SELECTED'));
@@ -164,7 +184,9 @@ function cmd_set(){
                         if (parameters.get(':s') != undefined && parameters.get(':p') != undefined && parameters.get(':o') == undefined) {
                             view = 'object_view';
                         }
+                        
                         ajax_create(new SemanticExpression().spo(':s', ':p', ':o', ':r') + "&view=" + view);
+                        
                     }
             clear();
         };
@@ -216,24 +238,20 @@ function cmd_semantic(){
             clear();
         };
     });
-
-    
     //Add a listener for the keyword search. 
     //This observer is applied over the form id_form_keyword
     $('load').onclick = function(){
-	new Ajax.Request('/repository/enable?title=EXPLORATOR(Local)',{  method: 'get'} );
- 		
+        new Ajax.Request('/repository/enable?title=EXPLORATOR(Local)', {
+            method: 'get'
+        });
+        
         ajax_create(new SemanticExpression().go($F('seachbykeyword')));
-		ajax_update('listenabledrepositories','/repository/listenabledrepositories');
+        ajax_update('listenabledrepositories', '/repository/listenabledrepositories');
     };
     $('search').onclick = function(){
         ajax_create(new SemanticExpression().search($F('seachbykeyword')));
     };
     
-//    $('sigma').onclick = function(){ 
-//         ajax_create(new SemanticExpression().go("http://sig.ma/search?q=" + $F('seachbykeyword')+ "&format=rdf"));
-//		 ajax_update('listenabledrepositories','/repository/listenabledrepositories');
-//    };
     
     
     
@@ -363,6 +381,11 @@ var SemanticExpression = Class.create({
         this.expression += '.spo(' + this.getResourcesArray(s) + ',' + this.getResourcesArray(p) + ',' + this.getResourcesArray(o) + ',' + parameters.get(r) + ')';
         return this;
     },
+	remove: function(s, p, o, r){
+    
+        this.expression += '.remove(' + this.getResourcesArray(s) + ',' + this.getResourcesArray(p) + ',' + this.getResourcesArray(o) + ',' + parameters.get(r) + ')';
+        return this;
+    },
     keyword: function(k){
         this.expression += '.keyword(\'' + k + '\')';
         return this;
@@ -374,7 +397,7 @@ var SemanticExpression = Class.create({
     go: function(k){
         this.expression += '.go(\'' + encodeURIComponent(k) + '\')';
         return this;
-    } ,
+    },
     toString: function(){
         return this.expression;
     }
