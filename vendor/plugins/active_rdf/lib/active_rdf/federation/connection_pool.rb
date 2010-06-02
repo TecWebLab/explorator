@@ -46,7 +46,12 @@ class ConnectionPool
   def ConnectionPool.adapters
     @@adapter_pool.dup
   end
-  
+  def ConnectionPool.get_adapter(name)    
+    adapter = @@adapter_pool.select {|adapter| 
+      adapter.title == name
+    }
+    adapter.first()
+  end
   # flushes all openstanding changes into the original datasource.
   def ConnectionPool.flush
     write_adapter.flush
@@ -62,19 +67,21 @@ class ConnectionPool
      (adapter.reads? &&  adapter.enabled?)
     }
   end
-  def ConnectionPool.write_adapters
-    
+  def ConnectionPool.write_adapters    
     @@adapter_pool.select {|x| (x.writes? && x.enabled?) }
-    
   end
   
   # returns adapter-instance for given parameters (either existing or new)
   def ConnectionPool.add_data_source(connection_params )
     $activerdflog.info "ConnectionPool: add_data_source with params: #{connection_params.inspect}"
     
+    #Verifies if the adapter with same uri was added before.
+    adapter  = ConnectionPool.find_by_uri(connection_params[:url])
+  
+    return adapter if adapter != nil
     # either get the adapter-instance from the pool
     # or create new one (and add it to the pool)
-    index = @@adapter_parameters.index(connection_params)
+    index = @@adapter_parameters.index(connection_params)    
     if index.nil?
       # adapter not in the pool yet: create it,
       # register its connection parameters in parameters-array
@@ -82,8 +89,7 @@ class ConnectionPool
       $activerdflog.debug("Create a new adapter for parameters #{connection_params.inspect}")
       adapter = create_adapter(connection_params)
       # this is necessary because activerdf search in the order repositories were added
-      if adapter.title == 'INTERNAL' 
-        
+      if adapter.title == 'INTERNAL'         
         @@adapter_parameters << connection_params
         @@adapter_pool << adapter
       else
@@ -95,13 +101,15 @@ class ConnectionPool
       # then adapter must be in the pool, at the same index-position as its parameters
       $activerdflog.debug("Reusing existing adapter")
       adapter = @@adapter_pool[index]
-    end
-    
+    end    
     # sets the adapter as current write-source if it can write
     self.write_adapter = adapter if adapter.writes?
-    
-    void_source =  adapter.query(Query.new.select(:o).where(:s,RDFS::Resource.new('<http://xmlns.com/foaf/0.1/homepage>') ,:o).where(:s,RDF::type,RDFS::Resource.new('<http://rdfs.org/ns/void#Dataset>'))).uniq
-    @@void[void_source.to_s.gsub(/>/,'').gsub(/</,'')]=adapter if void_source != nil
+    begin
+      void_source =  adapter.query(Query.new.select(:o).where(:s,RDFS::Resource.new('<http://xmlns.com/foaf/0.1/homepage>') ,:o).where(:s,RDF::type,RDFS::Resource.new('<http://rdfs.org/ns/void#Dataset>'))).uniq
+      @@void[void_source.to_s.gsub(/>/,'').gsub(/</,'')]=adapter if void_source != nil
+    rescue Exception => e
+      remove_data_source(adapter)
+    end    
     return adapter
   end
   
@@ -126,26 +134,7 @@ class ConnectionPool
     end
     
   end
-   def ConnectionPool.remove_last_data_source_added()
-    RDFS::Resource.reset_cache() 
-     
-    $activerdflog.info "ConnectionPool: remove_last_data_source with params: "
-    
-    index =0
-    
-    # remove_data_source mit be called repeatedly, e.g because the adapter object is stale
-    unless index.nil?
-      @@adapter_parameters.delete_at(index)
-      @@adapter_pool.delete_at(index)
-      #      if self.write_adapters.empty?
-      #        self.write_adapter = nil
-      #      else
-      #        self.write_adapter = self.write_adapters.first
-      #      end
-      
-    end
-   
-  end
+  
   # sets adapter-instance for connection parameters (if you want to re-enable an existing adapter)
   def ConnectionPool.set_data_source(adapter, connection_params = {})
     index = @@adapter_parameters.index(connection_params)
@@ -199,5 +188,5 @@ class ConnectionPool
     
   end
   
-  private_class_method :create_adapter
+#  private_class_method :create_adapter
 end

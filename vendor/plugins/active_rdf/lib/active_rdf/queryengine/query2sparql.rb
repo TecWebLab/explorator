@@ -8,19 +8,28 @@ class Query2SPARQL
   Engines_With_Keyword = [:yars2, :virtuoso,:sesame2] 
   
   def self.translate(query, engine=nil)
-    str = ""    
+    return query.sparql_query if query.sparql_query != nil 
+    str = ""
+    # puts query.insert?      
     if query.select?      
       distinct = query.distinct? ? "DISTINCT " : ""
       select_clauses = query.select_clauses.collect{|s| construct_clause(s)}
-      
-      str << "SELECT #{distinct}#{select_clauses.join(' ')} "
+      str << "SELECT #{distinct}#{select_clauses.join(' ')} "      
       str << "WHERE { #{where_clauses(query)} #{optional_clauses(query)} #{filter_clauses(query)} #{keywords_clauses(query,engine)}} "
       str << "ORDER BY #{query.sort_clauses} " unless query.sort_clauses.empty?
       str << "LIMIT #{query.limits} " if query.limits
       str << "OFFSET #{query.offsets} " if query.offsets
     elsif query.ask?
       str << "ASK { #{where_clauses(query)} } "
+    elsif query.insert?      
+      
+      str << "INSERT INTO #{insert_clauses(query)} "
+    elsif query.delete?      
+       tmp = delete_clauses(query)
+      str << "DELETE FROM GRAPH #{tmp} FROM #{tmp} "     
+     
     end    
+    
     return str
   end
   # concatenate filters in query
@@ -60,7 +69,7 @@ class Query2SPARQL
     if query.keyword?           
       filters= Array.new
       query.keywords.each do |term, keyword|
-     
+        
         if engine == :virtuoso
           filters << "bif:contains (?#{term}, '\"#{keyword}\"')"    
         else
@@ -96,14 +105,39 @@ class Query2SPARQL
     end    
     "#{where_clauses.join(' . ')} ." unless where_clauses.empty?    
   end
+  
+  def self.insert_clauses(query)       
+    s= query.insert_clauses[0]
+    p= query.insert_clauses[1]
+    o= query.insert_clauses[2]
+    c= query.insert_clauses[3]
+    insert_clauses =  " GRAPH #{construct_clause(c)} { #{construct_clause(s)} #{construct_clause(p)} #{construct_clause(o)} }"      
+    
+    # puts insert_clauses
+#    "#{insert_clauses.join('  ')} " unless insert_clauses.empty?    
+  end
+  def self.delete_clauses(query)      
+    s= query.delete_clauses[0]
+    p= query.delete_clauses[1]
+    o= query.delete_clauses[2]
+    c= query.delete_clauses[3]
+    delete_clauses =  "  #{construct_clause(c)} { #{construct_clause(s)} #{construct_clause(p)} #{construct_clause(o)} }"      
+    
+    # puts insert_clauses
+#    "#{delete_clauses.join('  ')} " unless insert_clauses.empty?    
+  end
   def self.construct_clause(term)   
+   
     if term.is_a?(Symbol)
       "?#{term}"
     else
       term.to_ntriple
     end
   end
-  
+  def self.insert(query)
+    
+    
+  end
   def self.sparql_engine
     sparql_adapters = ConnectionPool.read_adapters.select{|adp| adp.is_a? SparqlAdapter}
     engines = sparql_adapters.collect {|adp| adp.engine}.uniq

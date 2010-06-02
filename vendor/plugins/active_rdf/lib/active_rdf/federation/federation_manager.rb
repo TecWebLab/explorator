@@ -27,16 +27,18 @@ class FederationManager
   # by distributing query over complete read-pool
   # and aggregating the results
   def FederationManager.query(q, options={:flatten => true})   
+    # puts 'Querying .. .'
     if ConnectionPool.read_adapters.empty?
       raise ActiveRdfError, "cannot execute query without data sources" 
     end   
     # ask each adapter for query results
     # and yield them consequtively
     if block_given?
-      ConnectionPool.read_adapters.each do |source|        
+      ConnectionPool.read_adapters.each do |source|       
         source.query(q) do |*clauses|
           yield(*clauses)
         end
+        
       end
     else
       # build Array of results from all sources
@@ -44,23 +46,34 @@ class FederationManager
       # (without distinct, should get duplicates, they
       # were filtered out when doing results.union)
       results = []
-      ConnectionPool.read_adapters.each do |source|    
+      
+      federation = q.adapter_to_use if q.adapter_to_use.size > 0
+      skip = true if federation != nil
+      federation =ConnectionPool.read_adapters if federation == nil        
+      
+      federation.each do |source|   
+      
         #verifies if the repository was enabled by the Explorator's user.
-        begin
-          if Thread.current[:disablerepositories] != nil && !(Thread.current[:disablerepositories].include? source.title) 
-            next
+        if !skip  
+          begin        
+            if (Thread.current[:enablerepositories] == nil || !(Thread.current[:enablerepositories].include? source.title))  
+              next
+            end
+          rescue                
+            #outside the Explorator.
           end
-        rescue    
-          
-          #outside the Explorator.
         end
+       
+          
         #Forces skip INTERNAL repository searches for users's queries, or not system' queries.
+#        puts q.to_s
         if source.title == "INTERNAL" && !q.to_s.include?('http://www.tecweb.inf.puc-rio.br')
           next
         end
-        # puts source.title
+         puts "Using ... #{source.title}"
         q.limit(source.limit) if source.limit != nil
         source_results = source.query(q)
+#        return source_results if source.raw
         source_results.each do |clauses|
           results << clauses
         end

@@ -10,7 +10,7 @@ class SparqlAdapter < ActiveRdfAdapter
   $activerdflog.info "loading SPARQL adapter"
   ConnectionPool.register_adapter(:sparql, self)  
   attr_reader :engine
-  attr_reader :caching , :url 
+  attr_reader :caching , :url #,:raw
   def reset_cache()     
     @sparql_cache = {}
   end
@@ -33,6 +33,9 @@ class SparqlAdapter < ActiveRdfAdapter
     @title =params[:title] 
     @url = params[:url] || ''
     @caching = params[:caching] || false
+#    @preprocess = params[:preprocess] || false
+#    @raw = params[:raw] || false
+     
     @timeout = params[:timeout] || 100
     @auth = params[:auth] || nil
     
@@ -62,27 +65,38 @@ class SparqlAdapter < ActiveRdfAdapter
   # query datastore with query string (SPARQL), returns array with query results
   # may be called with a block
   def query(query, &block)    
-    qs = Query2SPARQL.translate(query,@engine)
-    
+    puts "Querying ...#{@title}"
+    qs = Query2SPARQL.translate(query,@engine)   
+     
+    puts qs.to_s  
+    if query.insert? || query.delete?     
+      reset_cache()
+      return execute_sparql_query(qs, header(query), query.select_clauses, &block)
+    end
+   
     if @caching 
       if is_into_cache(qs) 
         $activerdflog.debug "cache hit for query #{qs}"
-        return  query_cache(qs)
+        
+        resp = query_cache(qs)
+        
+        return  resp
       end
     end    
     
-    result = execute_sparql_query(qs, header(query), &block)
+    result = execute_sparql_query(qs, header(query), query.select_clauses, &block)
     add_to_cache(qs, result) if @caching
     result = [] if result == "timeout"
-   puts @title
-    puts qs.to_s  
+ 
     return result
   end
   
+   
   # do the real work of executing the sparql query
-  def execute_sparql_query(qs, header=nil, &block)
+  def execute_sparql_query(qs, header=nil, select_clauses=nil, &block)
     header = header(nil) if header.nil?
     
+#    puts select_clauses
     # querying sparql endpoint
     require 'timeout'
     response = ''
@@ -96,16 +110,17 @@ class SparqlAdapter < ActiveRdfAdapter
         else
           url = "#@url&query=#{CGI.escape(qs)}"          
         end
-        puts url
+        #puts url
         $activerdflog.debug "GET #{url}"        
         timeout(@timeout) do          
-           puts url
+#             puts url
           open(url, header) do |f|            
             response = f.read   
             #              puts response
           end
         end
-        when :post
+      when :post
+        puts 'Via POST'
         $activerdflog.debug "POST #@url with #{qs}"
         response = Net::HTTP.post_form(URI.parse(@url),{'query'=>qs}).body       
       end
@@ -121,13 +136,14 @@ class SparqlAdapter < ActiveRdfAdapter
       return []
     end
     
-    # we parse content depending on the result format
-    
+#    results =  preprocess(results) if @preprocess
+#    return results if @raw  
+    # we parse content depending on the result format    
     results = case @result_format
       when :json 
       parse_json(response)
-      when :xml, :sparql_xml
-      parse_xml(response)
+    when :xml, :sparql_xml
+      parse_xml(response,select_clauses)
     end
     
     if block_given?
@@ -137,7 +153,7 @@ class SparqlAdapter < ActiveRdfAdapter
     else      
       results
     end
-  end	
+  end 
   def close
     ConnectionPool.remove_data_source(self)
   end	
@@ -203,8 +219,8 @@ class SparqlAdapter < ActiveRdfAdapter
   end
   
   # parse xml stream result into array
-  def parse_xml(s)    
-    parser = SparqlResultParser.new
+  def parse_xml(s,select_clauses=nil)    
+    parser = SparqlResultParser.new(select_clauses)
     REXML::Document.parse_stream(s, parser) 
     parser.result
   end  

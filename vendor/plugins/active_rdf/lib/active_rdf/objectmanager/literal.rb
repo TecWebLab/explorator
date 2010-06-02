@@ -5,38 +5,38 @@ module Literal
   Namespace.register :xsd, 'http://www.w3.org/2001/XMLSchema#'
   def xsd_type
     case self
-    when String
+      when String
       XSD::string
-    when Integer
+      when Integer
       XSD::integer
-    when Float
+      when Float
       XSD::double
-    when TrueClass, FalseClass
+      when TrueClass, FalseClass
       XSD::boolean
-    when DateTime, Date, Time
+      when DateTime, Date, Time
       XSD::date
     end
   end
-
+  
   def self.typed(value, type)
     case type
-    when XSD::string
+      when XSD::string
       String.new(value)
-    when XSD::date
+      when XSD::date
       DateTime.parse(value)
-       when XSD::dateTime, XSD::Time
+      when XSD::dateTime, XSD::Time
       DateTime.parse(value)
-    when XSD::boolean
+      when XSD::boolean
       value == 'true' or value == 1
-    when XSD::integer
+      when XSD::integer
       value.to_i
-    when XSD::double
+      when XSD::double
       value.to_f
     else
       String.new(value)
     end
   end
-
+  
   def to_ntriple
     if $activerdf_without_xsdtype
       "\"#{to_s}\""
@@ -60,11 +60,12 @@ class LocalizedString < String
   attr_reader :lang
   def initialize value, lang=nil
     super(value)
-
-    @lang = lang
-    @lang = lang[1..-1] if @lang[0..0] == '@'
+    if lang != nil
+      @lang = lang
+      @lang = lang[1..-1] if @lang[0..0] == '@'
+    end
   end
-
+  
   def to_ntriple
     if @lang
       "\"#{to_s}\"@#@lang"

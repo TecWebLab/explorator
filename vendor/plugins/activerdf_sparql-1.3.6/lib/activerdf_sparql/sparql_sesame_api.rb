@@ -35,7 +35,7 @@ class SparqlSesameApiAdapter < ActiveRdfAdapter
     begin
       vmargs = [ '-Xms256m', '-Xmx1024m' ]
       vmargs << ('-Dinfo.aduna.platform.appdata.basedir=' + @sesamedir)
-      Rjb::load sesame_jars , vmargs
+   Rjb::load sesame_jars , vmargs
       
     rescue => ex
       raise ex, "Could not load Java Virtual Machine. Please, check if your JAVA_HOME environment variable is pointing to a valid JDK (1.4+)."
@@ -53,6 +53,7 @@ class SparqlSesameApiAdapter < ActiveRdfAdapter
   # query datastore with query string (SPARQL), returns array with query results
   # may be called with a block
   def query(query, &block)    
+    puts "Quering .. #{@title} " 
     qs = Query2SPARQL.translate(query)
      
     if !(@title.include?'INTERNAL' and qs.to_s.include? "http://www.tecweb.inf.puc-rio.br")      
@@ -63,7 +64,9 @@ class SparqlSesameApiAdapter < ActiveRdfAdapter
         end
       end 
     end
+    
     result = execute_sparql_query(qs, &block)
+#   puts result
     add_to_cache(qs, result) if @caching
     result = [] if result == "timeout"
     puts @title
@@ -74,11 +77,9 @@ class SparqlSesameApiAdapter < ActiveRdfAdapter
   # do the real work of executing the sparql query
   def execute_sparql_query(qs, header=nil, &block)    
     response = ''
-    begin 
-      
-      response = @bridge.query(qs.to_s)
-      
-      #  puts response
+    begin     
+      response = @bridge.query(qs.to_s)      
+#        puts response
     rescue 
       raise ActiveRdfError, "JAVA BRIDGE ERRO ON SPARQL ADAPTER"
       return "timeout"     
@@ -120,10 +121,7 @@ class SparqlSesameApiAdapter < ActiveRdfAdapter
     #    raise(ActiveRdfError, "deleting non-resource #{p} while adding (#{s},#{p},#{o},#{c})") unless p.respond_to?(:uri)
     #    
     quad = [s,p,o,c].collect {|r| r.nil? ? nil : internalise(r) }
-    puts quad[0]
-    puts quad[1]
-    puts quad[2]
-    puts quad[3]
+   
     response = @bridge.delete(quad[0],quad[1],quad[2],quad[3])
     
   end  

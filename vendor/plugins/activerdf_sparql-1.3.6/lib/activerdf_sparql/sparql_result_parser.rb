@@ -2,20 +2,27 @@
 class SparqlResultParser
   attr_reader :result
   
-  def initialize
+  def initialize(select_clauses=nil)
+    @ignorevar=false 
     @result = []
-    @vars = []
+     @vars = [] 
+    if select_clauses != nil    && select_clauses.size>0    
+      @ignorevar=true
+      @vars = select_clauses.map{|x| x.to_s}
+      
+    end
     @current_type = nil
   end
   
   def tag_start(name, attrs)
     case name
       when 'variable'
-      @vars << attrs['name']
+      @vars << attrs['name'] if @ignorevar ==false      
       when 'result'
       @current_result = []
       when 'binding'
       @index = @vars.index(attrs['name'])
+       
       when 'bnode', 'literal', 'typed-literal', 'uri','boolean'
       @current_type = name
     end
@@ -33,8 +40,8 @@ class SparqlResultParser
   def text(text)
     if !@current_type.nil?
       if @current_type == 'boolean'
-       @result <<  (text)
-     else
+        @result <<  (text)
+      else
         @current_result[@index] = create_node(@current_type, text)  
       end
       
