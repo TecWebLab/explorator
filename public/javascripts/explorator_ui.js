@@ -2,7 +2,6 @@
  * This code implements all the user interface behaviour of explorator
  * @author samuraraujo
  */
-
 //Add global ui methods to the elements
 Element.addMethods({
     //Hide an element
@@ -33,7 +32,7 @@ Element.addMethods({
     ui_close: function(item){
         new Effect.Shrink(item, {
             duration: 0.2,
-       afterFinish: function(){
+            afterFinish: function(){
                 //definitely removes the element from the set.
                 item.remove();
             }
@@ -63,32 +62,32 @@ function register_ui_resource_behaviour(){
     $$('.resource').each(function(resource){
         resource.identify();
         resource.ondblclick = function(e){
-            resource.ui_open();			
-		$('loadingtext').innerHTML = "Loading: " + getTextValue(resource);
+            resource.ui_open();
+            $('loadingtext').innerHTML = "Loading: " + getTextValue(resource);
             e.stopPropagation();
         };
         //	   resource.onclick = function(e){        
         //		   $('seachbykeyword').value=resource.readAttribute('resource');
         //  			e.stopPropagation();
         //        };
-    
-        /* resource.onclick = function(e){          
-         if (e.altKey){
-         var uri = resource.getAttribute('resource');
-         window.open(uri.substring(1,uri.length-2),'_blank');
-         }
-         };*/
+        
+       
     });
     
-	 $$('.flickr_pagination').each(function(item){
-        
-        item.onclick = function(e){ 
-        item.previous('.tranparentpanel').setStyle({display: 'block', position: 'absolute', width: '100%', height: '100%'  });
+    $$('.flickr_pagination').each(function(item){
+    
+        item.onclick = function(e){
+            item.previous('.tranparentpanel').setStyle({
+                display: 'block',
+                position: 'absolute',
+                width: '100%',
+                height: '100%'
+            });
             
         };
         
     });
-	
+    
     $$('.all').each(function(resource){
         resource.identify();
         resource.onclick = function(e){
@@ -154,23 +153,38 @@ function register_ui_resource_behaviour(){
     });
     $$('._object_view').each(function(item){
         item.onclick = function(){
-			 
-	 
-			item.up('._WINDOW').select('.tranparentpanel').first().setStyle({display: 'block', position: 'absolute', width: '100%', height: '100%'  });
+        
+        
+            item.up('._WINDOW').select('.tranparentpanel').first().setStyle({
+                display: 'block',
+                position: 'absolute',
+                width: '100%',
+                height: '100%'
+            });
             item.up('._WINDOW').crt_refresh('object_view', '');
         };
     });
     $$('._predicate_view').each(function(item){
         item.onclick = function(){
-			item.up('._WINDOW').select('.tranparentpanel').first().setStyle({display: 'block', position: 'absolute', width: '100%', height: '100%'  });
+            item.up('._WINDOW').select('.tranparentpanel').first().setStyle({
+                display: 'block',
+                position: 'absolute',
+                width: '100%',
+                height: '100%'
+            });
             item.up('._WINDOW').crt_refresh('predicate_view', '');
         };
     });
     $$('._subject_view').each(function(item){
         item.onclick = function(){
-			item.up('._WINDOW').select('.tranparentpanel').first().setStyle({display: 'block', position: 'absolute', width: '100%', height: '100%'  });
+            item.up('._WINDOW').select('.tranparentpanel').first().setStyle({
+                display: 'block',
+                position: 'absolute',
+                width: '100%',
+                height: '100%'
+            });
             item.up('._WINDOW').crt_refresh('subject_view', '');
-			
+            
         };
     });
 }
@@ -292,6 +306,15 @@ function register_ui_selection_behaviour(){
             item.select('._collapseproperties').invoke('hide');
             item.select('._expandproperties').invoke('show');
             //When only click event happens
+			 
+            if (e.altKey) {            
+                var uri = item.getAttribute('resource');
+ 
+                window.open(uri.substring(1, uri.length - 2), '_blank');
+				            e.stopPropagation();
+				return;
+            }
+        
             if (!(e.ctrlKey || e.metaKey)) {
                 //remove the selection from all elements on the interface
                 $$('.SELECTED').invoke('removeClassName', 'SELECTED');
@@ -325,6 +348,10 @@ function register_ui_selection_behaviour(){
         };
     });
 }
+
+
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////WINDOW HELPER FUNCTION//////////////////////////
