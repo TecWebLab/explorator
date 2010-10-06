@@ -15,13 +15,14 @@ class ExploratorController < ApplicationController
   # attr_accessor :resourceset
   #default rails method. returns the view index.rhtml.
   def index
-    if params[:url] != nil
-      
-      begin      
-        
+    if params[:url] != nil      
+      begin              
+         RDFS::Resource.reset_cache()     
+        session[:enablerepositories] << ('EXPLORATOR(Local)') 
+        session[:enablerepositories].uniq!
+          session[:triples]=Hash.new
         #creates a new set. 
-        #the expression must be passed by the uri
-        
+        #the expression must be passed by the uri        
         set = EXPLORATOR::Set.new('http://www.tecweb.inf.puc-rio.br/resourceset/id/' + UUID.random_create.to_s)       
         
         set.init("SemanticExpression.new.go('"+ params[:url] +"')")
