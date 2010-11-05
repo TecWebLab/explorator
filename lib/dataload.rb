@@ -29,7 +29,11 @@ $sesamedir.each  do |x|
       adapter = ConnectionPool.add_data_source :type => :sparql_sesame_api, :title => x + '(Local)'  ,  :caching =>true, :repository => x, :dir => $sesamedir.path   
       
     end
-  rescue
+  rescue => ex
+	begin #try add datasource once again if it fail at the first time.
+	  adapter = ConnectionPool.add_data_source :type => :sparql_sesame_api, :title => x + '(Local)'  ,  :caching =>true, :repository => x, :dir => $sesamedir.path
+	rescue
+	end
   end
 end
 
@@ -53,23 +57,23 @@ end
 #adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :sesame2, :url => "http://data.linkedmdb.org/sparql", :results => :sparql_xml, :caching =>true
 #adapter.title='IMDB_SPARQL'
 #
-begin
-  adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :virtuoso,:title=>'DBPEDIA(Local)', :url => "http://tecweb08.tecweb.inf.puc-rio.br:8890/sparql", :results => :sparql_xml, :caching =>true 
-rescue Exception => e
-  puts 'Removing datasource: ' 
-  #puts e.backtrace 
-  ConnectionPool.remove_last_data_source_added()
-  puts 'Datasource removed'
-end 
- 
-begin
-  adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :virtuoso,:title=>'MEDICAL(Local)', :url => "http://tecweb08.tecweb.inf.puc-rio.br:8890/sparql?default-graph-uri=http://medical.org", :results => :sparql_xml, :caching =>true 
-rescue Exception => e
-  puts 'Removing datasource: ' 
- # puts e.backtrace  
-  ConnectionPool.remove_last_data_source_added()
-  puts 'Datasource removed'
-end 
+#begin
+#  adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :virtuoso,:title=>'DBPEDIA(Local)', :url => "http://tecweb08.tecweb.inf.puc-rio.br:8890/sparql", :results => :sparql_xml, :caching =>true 
+#rescue Exception => e
+#  puts 'Removing datasource: ' 
+#  #puts e.backtrace 
+#  ConnectionPool.remove_last_data_source_added()
+#  puts 'Datasource removed'
+#end 
+# 
+#begin
+#  adapter =ConnectionPool.add_data_source :type => :sparql,:engine => :virtuoso,:title=>'MEDICAL(Local)', :url => "http://tecweb08.tecweb.inf.puc-rio.br:8890/sparql?default-graph-uri=http://medical.org", :results => :sparql_xml, :caching =>true 
+#rescue Exception => e
+#  puts 'Removing datasource: ' 
+# # puts e.backtrace  
+#  ConnectionPool.remove_last_data_source_added()
+#  puts 'Datasource removed'
+#end 
 
 
 

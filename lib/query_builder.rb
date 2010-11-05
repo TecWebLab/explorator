@@ -10,7 +10,7 @@ require "date"
 #Author: Samur Araujo
 #Date: 25 jun 2008.
 require 'active_rdf'
-require 'rjb'
+require 'rjb' unless RUBY_PLATFORM =~ /java/
 class SemanticExpression
   #:result - It is a array of RDFS::Resource.
   attr_accessor  :result  

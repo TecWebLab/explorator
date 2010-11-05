@@ -3,8 +3,6 @@ require 'rjb' unless RUBY_PLATFORM =~ /java/
 # SPARQL adapter
 class SparqlSesameApiAdapter < ActiveRdfAdapter
   
-  include Java if RUBY_PLATFORM =~ /java/
-  
   $activerdflog.info "loading SPARQL SESAME API adapter"
   
   ConnectionPool.register_adapter(:sparql_sesame_api, self)  
@@ -45,19 +43,18 @@ class SparqlSesameApiAdapter < ActiveRdfAdapter
       else      
         Rjb::load sesame_jars , vmargs
       end
-            
+     
     rescue => ex
       raise ex, "Could not load Java Virtual Machine. Please, check if your JAVA_HOME environment variable is pointing to a valid JDK (1.4+). #{ex}"
       
     rescue LoadError => ex
       raise ex, "Could not load RJB. Please, install it properly with the command 'gem install rjb'"
     end        
-    
-    if RUBY_PLATFORM =~ /java/
-      @bridge = (import 'br.tecweb.explorator.SesameApiRubyAdapter').new(@repository)
+    unless RUBY_PLATFORM =~ /java/
+      @bridge = Rjb::import('br.tecweb.explorator.SesameApiRubyAdapter').new(@repository)
     else
-      @bridge = Rjb::import('br.tecweb.explorator.SesameApiRubyAdapter').new(@repository)  
-    end  
+      @bridge = Java::BrTecwebExplorator::SesameApiRubyAdapter.new(@repository)
+    end
   end  
   def size
     query(Query.new.select(:s,:p,:o).where(:s,:p,:o)).size
@@ -67,7 +64,6 @@ class SparqlSesameApiAdapter < ActiveRdfAdapter
   # may be called with a block
   def query(query, &block)    
     qs = Query2SPARQL.translate(query)
-     
     if !(@title.include?'INTERNAL' and qs.to_s.include? "http://www.tecweb.inf.puc-rio.br")      
       if @caching 
         if is_into_cache(qs) 

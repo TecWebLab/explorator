@@ -4664,3 +4664,495 @@ Completed in 4ms (View: 1 | 200 OK [http://localhost/repository/listenabledrepos
 Processing ExploratorController#execute (for 127.0.0.1 at 2009-08-12 15:48:28) [GET]
   Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/4ba50518-351d-4757-82ec-df3de802dc86>')"}
 Completed in 2214ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/4ba50518-351d-4757-82ec-df3de802dc86%3E%27)]
+
+
+Processing ExploratorController#index (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:14:48) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered layouts/_toolbar (19.0ms)
+Rendered repository/_listenabledrepositories (8.0ms)
+Rendered layouts/_landmarks (63.0ms)
+Rendered layouts/_loading (5.0ms)
+Start rendering component ({:controller=>"querybuilder", :action=>"index", :layout=>false}): 
+
+
+Processing QuerybuilderController#index (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:14:48) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (20.0ms)
+Completed in 43ms (View: 36 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 454ms (View: 362 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#create (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:14:54) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:rdfs,:Class)).union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:owl,:Class))"}
+Rendered explorator/_windowheader (6.0ms)
+Rendered explorator/_windowfilter (3.0ms)
+Rendered explorator/_subject_view (61.0ms)
+Completed in 259ms (View: 68 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%3As%2CNamespace.lookup(%3Ardf%2C%3Atype)%2CNamespace.lookup(%3Ardfs%2C%3AClass)).union(%3As%2CNamespace.lookup(%3Ardf%2C%3Atype)%2CNamespace.lookup(%3Aowl%2C%3AClass))]
+
+
+Processing ExploratorController#execute (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:14:57) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/f96da61c-6df3-489b-802c-bdc56399cf4d>')"}
+Completed in 562ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/f96da61c-6df3-489b-802c-bdc56399cf4d%3E%27)]
+
+
+Processing RepositoryController#index (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:15:00) [GET]
+Rendering repository/index
+Start rendering component ({:action=>"endpointsform", :layout=>false}): 
+
+
+Processing RepositoryController#endpointsform (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:15:00) [GET]
+  Parameters: {"id"=>nil}
+Rendering repository/endpointsform
+Completed in 21ms (View: 11 | 200 OK [http://localhost/repository/index]
+
+
+End of component rendering
+Completed in 55ms (View: 46 | 200 OK [http://localhost/repository/index]
+
+
+Processing RepositoryController#listenabledrepositories (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:15:00) [POST]
+Rendered repository/_listenabledrepositories (1.0ms)
+Completed in 24ms (View: 3 | 200 OK [http://localhost/repository/listenabledrepositories]
+
+
+Processing RepositoryController#enable (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:15:02) [GET]
+  Parameters: {"title"=>"EXPLORATOR(Local)"}
+Completed in 4ms (View: 0 | 200 OK [http://localhost/repository/enable?title=EXPLORATOR(Local)]
+
+
+Processing RepositoryController#listenabledrepositories (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:15:02) [POST]
+Rendered repository/_listenabledrepositories (3.0ms)
+Completed in 21ms (View: 7 | 200 OK [http://localhost/repository/listenabledrepositories]
+
+
+Processing RepositoryController#enable (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:15:04) [GET]
+  Parameters: {"title"=>"NOKIA(Local)"}
+Completed in 16ms (View: 0 | 200 OK [http://localhost/repository/enable?title=NOKIA(Local)]
+
+
+Processing RepositoryController#listenabledrepositories (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:15:05) [POST]
+Rendered repository/_listenabledrepositories (1.0ms)
+Completed in 12ms (View: 8 | 200 OK [http://localhost/repository/listenabledrepositories]
+
+
+Processing ExploratorController#create (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:15:08) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:rdfs,:Class)).union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:owl,:Class))"}
+Rendered explorator/_windowheader (3.0ms)
+Rendered explorator/_windowfilter (1.0ms)
+Rendered explorator/_subject_view (3163.0ms)
+Completed in 4201ms (View: 3182 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%3As%2CNamespace.lookup(%3Ardf%2C%3Atype)%2CNamespace.lookup(%3Ardfs%2C%3AClass)).union(%3As%2CNamespace.lookup(%3Ardf%2C%3Atype)%2CNamespace.lookup(%3Aowl%2C%3AClass))]
+
+
+Processing RepositoryController#autoadd (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:15:16) [GET]
+  Parameters: {"uri"=>"<http://sw.nokia.com/FN-1/Type/Product>"}
+Completed in 42ms (View: 38 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fsw.nokia.com%2FFN-1%2FType%2FProduct%3E]
+
+
+Processing ExploratorController#create (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:15:17) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union(:s,RDF::type,'<http://sw.nokia.com/FN-1/Type/Product>')", "view"=>"null"}
+Rendered explorator/_windowheader (2.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (6094.0ms)
+Completed in 7092ms (View: 6100 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%3As%2CRDF%3A%3Atype%2C%27%3Chttp%3A%2F%2Fsw.nokia.com%2FFN-1%2FType%2FProduct%3E%27)&view=null]
+
+
+Processing ExploratorController#create (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:15:27) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union('<http://sw.nokia.com/id/f005e247-a3c2-4a0e-b93a-eaec18476939/3105>',:p,:o)", "view"=>"null"}
+Rendered explorator/_windowheader (2.0ms)
+Rendered explorator/_windowfilter (6.0ms)
+Rendered explorator/_subject_view (1892.0ms)
+Completed in 2100ms (View: 1897 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%27%3Chttp%3A%2F%2Fsw.nokia.com%2Fid%2Ff005e247-a3c2-4a0e-b93a-eaec18476939%2F3105%3E%27%2C%3Ap%2C%3Ao)&view=null]
+
+
+Processing RepositoryController#autoadd (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:15:29) [GET]
+  Parameters: {"uri"=>"<http://sw.nokia.com/id/f005e247-a3c2-4a0e-b93a-eaec18476939/3105>"}
+Completed in 5ms (View: 2 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fsw.nokia.com%2Fid%2Ff005e247-a3c2-4a0e-b93a-eaec18476939%2F3105%3E]
+
+
+Processing RepositoryController#index (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:15:47) [GET]
+Rendering repository/index
+Start rendering component ({:action=>"endpointsform", :layout=>false}): 
+
+
+Processing RepositoryController#endpointsform (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:15:47) [GET]
+  Parameters: {"id"=>nil}
+Rendering repository/endpointsform
+Completed in 46ms (View: 1 | 200 OK [http://localhost/repository/index]
+
+
+End of component rendering
+Completed in 110ms (View: 105 | 200 OK [http://localhost/repository/index]
+
+
+Processing RepositoryController#listenabledrepositories (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:15:47) [POST]
+Rendered repository/_listenabledrepositories (0.0ms)
+Completed in 100ms (View: 2 | 200 OK [http://localhost/repository/listenabledrepositories]
+
+
+Processing RepositoryController#add (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:16:01) [POST]
+  Parameters: {"title"=>"dbpedia", "uri"=>"http://dbpedia.org/sparql", "limit"=>"200"}
+Redirected to http://localhost:3001/repository/endpointsform?message=Sparql+endpoint+added+successfully%21&messageaction=confirmation
+Completed in 13124ms | 302 Found [http://localhost/repository/add?title=dbpedia&uri=http://dbpedia.org/sparql&limit=200]
+
+
+Processing RepositoryController#endpointsform (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:16:14) [GET]
+  Parameters: {"message"=>"Sparql endpoint added successfully!", "messageaction"=>"confirmation"}
+Rendering repository/endpointsform
+Start rendering component ({:controller=>"message", :action=>"confirmation", :params=>{:message=>"Sparql endpoint added successfully!"}, :layout=>false}): 
+
+
+Processing MessageController#confirmation (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:16:14) [GET]
+  Parameters: {"message"=>"Sparql endpoint added successfully!", "id"=>nil}
+Rendering message/confirmation
+Completed in 121ms (View: 118 | 200 OK [http://localhost/repository/endpointsform?message=Sparql+endpoint+added+successfully%21&messageaction=confirmation]
+
+
+End of component rendering
+Completed in 191ms (View: 176 | 200 OK [http://localhost/repository/endpointsform?message=Sparql+endpoint+added+successfully%21&messageaction=confirmation]
+
+
+Processing RepositoryController#listenabledrepositories (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:16:15) [POST]
+Rendered repository/_listenabledrepositories (1.0ms)
+Completed in 5ms (View: 2 | 200 OK [http://localhost/repository/listenabledrepositories]
+
+
+Processing ExploratorController#execute (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:16:21) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/7bd6f1e8-8e9f-4665-9b4c-f9f2f581f3f8>')"}
+Completed in 6011ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/7bd6f1e8-8e9f-4665-9b4c-f9f2f581f3f8%3E%27)]
+
+
+Processing ExploratorController#execute (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:16:27) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/a1386f4f-15e6-4af0-8b3f-0557886f5a37>')"}
+Completed in 2063ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/a1386f4f-15e6-4af0-8b3f-0557886f5a37%3E%27)]
+
+
+Processing ExploratorController#execute (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:16:29) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/da34eb2d-0eed-4f29-9a76-8b4df7dc1a5a>')"}
+Completed in 800ms (View: 1 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/da34eb2d-0eed-4f29-9a76-8b4df7dc1a5a%3E%27)]
+
+
+Processing ExploratorController#create (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:16:30) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:rdfs,:Class)).union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:owl,:Class))"}
+Rendered explorator/_windowheader (2.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (31856.0ms)
+Completed in 32643ms (View: 31885 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%3As%2CNamespace.lookup(%3Ardf%2C%3Atype)%2CNamespace.lookup(%3Ardfs%2C%3AClass)).union(%3As%2CNamespace.lookup(%3Ardf%2C%3Atype)%2CNamespace.lookup(%3Aowl%2C%3AClass))]
+
+
+Processing ExploratorController#reload (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:17:31) [POST]
+  Parameters: {"page"=>"2", "uri"=>"<http://www.tecweb.inf.puc-rio.br/resourceset/id/2edaee7a-22a9-4a2b-818b-d83acb20948d>", "view"=>"subject_view"}
+Rendered explorator/_windowheader (2.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (27753.0ms)
+Completed in 27794ms (View: 27755 | 200 OK [http://localhost/explorator/reload?page=2&uri=%3Chttp%3A%2F%2Fwww.tecweb.inf.puc-rio.br%2Fresourceset%2Fid%2F2edaee7a-22a9-4a2b-818b-d83acb20948d%3E&view=subject_view]
+
+
+Processing RepositoryController#index (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:18:08) [GET]
+Rendering repository/index
+Start rendering component ({:action=>"endpointsform", :layout=>false}): 
+
+
+Processing RepositoryController#endpointsform (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:18:08) [GET]
+  Parameters: {"id"=>nil}
+Rendering repository/endpointsform
+Completed in 16ms (View: 2 | 200 OK [http://localhost/repository/index]
+
+
+End of component rendering
+Completed in 29ms (View: 26 | 200 OK [http://localhost/repository/index]
+
+
+Processing RepositoryController#listenabledrepositories (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:18:08) [POST]
+Rendered repository/_listenabledrepositories (1.0ms)
+Completed in 7ms (View: 3 | 200 OK [http://localhost/repository/listenabledrepositories]
+
+
+Processing RepositoryController#disable (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:18:10) [GET]
+  Parameters: {"title"=>"NOKIA(Local)"}
+Completed in 3ms (View: 0 | 200 OK [http://localhost/repository/disable?title=NOKIA(Local)]
+
+
+Processing RepositoryController#listenabledrepositories (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:18:10) [POST]
+Rendered repository/_listenabledrepositories (0.0ms)
+Completed in 10ms (View: 7 | 200 OK [http://localhost/repository/listenabledrepositories]
+
+
+Processing RepositoryController#disable (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:18:11) [GET]
+  Parameters: {"title"=>"EXPLORATOR(Local)"}
+Completed in 3ms (View: 0 | 200 OK [http://localhost/repository/disable?title=EXPLORATOR(Local)]
+
+
+Processing RepositoryController#listenabledrepositories (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:18:11) [POST]
+Rendered repository/_listenabledrepositories (3.0ms)
+Completed in 7ms (View: 5 | 200 OK [http://localhost/repository/listenabledrepositories]
+
+
+Processing RepositoryController#autoadd (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:18:20) [GET]
+  Parameters: {"uri"=>"<http://www.ontologyportal.org/translations/SUMO.owl.txt#BodyCovering>"}
+Completed in 10ms (View: 1 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fwww.ontologyportal.org%2Ftranslations%2FSUMO.owl.txt%23BodyCovering%3E]
+
+
+Processing ExploratorController#create (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:18:20) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union(:s,RDF::type,'<http://www.ontologyportal.org/translations/SUMO.owl.txt#BodyCovering>')", "view"=>"null"}
+Rendered explorator/_windowheader (2.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (11.0ms)
+Completed in 2378ms (View: 13 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%3As%2CRDF%3A%3Atype%2C%27%3Chttp%3A%2F%2Fwww.ontologyportal.org%2Ftranslations%2FSUMO.owl.txt%23BodyCovering%3E%27)&view=null]
+
+
+Processing ExploratorController#execute (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:18:25) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/d9764e53-c37e-49d6-8702-e13c77c832e3>')"}
+Completed in 918ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/d9764e53-c37e-49d6-8702-e13c77c832e3%3E%27)]
+
+
+Processing ExploratorController#create (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:18:28) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union(:s,RDF::type,'<http://www.ontologyportal.org/translations/SUMO.owl.txt#Cup>')", "view"=>"null"}
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (6.0ms)
+Completed in 1414ms (View: 7 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%3As%2CRDF%3A%3Atype%2C%27%3Chttp%3A%2F%2Fwww.ontologyportal.org%2Ftranslations%2FSUMO.owl.txt%23Cup%3E%27)&view=null]
+
+
+Processing RepositoryController#autoadd (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:18:30) [GET]
+  Parameters: {"uri"=>"<http://www.ontologyportal.org/translations/SUMO.owl.txt#Cup>"}
+Completed in 40ms (View: 1 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fwww.ontologyportal.org%2Ftranslations%2FSUMO.owl.txt%23Cup%3E]
+
+
+Processing RepositoryController#autoadd (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:18:32) [GET]
+  Parameters: {"uri"=>"<http://www.ontologyportal.org/translations/SUMO.owl.txt#Organization>"}
+Completed in 4ms (View: 2 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fwww.ontologyportal.org%2Ftranslations%2FSUMO.owl.txt%23Organization%3E]
+
+
+Processing ExploratorController#create (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:18:32) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union(:s,RDF::type,'<http://www.ontologyportal.org/translations/SUMO.owl.txt#Organization>')", "view"=>"null"}
+Rendered explorator/_windowheader (17.0ms)
+Rendered explorator/_windowfilter (1.0ms)
+Rendered explorator/_subject_view (22.0ms)
+Completed in 1420ms (View: 35 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%3As%2CRDF%3A%3Atype%2C%27%3Chttp%3A%2F%2Fwww.ontologyportal.org%2Ftranslations%2FSUMO.owl.txt%23Organization%3E%27)&view=null]
+
+
+Processing RepositoryController#autoadd (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:18:36) [GET]
+  Parameters: {"uri"=>"<http://www.ontologyportal.org/translations/SUMO.owl.txt#Class>"}
+Completed in 13ms (View: 1 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fwww.ontologyportal.org%2Ftranslations%2FSUMO.owl.txt%23Class%3E]
+
+
+Processing ExploratorController#create (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:18:36) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union(:s,RDF::type,'<http://www.ontologyportal.org/translations/SUMO.owl.txt#Class>')", "view"=>"null"}
+Rendered explorator/_windowheader (2.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (20.0ms)
+Completed in 1228ms (View: 22 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%3As%2CRDF%3A%3Atype%2C%27%3Chttp%3A%2F%2Fwww.ontologyportal.org%2Ftranslations%2FSUMO.owl.txt%23Class%3E%27)&view=null]
+
+
+Processing RepositoryController#autoadd (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:18:42) [GET]
+  Parameters: {"uri"=>"<http://www.ontologyportal.org/translations/SUMO.owl.txt#CelsiusDegree>"}
+Completed in 4ms (View: 1 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fwww.ontologyportal.org%2Ftranslations%2FSUMO.owl.txt%23CelsiusDegree%3E]
+
+
+Processing ExploratorController#create (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:18:42) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union(:s,RDF::type,'<http://www.ontologyportal.org/translations/SUMO.owl.txt#CelsiusDegree>')", "view"=>"null"}
+Rendered explorator/_windowheader (1.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (5.0ms)
+Completed in 1470ms (View: 8 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%3As%2CRDF%3A%3Atype%2C%27%3Chttp%3A%2F%2Fwww.ontologyportal.org%2Ftranslations%2FSUMO.owl.txt%23CelsiusDegree%3E%27)&view=null]
+
+
+Processing ExploratorController#execute (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:18:50) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/cbf781e3-8e6f-4ec1-8206-8a7f54353c88>')"}
+Completed in 4091ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/cbf781e3-8e6f-4ec1-8206-8a7f54353c88%3E%27)]
+
+
+Processing ExploratorController#execute (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:18:54) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/3b069210-ea59-4647-a15e-fc4f7929fbb9>')"}
+Completed in 945ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/3b069210-ea59-4647-a15e-fc4f7929fbb9%3E%27)]
+
+
+Processing ExploratorController#execute (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:18:55) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/f1f1a0e0-ae55-4709-8bd9-0d5d1e70d502>')"}
+Completed in 831ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/f1f1a0e0-ae55-4709-8bd9-0d5d1e70d502%3E%27)]
+
+
+Processing ExploratorController#execute (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:18:56) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/c21b4176-f037-4b57-882d-ae1a709c198c>')"}
+Completed in 5684ms (View: 3 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/c21b4176-f037-4b57-882d-ae1a709c198c%3E%27)]
+
+
+Processing ExploratorController#execute (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:19:02) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/2edaee7a-22a9-4a2b-818b-d83acb20948d>')"}
+Completed in 769ms (View: 26 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/2edaee7a-22a9-4a2b-818b-d83acb20948d%3E%27)]
+
+
+Processing ExploratorController#create (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:19:02) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:rdfs,:Class)).union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:owl,:Class))"}
+Rendered explorator/_windowheader (2.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (1140.0ms)
+Completed in 1736ms (View: 1142 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%3As%2CNamespace.lookup(%3Ardf%2C%3Atype)%2CNamespace.lookup(%3Ardfs%2C%3AClass)).union(%3As%2CNamespace.lookup(%3Ardf%2C%3Atype)%2CNamespace.lookup(%3Aowl%2C%3AClass))]
+
+
+Processing RepositoryController#autoadd (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:19:13) [GET]
+  Parameters: {"uri"=>"<http://xmlns.com/foaf/0.1/Person>"}
+Completed in 9ms (View: 1 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2FPerson%3E]
+
+
+Processing ExploratorController#create (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:19:13) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union(:s,RDF::type,'<http://xmlns.com/foaf/0.1/Person>')", "view"=>"null"}
+Rendered explorator/_windowheader (3.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (69635.0ms)
+Completed in 71927ms (View: 69661 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%3As%2CRDF%3A%3Atype%2C%27%3Chttp%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2FPerson%3E%27)&view=null]
+
+
+Processing RepositoryController#autoadd (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:20:32) [GET]
+  Parameters: {"uri"=>"<http://dbpedia.org/resource/Jacques_Lacan>"}
+Completed in 47ms (View: 4 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FJacques_Lacan%3E]
+
+
+Processing ExploratorController#create (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:20:33) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union('<http://dbpedia.org/resource/Jacques_Lacan>',:p,:o)", "view"=>"null"}
+Rendered explorator/_windowheader (2.0ms)
+Rendered explorator/_windowfilter (1.0ms)
+Redirected to http://localhost:3001/message/error?message=could+not+query+SPARQL+endpoint%2C+server+said%3A+500+SPARQL+Request+Failed+.+%3Cbr%3E%3Cbr%3E%3Cb%3EURI+accessed%3A%3C%2Fb%3E+http%3A%2F%2Fdbpedia.org%2Fsparql%3Fquery%3DSELECT%2BDISTINCT%2B%253Fp%2B%253Fo%2BWHERE%2B%257B%2B%253Chttp%253A%252F%252Fdbpedia.org%252Fresource%252FParis%253E%2B%253Fp%2B%253Fo%2B.%2B%2B%2B%257D%2BLIMIT%2B200%2B
+Completed in 65298ms | 302 Found [http://localhost/explorator/create?exp=SemanticExpression.new.union(%27%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FJacques_Lacan%3E%27%2C%3Ap%2C%3Ao)&view=null]
+
+
+Processing MessageController#error (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:21:38) [GET]
+  Parameters: {"message"=>"could not query SPARQL endpoint, server said: 500 SPARQL Request Failed . <br><br><b>URI accessed:</b> http://dbpedia.org/sparql?query=SELECT+DISTINCT+%3Fp+%3Fo+WHERE+%7B+%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FParis%3E+%3Fp+%3Fo+.+++%7D+LIMIT+200+"}
+Rendering message/error
+Completed in 36ms (View: 34 | 200 OK [http://localhost/message/error?message=could+not+query+SPARQL+endpoint%2C+server+said%3A+500+SPARQL+Request+Failed+.+%3Cbr%3E%3Cbr%3E%3Cb%3EURI+accessed%3A%3C%2Fb%3E+http%3A%2F%2Fdbpedia.org%2Fsparql%3Fquery%3DSELECT%2BDISTINCT%2B%253Fp%2B%253Fo%2BWHERE%2B%257B%2B%253Chttp%253A%252F%252Fdbpedia.org%252Fresource%252FParis%253E%2B%253Fp%2B%253Fo%2B.%2B%2B%2B%257D%2BLIMIT%2B200%2B]
+
+
+Processing RepositoryController#autoadd (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:21:46) [GET]
+  Parameters: {"uri"=>"<http://dbpedia.org/resource/Paul_Strand>"}
+Completed in 6ms (View: 2 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FPaul_Strand%3E]
+
+
+Processing ExploratorController#create (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:21:46) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union('<http://dbpedia.org/resource/Paul_Strand>',:p,:o)", "view"=>"null"}
+Rendered explorator/_windowheader (2.0ms)
+Rendered explorator/_windowfilter (0.0ms)
+Rendered explorator/_subject_view (106462.0ms)
+Completed in 107368ms (View: 106463 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%27%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FPaul_Strand%3E%27%2C%3Ap%2C%3Ao)&view=null]
+
+
+Processing ExploratorController#execute (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:24:42) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/890d64e3-d90d-43d5-b2db-6269b067a74c>')"}
+Completed in 1217ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/890d64e3-d90d-43d5-b2db-6269b067a74c%3E%27)]
+
+
+Processing ExploratorController#execute (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:24:44) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/96291510-0658-46ee-b186-74fbc02a3ce6>')"}
+Completed in 1858ms (View: 1 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/96291510-0658-46ee-b186-74fbc02a3ce6%3E%27)]
+
+
+Processing ExploratorController#execute (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:24:46) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/8ac1a842-9628-4599-bb26-4485d997d1b1>')"}
+Completed in 824ms (View: 2 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/8ac1a842-9628-4599-bb26-4485d997d1b1%3E%27)]
+
+
+Processing ExploratorController#index (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:29:29) [GET]
+Rendering template within layouts/application
+Rendering explorator/index
+Rendered explorator/_windowheader (36.0ms)
+Rendered explorator/_windowfilter (3.0ms)
+Rendered explorator/_subject_view (88.0ms)
+Rendered layouts/_toolbar (3.0ms)
+Rendered repository/_listenabledrepositories (4.0ms)
+Rendered layouts/_landmarks (67.0ms)
+Rendered layouts/_loading (2.0ms)
+Start rendering component ({:controller=>"querybuilder", :action=>"index", :layout=>false}): 
+
+
+Processing QuerybuilderController#index (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:29:30) [GET]
+  Parameters: {"id"=>nil}
+Rendering querybuilder/index
+Rendered querybuilder/_rdfresource (7.0ms)
+Completed in 27ms (View: 21 | 200 OK [http://localhost/explorator]
+
+
+End of component rendering
+Completed in 1214ms (View: 780 | 200 OK [http://localhost/explorator]
+
+
+Processing ExploratorController#execute (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:29:35) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/7031dd12-5b23-40f3-b806-15b5e3b904ba>')"}
+Completed in 377ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/7031dd12-5b23-40f3-b806-15b5e3b904ba%3E%27)]
+
+
+Processing ExploratorController#create (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:29:37) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:rdf,:Property))"}
+Rendered explorator/_windowheader (8.0ms)
+Rendered explorator/_windowfilter (1.0ms)
+Rendered explorator/_subject_view (41.0ms)
+Completed in 185ms (View: 54 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%3As%2CNamespace.lookup(%3Ardf%2C%3Atype)%2CNamespace.lookup(%3Ardf%2C%3AProperty))]
+
+
+Processing ExploratorController#execute (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:29:39) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/5607d6af-666a-4b0b-a9fd-b1d36c9510f3>')"}
+Completed in 522ms (View: 1 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/5607d6af-666a-4b0b-a9fd-b1d36c9510f3%3E%27)]
+
+
+Processing RepositoryController#index (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:29:41) [GET]
+Rendering repository/index
+Start rendering component ({:action=>"endpointsform", :layout=>false}): 
+
+
+Processing RepositoryController#endpointsform (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:29:41) [GET]
+  Parameters: {"id"=>nil}
+Rendering repository/endpointsform
+Completed in 39ms (View: 18 | 200 OK [http://localhost/repository/index]
+
+
+End of component rendering
+Completed in 66ms (View: 61 | 200 OK [http://localhost/repository/index]
+
+
+Processing RepositoryController#listenabledrepositories (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:29:41) [POST]
+Rendered repository/_listenabledrepositories (0.0ms)
+Completed in 11ms (View: 5 | 200 OK [http://localhost/repository/listenabledrepositories]
+
+
+Processing RepositoryController#listenabledrepositories (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:29:44) [POST]
+Rendered repository/_listenabledrepositories (1.0ms)
+Completed in 22ms (View: 16 | 200 OK [http://localhost/repository/listenabledrepositories]
+
+
+Processing RepositoryController#enable (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:29:45) [GET]
+  Parameters: {"title"=>"EXPLORATOR(Local)"}
+Completed in 12ms (View: 0 | 200 OK [http://localhost/repository/enable?title=EXPLORATOR(Local)]
+
+
+Processing ExploratorController#create (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:29:48) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union(:s,Namespace.lookup(:rdf,:type),Namespace.lookup(:rdf,:Property))"}
+Rendered explorator/_windowheader (2.0ms)
+Rendered explorator/_windowfilter (1.0ms)
+Rendered explorator/_subject_view (2393.0ms)
+Completed in 3292ms (View: 2397 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%3As%2CNamespace.lookup(%3Ardf%2C%3Atype)%2CNamespace.lookup(%3Ardf%2C%3AProperty))]
+
+
+Processing RepositoryController#autoadd (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:29:56) [GET]
+  Parameters: {"uri"=>"<http://www.w3.org/2000/01/rdf-schema#range>"}
+Completed in 15ms (View: 4 | 200 OK [http://localhost/repository/autoadd?uri=%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23range%3E]
+
+
+Processing ExploratorController#create (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:29:56) [POST]
+  Parameters: {"exp"=>"SemanticExpression.new.union('<http://www.w3.org/2000/01/rdf-schema#range>',:p,:o)", "view"=>"null"}
+Rendered explorator/_windowheader (3.0ms)
+Rendered explorator/_windowfilter (1.0ms)
+Rendered explorator/_subject_view (181.0ms)
+Completed in 565ms (View: 183 | 200 OK [http://localhost/explorator/create?exp=SemanticExpression.new.union(%27%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23range%3E%27%2C%3Ap%2C%3Ao)&view=null]
+
+
+Processing ExploratorController#execute (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:30:00) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/e8f861d4-957b-4316-aaca-d71b94ee57fd>')"}
+Completed in 313ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/e8f861d4-957b-4316-aaca-d71b94ee57fd%3E%27)]
+
+
+Processing ExploratorController#execute (for 0:0:0:0:0:0:0:1%0 at 2010-11-03 11:30:01) [GET]
+  Parameters: {"exp"=>"remove('<http://www.tecweb.inf.puc-rio.br/resourceset/id/0abb65ad-d08d-4004-afa5-5c7d555a4118>')"}
+Completed in 288ms (View: 0 | 200 OK [http://localhost/explorator/execute?exp=remove(%27%3Chttp://www.tecweb.inf.puc-rio.br/resourceset/id/0abb65ad-d08d-4004-afa5-5c7d555a4118%3E%27)]
