@@ -3,10 +3,8 @@ Explorator is a tool for exploring RDF data by direct manipulation. Exploratorâ€
 
 You can access a demo of Explorator here: http://www.tecweb.inf.puc-rio.br/explorator/demo (doesn't work properly in IE).
 
-Watch a short video demo (opens external site in separate window):
+Explorator has been generalized in RExplorator, allowing parametrization of queries, sharing of solutions, and generating separate user-friendly interfaces. See http://www.tecweb.inf.puc-rio.br/rexplorator.
 
- Video thumbnail. Click to play.
-Explorator has been generalized in  RExplorator , allowing parametrization of queries, sharing of solutions, and generating separate user-friendly interfaces. See  http://www.tecweb.inf.puc-rio.br/rexplorator.
+Enjoy!
 
-Enjoy! 
-The Tecweb Team
+*The Tecweb Team*
